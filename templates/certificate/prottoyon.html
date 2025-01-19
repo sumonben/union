@@ -1,0 +1,1858 @@
+{% load static %}
+<html class="no-js"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+                <title>প্রত্যয়ন | নাগরিক একাউন্ট নিবন্ধন</title>
+        <meta name="description" content="Prottoyon(প্রত্যয়ন) is a portal where citizen of Bangladesh can apply for certificate(সনদপত্র) through online which saves their time and they can get the service in a easy way.">
+        <meta name="keywords" content="Prottoyon, প্রত্যয়ন, Certificate, সার্টিফিকেট, প্রশংসাপত্র, সনদপত্র, সকল সনদপত্র এক ঠিকানায়, All certificates are in one address, চারিত্রিক সনদপত্র, Character Certificate, Succession ( Heir ) Certificate, উত্তরাধিকার ( ওয়ারিশ ) সনদপত্র, প্রত্যয়ন পত্র, Prottoyon Potro, Nationality Certificate, জাতীয়তা সনদপত্র, অবিবাহিত সনদপত্র, Unmarried Certificate, Councilor Certificate, কাউন্সিলর সার্টিফিকেট, Municipality Certificate, পৌরসভার সার্টিফিকেট, Certificate Price, প্রশংসাপত্রের মূল্য, Get Certificate Online, প্রশংসাপত্র অনলাইনে পান">
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--All style sheet-->
+    <link rel="stylesheet" href="https://prottoyon.gov.bd/frontend/css/bootstrap.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://prottoyon.gov.bd/frontend/css/style.css">
+<!--<link rel="stylesheet" href="http://charity.gov.bd/frontend/css/owl.css">-->
+<link rel="stylesheet" href="https://prottoyon.gov.bd/frontend/css/responsive.css">
+<link rel="stylesheet" href="https://prottoyon.gov.bd/frontend/css/occStyle.css">
+<!--Favicon-->
+<link rel="icon" href="https://prottoyon.gov.bd/frontend/images/favicon.png">
+<link rel="stylesheet" href="https://prottoyon.gov.bd/frontend/css/multipleSelectMin.css">
+<link rel="stylesheet" href="https://prottoyon.gov.bd/frontend/css/jquery.notify.css">
+<link rel="stylesheet" href="https://prottoyon.gov.bd/frontend/css/fancybox.min.css">
+<link rel="stylesheet" href="https://prottoyon.gov.bd/frontend/css/datePicker.css">
+<style>
+.select2-container--default {
+    width: 100% !important;
+}
+.select2-container--default .select2-selection--single {
+    border: 1px solid #ccc;
+}
+.select2-dropdown {
+    border: 1px solid #ccc;
+}
+.progresses{
+    display: flex;
+    align-items: center;
+}
+.line{
+
+    width: 120px;
+    height: 6px;
+    background: #cbcbcb;
+}
+.steps{
+
+    display: flex;
+    background-color: #cbcbcb;
+    color: #fff;
+    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+}
+.progresses .active {
+    background-color: #662D91;
+}
+
+.pol-wizard {margin-top: 10px;}
+
+/*Form Wizard*/
+.pol-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.pol-wizard > .pol-wizard-step {padding: 0; position: relative;}
+.pol-wizard > .pol-wizard-step + .pol-wizard-step {}
+.pol-wizard > .pol-wizard-step .pol-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+.pol-wizard > .pol-wizard-step .pol-wizard-info {color: #999; font-size: 14px;}
+.pol-wizard > .pol-wizard-step > .pol-wizard-dot {position: absolute; width: 42px; height: 42px; display: block; background: #662D91; top: 36px; left: 46%; margin-top: -15px; margin-left: -15px; border-radius: 50%;}
+.pol-wizard > .pol-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
+.pol-wizard > .pol-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #662D91;}
+.pol-wizard > .pol-wizard-step.complete > .progress > .progress-bar {width:100%;}
+.pol-wizard > .pol-wizard-step.active > .progress > .progress-bar {width:50%;}
+.pol-wizard > .pol-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+.pol-wizard > .pol-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
+.pol-wizard > .pol-wizard-step.disabled > .pol-wizard-dot {background-color: #f5f5f5;}
+.pol-wizard > .pol-wizard-step.disabled > .pol-wizard-dot:after {opacity: 0;}
+.pol-wizard > .pol-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+.pol-wizard > .pol-wizard-step:last-child  > .progress {width: 50%;}
+.pol-wizard > .pol-wizard-step.disabled a.pol-wizard-dot{ pointer-events: none; }
+.stepbar-text {position: absolute;margin-top: 10px;margin-left:10px;font-size: 12px;color: #FFFFFF}
+.stepbar-text-inactive {position: absolute;margin-top: 10px;margin-left:10px;font-size: 12px;color: #3f3d3d}
+
+.col-xs-2 {
+    width: 18.666667% !important;
+}
+/*END Form Wizard*/
+
+</style>
+
+<script>
+    document.onkeydown = function (e) {
+        if (event.keyCode == 123) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'i'.charCodeAt(0))) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'c'.charCodeAt(0))) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'j'.charCodeAt(0))) {
+            return false;
+        }
+        if (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'u'.charCodeAt(0))) {
+            return false;
+        }
+        if (e.ctrlKey && (e.keyCode == 'S'.charCodeAt(0) || e.keyCode == 's'.charCodeAt(0))) {
+            return false;
+        }
+    }
+</script>
+
+    <meta name="csrf-token" content="GhlMugoO4UeAFrxqc0NK5ulZgRqY4lbiekWNQnjC">
+    
+        <style type="text/css">
+    .captcha-code .code {
+        width: 200px;
+        height: 80px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        border: 1px solid #CCC;
+        display: inline-block;
+    }
+
+    .captcha-code .code .dynamic-code {
+        text-shadow: -7px 5px 5px rgba(140, 198, 63, 0.65);
+        text-align: center;
+        color: #33336c;
+        font-size: 30px;
+        font-weight: 900;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: help;
+        line-height: 60px;
+        transform: skew(45deg, 1deg);
+    }
+
+    .captcha-code .code .dynamic-code:first-letter {
+        font-size: 55px;
+    }
+
+    .captcha-code .captcha-reload {
+        cursor: pointer;
+        font-size: 36px;
+        font-weight: bold;
+        margin-top: 0;
+        max-width: 36px;
+        display: inline-block;
+    }
+
+    .captcha-code .captcha-reload:hover {
+        color: #8cc63f;
+    }
+
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+        color: white;
+        background-color: rgb(142, 83, 161);
+        border: 1px solid rgb(142, 83, 161);
+        border-bottom-color: transparent;
+        cursor: default;
+        font-weight: bold;
+    }
+
+    .nav-tabs > li > a {
+        margin-right: 2px;
+        line-height: 1.42857143;
+        border: 1px solid transparent;
+        border-radius: 4px 4px 0 0;
+        font-weight: bold;
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 481px) {
+        .nav-tabs > li > a {
+            margin-right: 2px;
+            line-height: 1.42857143;
+            border: 1px solid transparent;
+            border-radius: 4px 4px 0 0;
+            font-weight: bold;
+            font-size: 11px
+        }
+
+        .nav > li > a {
+            position: relative;
+            display: block;
+            padding: 6px 4px;
+        }
+    }
+</style>
+</head>
+<body oncontextmenu="return false;">
+    <div class="page-wrapper">
+        
+        <div class="hide" id="pageLoading">
+            <i class="fa fa-spinner fa-spin fa-5x text-primary"></i>
+        </div>
+        
+
+        <!-- Top bar section -->
+        <!-- Registration Modal Start -->
+<div class="topBar" style="min-height: 40px;">
+<div class="container">
+    <div class="row">
+        <div class="col-md-5  hidden-sm hidden-xs" style="padding-top: 10px">
+            <ul class="pull-left brands">
+                <li style="font-size: 20px;font-weight: bold;color: #8e53a1">অনলাইন সার্টিফিকেট সিস্টেম</li>
+            </ul>
+        </div>
+        <div class="col-md-7 col-sm-12">
+            <ul class="pull-right brands" style="padding-top: 5px">
+                                        <li class="hide">
+                        <div id="testCorner" class="badge" style="border: 2px solid #8e53a1;background-color: transparent;color:#8e53a1;font-size: 18px;font-weight: bold;border-radius: 4px;padding: 2px 10px 2px 10px"><i class="fa fa-user icon-padding"></i>ফ্রি একাউন্ট খুলুন
+                            <div id="customdiv" style="display: none">
+                                <a href="https://prottoyon.gov.bd/register/citizen" class="badge" style="background-color: #8cc63f;display:block;margin-bottom:10px;border-radius:0;padding: 10px 25px;font-size: 15px;"><i class="fa fa-users"></i> নাগরিক</a>
+                                <a href="https://prottoyon.gov.bd/register/employeer" data-toggle="popover" data-html="true" data-trigger="hover" data-content="<ol style='padding-left:0;list-style:circle;font-size:12px'><li style='display:block;margin-bottom:5px;'>মেয়র</li><li style='display:block;margin-bottom:5px;'>কাউন্সিলর</li> <li style='display:block;margin-bottom:5px;'>সংরক্ষিত  কাউন্সিলর</li> <li style='display:block;margin-bottom:5px;'>মেয়র সচিব</li> <li style='display:block;margin-bottom:5px;'>ওয়ার্ড সচিব</li> <li style='display:block;margin-bottom:5px;'>সংরক্ষিত ওয়ার্ড সচিব</li> <li style='display:block;margin-bottom:5px;'>স্মার্ট সেন্টার উদ্যোক্তা </li><li style='display:block;margin-bottom:5px;'>ইউনিয়ন চেয়ারম্যান </li><li style='display:block;margin-bottom:5px;'>ইউনিয়ন ওয়ার্ড সচিব</li></ol>" data-placement="bottom" class="badge employerCorner" style="background-color: #8cc63f;display:block;border-radius:0;min-width: 150px;padding: 10px 25px;font-size: 15px;" data-original-title="" title=""><i class="fa fa-user-secret"></i> প্রশাসনিক</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </li>
+                    <li><a href="https://prottoyon.gov.bd/register/citizen" class="badge" style="border: 2px solid #8e53a1;background-color: transparent;color:#8e53a1;font-size: 18px;font-weight: bold;border-radius: 4px;padding: 2px 10px 2px 10px"><i class="fa fa-users"></i> ফ্রি নাগরিক একাউন্ট </a></li>
+                    <li>
+                        <a href="https://prottoyon.gov.bd/register/employeer" class="badge" data-toggle="popover" data-html="true" data-trigger="hover" data-content="<ol style='padding-left:0;list-style:circle;font-size:12px'><li style='display:block;margin-bottom:5px;'>মেয়র</li><li style='display:block;margin-bottom:5px;'>কাউন্সিলর</li> <li style='display:block;margin-bottom:5px;'>সংরক্ষিত  কাউন্সিলর</li> <li style='display:block;margin-bottom:5px;'>মেয়র সচিব</li> <li style='display:block;margin-bottom:5px;'>ওয়ার্ড সচিব</li> <li style='display:block;margin-bottom:5px;'>সংরক্ষিত ওয়ার্ড সচিব</li> <li style='display:block;margin-bottom:5px;'>স্মার্ট সেন্টার উদ্যোক্তা </li><li style='display:block;margin-bottom:5px;'>ইউনিয়ন চেয়ারম্যান </li><li style='display:block;margin-bottom:5px;'>ইউনিয়ন ওয়ার্ড সচিব</li></ol>" data-placement="bottom" style="border: 2px solid #8e53a1;background-color: transparent;color:#8e53a1;font-size: 18px;font-weight: bold;border-radius: 4px;padding: 2px 10px 2px 10px" data-original-title="" title=""><i class="fa fa-user-secret"></i> প্রশাসনিক একাউন্ট খুলুন </a>
+                    </li>
+                    <li><a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" class="badge" onclick="$('#loginForProttoyon').val('');$('.loginErrorMessage').addClass('hide');" style="border: 3px solid #8e53a1;background-color: #8e53a1;color:#FFFFFF;font-size: 18px;font-weight: bold;border-radius: 4px;padding: 2px 10px 2px 10px"><i class="fa fa-sign-in icon-padding"></i>লগইন</a></li>
+                                                                <!--<li><a href="https://prottoyon.gov.bd/en/register/citizen" style="color: white">English</a></li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Registration Modal end -->
+<!-- Login Modal Start -->
+<div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h3 class="modal-title regModalHeading">লগইন কর্ণার</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger loginErrorMessage hide" style="font-weight: 600"></div>
+                        <div class="col-md-12" id="">
+                            <meta name="csrf-token" content="GhlMugoO4UeAFrxqc0NK5ulZgRqY4lbiekWNQnjC">
+                            <form method="POST" action="" class="clearfix">
+                                <input type="hidden" name="loginForProttoyon" id="loginForProttoyon" value="">
+                                <input type="hidden" name="_token" value="GhlMugoO4UeAFrxqc0NK5ulZgRqY4lbiekWNQnjC" autocomplete="off">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <div class="form-group">
+                                        <label class="radio-inline"><input checked="" type="radio" name="optradio" value="1">নাগরিক </label>
+                                        <label class="radio-inline"><input type="radio" name="optradio" value="2">প্রশাসনিক</label>
+                                    </div>
+                                    <div class="form-group" id="labelText">
+                                        <label class="radio-inline"><input checked="" type="radio" name="ltype" value="1">মোবাইল </label>
+                                        <label class="radio-inline"><input type="radio" name="ltype" value="2">ইমেইল</label>
+                                        <label class="radio-inline"><input type="radio" name="ltype" value="3">এন আইডি</label>
+                                        <label class="radio-inline"><input type="radio" name="ltype" value="4">জন্ম নিবন্ধন</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" maxlength="255" class="form-control" id="login_phone" name="users_phone" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" style="font-weight: normal">পাসওয়ার্ড &nbsp;<span style="color: red">*</span></label>
+                                        <input type="password" maxlength="15" class="form-control" id="login_password" name="password" required="">
+                                    </div>
+                                    <button type="button" id="btnLogin" onclick="occsLogin();" style="float: left" class="btn occButton"><i class="fa fa-check icon-padding"></i>লগইন</button>
+                                    <a href="https://prottoyon.gov.bd/forgetPassword" class="occAnchor">
+                                        পাসওয়ার্ড ভুলে গেছেন ?
+                                    </a>
+                                    <a href="https://prottoyon.gov.bd/register/citizen" class="occAnchor">
+                                        একাউন্ট নেই? ফ্রি একাউন্ট খুলুন।
+                                    </a>
+                                    
+                                    <a href="https://prottoyon.gov.bd/cdap/login" class="occAnchor">
+                                        CDAP লগইন <img src="https://prottoyon.gov.bd/frontend/images/mygov.png" style="height: 30px;" alt="myGov Logo">
+                                    </a>
+                                </div>
+                            </form>
+                            <p style="color: maroon" class="blink text-justify visible-md-block">বি:দ্রঃ সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login Modal End -->
+
+
+<div id="google_translate_element" style="position: fixed;top: 70px;right: 0">
+<div id="poweredHid" style="position: absolute;background: white;width: 100%;top: 30px;right: 0;height: 15px;"></div>
+</div>
+        <!-- Top bar section End -->
+        <!-- Menu bar section -->
+        <div class="header">
+<div class="container">
+    <div class="row" class="main-left">
+        <div class="col-md-3" style="padding-right: 0;padding-left: 5px;">
+            <!--Logo-->
+            <div class="logo">
+                <a href="https://prottoyon.gov.bd">
+                    <img src="https://prottoyon.gov.bd/frontend/images/logo.png">
+                </a>
+            </div>
+            <!--Logo end-->
+        </div>
+        <table width="961" height="1000"  border="0" cellpadding="0" cellspacing="0" class="gap01">
+            <tbody><tr>
+              <td align="left" valign="top" bgcolor="#009999" class="bdr-body"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                  <td width="10%" height="95" align="center" valign="middle"><img src="{% static 'images/gmrwc_logo.png'%}" width="75" height="75"></td>
+                  <td width="65%" height="95" align="left" valign="middle">
+                                          
+                    <span class="GrayBlue14b" style="color:#000">Government of the People's Republic of Bangladesh</span><br>
+                  <span class="GrayBlue20bold" style="color:#000">Govt. Mujibur Rahman Women's College, Bogura</span>
+                  </td>
+                  <td width="25%" height="95" align="left" valign="middle"><span class="XamName" style="color:#fff">HSC Internal Exam Result<sup></sup> <br></span><br>
+           <span class="black10"></span><br>
+           <span class="black10bold"></span></td>
+                  </tr>
+              </tbody></table>
+            </ul>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-2" id="globalSearch">
+                    <form method="GET" action="https://prottoyon.gov.bd/site/search">
+                        <div class="input-group" style="margin-top: 5px">
+                            <input type="text" id="siteSearch" name="searchText" class="form-control" placeholder="ওয়েবসাইটে অনুসন্ধান করুন ......." required="">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> অনুসন্ধান</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 pd-0">
+            <nav class="navbar navbar-default">
+                <!--Icon Menu Bar-->
+                <div class="mobile-menu-right hidden-lg hidden-md">
+                    <ul>
+                        <li class="fly-menu">
+                            <a href="javascript:void(0);" class="fly-opener active navbar-toggle">
+                                <span class="pull-left" style="margin-right: 15px;">মেনু নির্বাচন করুন </span>
+                                <div class="pull-right">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </div>
+                            </a>
+                            <a href="javascript:void(0);" class="fly-closer not-active">
+                                ×
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Icon Bar End-->
+                <!--Nav Menu bar-->
+                <div class="collapse navbar-menu navbar-header navbar-collapse">
+                    <ul class="nav navbar-nav mainNavigation">
+                        <li class="home"><a href="https://prottoyon.gov.bd">প্রথম পাতা</a></li>
+                        <li class="services ">
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">সেবাসমূহ <span class="caret"></span></a>
+                            <ul class="dropdown-menu mega-menu">
+                                                                    <div class="row">
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#HjYfMqpnSOL2PO190509134555"><i class="icon-padding fa fa-circle"></i>হোল্ডিং ট্যাক্স</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#PVHnLY8ctOL20170419110048"><i class="icon-padding fa fa-circle"></i>ক্ষমতা অর্পণ প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#PVHnLY8ctOL20170419110045"><i class="icon-padding fa fa-circle"></i>উত্তরাধিকার সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#PVHnLY8ctOL20170419110047"><i class="icon-padding fa fa-circle"></i>পারিবারিক সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#PVHnLY8ctOL20170419110046"><i class="icon-padding fa fa-circle"></i>ওয়ারিশ সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#Hl7xi017o6OL20190504174736"><i class="icon-padding fa fa-circle"></i>মৃত্যু প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#qx4ALOL20241119114524"><i class="icon-padding fa fa-circle"></i>রোহিঙ্গা নয় প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#qx4ALOL20241119114624"><i class="icon-padding fa fa-circle"></i>ভোটার তথ্য যাচাই-বাছাই প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#0T6Moh5OL20190504181711"><i class="icon-padding fa fa-circle"></i>বেকারত্ব সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#ODOvuDHYx9OL20170214115537"><i class="icon-padding fa fa-circle"></i>নাগরিকত্ব সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#ODOvuDHYx9OL20170214115536"><i class="icon-padding fa fa-circle"></i>জাতীয়তা সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#cvLZLOTOL20180218155151"><i class="icon-padding fa fa-circle"></i>পুনঃবিবাহ সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#d0Qg6dVOL20190505125503"><i class="icon-padding fa fa-circle"></i>ভূমিহীন সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#ThRkyOL20220417110148"><i class="icon-padding fa fa-circle"></i>নতুন ভোটার প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#yM5Keb1esOL20190WC9100102"><i class="icon-padding fa fa-circle"></i>বিধবা প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#ICLCEc6MOL20220623172146"><i class="icon-padding fa fa-circle"></i>অভিভাবক সম্মতি সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#Cf2CVxiBSTOL20220623171734"><i class="icon-padding fa fa-circle"></i>সম্প্রদায় সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#HjYfMqpnSOL2PO190509134448"><i class="icon-padding fa fa-circle"></i>কৃষি প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#qDL9VdLOL20170214115434"><i class="icon-padding fa fa-circle"></i>অবিবাহিত সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#HjYfMqpnSOL20190509134448"><i class="icon-padding fa fa-circle"></i>মুক্তিযোদ্ধা প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#PPrbnnVEYOL20190424171759"><i class="icon-padding fa fa-circle"></i>বার্ষিক আয়ের সনদ </a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#bw7ai6ia9HOL20190509121007"><i class="icon-padding fa fa-circle"></i>এতিম সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#yM5Keb1esOL20190509100102"><i class="icon-padding fa fa-circle"></i>বিবাহিত প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#nYLnxTPOL20241120122337"><i class="icon-padding fa fa-circle"></i>জীবিত ব্যক্তির প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#sEaIjToYl20241127053139"><i class="icon-padding fa fa-circle"></i>পাসপোর্ট প্রদানের প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#PkgIihRzIOL20190504175242"><i class="icon-padding fa fa-circle"></i>মাসিক আয়ের সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#ELaKSb3IjsOL20220623170909"><i class="icon-padding fa fa-circle"></i>ভোটার এলাকা স্থানান্তর প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#cCWD6meOL20220623171857"><i class="icon-padding fa fa-circle"></i>জাতীয় পরিচয় তথ্য সংশোধন প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#R7dNqNzMLOL20220623171538"><i class="icon-padding fa fa-circle"></i>নিঃসন্তান প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#eIHpltOL20220623171454"><i class="icon-padding fa fa-circle"></i>আর্থিক অস্বচ্ছলতার সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#VPIZVhKOL20220623171348"><i class="icon-padding fa fa-circle"></i>অনাপত্তি সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#RPeLizLkK0OL20220623171244"><i class="icon-padding fa fa-circle"></i>অবকাঠামো নির্মাণের অনুমতি সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#x3SSfPIdOL20170202091940"><i class="icon-padding fa fa-circle"></i>চারিত্রিক সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#ufNmgOL20220623170701"><i class="icon-padding fa fa-circle"></i>প্রতিবন্ধী সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#61jh0XOL20220416100128"><i class="icon-padding fa fa-circle"></i>একই ব্যক্তির প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#MmP8NULTWvOL20190509125310"><i class="icon-padding fa fa-circle"></i>উপজাতি সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#cvLZLOTOL20180218155400"><i class="icon-padding fa fa-circle"></i>ট্রেড লাইসেন্স</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#cvLZLOTOL20180218155600"><i class="icon-padding fa fa-circle"></i>প্রিমিসেস লাইসেন্স</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#cvLZLOTOL20180218155200"><i class="icon-padding fa fa-circle"></i>পুনঃবিবাহ না হওয়ার প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#Pt5D4POL20190505094116"><i class="icon-padding fa fa-circle"></i>স্থায়ী বাসিন্দা সনদ</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#HjYfMqpnSOL2PO190509135558"><i class="icon-padding fa fa-circle"></i>ভোটার তালিকা বাদ পড়ায় অন্তর্ভুক্তির প্রত্যয়ন</a>
+                                        </div>
+                                                                                <div class=" submenu_list col-md-4">
+                                            <a class="submenu_link" style="text-decoration: none" role="button" data-toggle="modal" data-target="#aXBnCnOL20170214115722"><i class="icon-padding fa fa-circle"></i>বিবিধ সনদ</a>
+                                        </div>
+                                                                        </div>
+                            </ul>
+                        </li>
+                        <li class="search"><a href="https://prottoyon.gov.bd/searchPage">আবেদনের অবস্থা জানুন</a></li>
+                        <li class="verify"><a href="https://prottoyon.gov.bd/verifyCertificate">সনদ যাচাইকরণ </a></li>
+                        <li class="generateCertificate">
+                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ফরমস <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <!-- URL::to('parentsCertificate') -->
+                                
+                                <li><a href="https://prottoyon.gov.bd/generateCertificate"><i class="icon-padding fa fa-circle"></i>সাক্ষী দাতার প্রত্যয়ন</a></li>
+                            </ul>
+                        </li>
+                        
+                        
+                        <!--<li class="innovator"><a href="https://prottoyon.gov.bd/innovator">উদ্ভাবকের কথা</a></li>-->
+                        
+                        <li class="contact"><a href="https://prottoyon.gov.bd/contact">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+                <!--Nav menu bar end-->
+            </nav>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Service -->
+<div id="HjYfMqpnSOL2PO190509134555" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#HjYfMqpnSOL2PO190509134555').modal('hide');$('#loginForProttoyon').val('warishDetails/HjYfMqpnSOL2PO190509134555');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="PVHnLY8ctOL20170419110048" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#PVHnLY8ctOL20170419110048').modal('hide');$('#loginForProttoyon').val('warishDetails/PVHnLY8ctOL20170419110048');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="PVHnLY8ctOL20170419110045" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#PVHnLY8ctOL20170419110045').modal('hide');$('#loginForProttoyon').val('warishDetails/PVHnLY8ctOL20170419110045');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="PVHnLY8ctOL20170419110047" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#PVHnLY8ctOL20170419110047').modal('hide');$('#loginForProttoyon').val('warishDetails/PVHnLY8ctOL20170419110047');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="PVHnLY8ctOL20170419110046" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#PVHnLY8ctOL20170419110046').modal('hide');$('#loginForProttoyon').val('warishDetails/PVHnLY8ctOL20170419110046');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="Hl7xi017o6OL20190504174736" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#Hl7xi017o6OL20190504174736').modal('hide');$('#loginForProttoyon').val('warishDetails/Hl7xi017o6OL20190504174736');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="qx4ALOL20241119114524" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#qx4ALOL20241119114524').modal('hide');$('#loginForProttoyon').val('warishDetails/qx4ALOL20241119114524');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="qx4ALOL20241119114624" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#qx4ALOL20241119114624').modal('hide');$('#loginForProttoyon').val('warishDetails/qx4ALOL20241119114624');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="0T6Moh5OL20190504181711" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#0T6Moh5OL20190504181711').modal('hide');$('#loginForProttoyon').val('warishDetails/0T6Moh5OL20190504181711');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="ODOvuDHYx9OL20170214115537" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#ODOvuDHYx9OL20170214115537').modal('hide');$('#loginForProttoyon').val('warishDetails/ODOvuDHYx9OL20170214115537');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="ODOvuDHYx9OL20170214115536" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#ODOvuDHYx9OL20170214115536').modal('hide');$('#loginForProttoyon').val('warishDetails/ODOvuDHYx9OL20170214115536');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="cvLZLOTOL20180218155151" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#cvLZLOTOL20180218155151').modal('hide');$('#loginForProttoyon').val('warishDetails/cvLZLOTOL20180218155151');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="d0Qg6dVOL20190505125503" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#d0Qg6dVOL20190505125503').modal('hide');$('#loginForProttoyon').val('warishDetails/d0Qg6dVOL20190505125503');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="ThRkyOL20220417110148" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#ThRkyOL20220417110148').modal('hide');$('#loginForProttoyon').val('warishDetails/ThRkyOL20220417110148');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="yM5Keb1esOL20190WC9100102" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#yM5Keb1esOL20190WC9100102').modal('hide');$('#loginForProttoyon').val('warishDetails/yM5Keb1esOL20190WC9100102');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="ICLCEc6MOL20220623172146" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#ICLCEc6MOL20220623172146').modal('hide');$('#loginForProttoyon').val('warishDetails/ICLCEc6MOL20220623172146');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="Cf2CVxiBSTOL20220623171734" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#Cf2CVxiBSTOL20220623171734').modal('hide');$('#loginForProttoyon').val('warishDetails/Cf2CVxiBSTOL20220623171734');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="HjYfMqpnSOL2PO190509134448" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#HjYfMqpnSOL2PO190509134448').modal('hide');$('#loginForProttoyon').val('warishDetails/HjYfMqpnSOL2PO190509134448');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="qDL9VdLOL20170214115434" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#qDL9VdLOL20170214115434').modal('hide');$('#loginForProttoyon').val('warishDetails/qDL9VdLOL20170214115434');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="HjYfMqpnSOL20190509134448" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#HjYfMqpnSOL20190509134448').modal('hide');$('#loginForProttoyon').val('warishDetails/HjYfMqpnSOL20190509134448');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="PPrbnnVEYOL20190424171759" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#PPrbnnVEYOL20190424171759').modal('hide');$('#loginForProttoyon').val('warishDetails/PPrbnnVEYOL20190424171759');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="bw7ai6ia9HOL20190509121007" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#bw7ai6ia9HOL20190509121007').modal('hide');$('#loginForProttoyon').val('warishDetails/bw7ai6ia9HOL20190509121007');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="yM5Keb1esOL20190509100102" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#yM5Keb1esOL20190509100102').modal('hide');$('#loginForProttoyon').val('warishDetails/yM5Keb1esOL20190509100102');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="nYLnxTPOL20241120122337" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#nYLnxTPOL20241120122337').modal('hide');$('#loginForProttoyon').val('warishDetails/nYLnxTPOL20241120122337');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="sEaIjToYl20241127053139" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#sEaIjToYl20241127053139').modal('hide');$('#loginForProttoyon').val('warishDetails/sEaIjToYl20241127053139');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="PkgIihRzIOL20190504175242" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#PkgIihRzIOL20190504175242').modal('hide');$('#loginForProttoyon').val('warishDetails/PkgIihRzIOL20190504175242');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="ELaKSb3IjsOL20220623170909" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#ELaKSb3IjsOL20220623170909').modal('hide');$('#loginForProttoyon').val('warishDetails/ELaKSb3IjsOL20220623170909');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="cCWD6meOL20220623171857" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#cCWD6meOL20220623171857').modal('hide');$('#loginForProttoyon').val('warishDetails/cCWD6meOL20220623171857');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="R7dNqNzMLOL20220623171538" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#R7dNqNzMLOL20220623171538').modal('hide');$('#loginForProttoyon').val('warishDetails/R7dNqNzMLOL20220623171538');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="eIHpltOL20220623171454" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#eIHpltOL20220623171454').modal('hide');$('#loginForProttoyon').val('warishDetails/eIHpltOL20220623171454');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="VPIZVhKOL20220623171348" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#VPIZVhKOL20220623171348').modal('hide');$('#loginForProttoyon').val('warishDetails/VPIZVhKOL20220623171348');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="RPeLizLkK0OL20220623171244" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#RPeLizLkK0OL20220623171244').modal('hide');$('#loginForProttoyon').val('warishDetails/RPeLizLkK0OL20220623171244');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="x3SSfPIdOL20170202091940" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#x3SSfPIdOL20170202091940').modal('hide');$('#loginForProttoyon').val('warishDetails/x3SSfPIdOL20170202091940');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="ufNmgOL20220623170701" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#ufNmgOL20220623170701').modal('hide');$('#loginForProttoyon').val('warishDetails/ufNmgOL20220623170701');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="61jh0XOL20220416100128" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#61jh0XOL20220416100128').modal('hide');$('#loginForProttoyon').val('warishDetails/61jh0XOL20220416100128');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="MmP8NULTWvOL20190509125310" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#MmP8NULTWvOL20190509125310').modal('hide');$('#loginForProttoyon').val('warishDetails/MmP8NULTWvOL20190509125310');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="cvLZLOTOL20180218155400" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#cvLZLOTOL20180218155400').modal('hide');$('#loginForProttoyon').val('warishDetails/cvLZLOTOL20180218155400');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="cvLZLOTOL20180218155600" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#cvLZLOTOL20180218155600').modal('hide');$('#loginForProttoyon').val('warishDetails/cvLZLOTOL20180218155600');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="cvLZLOTOL20180218155200" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#cvLZLOTOL20180218155200').modal('hide');$('#loginForProttoyon').val('warishDetails/cvLZLOTOL20180218155200');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="Pt5D4POL20190505094116" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#Pt5D4POL20190505094116').modal('hide');$('#loginForProttoyon').val('warishDetails/Pt5D4POL20190505094116');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="HjYfMqpnSOL2PO190509135558" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#HjYfMqpnSOL2PO190509135558').modal('hide');$('#loginForProttoyon').val('warishDetails/HjYfMqpnSOL2PO190509135558');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<div id="aXBnCnOL20170214115722" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+                        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">আপনি কি নিবন্ধিত নাগরিক ?</h4>
+                </div>
+                <div class="modal-body certificateDetails clearfix">
+                    <a href="https://prottoyon.gov.bd/register/citizen" type="button" class="btn occButton pull-left" style="background-color: #8cc63f;color: #8e53a1;">
+                        <i class="fa fa-user-plus icon-padding"></i> না, নিবন্ধন করুন
+                    </a>
+                    <a data-toggle="modal" data-target="#loginModal" type="button" class="btn occButton pull-right" onclick="$('#aXBnCnOL20170214115722').modal('hide');$('#loginForProttoyon').val('warishDetails/aXBnCnOL20170214115722');">
+                        <i class="fa fa-sign-in icon-padding"></i> হ্যাঁ, লগইন করুন
+                    </a>
+                </div>
+                <div class="modal-footer" style="text-align: justify;margin-top: 0">
+                    <span style="font-weight: bold;color: maroon">*** সনদ প্রাপ্তির জন্য নিবন্ধিত নাগরিক হিসেবে আপনার ঠিকানা সহ সাধারণ তথ্য দিয়ে প্রোফাইল ১০০% সম্পন্ন করার প্রয়োজনীয়তা রয়েছে।</span>
+                </div>
+            </div>
+                </div>
+</div>
+<!-- Service -->
+        <!-- Menu bar section End -->
+        <div class="occSection" style="border-top: 2px solid #8e53a1">
+            <div class="container">
+                
+                    <div class="row">
+    <div class="col-md-8 pd-0">
+        <!--Create Account section start-->
+        <div class="panel panel-default">
+            <div class="panel-heading" id="occPanelHeading">নাগরিক একাউন্ট তৈরী করুন</div>
+            <div class="panel-body" style="padding-top: 15px;">
+                
+                <!-- Alert section -->
+
+
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                                                <li role="presentation" class="active"><a href="https://prottoyon.gov.bd/register/citizen" role="tab">জন্ম নিবন্ধনের মাধ্যমে</a></li>
+                                                                        <li role="presentation"><a href="https://prottoyon.gov.bd/register/nid/citizen" role="tab">জাতীয় পরিচয়পত্রের মাধ্যমে</a></li>
+                                                                        <li role="presentation"><a href="https://prottoyon.gov.bd/register/nr/citizen" role="tab">সাধারণ নিবন্ধন</a></li>
+                                        </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="brn" style="padding-top: 15px">
+                        <form method="POST" action="https://prottoyon.gov.bd/createCitizenWithBrn">
+                            <input type="hidden" name="_token" value="GhlMugoO4UeAFrxqc0NK5ulZgRqY4lbiekWNQnjC" autocomplete="off">                                <div class="col-md-12">
+                                <div class="form-group ">
+                                    <label for="users_birth_registration_no">জন্ম নিবন্ধন নম্বর &nbsp;<span style="color: red">*</span></label>
+                                    <input type="text" maxlength="17" class="form-control numberOnly requiredOL" id="users_birth_registration_no" name="users_birth_registration_no" value="" required="">
+                                                                        </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="users_dob">জন্ম তারিখ &nbsp;<span style="color: red">*</span></label>
+                            </div>
+                            <div class="col-md-4 form-group ">
+                                <select class="select2 requiredOL select2-hidden-accessible" name="year" required="" tabindex="-1" aria-hidden="true">
+                                    <option value="">বছর</option>
+                                                                                                                        <option value="2025">২০২৫ (2025)</option>
+                                                                                <option value="2024">২০২৪ (2024)</option>
+                                                                                <option value="2023">২০২৩ (2023)</option>
+                                                                                <option value="2022">২০২২ (2022)</option>
+                                                                                <option value="2021">২০২১ (2021)</option>
+                                                                                <option value="2020">২০২০ (2020)</option>
+                                                                                <option value="2019">২০১৯ (2019)</option>
+                                                                                <option value="2018">২০১৮ (2018)</option>
+                                                                                <option value="2017">২০১৭ (2017)</option>
+                                                                                <option value="2016">২০১৬ (2016)</option>
+                                                                                <option value="2015">২০১৫ (2015)</option>
+                                                                                <option value="2014">২০১৪ (2014)</option>
+                                                                                <option value="2013">২০১৩ (2013)</option>
+                                                                                <option value="2012">২০১২ (2012)</option>
+                                                                                <option value="2011">২০১১ (2011)</option>
+                                                                                <option value="2010">২০১০ (2010)</option>
+                                                                                <option value="2009">২০০৯ (2009)</option>
+                                                                                <option value="2008">২০০৮ (2008)</option>
+                                                                                <option value="2007">২০০৭ (2007)</option>
+                                                                                <option value="2006">২০০৬ (2006)</option>
+                                                                                <option value="2005">২০০৫ (2005)</option>
+                                                                                <option value="2004">২০০৪ (2004)</option>
+                                                                                <option value="2003">২০০৩ (2003)</option>
+                                                                                <option value="2002">২০০২ (2002)</option>
+                                                                                <option value="2001">২০০১ (2001)</option>
+                                                                                <option value="2000">২০০০ (2000)</option>
+                                                                                <option value="1999">১৯৯৯ (1999)</option>
+                                                                                <option value="1998">১৯৯৮ (1998)</option>
+                                                                                <option value="1997">১৯৯৭ (1997)</option>
+                                                                                <option value="1996">১৯৯৬ (1996)</option>
+                                                                                <option value="1995">১৯৯৫ (1995)</option>
+                                                                                <option value="1994">১৯৯৪ (1994)</option>
+                                                                                <option value="1993">১৯৯৩ (1993)</option>
+                                                                                <option value="1992">১৯৯২ (1992)</option>
+                                                                                <option value="1991">১৯৯১ (1991)</option>
+                                                                                <option value="1990">১৯৯০ (1990)</option>
+                                                                                <option value="1989">১৯৮৯ (1989)</option>
+                                                                                <option value="1988">১৯৮৮ (1988)</option>
+                                                                                <option value="1987">১৯৮৭ (1987)</option>
+                                                                                <option value="1986">১৯৮৬ (1986)</option>
+                                                                                <option value="1985">১৯৮৫ (1985)</option>
+                                                                                <option value="1984">১৯৮৪ (1984)</option>
+                                                                                <option value="1983">১৯৮৩ (1983)</option>
+                                                                                <option value="1982">১৯৮২ (1982)</option>
+                                                                                <option value="1981">১৯৮১ (1981)</option>
+                                                                                <option value="1980">১৯৮০ (1980)</option>
+                                                                                <option value="1979">১৯৭৯ (1979)</option>
+                                                                                <option value="1978">১৯৭৮ (1978)</option>
+                                                                                <option value="1977">১৯৭৭ (1977)</option>
+                                                                                <option value="1976">১৯৭৬ (1976)</option>
+                                                                                <option value="1975">১৯৭৫ (1975)</option>
+                                                                                <option value="1974">১৯৭৪ (1974)</option>
+                                                                                <option value="1973">১৯৭৩ (1973)</option>
+                                                                                <option value="1972">১৯৭২ (1972)</option>
+                                                                                <option value="1971">১৯৭১ (1971)</option>
+                                                                                <option value="1970">১৯৭০ (1970)</option>
+                                                                                <option value="1969">১৯৬৯ (1969)</option>
+                                                                                <option value="1968">১৯৬৮ (1968)</option>
+                                                                                <option value="1967">১৯৬৭ (1967)</option>
+                                                                                <option value="1966">১৯৬৬ (1966)</option>
+                                                                                <option value="1965">১৯৬৫ (1965)</option>
+                                                                                <option value="1964">১৯৬৪ (1964)</option>
+                                                                                <option value="1963">১৯৬৩ (1963)</option>
+                                                                                <option value="1962">১৯৬২ (1962)</option>
+                                                                                <option value="1961">১৯৬১ (1961)</option>
+                                                                                <option value="1960">১৯৬০ (1960)</option>
+                                                                                <option value="1959">১৯৫৯ (1959)</option>
+                                                                                <option value="1958">১৯৫৮ (1958)</option>
+                                                                                <option value="1957">১৯৫৭ (1957)</option>
+                                                                                <option value="1956">১৯৫৬ (1956)</option>
+                                                                                <option value="1955">১৯৫৫ (1955)</option>
+                                                                                <option value="1954">১৯৫৪ (1954)</option>
+                                                                                <option value="1953">১৯৫৩ (1953)</option>
+                                                                                <option value="1952">১৯৫২ (1952)</option>
+                                                                                <option value="1951">১৯৫১ (1951)</option>
+                                                                                <option value="1950">১৯৫০ (1950)</option>
+                                                                                <option value="1949">১৯৪৯ (1949)</option>
+                                                                                <option value="1948">১৯৪৮ (1948)</option>
+                                                                                <option value="1947">১৯৪৭ (1947)</option>
+                                                                                <option value="1946">১৯৪৬ (1946)</option>
+                                                                                <option value="1945">১৯৪৫ (1945)</option>
+                                                                                <option value="1944">১৯৪৪ (1944)</option>
+                                                                                <option value="1943">১৯৪৩ (1943)</option>
+                                                                                <option value="1942">১৯৪২ (1942)</option>
+                                                                                <option value="1941">১৯৪১ (1941)</option>
+                                                                                <option value="1940">১৯৪০ (1940)</option>
+                                                                                <option value="1939">১৯৩৯ (1939)</option>
+                                                                                <option value="1938">১৯৩৮ (1938)</option>
+                                                                                <option value="1937">১৯৩৭ (1937)</option>
+                                                                                <option value="1936">১৯৩৬ (1936)</option>
+                                                                                <option value="1935">১৯৩৫ (1935)</option>
+                                                                                <option value="1934">১৯৩৪ (1934)</option>
+                                                                                <option value="1933">১৯৩৩ (1933)</option>
+                                                                                <option value="1932">১৯৩২ (1932)</option>
+                                                                                <option value="1931">১৯৩১ (1931)</option>
+                                                                                <option value="1930">১৯৩০ (1930)</option>
+                                                                                <option value="1929">১৯২৯ (1929)</option>
+                                                                                <option value="1928">১৯২৮ (1928)</option>
+                                                                                <option value="1927">১৯২৭ (1927)</option>
+                                                                                <option value="1926">১৯২৬ (1926)</option>
+                                                                                <option value="1925">১৯২৫ (1925)</option>
+                                                                                <option value="1924">১৯২৪ (1924)</option>
+                                                                                <option value="1923">১৯২৩ (1923)</option>
+                                                                                <option value="1922">১৯২২ (1922)</option>
+                                                                                <option value="1921">১৯২১ (1921)</option>
+                                                                                <option value="1920">১৯২০ (1920)</option>
+                                                                                <option value="1919">১৯১৯ (1919)</option>
+                                                                                <option value="1918">১৯১৮ (1918)</option>
+                                                                                <option value="1917">১৯১৭ (1917)</option>
+                                                                                <option value="1916">১৯১৬ (1916)</option>
+                                                                                <option value="1915">১৯১৫ (1915)</option>
+                                                                                <option value="1914">১৯১৪ (1914)</option>
+                                                                                <option value="1913">১৯১৩ (1913)</option>
+                                                                                <option value="1912">১৯১২ (1912)</option>
+                                                                                <option value="1911">১৯১১ (1911)</option>
+                                                                                <option value="1910">১৯১০ (1910)</option>
+                                                                                <option value="1909">১৯০৯ (1909)</option>
+                                                                                <option value="1908">১৯০৮ (1908)</option>
+                                                                                <option value="1907">১৯০৭ (1907)</option>
+                                                                                <option value="1906">১৯০৬ (1906)</option>
+                                                                                <option value="1905">১৯০৫ (1905)</option>
+                                                                                <option value="1904">১৯০৪ (1904)</option>
+                                                                                <option value="1903">১৯০৩ (1903)</option>
+                                                                                <option value="1902">১৯০২ (1902)</option>
+                                                                        </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 106px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-year-dr-container"><span class="select2-selection__rendered" id="select2-year-dr-container" title="বছর">বছর</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                                                </div>
+                            <div class="col-md-4 form-group ">
+                                <select class="select2 requiredOL select2-hidden-accessible" name="month" required="" tabindex="-1" aria-hidden="true">
+                                    <option value="">মাস</option>
+                                    <option value="01">জানুয়ারী</option>
+                                    <option value="02">ফেব্রূয়ারি</option>
+                                    <option value="03">মার্চ</option>
+                                    <option value="04">এপ্রিল</option>
+                                    <option value="05">মে</option>
+                                    <option value="06">জুন</option>
+                                    <option value="07">জুলাই</option>
+                                    <option value="08">আগস্ট</option>
+                                    <option value="09">সেপ্টেম্বর</option>
+                                    <option value="10">অক্টোবর</option>
+                                    <option value="11">নভেম্বর</option>
+                                    <option value="12">ডিসেম্বর</option>
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 74px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-month-sx-container"><span class="select2-selection__rendered" id="select2-month-sx-container" title="মাস">মাস</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                                                </div>
+                            <div class="col-md-4 form-group ">
+                                <select class="select2 requiredOL select2-hidden-accessible" name="day" required="" tabindex="-1" aria-hidden="true">
+                                    <option value="">দিন</option>
+                                                                                                                                <option value="1">০১ (1)</option>
+                                                                                                                                                                            <option value="2">০২ (2)</option>
+                                                                                                                                                                            <option value="3">০৩ (3)</option>
+                                                                                                                                                                            <option value="4">০৪ (4)</option>
+                                                                                                                                                                            <option value="5">০৫ (5)</option>
+                                                                                                                                                                            <option value="6">০৬ (6)</option>
+                                                                                                                                                                            <option value="7">০৭ (7)</option>
+                                                                                                                                                                            <option value="8">০৮ (8)</option>
+                                                                                                                                                                            <option value="9">০৯ (9)</option>
+                                                                                                                                                                            <option value="10">১০ (10)</option>
+                                                                                                                                                                            <option value="11">১১ (11)</option>
+                                                                                                                                                                            <option value="12">১২ (12)</option>
+                                                                                                                                                                            <option value="13">১৩ (13)</option>
+                                                                                                                                                                            <option value="14">১৪ (14)</option>
+                                                                                                                                                                            <option value="15">১৫ (15)</option>
+                                                                                                                                                                            <option value="16">১৬ (16)</option>
+                                                                                                                                                                            <option value="17">১৭ (17)</option>
+                                                                                                                                                                            <option value="18">১৮ (18)</option>
+                                                                                                                                                                            <option value="19">১৯ (19)</option>
+                                                                                                                                                                            <option value="20">২০ (20)</option>
+                                                                                                                                                                            <option value="21">২১ (21)</option>
+                                                                                                                                                                            <option value="22">২২ (22)</option>
+                                                                                                                                                                            <option value="23">২৩ (23)</option>
+                                                                                                                                                                            <option value="24">২৪ (24)</option>
+                                                                                                                                                                            <option value="25">২৫ (25)</option>
+                                                                                                                                                                            <option value="26">২৬ (26)</option>
+                                                                                                                                                                            <option value="27">২৭ (27)</option>
+                                                                                                                                                                            <option value="28">২৮ (28)</option>
+                                                                                                                                                                            <option value="29">২৯ (29)</option>
+                                                                                                                                                                            <option value="30">৩০ (30)</option>
+                                                                                                                                                                            <option value="31">৩১ (31)</option>
+                                                                                                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 74px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-day-66-container"><span class="select2-selection__rendered" id="select2-day-66-container" title="দিন">দিন</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                                                </div>
+                            <div class="col-md-12">
+                                <div class="form-group ">
+                                    <label for="users_phone">মোবাইল নম্বর &nbsp;<span style="color: red">*</span></label>
+                                    <input type="text" maxlength="11" class="form-control numberOnly requiredOL" id="users_phone" name="users_phone" value="" placeholder="১১ ডিজিটের মোবাইল নং">
+                                                                        </div>
+                            </div>
+                            
+                            <div class="col-md-12">
+<div style="margin-top: 20px">
+    <input type="checkbox" checked="" id="termCheckRegistration" value="1"> <label for="termCheckRegistration">আমি প্রত্যয়ন সিস্টেমের <a href="javascript:void(0);" data-toggle="modal" data-target="#termCheckModal" style="font-weight: bold;">তথ্য অ্যাক্সেস নীতিমালা</a> সাথে একমত</label>
+    <button type="submit" class="btn occButton pull-right" id="registerButton"><i class="fa fa-check"></i> নিবন্ধন করুন</button>
+</div>
+<div class="modal fade" id="termCheckModal" tabindex="-1" role="dialog" aria-labelledby="termCheckModal">
+    <div class="modal-dialog" role="document" style="margin: 17% auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                তথ্য অ্যাক্সেস নীতিমালা
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" style="padding: 10px 10px 50px;">
+                প্রত্যয়ন (prottoyon.gov.bd) সিস্টেমে আপনার নিবন্ধনের জন্য জাতীয় পরিচয় এবং/অথবা জন্ম নিবন্ধন কর্তৃপক্ষের বৈধ এবং সত্য তথ্য সহ অনুরোধ করার প্রয়োজনীয়তা রয়েছে। আপনার প্রোফাইলিং, সনদ তৈরির পরিকল্পনা, এবং পরিচালনা করতে আপনার তথ্য অভ্যন্তরীণভাবে ব্যবহার করা যেতে পারে। অধিকন্তু, অন্যান্য প্রয়োজনে সরকারী সংস্থার সাথে পরামর্শ, সংশ্লিষ্ট অফিসের তদন্তের সময় এবং আদালতের পর্যালোচনার সময়ও তথ্য ব্যবহার করা যেতে পারে।
+                <br>
+                <br>
+                এই সম্মতি ফর্মে ক্লিক করার মাধ্যমে, আপনি Prottoyon.Gov.BD সিস্টেমকে উপরোক্ত প্রয়োজনে আপনার জাতীয় পরিচয় এবং/অথবা জন্ম নিবন্ধন তথ্য অ্যাক্সেস করার অনুমতি প্রদান করছেন নিবন্ধনের তারিখ থেকে "আপনি <a href="https://prottoyon.gov.bd/faq?faq=প্রত্যাহার" target="_blank">প্রত্যাহার</a> না করা পর্যন্ত" এই সম্মতিটি বৈধ থাকবে।
+                <br>
+                <div style="margin-top: 20px">
+                    <a href="https://prottoyon.gov.bd/privacy" target="_blank" style="font-weight: bold; font-style: italic;text-decoration-line: revert;">গোপনীয়তার নীতিমালা</a>
+                    <button type="button" class="btn btn-default occButton pull-right" data-dismiss="modal" style="padding: 8px 25px"><i class="fa fa-close icon-padding"></i>বন্ধ করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Create Account section end-->
+    </div>
+    <!--Help||Social Pages-->
+    <div class="col-md-4">
+        <div class="panel panel-default" style="box-shadow: 0px 0px 20px #ccc;">
+            <div class="panel-heading" style="font-size: 20px;color:#662d91;font-weight:bold"><i class="fa fa-question-circle icon-padding" aria-hidden="true"></i>নির্দেশনা</div>
+            <div class="panel-body" style="padding-top: 5px">
+                <ul>
+                    <li style="margin-bottom: 15px">(<span style="color: red;font-weight: 600;font-size: 20px;line-height: 10px;vertical-align: middle;">*</span>) চিহ্নিত ক্ষেত্রগুলি পূরণ করা বাধ্যতামূলক। অন্যগুলো ঐচ্ছিক।</li>
+                    <li style="margin-bottom: 15px">আপনার ১০ অথবা ১৭ ডিজিটের জন্ম নিবন্ধন নম্বর পূরণ করুন।</li>
+                    <li style="margin-bottom: 15px">আপনার সঠিক জন্ম তারিখ প্রদান করুন।</li>
+                    <li style="margin-bottom: 15px">আপনার ১১ ডিজিটের মোবাইল নম্বর পূরণ করুন অথবা ইমেইল এড্রেস লিখুন।</li>
+                    <li style="margin-bottom: 15px">তথ্য জমা দেওয়ার পর একটি যাচাইকরণ কোড প্রদানকৃত মোবাইল নম্বর অথবা ইমেইল এড্রেসে পাঠানো হবে।</li>
+                    <li>অনুগ্রহ করে সঠিক তথ্য প্রদান করুন।</li>
+                </ul>
+            </div>
+        </div>
+        <!--Emergency Contact-->
+<div class="panel panel-default" style="box-shadow: 0px 0px 20px #ccc;">
+<div class="panel-heading" style="font-size: 20px;color:#662d91;font-weight:bold"><i class="fa fa-hand-o-right icon-padding" aria-hidden="true"></i>জরুরী প্রয়োজনে </div>
+<div class="panel-body" style="padding-top: 5px">
+    <p>যদি আপনি কোনো সমস্যার সম্মুখীন হোন অথবা আপনার কোনো জিজ্ঞাসা থাকলে আমাদের সাথে যোগাযোগ করতে পারেন।</p>
+    <p>যোগাযোগ করতে <a href="https://prottoyon.gov.bd/contact" target="_blank" style="font-weight: bold;text-decoration: none">এখানে ক্লিক করুন</a></p>
+</div>
+</div>        </div>
+    <!--Help||Social Pages end-->
+</div>
+                
+                <div class="supportWidget" style="display: none">
+<a href="https://wa.me/+8801894747355" target="_blank" class=""><img src="https://infinityconstructionltd.com/assets/frontend/images/icons/whatsapp.gif" style="border-radius: 50%;width: 45px;height: 45px;" alt=""></a>
+<a href="https://wa.me/+8801894747354" target="_blank" class=""><img src="https://infinityconstructionltd.com/assets/frontend/images/icons/whatsapp.gif" style="border-radius: 50%;width: 45px;height: 45px;" alt=""></a>
+<a href="https://wa.me/+8801894747353" target="_blank" class=""><img src="https://infinityconstructionltd.com/assets/frontend/images/icons/whatsapp.gif" style="border-radius: 50%;width: 45px;height: 45px;" alt=""></a>
+<a href="https://wa.me/+8801894747352" target="_blank" class=""><img src="https://infinityconstructionltd.com/assets/frontend/images/icons/whatsapp.gif" style="border-radius: 50%;width: 45px;height: 45px;" alt=""></a>
+<a href="https://wa.me/+8801894747351" target="_blank" class=""><img src="https://infinityconstructionltd.com/assets/frontend/images/icons/whatsapp.gif" style="border-radius: 50%;width: 45px;height: 45px;" alt=""></a>
+<a href="https://wa.me/+8801841782724" target="_blank" class=""><img src="https://infinityconstructionltd.com/assets/frontend/images/icons/whatsapp.gif" style="border-radius: 50%;width: 45px;height: 45px;" alt=""></a>
+</div>
+            </div>
+        </div>
+        <!-- Footer section -->
+        <!--Footer Menu bar section-->
+<footer class="occFrontFooter">
+<div class="container">
+    <div class="row sticky_footer" style="position: fixed;">
+        <div class="col-md-12">
+            <ul class="list-inline">
+                
+                
+                <li><a href="https://prottoyon.gov.bd/contact" style="text-decoration: none;">যোগাযোগ</a></li>
+                <li><i class="fa fa-ellipsis-v occArrow icon-padding" aria-hidden="true"></i></li>
+                <li><a href="https://prottoyon.gov.bd/privacy" style="text-decoration: none;">গোপনীয়তার নীতিমালা</a></li>
+                <li><i class="fa fa-ellipsis-v occArrow icon-padding" aria-hidden="true"></i></li>
+                <li><a href="https://prottoyon.gov.bd/terms" style="text-decoration: none;">ব্যবহারের শর্তাবলি</a></li>
+                
+                <li><i class="fa fa-ellipsis-v occArrow icon-padding" aria-hidden="true"></i></li>
+                <li><a href="https://prottoyon.gov.bd/faq" style="text-decoration: none;">সচরাচর জিজ্ঞাসা</a></li>
+                <li><i class="fa fa-ellipsis-v occArrow icon-padding" aria-hidden="true"></i></li>
+                <li><a href="" style="text-decoration: none;">সাইট ম্যাপ</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--Footer Menu bar section end-->
+</footer>
+<div class="scroll-top-wrapper" style="margin-right: 65px">
+<span class="scroll-top-inner">
+    <i class="fa fa-angle-up" aria-hidden="true"></i>
+</span>
+</div>
+        <!-- Footer section End -->
+    </div>
+    <!-- Script section-->
+    <!--All JS file-->
+<script type="text/javascript" src="https://prottoyon.gov.bd/frontend/js/jqueryMaster.js"></script>
+<script type="text/javascript" src="https://prottoyon.gov.bd/frontend/js/jquery.js"></script>
+<script type="text/javascript" src="https://prottoyon.gov.bd/frontend/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://prottoyon.gov.bd/frontend/js/main.js"></script>
+<script type="text/javascript" src="https://prottoyon.gov.bd/frontend/js/datePicker.js"></script>
+<script type="text/javascript" src="https://prottoyon.gov.bd/frontend/js/jquery.mask.js"></script>
+<script type="text/javascript" src="https://prottoyon.gov.bd/frontend/js/multipleSelectFullMin.js"></script>
+<script type="text/javascript" src="https://prottoyon.gov.bd/frontend/js/occScript.js"></script>
+<script type="text/javascript" src="https://prottoyon.gov.bd/frontend/js/banglaOLinput.js"></script>
+<script src="https://prottoyon.gov.bd/frontend/js/fancybox.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.date').datepicker({
+        format: 'yyyy-mm-dd',
+        endDate: '+0d'
+    });
+    $(".select2").select2();
+    $('[data-toggle="popover"]').popover();
+});
+// enable tooltip
+$(function () {
+    $("[rel='tooltip']").tooltip();
+});
+</script>
+<script type="text/javascript">
+$(".applicationNow").click(function () {
+    $(".applicationErrorMessage").removeClass("hide");
+    $(".applicationErrorMessage").html('&#9888;&nbsp;&nbsp; আবেদন করতে <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal" class="badge" style="border: 1px solid #662D91;background-color: #662D91;color:#fff"><b>লগইন করুন</b></a>   অথবা নতুন ব্যবহারকারী হিসাবে <a href="javascript:void(0);" data-toggle="modal" data-target="#registerModal" class="badge" style="border: 1px solid #662D91;background-color: #662D91;color:#fff"><b>নিবন্ধন করুন</b></a>');
+});</script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#testCorner").on("click", function () {
+        $("#customdiv").toggle();
+    });
+});
+</script>
+<script>
+$(".agree").click(function () {
+    if ($(this).is(':checked')) {
+        $('.loginID').attr("disabled", false);
+    } else {
+        $('.loginID').attr("disabled", true);
+    }
+});
+//citizen nid service blocked in quick solution
+
+
+</script>
+<script>
+const pageWrapper = document.querySelector('.page-wrapper');
+const pageHeight = pageWrapper.offsetHeight;
+const stickyFooter = document.querySelector('.sticky_footer');
+const windowHeight = this.screen.height;
+if (pageHeight < windowHeight) {
+    stickyFooter.style.position = 'absolute';
+} else {
+    stickyFooter.style.position = 'fixed';
+}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-V1FFGBLPF0"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-V1FFGBLPF0');
+</script>
+
+
+    
+        <script type="text/javascript">
+    $(document).ready(function () {
+        $(".type").click(function () {
+            if ($("input[name=type]:checked").val() == 'email') {
+                $("#users_email").show();
+                $("#users_phone").hide();
+                $(".help-block").hide();
+                $("#users_phone").val("");
+            }
+            if ($("input[name=type]:checked").val() == 'mobile') {
+                $("#users_phone").show();
+                $("#users_email").hide();
+                $(".help-block").hide();
+                $("#users_email").val("");
+            }
+        });
+    });
+
+    //generate captcha
+    function generateCaptcha(length, chars) {
+        var result = '';
+        for (var i = length; i > 0; --i)
+            result += chars[Math.round(Math.random() * (chars.length - 1))];
+        return result;
+    }
+
+    //default captcha
+    $('.dynamic-code').text(generateCaptcha(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+    $('#captcha-hidden').val($('.dynamic-code').text());
+    $('.captcha-reload').on('click', function () {
+        $('.dynamic-code').text(generateCaptcha(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+        $('#captcha-hidden').val($('.dynamic-code').text());
+    });
+    $('#termCheckRegistration').on('change', function () {
+        if (this.checked) {
+            $('#registerButton').removeAttr('disabled');
+        } else {
+            $('#registerButton').attr('disabled', true);
+            console.log('Unchecked');
+        }
+    });
+    $("#users_dob").datepicker({autoclose: true, format: 'yyyy-mm-dd'});
+</script>
+
+
+</body></html>
