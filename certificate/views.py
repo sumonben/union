@@ -1,9 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import WarishanCertificate
-from .forms import WarishanCertificateForm,AdressForm,WarishForm
+from .models import WarishanCertificate,Warish
+from .forms import WarishanCertificateForm,AdressForm,WarishFormSet,WarishForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
+from django.forms import formset_factory
+
 # Create your views here.
 
 def SelectCertificate(request):
@@ -15,11 +17,13 @@ class WarishanView(View):
     def get(self, request, *args, **kwargs):
         context={}
         form=WarishanCertificateForm()
-        form1=AdressForm()
+        adress_form=AdressForm()
         form2=WarishForm()
+        formset = WarishFormSet(queryset=Warish.objects.none())
         context['form']=form
-        context['form1']=form1
+        context['adress_form']=adress_form
         context['form2']=form2
+        context['formset']=formset
         return render(request,self.template_name, context)
 
     def post(self, request, *args, **kwargs):

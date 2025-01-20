@@ -6,6 +6,11 @@ from django.template.defaultfilters import escape
 #from account.models import UserModel
 # Create your models here.
 
+COMMENT_CHOICE={
+    '0':'------',
+    '1':'বর্তমানে মৃত',
+
+}
 
 class Division(models.Model):
     name=models.CharField(max_length=25,unique=True)
@@ -50,22 +55,25 @@ class Union(models.Model):
         return self.name+'('+self.name_en+')'
 
 class Relation(models.Model):
-    serial=models.IntegerField(default=10)
-    name=models.CharField(max_length=25)
-    name_en=models.CharField(max_length=25)
+    serial=models.IntegerField(default=10,verbose_name="ক্রম")
+    name=models.CharField(max_length=25,verbose_name=" নাম(বাংলায়)")
+    name_en=models.CharField(max_length=25,verbose_name=" নাম(ইংরেজিতে)")
     class Meta:
-        ordering = ['name_en']
+        ordering = ['serial']
+        verbose_name="সম্পর্ক"
     def __str__(self):
         return self.name+'('+self.name_en+')'
 
 class Warish(models.Model):
     serial=models.IntegerField(default=10)
-    name=models.CharField(max_length=25)
-    name_en=models.CharField(max_length=25)
-    relation=models.ForeignKey(Relation,blank=True,null=True,on_delete=models.SET_NULL)
+    name=models.CharField(max_length=25,verbose_name=" নাম(বাংলায়)")
+    name_en=models.CharField(max_length=25,verbose_name=" নাম(ইংরেজিতে)")
+    relation=models.ForeignKey(Relation,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="সম্পর্ক")
+    comment=models.CharField(max_length=25,choices=COMMENT_CHOICE,blank=True,null=True,verbose_name="মন্তব্য")
 
     class Meta:
-        ordering = ['name_en']
+        ordering = ['serial']
+        verbose_name=" ওয়ারিশ"
     def __str__(self):
         return self.name+'('+self.name_en+')'
 
@@ -82,16 +90,17 @@ class CertificateType(models.Model):
 
 class Adress(models.Model):
     serial=models.IntegerField(default=10)
-    holding_no=models.CharField(max_length=50,blank=True,null=True)
-    village=models.CharField(max_length=50,blank=True,null=True)
-    word_no=models.CharField(max_length=25,blank=True,null=True)
-    post_office=models.CharField(max_length=25,blank=True,null=True)
-    district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL)
-    upazilla=models.ForeignKey(Upazilla,blank=True,null=True,on_delete=models.SET_NULL)
-    union=models.ForeignKey(Union,blank=True,null=True,on_delete=models.SET_NULL)
+    holding_no=models.CharField(max_length=50,blank=True,null=True,verbose_name=" হোল্ডিং নং")
+    village=models.CharField(max_length=50,blank=True,null=True,verbose_name=" গ্রাম/মহল্লা")
+    word_no=models.CharField(max_length=25,blank=True,null=True,verbose_name="ওয়ার্ড নং ")
+    post_office=models.CharField(max_length=25,blank=True,null=True,verbose_name="ডাকঘর ")
+    district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL,verbose_name=" জেলা ")
+    upazilla=models.ForeignKey(Upazilla,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="উপজেলা ")
+    union=models.ForeignKey(Union,blank=True,null=True,on_delete=models.SET_NULL,verbose_name=" ইউনিয়ন ")
 
     class Meta:
         ordering = ['serial']
+        verbose_name="ঠিকানা"
     def __str__(self):
         if self.village_or_house:
             return self.village_or_house
