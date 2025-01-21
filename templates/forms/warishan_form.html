@@ -103,13 +103,15 @@
                                   <tbody>
                                     <tr><td colspan="5" align="center">
                                         <div id="form-container">
-                                            {{formset.management_form}}
-                                            {% for form in formset %}
-                                            <div class="bird-form">
-                                            {{form.as_p}}
-                                            </div>
-                                            {% endfor %}
-                                            <button id="add-form" type="button">Add Another Bird</button>
+                                          {{formset.management_form}}
+                                          {% for form in formset %}
+                                          <div class="bird-form">
+                                          {{form.as_p}}
+                                          <button id="{{ form.prefix }}-row" type="button" onclick="removeForm( this.id )" >Remove</button>
+                                          </div>
+                                          {% endfor %}
+                                          <button id="add-form" type="button">Add Another Bird</button>
+                                            
 
                                         </div>
                                     </td></tr>
@@ -120,156 +122,9 @@
                           
                           
                         </div>
-                        <div class="step d-none">
-                        <div><h1 style="text-align: center;"><u>Guardian Information </u></h1></div>
-
-                          <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
-
-                            <tbody>
-                            <tr>
-                              <td align="left">
-                                <fieldset>
-                          
-                            <table width="100%" border="1" cellspacing="0" cellpadding="3">
-                              <thead style="height: 25px; background-color: #245b80; color: #fff;">
-                                <th colspan="5" style="height: 25px; background-color: #245b80; color: #fff; padding: 15px; margin-bottom: 15px;">Fill your guardian information</th>
-                              </thead>
-                              <tbody>
-                                {% for field in guardian_form %}
-                                  {{ field.errors }}
-                              
-                                <tr>
-                                    <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                    <td width="10%" align="left" valign="middle" class="black12">{{ field.label_tag }}</td>
-                                    <td width="10%" align="left" valign="middle" class="black12">:</td>
-                                    <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
-                                      <label>
-                                        {{ field }}
-                                      </label>
-                                      <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                    <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                </tr>
-                                {% endfor %}
-
-                            
-                                  
-                              
-
-                            </tbody></table>
-                          </fieldset>
-                              </td>
-                            </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                        <div class="step d-none">
-
-                          <div><h1 style="text-align: center;"><u>Academic Information</u></h1></div>
-
-                          <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
-
-                            <tbody>
-                            <tr>
-                              <td align="left">
-                                <fieldset>
-                          
-                            <table width="100%" border="1" cellspacing="0" cellpadding="3">
-                              <thead style="height: 25px; background-color: #245b80; color: #fff;">
-                                <th colspan="5" style="height: 25px; background-color: #245b80; color: #fff; padding: 15px; margin-bottom: 15px;">SSC or Equivalent Information</th>
-                              </thead>
-                              <tbody>
-                                {% for field in ssc_equivalent_form %}
-                                  {{ field.errors }}
-                              
-                                <tr>
-                                    <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                    <td width="25%" align="left" valign="middle" class="black12">{{ field.label_tag }}</td>
-                                    <td width="5%" align="left" valign="middle" class="black12">:</td>
-                                    <td width="65%" align="left" valign="middle"><span id="sprytextfield1">
-                                      <label>
-                                        {{ field }}
-                                      </label>
-                                      <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                    <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                </tr>
-                                {% endfor %}
-
-                            
-                                  
-                              
-
-                            </tbody></table>
-                          </fieldset>
-                              </td>
-                            </tr>
-                            </tbody>
-                          </table>
-                            
-                        </div>
-                        <div class="step d-none">
-                            
-                          <div><h1 style="text-align: center;"><u>Subject Choice Entry</u></h1></div>
-
-                          <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
-
-                            <tbody>
-                            <tr>
-                              <td align="left">
-                                <fieldset>
-                          
-                            <table width="100%" border="1" cellspacing="0" cellpadding="3">
-                              <thead style="height: 25px; background-color: #245b80; color: #fff;">
-                                <th colspan="5" style="height: 25px; background-color: #245b80; color: #fff; padding: 15px; margin-bottom: 15px;">Choose your desiered subject</th>
-                              </thead>
-                              <tbody>
-                                {{subject_form.media}}
-                                {% for field in subject_form %}
-                                  {{ field.errors }}
-                              
-                                <tr>
-                                    <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                    <td width="15%" align="left" valign="middle" class="black12">{{ field.label_tag }}</td>
-                                    <td width="5%" align="left" valign="middle" class="black12">:</td>
-                                    <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
-                                      <label>
-                                        {{ field }}
-                                      </label>
-                                      <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                    <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                </tr>
-                                {% endfor %}
-                            
-                                  
-                              
-
-                            </tbody></table>
-                          </fieldset>
-                              </td>
-                            </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div id="success">
-                          <div class="mt-5">
-                           
-                              <h4>Success! Your admission is done!</h4>
-                              <h5>Dont Reload window untill download your admission form</h5>
-                              <h4>To download admission form Click Get Admission form Button below!</h4>
-                          </div>
-                      </div>
-            
-                        <div class="step d-none">
-                          <div class="mt-1">
-                            <div class="closing-text">
-                              <input type="hidden" value="{{group.title_en}}" name="admission_group">
-
-                                <h4>That's about it! Stay healthy!</h4>
-                                <p>We will assess your information and will let you know soon if you need to get tested for COVID-19.</p>
-                                <p>Click on the submit button to continue.</p>
-                            </div>
-                        </div>
-                    </div>
+                       
+                        
+                       
                     
                     
                 </div>
@@ -312,10 +167,12 @@
     let birdForm = document.querySelectorAll(".bird-form")
     let container = document.querySelector("#form-container")
     let addButton = document.querySelector("#add-form")
+    let removeButton = document.querySelector("#remove-form")
     let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
 
     let formNum = birdForm.length-1
     addButton.addEventListener('click', addForm)
+    removeButton.addEventListener('click', removeForm)
 
     function addForm(e){
         e.preventDefault()
@@ -327,8 +184,23 @@
         newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
         container.insertBefore(newForm, addButton)
         
+        
         totalForms.setAttribute('value', `${formNum+1}`)
-    }     
+    } 
+    function removeForm(id){
+      let formDel=document.getElementById(id)
+      del=formDel.parentNode
+      del.parentNode.removeChild(del);
+      
+    }
+    {% comment %} function removeForm(e){
+      e.preventDefault()
+
+      let birdForm2 = document.querySelectorAll(".bird-form")
+      let formNum2 = birdForm2.length-1
+      birdForm2[formNum2].parentNode.removeChild(birdForm2[formNum2]);
+      
+  }          {% endcomment %}
           
     window.onload = (event) => {
 let compulsory_subject_initialized=document.getElementsByClassName('selector-available');
