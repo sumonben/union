@@ -64,3 +64,14 @@ class Transaction(models.Model):
 
     def __str__(self):
         return self.tran_id
+
+
+        
+class PaymentGateway(models.Model):
+
+    store_id = models.CharField(max_length=500, blank=True, null=True)
+    store_pass = models.CharField(max_length=500, blank=True, null=True)
+    
+    class Meta:
+        verbose_name = "Payment Gateway"
+        verbose_name_plural = "Payment Gateway"

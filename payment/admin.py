@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Transaction,PaymentPurpose,PaymentType
+from .models import Transaction,PaymentPurpose,PaymentType,PaymentGateway
 # Register your models here.
 @admin.register(Transaction)
 class TransactionAdmin(admin.ModelAdmin):
@@ -7,7 +7,7 @@ class TransactionAdmin(admin.ModelAdmin):
     list_filter = ('status', 'created_at','tran_purpose')
     search_fields = ('currency', 'status')
 
-#admin.site.register(PaymentGateway)
+admin.site.register(PaymentGateway)
 
 @admin.register(PaymentPurpose)
 class UserAdmin(admin.ModelAdmin):

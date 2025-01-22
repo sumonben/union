@@ -3,6 +3,7 @@ from django.urls import reverse
 from payment.models import Transaction
 from django.utils.html import format_html
 from django.template.defaultfilters import escape
+from region.models import District,Division,Upazilla,Union,PostOffice,Village,Word
 #from account.models import UserModel
 # Create your models here.
 
@@ -12,47 +13,6 @@ COMMENT_CHOICE={
 
 }
 
-class Division(models.Model):
-    name=models.CharField(max_length=25,unique=True)
-    name_en=models.CharField(max_length=15,unique=True)
-    link=models.CharField(max_length=15,null=True,blank=True)
-    class Meta:
-        ordering = ['name']
-    def __str__(self):
-        return self.name+'('+self.name_en+')'
-
-class District(models.Model):
-    name=models.CharField(max_length=25,unique=True)
-    name_en=models.CharField(max_length=25,unique=True)
-    lattitude=models.CharField(max_length=15,blank=True,null=True)
-    longitude=models.CharField(max_length=15, blank=True,null=True)
-    division=models.ForeignKey(Division, on_delete=models.CASCADE,blank=True,null=True)
-    link=models.CharField(max_length=15,null=True,blank=True)
-    class Meta:
-        ordering = ['name_en']
-    def __str__(self):
-        return self.name+'('+self.name_en+')'
-
-class Upazilla(models.Model):
-    name=models.CharField(max_length=25)
-    name_en=models.CharField(max_length=25)
-    district=models.ForeignKey(District, on_delete=models.CASCADE,blank=True,null=True)
-    link=models.CharField(max_length=15,null=True,blank=True)
-    class Meta:
-        ordering = ['name_en']
-    def __str__(self):
-        return self.name+'('+self.name_en+')'
-
-class Union(models.Model):
-    name=models.CharField(max_length=25)
-    name_en=models.CharField(max_length=25)
-    upazilla=models.ForeignKey(Upazilla, on_delete=models.CASCADE,blank=True,null=True)
-    link=models.CharField(max_length=15,null=True,blank=True)
-
-    class Meta:
-        ordering = ['name_en']
-    def __str__(self):
-        return self.name+'('+self.name_en+')'
 
 class Relation(models.Model):
     serial=models.IntegerField(default=10,verbose_name="ক্রম")
@@ -82,6 +42,8 @@ class CertificateType(models.Model):
     serial=models.IntegerField(default=10)
     name=models.CharField(max_length=25)
     name_en=models.CharField(max_length=25)
+    amount=models.IntegerField(default=10)
+    is_active=models.BooleanField(default=False)
     class Meta:
         ordering = ['name_en']
     def __str__(self):
@@ -91,9 +53,9 @@ class CertificateType(models.Model):
 class Adress(models.Model):
     serial=models.IntegerField(default=10)
     holding_no=models.CharField(max_length=50,blank=True,null=True,verbose_name=" হোল্ডিং নং")
-    village=models.CharField(max_length=50,blank=True,null=True,verbose_name=" গ্রাম/মহল্লা")
-    word_no=models.CharField(max_length=25,blank=True,null=True,verbose_name="ওয়ার্ড নং ")
-    post_office=models.CharField(max_length=25,blank=True,null=True,verbose_name="ডাকঘর ")
+    word=models.ForeignKey(Word,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="ওয়ার্ড নং ")
+    village=models.ForeignKey(Village,on_delete=models.SET_NULL,blank=True,null=True,verbose_name=" গ্রাম/মহল্লা")
+    post_office=models.ForeignKey(PostOffice,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="ডাকঘর ")
     district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL,verbose_name=" জেলা ")
     upazilla=models.ForeignKey(Upazilla,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="উপজেলা ")
     union=models.ForeignKey(Union,blank=True,null=True,on_delete=models.SET_NULL,verbose_name=" ইউনিয়ন ")
@@ -102,28 +64,35 @@ class Adress(models.Model):
         ordering = ['serial']
         verbose_name="ঠিকানা"
     def __str__(self):
-        if self.village_or_house:
-            return self.village_or_house
+        if self.village:
+            return self.village.name
         else:
             return '1'
 
 
 class Certificate(models.Model):
-    name=models.CharField(max_length=100)
-    name_bangla=models.CharField(max_length=100,blank=True, null=True)
-    email=models.EmailField(max_length=50,blank=True,null=True)
-    phone=models.CharField(max_length=11,blank=True,null=True)
-    nid=models.CharField(max_length=17,blank=True,null=True)
-    father_name=models.CharField(max_length=100)
-    father_name_en=models.CharField(max_length=100,blank=True, null=True)
-    mother_name=models.CharField(max_length=100)
-    mother_name_en=models.CharField(max_length=100,blank=True, null=True)
-    adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL)
-    transaction=models.ForeignKey(Transaction,blank=True,null=True,on_delete=models.SET_NULL)
-    certificate_type=models.CharField(max_length=15,null=True, blank=True,)
-    tracking_no=models.CharField(max_length=25,null=True, blank=True,)
-    is_verified=models.BooleanField(default=False)
+    name=models.CharField(max_length=100,verbose_name="নাম(বাংলায়)")
+    name_en=models.CharField(max_length=100,blank=True, null=True,verbose_name="নাম (ইংরেজিতে)")
+    email=models.EmailField(max_length=50,blank=True,null=True,verbose_name="ইমেইল(যদি থাকে)")
+    phone=models.CharField(max_length=11,blank=True,null=True,verbose_name="মোবাইল নং")
+    nid=models.CharField(max_length=17,null=True,blank=True,verbose_name="জাতীয় পরিচপত্র")
+    father_name=models.CharField(max_length=100,verbose_name="বাবার নাম(বাংলায়)")
+    father_name_en=models.CharField(max_length=100,blank=True, null=True,verbose_name="বাবার নাম(ইংরেজিতে)")
+    mother_name=models.CharField(max_length=100,verbose_name="মায়ের নাম(বাংলায়)")
+    mother_name_en=models.CharField(max_length=100,blank=True, null=True,verbose_name="মায়ের নাম(ইংরেজিতে)")
+    adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL,verbose_name="ঠিকানা")
+    file=models.FileField(upload_to='media/',blank=True,null=True,verbose_name="মেম্বারের সুপারিশ ফাইল")
+    nid_file=models.FileField(upload_to='media/',blank=True,null=True,verbose_name="এনআইডি-জন্ম নিবন্ধন")
+    transaction=models.ForeignKey(Transaction,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ট্রান্সেকশন")
+    certificate_type=models.ForeignKey(CertificateType,on_delete=models.SET_NULL,null=True, blank=True,verbose_name="সনদের ধরণ")
+    warish=models.ManyToManyField(Warish,blank=True,verbose_name="ওয়ারিশগণ")
+    tracking_no=models.CharField(max_length=25,null=True, blank=True,verbose_name="ট্র্যাকিং নং")
+    is_verified=models.BooleanField(default=False,verbose_name="ভেরিফাইড কিনা?")
     
+    class Meta:
+        verbose_name="সনদসমূহ"
+        verbose_name_plural="সনদসমূহ"
+
     def __str__(self):
         return self.name +':'+ self.phone
    
@@ -149,13 +118,15 @@ class WarishanCertificate(models.Model):
     email=models.EmailField(max_length=50,blank=True,null=True,verbose_name="ইমেইল(যদি থাকে)")
     phone=models.CharField(max_length=11,blank=True,null=True,verbose_name="মোবাইল নং")
     nid=models.CharField(max_length=17,null=True,blank=True,verbose_name="জাতীয় পরিচপত্র")
-    father_name=models.CharField(max_length=100,verbose_name="বাবার নাম")
+    father_name=models.CharField(max_length=100,verbose_name="বাবার নাম(বাংলায়)")
     father_name_en=models.CharField(max_length=100,blank=True, null=True,verbose_name="বাবার নাম(ইংরেজিতে)")
     mother_name=models.CharField(max_length=100,verbose_name="মায়ের নাম(বাংলায়)")
     mother_name_en=models.CharField(max_length=100,blank=True, null=True,verbose_name="মায়ের নাম(ইংরেজিতে)")
     adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL,verbose_name="ঠিকানা")
+    file=models.FileField(upload_to='media/',blank=True,null=True,verbose_name="মেম্বারের সুপারিশ ফাইল")
+    nid_file=models.FileField(upload_to='media/',blank=True,null=True,verbose_name="এনআইডি-জন্ম নিবন্ধন")
     transaction=models.ForeignKey(Transaction,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ট্রান্সেকশন")
-    certificate_type=models.CharField(max_length=15,null=True, blank=True,verbose_name="সনদের ধরণ")
+    certificate_type=models.ForeignKey(CertificateType,on_delete=models.SET_NULL,null=True, blank=True,verbose_name="সনদের ধরণ")
     warish=models.ManyToManyField(Warish,blank=True,verbose_name="ওয়ারিশগণ")
     tracking_no=models.CharField(max_length=25,null=True, blank=True,verbose_name="ট্র্যাকিং নং")
     is_verified=models.BooleanField(default=False,verbose_name="ভেরিফাইড কিনা?")

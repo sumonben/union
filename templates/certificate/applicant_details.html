@@ -1,0 +1,221 @@
+{% extends 'basepage/basepage.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+    .main_body{
+        width:100%;
+        height:100%;
+        color:red;
+    }
+    @media(max-width:767px){
+        .main_body{
+            width:100%;
+            height:700px;
+            color:red;
+            background-color:green;
+        }   
+    }
+</style>
+
+<!-- CONTAINER -->
+<div class="box_container" style="width: 100%; margin: 0px;">
+    <div class="" style="margin: auto;width: 100%;">
+        <!-- TITLE 
+        <div class="col-lg-4 offset-lg-1 mx-0 px-0">
+            <div id="title-container">
+                <img class="covid-image" src="./img/covid-check.png">
+                <h2>COVID-19</h2>
+                <h3>Self Checker Form</h3>
+                <p>A clinical assessment multi-step form that will assist individuals on deciding when to seek testing or medical care if they suspect they or someone they know has contracted COVID-19 or has come into close contact with someone who has COVID-19</p>
+            </div>
+        </div>-->
+        <!-- FORMS -->
+        <div >
+  <form class="needs-validation" action="{% url 'submit_form' %}" id="form-wrapper" method="post" name="form-wrapper" novalidate="" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div id="qbox-container">
+                    <div id="steps-container">
+                        <div class="step d-block">
+                          <div><h1 style="text-align: center;"><u>ট্র্যাকিং নম্বর ({{certificate.tracking_no}}) সংগ্রহে রাখুন </u></h1></div>
+
+                          <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
+
+                            <tbody>
+                            <tr>
+                              <td align="left">
+                                <fieldset>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="2">
+                                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;"> ব্যক্তিগত তথ্য</th></thead>
+                                  <tbody>
+                                  
+
+                                    <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="15%" align="left" valign="middle" class="sprytextfield1">সনদের ট্র্যাকিং নম্বরঃ </td>
+                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            <input value="{{certificate.tracking_no}}" name="tracking_no" type="text" class="textfieldUSER">                                       
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+
+                                      </tr>
+
+                                      <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="15%" align="left" valign="middle" class="sprytextfield1">নামঃ </td>
+                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{certificate.name}}                                        
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="15%" align="left" valign="middle" class="sprytextfield1">পিতার নামঃ </td>
+                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{certificate.father_name}}                                        
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="15%" align="left" valign="middle" class="sprytextfield1">মাতার নামঃ </td>
+                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{certificate.mother_name}}                                        
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+
+                                      </tr>
+                                      
+                                      <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="15%" align="left" valign="middle" class="sprytextfield1">গ্রামঃ </td>
+                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{certificate.adress.village.name}}                                        
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+
+                                      </tr>
+                                      <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="15%" align="left" valign="middle" class="sprytextfield1">ওয়ার্ডঃ  </td>
+                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{certificate.adress.village.word}}                                        
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+
+                                      </tr>
+
+                                      <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="15%" align="left" valign="middle" class="sprytextfield1"> </td>
+                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            তিলকপুর, আক্কেলপুর, জয়পুরহাট। 
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+
+                                      </tr>
+                                    
+                                  
+    
+                                </tbody></table>
+                              </fieldset>
+                            </td>
+                            
+                          </tr>
+                              
+                          </tbody>
+                        </table>
+                          
+                              
+
+                        </div>
+                       
+                        
+                       
+                    
+                    
+                </div>
+                    <div id="q-box__buttons" >
+                      
+                      <button id="submit-btn" type="submit" class="d-inline-block">সাবমিট</button>
+                  </div>   
+            </div>
+            
+          </form>
+
+          <div id="download_form_id">
+            <div class="mt-5">
+
+              <form id="form_download_id" method="post" action="" target="_blank" >
+                {% csrf_token %}
+              <input type="hidden" value="{{student}}" id="student_id" name="student_id">
+              <div id="q-box__buttons" >
+
+                <button type="submit" id="btn_admission_form" style="width:300px;">Download Admission form</button>
+                </div>
+              </form>
+                <a style="margin-top: 20px; margin-bottom: 20px; margin-left: 10%;" class="back-link" href="">Go back from the beginning ➜</a>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    let birdForm = document.querySelectorAll(".bird-form")
+    let container = document.querySelector("#form-container")
+    let addButton = document.querySelector("#add-form")
+    let removeButton = document.querySelector("#remove-form")
+    let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
+
+    let formNum = birdForm.length-1
+    addButton.addEventListener('click', addForm)
+    removeButton.addEventListener('click', removeForm)
+
+    function addForm(e){
+        e.preventDefault()
+
+        let newForm = birdForm[0].cloneNode(true)
+        let formRegex = RegExp(`form-(\\d){1}-`,'g')
+
+        formNum++
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
+        container.insertBefore(newForm, addButton)
+        
+        
+        totalForms.setAttribute('value', `${formNum+1}`)
+    } 
+    function removeForm(id){
+      let formDel=document.getElementById(id)
+      del=formDel.parentNode
+      del=del.parentNode
+      del=del.parentNode
+      del=del.parentNode
+      del=del.parentNode.remove()
+
+
+      
+      
+    }
+    {% comment %} function removeForm(e){
+      e.preventDefault()
+
+      let birdForm2 = document.querySelectorAll(".bird-form")
+      let formNum2 = birdForm2.length-1
+      birdForm2[formNum2].parentNode.removeChild(birdForm2[formNum2]);
+      
+  }          {% endcomment %}
+</script>
+{% endblock  %}

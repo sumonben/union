@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'import_export',
     'sslcommerz_lib',
+    'account',
     'certificate',
+    'region',
     'payment',
 ]
 

@@ -9,7 +9,7 @@
  * which prevent them from being displayed by default.
  */ 
 .textfieldUSER{
-	width: 300px;
+	width:500px;
 	border: 1px solid #8EA8C4;
 	background-color: #EAF4FF;
 	padding-top: 4px;
@@ -19,7 +19,7 @@
 	border-radius: 4px;;
 }
 .textfieldUSERInvalid{
-	width: 300px;
+	width:500px;
 	border: 1px solid #f52f0c;
 	background-color: #ffdddd;
 	padding-top: 4px;
@@ -29,7 +29,7 @@
 	border-radius: 4px;;
 }
 .textfieldUSERinfo{
-	width: 400px;
+	width:500px;
 	border: 1px solid #8EA8C4;
 	background-color: #EAF4FF;
 	padding-top: 4px;
@@ -39,7 +39,7 @@
 	border-radius: 4px;;
 }
 .textfieldUSERinfoInvalid{
-	width: 400px;
+	width:500px;
 	border: 1px solid #f52f0c;
 	background-color: #ffdddd;
 	padding-top: 4px;

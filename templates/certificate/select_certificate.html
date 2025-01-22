@@ -18,88 +18,422 @@
     }
 </style>
 
-        <div class="main_body" style="height:700px" >
-        <fieldset style="margin-bottom: 2%; width:70% ">
+<!-- CONTAINER -->
+<div class="box_container" style="width: 100%; margin: 0px;">
+    <div class="" style="margin: auto;width: 100%;">
+        <!-- TITLE 
+        <div class="col-lg-4 offset-lg-1 mx-0 px-0">
+            <div id="title-container">
+                <img class="covid-image" src="./img/covid-check.png">
+                <h2>COVID-19</h2>
+                <h3>Self Checker Form</h3>
+                <p>A clinical assessment multi-step form that will assist individuals on deciding when to seek testing or medical care if they suspect they or someone they know has contracted COVID-19 or has come into close contact with someone who has COVID-19</p>
+            </div>
+        </div>-->
+        <!-- FORMS -->
+        <div >
+  <form class="needs-validation" action="" id="form-wrapper" method="post" name="form-wrapper" novalidate="" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div id="qbox-container">
+                    <div id="steps-container">
+                        <div class="step d-block">
+                          <div><h1 style="text-align: center;"><u>আপনার প্রয়োজনীয় সনদ বাছাই করুন</u></h1></div>
 
-        <table width="100%" height="100%" border="1" cellspacing="0" cellpadding="2" align="center">
+                          <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
+
+                            <tbody>
+                            <tr>
+                              <td align="left">
+                                <fieldset>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="10">
+                                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 40px; background-color: #245b80; color: #fff;padding: 15px;"> সনদ বাছাই ফর্ম </th></thead>
+                                  <tbody>
+                                  {% for field in form %}
+                                  {{ field.errors }}
+                                  {% if field.label != 'মেম্বারের সুপারিশ ফাইল' and field.label != 'এনআইডি-জন্ম নিবন্ধন' %}
+
+                                    <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="15%" align="left" valign="middle" class="black12" style="font-size:25px">{{field.label}}</td>
+                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{field}}                                        
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+
+                                      </tr>
+                                      {% endif %}
+
+                                    {% endfor %}
+                                    
+                                      
+                                  
+    
+                                </tbody></table>
+                              </fieldset>
+                            </td>
+                            
+                          </tr>
+                              
+                          </tbody>
+                        </table>
+                        
+                          
+
+                          
+
+                        </div>
+                       
+                        
+                       
+                    
+                    
+                </div>
+                    <div id="q-box__buttons" >
+                      
+                      <button id="submit-btn" type="submit" class="d-inline-block">সাবমিট</button>
+                  </div>   
+            </div>
             
-            {% if message %}
-            <thead><th colspan="5" style="height: 25px; background-color:rgb(148, 30, 9); color: #fff;padding: 15px;">{{message}} </th></thead>
-             
-            {% endif %}
-
-
-            {% if notfound %}
-                <thead><th colspan="5" style="height: 25px; background-color:rgb(148, 30, 9); color: #fff;padding: 15px;">Result Not found!<br>re-Enter right information or Contact exam control room </th></thead>
-                 
-                {% endif %}
-          <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">Insert your roll and payment purpose </th></thead>
-          <tbody>
-            <form method="post" action="" id="form1" name="form1" target="_blank">
-                {% csrf_token %}
-            <tr>
-                
-                <td class="r-align-right r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c1" data-pageid="1">
-               
-
-                {{form}}
-                </td>
-                
-                
-                <td class="col-md-2"></td>
-                </tr>
-                
-                <tr>
-                
-                <td class="r-align-right r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c3" data-pageid="1">
-                
-                </td>
-                
-                <td class=" r-ori-vert							col-md-6						" data-single="" data-cellid="grid_c4" data-pageid="1">
-                
-                </td>
-                <td class="col-md-2"></td>
-                </tr>
-                
-                <tr>
-                
-                <td class=" r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c9" data-pageid="1">
-                <div edit-form-cell="" class="clearfix">
-                </div>
-                </td>
-                
-                <td class=" r-ori-vert							col-md-6						" data-single="" data-cellid="grid_c10" data-pageid="1">
-                <div edit-form-cell="" class="clearfix">
-                </div>
-                </td>
-                <td class="col-md-2"></td>
-                </tr>
-                <tr >
-                    <td colspan="5" align="right">                
-                    <button type="submit" id="submit-btn"  >Submit</button>
-                </td></tr>
           </form>
 
-        </tbody>
-    </table>
-</fieldset>
+          
+
+        </div>
+    </div>
 </div>
-   
+<!-- PRELOADER -->
+<div id="preloader-wrapper">
+  <div id="preloader"></div>
+  <div class="preloader-section section-left"></div>
+  <div class="preloader-section section-right"></div>
+</div>
+
+
 <script>
-    function myFunction( id ){
-            
-            var e=document.getElementById('id_student_category')
-            var val = e.options[e.selectedIndex].value;
-            if(val == 3){
-                document.getElementById('id_group').style.display='block';
-                document.getElementByFor('id_group').label.visibility='visible';
+    let birdForm = document.querySelectorAll(".bird-form")
+    let container = document.querySelector("#form-container")
+    let addButton = document.querySelector("#add-form")
+    let removeButton = document.querySelector("#remove-form")
+    let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
 
-            }else{
-                
-                document.getElementById('id_group').style.display='none';
-                document.getElementByFor('id_group').label.visibility='hidden';
+    let formNum = birdForm.length-1
+    addButton.addEventListener('click', addForm)
+    removeButton.addEventListener('click', removeForm)
 
-            }
+    function addForm(e){
+        e.preventDefault()
+
+        let newForm = birdForm[0].cloneNode(true)
+        let formRegex = RegExp(`form-(\\d){1}-`,'g')
+
+        formNum++
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
+        container.insertBefore(newForm, addButton)
+        
+        
+        totalForms.setAttribute('value', `${formNum+1}`)
+    } 
+    function removeForm(id){
+      let formDel=document.getElementById(id)
+      del=formDel.parentNode
+      del=del.parentNode
+      del=del.parentNode
+      del=del.parentNode
+      del=del.parentNode.remove()
+
+
+      
+      
     }
+    {% comment %} function removeForm(e){
+      e.preventDefault()
+
+      let birdForm2 = document.querySelectorAll(".bird-form")
+      let formNum2 = birdForm2.length-1
+      birdForm2[formNum2].parentNode.removeChild(birdForm2[formNum2]);
+      
+  }          {% endcomment %}
+          
+    window.onload = (event) => {
+let compulsory_subject_initialized=document.getElementsByClassName('selector-available');
+let filter_compusory=document.getElementById('id_compulsory_subject_filter_selected');
+let remove_compusory=document.getElementById('id_compulsory_subject_remove_all_link');
+
+let selector_chooser=document.getElementsByClassName('selector-chooser');
+
+
+compulsory_subject_initialized[0].style.display='none';
+selector_chooser[0].style.display='none';
+
+filter_compusory.style.display='none';
+remove_compusory.style.display='none';
+
+z= compulsory_subject_initialized.getElementsByTagName("option");
+for (i = 0; i < z.length; i++) {
+
+z[i].setAttribute('disabled','true','readonly','true');
+
+}
+
+alert(compulsory_subject_initialized.length);
+};
+
+
+
+
+const progress = (value) => {
+document.getElementsByClassName('progress-bar')[0].style.width = `${value}%`;
+}
+
+let step = document.getElementsByClassName('step');
+let prevBtn = document.getElementById('prev-btn');
+let nextBtn = document.getElementById('next-btn');
+let submitBtn = document.getElementById('submit-btn');
+let form = document.getElementsByTagName('form')[0];
+let preloader = document.getElementById('preloader-wrapper');
+let bodyElement = document.querySelector('body');
+let succcessDiv = document.getElementById('success');
+let downloadDiv = document.getElementById('downlod_form_id');
+
+let addChoiceBtn=document.getElementsByName('id_fourth_subject');
+
+form.onsubmit = () => { return false }
+
+let current_step = 0;
+let stepCount = 4
+step[current_step].classList.add('d-block');
+if(current_step == 0){
+prevBtn.classList.add('d-none');
+submitBtn.classList.add('d-none');
+nextBtn.classList.add('d-inline-block');
+}
+
+
+nextBtn.addEventListener('click', () => {
+var x, y, i, valid = true;
+var options=document.getElementById('id_compulsory_subject_to').getElementsByTagName('option');
+for(i=0;i<options.length ;i++){
+options[i].selected = 'selected';
+}
+document.getElementById('id_compulsory_subject_to').disabled='disabled';
+
+
+//document.getElementById('toast-container').style.visibility ='hidden';
+current_step++;
+let previous_step = current_step - 1;
+let flag=validateForm();
+if(( current_step > 0) && (current_step <= stepCount) && flag){
+prevBtn.classList.remove('d-none');
+prevBtn.classList.add('d-inline-block');
+step[current_step].classList.remove('d-none');
+step[current_step].classList.add('d-block');
+step[previous_step].classList.remove('d-block');
+step[previous_step].classList.add('d-none');
+if (current_step == stepCount){
+submitBtn.classList.remove('d-none');
+submitBtn.classList.add('d-inline-block');
+nextBtn.classList.remove('d-inline-block');
+nextBtn.classList.add('d-none');
+}
+} else {
+if(current_step > stepCount){
+  form.onsubmit = () => { return true }
+}
+}
+progress((100 / stepCount) * current_step);
+function validateForm() {
+// This function deals with validation of the form fields
+if(current_step==4 ){
+
+
+if(document.getElementById('id_fourth_subject').value==''){
+valid= false;
+}
+/* var select=document.getElementsByName('compulsory_subject');
+var compulsory_subject=select[1];
+if(compulsory_subject.length<6){
+  valid= false;
+}*/
+
+
+
+
+}
+
+x = document.getElementsByClassName("step d-block");
+//alert(current_step);
+
+y = x[0].getElementsByTagName("input");
+z= x[0].getElementsByTagName("select");
+
+for (i = 0; i < y.length; i++) {
+// If a field is empty...
+//alert(y[i]+y[i].required);
+//alert(y[i].getAttribute('id')+": "+y[i].hasAttribute('required'));
+
+if (y[i].value == '' && y[i].hasAttribute('required') ) {
+
+
+  y[i].className='textfieldUSERinfoInvalid';
+
+valid = false;
+
+}
+}
+
+for (i = 0; i < z.length; i++) {
+// If a field is empty...
+
+if (z[i].value == '' && z[i].hasAttribute('required') ) {
+  //alert(z[i].getAttribute('id')+": "+z[i].hasAttribute('required'));
+
+ if(z[i].className=='textfieldUSER')
+   z[i].className='textfieldUSERInvalid';
+else
+  z[i].className='textfieldUSERinfoInvalid';
+  
+ valid = false;
+
+}
+}
+//alert("valid:"+valid);
+if(!valid){
+current_step--;
+var x = document.getElementById("toast-container");
+
+// Add the "show" class to DIV
+x.className = "show";
+
+// After 3 seconds, remove the show class from DIV
+setTimeout(function(){ x.className = x.className.replace("show", ""); }, 11000);
+/*var x = document.getElementById("toast-container");
+         x.className = "toast-top-center";
+         x.style.visibility="vissible"
+
+         setTimeout(function(){ 
+             x.className = x.className.replace("toast-top-center","");
+            
+             
+          }, 8000);*/
+          
+
+}
+return valid; // return the valid status
+}
+
+
+
+});
+
+
+
+prevBtn.addEventListener('click', () => {
+if(current_step > 0){
+current_step--;
+let previous_step = current_step + 1; 
+prevBtn.classList.add('d-none');
+prevBtn.classList.add('d-inline-block');
+step[current_step].classList.remove('d-none');
+step[current_step].classList.add('d-block')
+step[previous_step].classList.remove('d-block');
+step[previous_step].classList.add('d-none');
+if(current_step < stepCount){
+ submitBtn.classList.remove('d-inline-block');
+ submitBtn.classList.add('d-none');
+ nextBtn.classList.remove('d-none');
+ nextBtn.classList.add('d-inline-block');
+ prevBtn.classList.remove('d-none');
+ prevBtn.classList.add('d-inline-block');
+} 
+}
+
+if(current_step == 0){
+prevBtn.classList.remove('d-inline-block');
+prevBtn.classList.add('d-none');
+}
+progress((100 / stepCount) * current_step);
+});
+
+
+
+function fourthSubject(id){
+
+if(current_step==3){
+var compulsory_subject=document.getElementById('id_optional_subject_from');
+var selected_item = document.getElementById('id_fourth_subject');
+if(compulsory_subject.length==1){
+selected_item.value=compulsory_subject[0].value;
+alert(selected_item.value);
+
+return false;
+}
+
+
+
+
+
+
+}
+
+}
+function subjectChoice(id){
+alert("subjectChoice");
+
+}
+addChoiceBtn.addEventListener('change', () => {
+alert("subjectChoice");
+});
+
 </script>
+<script>
+$(document).ready(function () {
+  
+    $('#add_more').click(function() {
+        alert("hello");
+        cloneMore('div.table:last', 'service');
+    });
+  $('#submit-btn').on('click', function () {
+    var subjectCount=0;
+    var compulsory_options;
+    var options;
+    compulsory_options=document.getElementById('id_compulsory_subject_to').getElementsByTagName('option');
+    subjectCount=compulsory_options.length;
+    document.getElementById('id_compulsory_subject_to').disabled='';
+    try{
+    options=document.getElementById('id_optional_subject_to').getElementsByTagName('option');
+    var selected_4rth = document.getElementById('id_fourth_subject');
+    var flag_submit=0;
+    alert(selected_4rth.value);
+    for(i=0;i<options.length ;i++){
+      subjectCount++;
+      if(options[i].value==selected_4rth.value){
+        flag_submit=1;
+        break;
+
+      }
+    options[i].selected = 'selected';
+   }
+    if(subjectCount<6 || flag_submit==1){
+      alert("Choose All 7 Subject and do not repeat twice ");
+      return false;
+    }
+    
+    }catch(err){
+
+    }
+  //preloader.classList.add('d-block');
+  var frm = $('#form-wrapper')[0];
+  var form= new FormData(frm);
+  var form1=document.getElementById('form-wrapper');
+  form1.submit();
+  
+  });
+////////////////////Submit for admission form download/////////////////////
+
+ 
+
+});
+</script>
+ 
 {% endblock  %}
