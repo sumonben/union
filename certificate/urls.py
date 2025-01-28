@@ -12,6 +12,8 @@ urlpatterns = [
     path('',views.SelectCertificate.as_view(), name='select_certificate'),
     path('warishan_form/', views.WarishanView.as_view(), name="warishan_form"),
     path('submit_form/', views.submitFormView.as_view(), name="submit_form"),
+    path('download_certificate_form/', views.DownloadCertificateView.as_view(), name="download_certificate_form"),
+
 
 
 

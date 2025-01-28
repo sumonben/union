@@ -11,9 +11,9 @@ def generator_trangection_id( size=10, chars=string.ascii_uppercase + string.dig
 
     
 
-def sslcommerz_payment_gateway(request, certificate,purpose):
+def sslcommerz_payment_gateway(request, certificate,certificate_type):
     
-    print(certificate,purpose)
+    print(certificate,certificate_type)
     gateway = PaymentGateway.objects.all().first()
     cradentials = {'store_id': 'israb672a4e32dfea5',
             'store_pass': 'israb672a4e32dfea5@ssl', 'issandbox': True} 
@@ -23,8 +23,8 @@ def sslcommerz_payment_gateway(request, certificate,purpose):
     
     sslcommez = SSLCOMMERZ(cradentials)
     body = {}
-    body['student'] = certificate
-    body['total_amount'] = 10
+    body['certificate'] = certificate
+    body['total_amount'] = certificate_type.amount
     body['currency'] = "BDT"
     body['tran_id'] = generator_trangection_id()
     body['success_url'] = 'http://localhost:8000/payment/success/'
@@ -49,13 +49,13 @@ def sslcommerz_payment_gateway(request, certificate,purpose):
     body['value_a'] = certificate.tracking_no
     body['value_b'] = certificate.name
     body['value_c'] = certificate.phone
-    body['value_d'] = purpose.id
+    body['value_d'] = certificate_type.id
 
     
 
 
     response = sslcommez.createSession(body)
-    print(response)   
+    #print(response)   
     return  response["GatewayPageURL"]
     return 'https://securepay.sslcommerz.com/gwprocess/v4/api.php?Q=pay&SESSIONKEY=' + response["sessionkey"]
 

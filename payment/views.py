@@ -12,7 +12,7 @@ from .models import Transaction,PaymentPurpose
 from .sslcommerz import sslcommerz_payment_gateway
 from sslcommerz_lib import SSLCOMMERZ 
 from django.contrib.auth import get_user_model
-from certificate.models import Certificate,WarishanCertificate
+from certificate.models import Certificate,WarishanCertificate,CertificateType
 
 # Create your views here.
 cradentials = {'store_id': 'israb672a4e32dfea5',
@@ -37,10 +37,10 @@ def PaymentView(request,student,name,amount):
 @method_decorator(csrf_exempt, name='dispatch')
 class CheckoutSuccessView(View):
     model = Transaction
-    template_name = 'payment/payment_receipt.html'
+    template_name = 'payment/payment_reciept.html'
     
     def get(self, request, *args, **kwargs):
-        return HttpResponse('nothing to see')
+        return HttpResponse('Here! nothing to see')
 
     def post(self, request, *args, **kwargs):
         
@@ -48,20 +48,17 @@ class CheckoutSuccessView(View):
         data = self.request.POST
         #print(data)
 
-        tran_purpose=PaymentPurpose.objects.filter(id=data['value_d']).first()
-        student=Certificate.objects.filter(class_roll=data['value_a']).first()
-        context['tran_purpose']=tran_purpose
-        #print(tran_purpose.payment_type.id)
+        certificate_type=CertificateType.objects.filter(id=data['value_d']).first()
+        tran_purpose=PaymentPurpose.objects.filter(certificate_type_id=data['value_d']).first()
+        context['certificate_type']=certificate_type
+        print(tran_purpose)
         transaction=None
         try:
             transaction=Transaction.objects.create(
-                class_roll=data['value_a'],
+                tracking_no=data['value_a'],
                 name = data['value_b'],
-                group=student.group,
-                session=student.session,
-                department=student.department,
                 phone=data['value_c'],
-                email=data['value_c'],
+                email=data['value_d'],
                 tran_id=data['tran_id'],
                 tran_purpose=tran_purpose,
                 val_id=data['val_id'],
@@ -86,38 +83,26 @@ class CheckoutSuccessView(View):
             )
             #print("data['value_d']:",tran_purpose.payment_type)
             
+            if tran_purpose.certificate_type_id == 1:
+                print("data['value_d']:",tran_purpose)
+                certificate=WarishanCertificate.objects.filter(tracking_no=data['value_a']).first()
+                certificate.transaction=transaction
+                certificate.save()
+                print('Cerficate paid:',certificate)
+                context['transaction']=transaction
+                context['purpose']=tran_purpose
+                context['certificate']=certificate
+                return render(request,self.template_name,context)
             if tran_purpose.payment_type.id == 2:
                 #print("data['value_d']:",tran_purpose.payment_type)
                 student=Certificate.objects.filter(class_roll=data['value_a']).first()
                 #print(student)
                 context['transaction']=transaction
                 context['purpose']=tran_purpose
-                context['student']=student
-                return render(request,self.template_name,context)
-            if tran_purpose.payment_type.id == 3:
-                #print("data['value_d']:",tran_purpose.payment_type)
-                student=Certificate.objects.filter(class_roll=data['value_a']).first()
-                #print(student)
-                context['transaction']=transaction
-                context['purpose']=tran_purpose
-                context['student']=student
+                context['certificate']=certificate
                 return render(request,self.template_name,context)
 
-            if tran_purpose.payment_type.id == 1:
-                student=Certificate.objects.filter(phone=data['value_c']).last()
-                password="Student@"+data['value_c']
-                user = get_user_model.objects.create_user(username=data['value_c'],
-                                 email=data['value_c'],last_name="Student",
-                                 password=password,is_active=False)
-                student.user=user
-                student.save()
-                students=Certificate.objects.filter(phone=data['value_b'],user=None)
-                for std in students:
-                    std.delete()
-
-                #print(student)
-                context['purpose']=tran_purpose
-                context['student']=student
+            
             messages.success(request,'Payment Successful!!')
             
         except:

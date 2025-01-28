@@ -6,14 +6,14 @@ from import_export.admin import ExportActionMixin,ImportExportMixin
 @admin.register(Certificate)
 class CertificateAdmin(ImportExportMixin,admin.ModelAdmin):
     search_fields=[  'email','phone',]
-    list_display=[ 'name','email','phone','transaction_detaills','paid_at','is_verified']
+    list_display=[ 'tracking_no','name','email','phone','transaction_detaills','paid_at','is_verified']
     list_display_links = ['name','email','phone',]
     list_filter=['is_verified']
 
 @admin.register(WarishanCertificate)
 class WarishanCertificateAdmin(ImportExportMixin,admin.ModelAdmin):
     search_fields=[  'email','phone',]
-    list_display=[ 'name','email','phone','transaction_detaills','paid_at','is_verified']
+    list_display=[ 'name','tracking_no','email','phone','transaction_detaills','paid_at','is_verified']
     list_display_links = ['name','email','phone',]
     list_filter=['is_verified']
 

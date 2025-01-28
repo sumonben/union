@@ -32,14 +32,14 @@
         </div>-->
         <!-- FORMS -->
         <div >
-  <form class="needs-validation" action="{% url 'submit_form' %}" id="form-wrapper" method="post" name="form-wrapper" novalidate="" enctype="multipart/form-data">
+  <form class="needs-validation" action="{% url 'submit_form' %}" id="form-wrapper" method="post" name="form-wrapper" novalidate="" enctype="multipart/form-data" target="_blank">
         {% csrf_token %}
             <div id="qbox-container">
                     <div id="steps-container">
                         <div class="step d-block">
                           <div><h1 style="text-align: center;"><u>ট্র্যাকিং নম্বর ({{certificate.tracking_no}}) সংগ্রহে রাখুন </u></h1></div>
 
-                          <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
+                          <table  width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
 
                             <tbody>
                             <tr>

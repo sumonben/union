@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import WarishanCertificate,Warish,CertificateType,Certificate
-from .forms import WarishanCertificateForm,AdressForm,WarishFormSet,WarishForm,CertificateTypeForm,CertificateForm
+from .forms import WarishanCertificateForm,AdressForm,WarishFormSet,WarishForm,CertificateTypeForm,CertificateForm,CertificateDownloadForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
 from django.forms import formset_factory
@@ -139,4 +139,20 @@ class submitFormView(View):
         certificate=WarishanCertificate.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
         certificate_type=certificate.certificate_type
         return redirect(sslcommerz_payment_gateway(request, certificate, certificate_type))
+
+class DownloadCertificateView(View):
+    model = Certificate
+    template_name = 'certificate/download_certificate.html'
+    def get(self, request, *args, **kwargs):
+        context={}
+        form=CertificateDownloadForm()
+        context['form']=form
+        return render(request,self.template_name, context)
+    def post(self, request, *args, **kwargs):
+        context={}
+        certificate=WarishanCertificate.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
+        certificate_type=certificate.certificate_type
+        context['certificate']=certificate
+        context['certificate_type']=certificate_type
+        return render(request,'certificate/certificate/certificate.html', context)
 

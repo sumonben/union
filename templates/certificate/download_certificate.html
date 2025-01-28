@@ -1,0 +1,99 @@
+{% extends 'basepage/basepage_certificate.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+    .main_body{
+        width:100%;
+        height:100%;
+        color:red;
+    }
+    @media(max-width:767px){
+        .main_body{
+            width:100%;
+            height:700px;
+            color:red;
+            background-color:green;
+        }   
+    }
+</style>
+
+<!-- CONTAINER -->
+<div class="box_container" style="width: 100%; margin: 0px;">
+    <div class="" style="margin: auto;width: 100%;">
+       
+<div >
+  <form class="needs-validation" action="" id="form-wrapper" method="post" name="form-wrapper" novalidate="" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div id="qbox-container">
+                    <div id="steps-container">
+                        <div class="step d-block">
+                          <div><h1 style="text-align: center;"><u>আপনার সনদটি ডাউনলোড করুন</u></h1></div>
+
+                          <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
+
+                            <tbody>
+                            <tr>
+                              <td align="left">
+                                <fieldset>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="10">
+                                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 40px; background-color: #245b80; color: #fff;padding: 15px;"> ট্র্যাকিং নং ও সনদের ধরণ এন্ট্রি দিন </th></thead>
+                                  <tbody>
+                                  {% for field in form %}
+                                  {{ field.errors }}
+
+                                    <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="15%" align="left" valign="middle" class="black12" style="font-size:25px">{{field.label}}</td>
+                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{field}}                                        
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+
+                                      </tr>
+
+                                    {% endfor %}
+                                    
+                                      
+                                  
+    
+                                </tbody></table>
+                              </fieldset>
+                            </td>
+                            
+                          </tr>
+                              
+                          </tbody>
+                        </table>
+                        
+                          
+
+                          
+
+                        </div>
+                       
+                        
+                       
+                    
+                    
+                </div>
+                    <div id="q-box__buttons" >
+                      
+                      <button id="submit-btn" type="submit" class="d-inline-block">সাবমিট</button>
+                  </div>   
+            </div>
+            
+          </form>
+
+          
+
+        </div>
+    </div>
+</div>
+<!-- PRELOADER -->
+
+
+
+ 
+{% endblock  %}

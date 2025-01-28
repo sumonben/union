@@ -11,7 +11,7 @@ admin.site.register(PaymentGateway)
 
 @admin.register(PaymentPurpose)
 class UserAdmin(admin.ModelAdmin):
-    list_display=[  'id','serial','title','title_en']
+    list_display=[  'id','serial','certificate_type_id','title','title_en']
     filter_fields=[  'id','title',]
 
 @admin.register(PaymentType)

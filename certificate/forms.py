@@ -69,6 +69,13 @@ class WarishForm(forms.ModelForm):
         exclude=['serial',]
         
 
+class CertificateDownloadForm(forms.ModelForm):
+    tracking_no= forms.CharField(label="ট্র্যাকিং নং- ",required=True,widget=forms.TextInput(attrs={'class': 'textfieldUSERinfo',}))
+    name= forms.ModelChoiceField(label="সার্টিফিকেটসমূহঃ ",required=True,queryset=CertificateType.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo',}))
+    class Meta:
+        model = Certificate
+        fields = []
+
         
 class AdressForm(forms.ModelForm):
     class Meta:

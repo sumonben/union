@@ -15,6 +15,7 @@ class PaymentType(models.Model):
 
 class PaymentPurpose(models.Model):
     serial=models.IntegerField(default=10)
+    certificate_type_id=models.IntegerField(default=0)
     title=models.CharField(max_length=500, blank=True, null=True)
     title_en=models.CharField(max_length=500, blank=True, null=True)
     subtitle=models.CharField(max_length=500, blank=True, null=True)
@@ -35,6 +36,7 @@ class PaymentPurpose(models.Model):
 
 
 class Transaction(models.Model):
+    tracking_no = models.CharField(max_length=150,null=True)
     name = models.CharField(max_length=150)
     phone=models.CharField(max_length=11,blank=True,null=True,)
     email=models.EmailField(max_length=50,blank=True,null=True)
