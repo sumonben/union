@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import WarishanCertificate,Warish,CertificateType,Certificate
+from account.models import Chairman, Member
 from .forms import WarishanCertificateForm,AdressForm,WarishFormSet,WarishForm,CertificateTypeForm,CertificateForm,CertificateDownloadForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
@@ -151,8 +152,16 @@ class DownloadCertificateView(View):
     def post(self, request, *args, **kwargs):
         context={}
         certificate=WarishanCertificate.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
+        chairman=Chairman.objects.all().order_by('-id').first()
+        member=Member.objects.filter(ward=certificate.adress.village.ward).last()
+        print(chairman,member)
+        certificate=WarishanCertificate.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
+
         certificate_type=certificate.certificate_type
+        context['chairman']=chairman
+        context['member']=member
         context['certificate']=certificate
         context['certificate_type']=certificate_type
+
         return render(request,'certificate/certificate/certificate.html', context)
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Division,District,Union,Upazilla,Word,Village,PostOffice
+from .models import Division,District,Union,Upazilla,Ward,Village,PostOffice
 from import_export.admin import ExportActionMixin,ImportExportMixin
 
 # Register your models here.
@@ -29,7 +29,7 @@ class UnionAdmin(ImportExportMixin,admin.ModelAdmin):
     search_fields = ['name','name_en','upazilla']
     autocomplete_fields = ['upazilla',]
 
-@admin.register(Word)
+@admin.register(Ward)
 class WordAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display=[ 'name','name_en','union','link']
     list_display_links = ['name','name_en']
@@ -44,7 +44,7 @@ class PostOfficeAdmin(ImportExportMixin,admin.ModelAdmin):
 
 @admin.register(Village)
 class VillageAdmin(ImportExportMixin,admin.ModelAdmin):
-    list_display=[ 'name','name_en','word','link']
+    list_display=[ 'name','name_en','ward','link']
     list_display_links = ['name','name_en']
-    search_fields = ['name','name_en','word']
-    autocomplete_fields = ['word',]
+    search_fields = ['name','name_en','ward']
+    autocomplete_fields = ['ward',]

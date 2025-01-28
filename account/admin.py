@@ -11,10 +11,10 @@ class ChairAdmin(ImportExportMixin,admin.ModelAdmin):
 
 @admin.register(Member)
 class MemberAdmin(ImportExportMixin,admin.ModelAdmin):
-    list_display=[ 'name','name_en','word']
+    list_display=[ 'name','name_en','ward']
     list_display_links = ['name','name_en']
     search_fields = ['name','name_en']
-    autocomplete_fields = ['word',]
+    autocomplete_fields = ['ward',]
 
 @admin.register(Post)
 class PostAdmin(ImportExportMixin,admin.ModelAdmin):

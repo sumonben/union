@@ -43,9 +43,10 @@ class Union(models.Model):
         ordering = ['name_en']
     def __str__(self):
         return self.name+'('+self.name_en+')'
-class Word(models.Model):
+class Ward(models.Model):
     name=models.CharField(max_length=25)
     name_en=models.CharField(max_length=25)
+    ward_no=models.CharField(max_length=25)
     union=models.ForeignKey(Union, on_delete=models.CASCADE,blank=True,null=True)
     link=models.CharField(max_length=15,null=True,blank=True)
 
@@ -69,7 +70,7 @@ class PostOffice(models.Model):
 class Village(models.Model):
     name=models.CharField(max_length=25)
     name_en=models.CharField(max_length=25)
-    word=models.ForeignKey(Word, on_delete=models.CASCADE,blank=True,null=True)
+    ward=models.ForeignKey(Ward, on_delete=models.CASCADE,blank=True,null=True)
     post_office=models.ForeignKey(PostOffice, on_delete=models.CASCADE,blank=True,null=True)
     link=models.CharField(max_length=15,null=True,blank=True)
 

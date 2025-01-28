@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Certificate,Adress,WarishanCertificate,Warish,CertificateType
+from .models import Certificate,Adress,WarishanCertificate,Warish,CertificateType,Relation
 from import_export.admin import ExportActionMixin,ImportExportMixin
 # Register your models here.
 
@@ -19,6 +19,9 @@ class WarishanCertificateAdmin(ImportExportMixin,admin.ModelAdmin):
 
 @admin.register(Warish)
 class WarishAdmin(ExportActionMixin,admin.ModelAdmin):
+    pass
+@admin.register(Relation)
+class RelationAdmin(ExportActionMixin,admin.ModelAdmin):
     pass
 
 @admin.register(Adress)

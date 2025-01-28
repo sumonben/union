@@ -3,7 +3,7 @@ from django.urls import reverse
 from payment.models import Transaction
 from django.utils.html import format_html
 from django.template.defaultfilters import escape
-from region.models import District,Division,Upazilla,Union,PostOffice,Village,Word
+from region.models import District,Division,Upazilla,Union,PostOffice,Village,Ward
 #from account.models import UserModel
 # Create your models here.
 
@@ -53,7 +53,7 @@ class CertificateType(models.Model):
 class Adress(models.Model):
     serial=models.IntegerField(default=10)
     holding_no=models.CharField(max_length=50,blank=True,null=True,verbose_name=" হোল্ডিং নং")
-    word=models.ForeignKey(Word,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="ওয়ার্ড নং ")
+    ward=models.ForeignKey(Ward,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="ওয়ার্ড নং ")
     village=models.ForeignKey(Village,on_delete=models.SET_NULL,blank=True,null=True,verbose_name=" গ্রাম/মহল্লা")
     post_office=models.ForeignKey(PostOffice,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="ডাকঘর ")
     district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL,verbose_name=" জেলা ")

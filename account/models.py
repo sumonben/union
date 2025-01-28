@@ -1,5 +1,5 @@
 from django.db import models
-from region.models import Union,Word,Upazilla,District
+from region.models import Union,Ward,Upazilla,District
 
 
 # Create your models here.
@@ -24,6 +24,9 @@ class Chairman(models.Model):
     union=models.ForeignKey(Union,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ইউনিয়ন")
     upazilla=models.ForeignKey(Upazilla,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="উপজেলা")
     district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="জেলা")
+    image=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="ছবি")
+    signature=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="স্বাক্ষর")
+
 
 
     class Meta:
@@ -37,10 +40,12 @@ class Member(models.Model):
     name=models.CharField(max_length=25,verbose_name=" নাম(বাংলায়)")
     name_en=models.CharField(max_length=25,verbose_name=" নাম(ইংরেজিতে)")
     post=models.ForeignKey(Post,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="পদবী")
-    word=models.ForeignKey(Word,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ওয়ার্ড")
+    ward=models.ForeignKey(Ward,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ওয়ার্ড")
     union=models.ForeignKey(Union,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ইউনিয়ন")
     upazilla=models.ForeignKey(Upazilla,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="উপজেলা")
     district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="জেলা")
+    image=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="ছবি")
+    signature=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="স্বাক্ষর")
 
     class Meta:
         ordering = ['serial']

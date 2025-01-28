@@ -84,7 +84,7 @@ class AdressForm(forms.ModelForm):
         exclude=['serial','holding_no','union','district','upazilla']
         widgets = {
             'village': forms.Select(attrs={'class': 'textfieldUSER','onkeypress' : "myFunction(this.id);",'label':'Village/house'}),
-            'word': forms.Select(attrs={'class': 'textfieldUSER','onkeypress' : "myFunction(this.id);",'label':'Street No.'}),
+            'ward': forms.Select(attrs={'class': 'textfieldUSER','onkeypress' : "myFunction(this.id);",'label':'Street No.'}),
             'post_office': forms.Select(attrs={'class': 'textfieldUSER', 'onkeypress' : "myFunction(this.id);"}),
             
 
