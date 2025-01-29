@@ -160,7 +160,7 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
 table.result th, table.result td {
                 border:1px solid rgb(255, 255, 255);
                 
-                padding:0.6em;
+                padding:0.2em;
                 -webkit-print-color-adjust: exact; 
         
                 }
@@ -297,14 +297,16 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         </table>
                                     </td>
                                     <tr>
-                                        
-                                        <td  colspan="4" align="right"><br><br><br><div style="float:right;text-align:center"><img height="50" src="{% if chairman.signature %}{{chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{chairman.name}}<br>{{chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
-           
+                                      <td  colspan="1" align="center"></div><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Tracking No: {{certificate.tracking_no}}&amp;size=200x200" width="120px" height="120px" alt="" title="{{student.class_roll}}:{{student.name}}" width="50" height="50" /></div></td>
+
+                                        <td  colspan="2" align="right"><br><br><br></div></td>
+                                        <td  colspan="1" align="right"><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if chairman.signature %}{{chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{chairman.name}}<br>{{chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
+
                                        
                                    </tr>
                                     <tr>
                                         
-                                        <td  colspan="4" align="center"><br><br> <img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Tracking No: {{certificate.tracking_no}}&amp;size=200x200" width="120px" height="120px" alt="" title="{{student.class_roll}}:{{student.name}}" width="50" height="50" /></td>
+                                        {% comment %} <td  colspan="4" align="center"><br><br> <img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Tracking No: {{certificate.tracking_no}}&amp;size=200x200" width="120px" height="120px" alt="" title="{{student.class_roll}}:{{student.name}}" width="50" height="50" /></td> {% endcomment %}
            
                                        
                                    </tr>
@@ -346,7 +348,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
           
 
  
-    <img id="graph-image" height="500px" src="{% static 'images/gmrwc_logo.png' %}" alt="" >
+    {% comment %} <img id="graph-image" height="500px" src="{% static 'images/gmrwc_logo.png' %}" alt="" > {% endcomment %}
     {% comment %} <div style="float:right;margin:2%"><img  height="80px" src="{% static 'images/principal_signature.png' %}" alt="" ><br>Principal</div> {% endcomment %}
 
   </div>
