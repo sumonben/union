@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import WarishanCertificate,Warish,CertificateType,Certificate
+from payment.models import Transaction
 from account.models import Chairman, Member
 from .forms import WarishanCertificateForm,AdressForm,WarishFormSet,WarishForm,CertificateTypeForm,CertificateForm,CertificateDownloadForm
 from django.contrib.auth.decorators import login_required
@@ -15,6 +16,42 @@ import random
 def gernerate_tracking_no( size=8, chars=string.ascii_uppercase + string.digits):
     return "".join(random.choice(chars) for _ in range(size))
 
+class HomeView(View):
+    model = Certificate()
+    template_name = 'home.html'
+    def get(self, request, *args, **kwargs):
+        context={}
+        return render(request,'home.html',context)
+    def post(self, request, *args, **kwargs):
+        context={}
+        return render(request,'home.html',context)
+
+class ApplyForCertificate(View):
+    model = CertificateType()
+    template_name = 'forms/warishan_form.html'
+    def get(self, request, serial, *args, **kwargs):
+        context={}
+        certificate_type=CertificateType.objects.filter(serial=serial).first()
+        context['certificate_type']=certificate_type
+        form=WarishanCertificateForm(instance=certificate_type)
+        form.certificate_type=certificate_type
+        adress_form=AdressForm()
+        form2=WarishForm()
+        formset = WarishFormSet(queryset=Warish.objects.none())
+        context['form']=form
+        context['adress_form']=adress_form
+        if certificate_type.serial== 2:
+            context['form2']=form2
+            context['formset']=formset
+        
+        return render(request,self.template_name,context)
+    
+    def post(self, request,id, *args, **kwargs):
+        print('post: ',id)
+        context={}
+        return render(request,self.template_name,context)
+
+    
 class SelectCertificate(View):
     model = CertificateType()
     template_name = 'forms/warishan_form.html'
@@ -35,7 +72,7 @@ class SelectCertificate(View):
         formset = WarishFormSet(queryset=Warish.objects.none())
         context['form']=form
         context['adress_form']=adress_form
-        if certificate_type.serial== 1:
+        if certificate_type.serial== 2:
             context['form2']=form2
             context['formset']=formset
         return render(request,self.template_name,context)
@@ -145,18 +182,32 @@ class DownloadCertificateView(View):
         return render(request,self.template_name, context)
     def post(self, request, *args, **kwargs):
         context={}
-        certificate=WarishanCertificate.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
-        chairman=Chairman.objects.all().order_by('-id').first()
-        member=Member.objects.filter(ward=certificate.adress.village.ward).last()
-        certificate=WarishanCertificate.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
+        certificate=WarishanCertificate.objects.filter(tracking_no=request.POST.get('tracking_no'),certificate_type=request.POST.get('name')).first()
+        transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
+        if certificate:
+            if transaction:
+                if certificate.is_verified==False:
+                    context['message']="আপনার আবেদনটি এখনো অনুমোদিত হয়নি, অপেক্ষা করুন"
+                    form=CertificateDownloadForm()
+                    context['form']=form
+                    return render(request,self.template_name, context)
+                chairman=Chairman.objects.all().order_by('-id').first()
+                member=Member.objects.filter(ward=certificate.adress.village.ward).last()
 
-        certificate_type=certificate.certificate_type
-        context['chairman']=chairman
-        context['member']=member
-        context['certificate']=certificate
-        context['certificate_type']=certificate_type
-        if certificate_type.serial == 2:
-            return render(request,'certificate/certificate/warishan_certificate.html', context)
+                certificate_type=certificate.certificate_type
+                context['chairman']=chairman
+                context['member']=member
+                context['certificate']=certificate
+                context['certificate_type']=certificate_type
 
-        return render(request,'certificate/certificate/citizenship_certificate.html', context)
-
+                if certificate_type.serial == 2:
+                    return render(request,'certificate/certificate/warishan_certificate.html', context)
+                return render(request,'certificate/certificate/citizenship_certificate.html', context)
+            context['message']="দুখিঃত! আপনার সনদটির জন্য পেমেন্ট করা হয়নি"
+            form=CertificateDownloadForm()
+            context['form']=form
+            return render(request,self.template_name, context)
+        context['message']="দুখিঃত! সঠিক সনদ বাছাই করুন বা সঠিক ট্র্যাকিং নং প্রবেশ করান"
+        form=CertificateDownloadForm()
+        context['form']=form
+        return render(request,self.template_name, context)

@@ -9,7 +9,9 @@ from django import views as django_views
 
 urlpatterns = [
     
-    path('',views.SelectCertificate.as_view(), name='select_certificate'),
+    path('',views.HomeView.as_view(), name='home'),
+    path('apply_for_certificate/<int:serial>/',views.ApplyForCertificate.as_view(), name='apply_for_certificate'),
+    path('select_certificate/',views.SelectCertificate.as_view(), name='select_certificate'),
     path('warishan_form/', views.WarishanView.as_view(), name="warishan_form"),
     path('submit_form/', views.submitFormView.as_view(), name="submit_form"),
     path('download_certificate_form/', views.DownloadCertificateView.as_view(), name="download_certificate_form"),

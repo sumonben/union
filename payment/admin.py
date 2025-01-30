@@ -3,7 +3,7 @@ from .models import Transaction,PaymentPurpose,PaymentType,PaymentGateway
 # Register your models here.
 @admin.register(Transaction)
 class TransactionAdmin(admin.ModelAdmin):
-    list_display = ('name','email','phone', 'card_no', 'amount', 'tran_id','tran_purpose','status', 'created_at',)
+    list_display = ('name','tracking_no','email','phone', 'card_no', 'amount', 'tran_id','tran_purpose','status', 'created_at',)
     list_filter = ('status', 'created_at','tran_purpose')
     search_fields = ('currency', 'status')
 

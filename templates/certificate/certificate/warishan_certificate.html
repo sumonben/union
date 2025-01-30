@@ -82,6 +82,9 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
 
 @media print and (min-width: 480px) {
     
+ #second{
+  margin-top:-50px;
+}  
   #main_table{
     padding:5em;
     -webkit-print-color-adjust: exact; 
@@ -208,14 +211,14 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                         <div class="step d-block" style="margin-top:20px;height:100%">
                             <div><h1 style="text-align: center; color:#000"><u>{{certificate_type.name}}</u></h1></div>
                             <table width="100%">
-                              <tr>
+                              <tr style="padding:0px;">
                               <td>
                                 <div  align="left"><h4 style="text-align: left; margin-left:2%">
                                   ট্র্যাকিং নম্বর: &nbsp<u>{{certificate.tracking_no}}</u></h4>
                               </div>
                               </td>
                               <td>                            
-                                <div  id="date" align="right"><h4 style="text-align: right; margin-left:2%">
+                                <div  id="date" align="right"><h4 style="text-align: right; margin-left:2%;height:40px;">
                                   তারিখঃ &nbsp{{certificate.transaction.tran_date|date:"d-m-Y"}}&nbsp</h4>
                                 </div>
                               </td>
@@ -238,8 +241,8 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
 
                                     </tr>
                                     <tr>
-                                        <td  colspan="4" width="15%" align="center" valign="middle" class="sprytextfield1"><label><u>
-                                            ওয়ারিশগণ </u></label> 
+                                        <td  colspan="4" width="15%" align="center" valign="middle" class="sprytextfield1"><h4><u>
+                                            ওয়ারিশগণ </u></h4>
                                         </td>
 
                                     </tr>
@@ -265,11 +268,10 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         </table>
                                     </td>
                                     <tr valign="bottom">
-                        
-                                      <td  colspan="1" align="center"><br><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Tracking No: {{certificate.tracking_no}}&amp;size=200x200" width="120px" height="120px" alt="" title="{{student.class_roll}}:{{student.name}}" width="50" height="50" /></div></td>
+                                      <td  colspan="1" align="center"></div><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Tracking No: {{certificate.tracking_no}}&amp;size=200x200" width="120px" height="120px" alt="" title="{{student.class_roll}}:{{student.name}}" width="50" height="50" /></div></td>
 
                                         <td  colspan="2" align="right"><br><br><br></div></td>
-                                        <td  colspan="1" align="right"><br><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if chairman.signature %}{{chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{chairman.name}}<br>{{chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
+                                        <td  colspan="1" align="right"><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if chairman.signature %}{{chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{chairman.name}}<br>{{chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
 
                                        
                                    </tr>

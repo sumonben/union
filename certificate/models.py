@@ -42,6 +42,15 @@ class Warish(models.Model):
     def __str__(self):
         return self.name+'('+self.name_en+')'
 
+class Cause(models.Model):
+    serial=models.IntegerField(default=10)
+    name=models.CharField(max_length=500,verbose_name=" নাম(বাংলায়)")
+    name_en=models.CharField(max_length=500,verbose_name=" নাম(ইংরেজিতে)")
+    class Meta:
+        ordering = ['serial']
+        verbose_name="কারণ"
+    def __str__(self):
+        return self.name+'('+self.name_en+')'
 
 class CertificateType(models.Model):
     serial=models.IntegerField(default=10)
@@ -86,6 +95,7 @@ class Certificate(models.Model):
     mother_name=models.CharField(max_length=100,verbose_name="মায়ের নাম(বাংলায়)")
     mother_name_en=models.CharField(max_length=100,blank=True, null=True,verbose_name="মায়ের নাম(ইংরেজিতে)")
     adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL,verbose_name="ঠিকানা")
+    cause=models.ForeignKey(Cause,on_delete=models.SET_NULL,blank=True, null=True,verbose_name="কারণঃ")
     file=models.FileField(upload_to='media/',blank=True,null=True,verbose_name="মেম্বারের সুপারিশ ফাইল")
     nid_file=models.FileField(upload_to='media/',blank=True,null=True,verbose_name="এনআইডি-জন্ম নিবন্ধন")
     transaction=models.ForeignKey(Transaction,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ট্রান্সেকশন")
@@ -129,6 +139,7 @@ class WarishanCertificate(models.Model):
     mother_name=models.CharField(max_length=100,verbose_name="মায়ের নাম(বাংলায়)")
     mother_name_en=models.CharField(max_length=100,blank=True, null=True,verbose_name="মায়ের নাম(ইংরেজিতে)")
     adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL,verbose_name="ঠিকানা")
+    cause=models.ForeignKey(Cause,on_delete=models.SET_NULL,blank=True, null=True,verbose_name="কারণঃ")
     file=models.FileField(upload_to='media/',blank=True,null=True,verbose_name="মেম্বারের সুপারিশ ফাইল")
     nid_file=models.FileField(upload_to='media/',blank=True,null=True,verbose_name="এনআইডি-জন্ম নিবন্ধন")
     transaction=models.ForeignKey(Transaction,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ট্রান্সেকশন")

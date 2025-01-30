@@ -2,7 +2,7 @@
 import datetime
 from django import forms
 from django.contrib.admin.widgets import FilteredSelectMultiple
-from .models import WarishanCertificate,Adress,Warish,CertificateType,Certificate
+from .models import WarishanCertificate,Adress,Warish,CertificateType,Certificate,Cause
 from django.forms import modelformset_factory
 
 '''class SearchPaymentForm(forms.ModelForm):
@@ -35,17 +35,21 @@ class CertificateForm(forms.ModelForm):
     class Meta:
         model = Certificate
         fields = "__all__"
-        exclude=['serial','name_en','email','transaction','is_verified','certificate_type','father_name_en','mother_name_en','tracking_no','adress','warish']
+        exclude=['serial','name_en','email','transaction','is_verified','father_name_en','mother_name_en','tracking_no','adress','cause','warish','language']
+    
+            
         widgets = {
             'name': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  '','onkeypress' : "myFunction(this.id);",'label':'Village/house'}),
             'father_name': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  '','onkeypress' : "myFunction(this.id);",'label':'Street No.'}),
             'mother_name': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  '','onkeypress' : "myFunction(this.id);"}),
             'phone': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'মোবাইল নং','onkeypress' : "myFunction(this.id);"}),
             'nid': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'এনআইডি অথবা জন্ম নিবন্ধন','onkeypress' : "myFunction(this.id);"}),
-            
-
-
-        }
+    }
+    def __init__(self, *args, **kwargs):
+        self.certificate_type = kwargs.pop('instance', None)
+        super(CertificateForm, self).__init__(*args, **kwargs)
+        if self.certificate_type:
+            self.fields['certificate_type']=forms.ModelChoiceField(label='সনদের ধরণ',queryset=CertificateType.objects.filter(id__in=[self.certificate_type.id,]),initial=CertificateType.objects.filter(id__in=[ self.certificate_type.id,]), widget=forms.Select( attrs={'class':'textfieldUSERinfo',}))
 
 class WarishanCertificateForm(forms.ModelForm):
     class Meta:
@@ -60,12 +64,18 @@ class WarishanCertificateForm(forms.ModelForm):
             'mother_name': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  '','onkeypress' : "myFunction(this.id);"}),
             'phone': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'মোবাইল নং','onkeypress' : "myFunction(this.id);"}),
             'nid': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'এনআইডি অথবা জন্ম নিবন্ধন','onkeypress' : "myFunction(this.id);"}),
+            'cause': forms.Select(attrs={'class': 'textfieldUSER','onkeypress' : "myFunction(this.id);",'Hidden':True,}),
     }
     def __init__(self, *args, **kwargs):
         self.certificate_type = kwargs.pop('instance', None)
         super(WarishanCertificateForm, self).__init__(*args, **kwargs)
         if self.certificate_type:
             self.fields['certificate_type']=forms.ModelChoiceField(label='সনদের ধরণ',queryset=CertificateType.objects.filter(id__in=[self.certificate_type.id,]),initial=CertificateType.objects.filter(id__in=[ self.certificate_type.id,]), widget=forms.Select( attrs={'class':'textfieldUSERinfo',}))
+            if self.certificate_type.serial==3:
+                self.fields['cause']=forms.ModelChoiceField(label='কারণ',queryset=Cause.objects.all(),initial=Cause.objects.filter(serial__in=[ 1,]), widget=forms.Select( attrs={'class':'textfieldUSERinfo',}))
+            else:
+                self.fields['cause']=forms.ModelChoiceField(label='',queryset=Cause.objects.all(), widget=forms.Select( attrs={'class':'textfieldUSERinfo','Hidden':True,}))
+
 
 
 class WarishForm(forms.ModelForm):
