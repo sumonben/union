@@ -26,12 +26,20 @@ class SelectCertificate(View):
     def post(self, request, *args, **kwargs):
         context={}
         print(request.POST.get('name'))
-        if request.POST.get('name')== '1':
-            return redirect('warishan_form',)
-        form=CertificateTypeForm()
+        certificate_type=CertificateType.objects.filter(id=request.POST.get('name')).first()
+        context['certificate_type']=certificate_type
+        form=WarishanCertificateForm(instance=certificate_type)
+        form.certificate_type=certificate_type
+        adress_form=AdressForm()
+        form2=WarishForm()
+        formset = WarishFormSet(queryset=Warish.objects.none())
         context['form']=form
-        return render(request,'certificate/select_certificate.html',context)
-
+        context['adress_form']=adress_form
+        if certificate_type.serial== 1:
+            context['form2']=form2
+            context['formset']=formset
+        return render(request,self.template_name,context)
+        
 
 class CertificateView(View):
     model = Certificate
@@ -40,36 +48,24 @@ class CertificateView(View):
         context={}
         form=CertificateForm()
         adress_form=AdressForm()
-        form2=WarishForm()
-        formset = WarishFormSet(queryset=Warish.objects.none())
         context['form']=form
         context['adress_form']=adress_form
-        context['form2']=form2
-        context['formset']=formset
         return render(request,self.template_name, context)
 
     def post(self, request, *args, **kwargs):
         context={}
         certificate_type=CertificateType.objects.filter(id=1).first()
-        formset = WarishFormSet(data=self.request.POST)
         form = CertificateForm(request.POST, request.FILES)
         adress_form = AdressForm(data=self.request.POST)
         tracking_no=gernerate_tracking_no()
         # Check if submitted forms are valid
         if form.is_valid():
             certificate=form.save(commit=False)
-            warish=None
             adress=None
             if adress_form.is_valid:
                 adress=adress_form.save()
                 certificate.adress=adress
                 certificate.save()
-            if formset.is_valid():
-                warish=formset.save()
-                print(warish)
-                for warish in warish:
-                    certificate.warish.add(warish)
-                #return HttpResponse('Form saved')
             certificate.tracking_no=tracking_no
             certificate.certificate_type=certificate_type
             certificate.save()
@@ -101,7 +97,6 @@ class WarishanView(View):
 
     def post(self, request, *args, **kwargs):
         context={}
-        certificate_type=CertificateType.objects.filter(id=1).first()
         formset = WarishFormSet(data=self.request.POST)
         form = WarishanCertificateForm(request.POST, request.FILES)
         adress_form = AdressForm(data=self.request.POST)
@@ -122,7 +117,6 @@ class WarishanView(View):
                     certificate.warish.add(warish)
                 #return HttpResponse('Form saved')
             certificate.tracking_no=tracking_no
-            certificate.certificate_type=certificate_type
             certificate.save()
 
             certificate=WarishanCertificate.objects.filter(tracking_no=tracking_no).first()
@@ -154,7 +148,6 @@ class DownloadCertificateView(View):
         certificate=WarishanCertificate.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
         chairman=Chairman.objects.all().order_by('-id').first()
         member=Member.objects.filter(ward=certificate.adress.village.ward).last()
-        print(chairman,member)
         certificate=WarishanCertificate.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
 
         certificate_type=certificate.certificate_type
@@ -162,6 +155,8 @@ class DownloadCertificateView(View):
         context['member']=member
         context['certificate']=certificate
         context['certificate_type']=certificate_type
+        if certificate_type.serial == 2:
+            return render(request,'certificate/certificate/warishan_certificate.html', context)
 
-        return render(request,'certificate/certificate/certificate.html', context)
+        return render(request,'certificate/certificate/citizenship_certificate.html', context)
 

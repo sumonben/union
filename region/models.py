@@ -46,7 +46,8 @@ class Union(models.Model):
 class Ward(models.Model):
     name=models.CharField(max_length=25)
     name_en=models.CharField(max_length=25)
-    ward_no=models.CharField(max_length=25)
+    ward_no=models.CharField(max_length=10)
+    ward_no_en=models.CharField(max_length=10,default='02')
     union=models.ForeignKey(Union, on_delete=models.CASCADE,blank=True,null=True)
     link=models.CharField(max_length=15,null=True,blank=True)
 

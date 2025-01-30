@@ -51,17 +51,23 @@ class WarishanCertificateForm(forms.ModelForm):
     class Meta:
         model = WarishanCertificate
         fields = "__all__"
-        exclude=['serial','name_en','email','transaction','is_verified','certificate_type','father_name_en','mother_name_en','tracking_no','adress','warish']
+        exclude=['serial','name_en','email','transaction','is_verified','father_name_en','mother_name_en','tracking_no','adress','warish','language']
+    
+            
         widgets = {
             'name': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  '','onkeypress' : "myFunction(this.id);",'label':'Village/house'}),
             'father_name': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  '','onkeypress' : "myFunction(this.id);",'label':'Street No.'}),
             'mother_name': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  '','onkeypress' : "myFunction(this.id);"}),
             'phone': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'মোবাইল নং','onkeypress' : "myFunction(this.id);"}),
             'nid': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'এনআইডি অথবা জন্ম নিবন্ধন','onkeypress' : "myFunction(this.id);"}),
-            
+    }
+    def __init__(self, *args, **kwargs):
+        self.certificate_type = kwargs.pop('instance', None)
+        super(WarishanCertificateForm, self).__init__(*args, **kwargs)
+        if self.certificate_type:
+            self.fields['certificate_type']=forms.ModelChoiceField(label='সনদের ধরণ',queryset=CertificateType.objects.filter(id__in=[self.certificate_type.id,]),initial=CertificateType.objects.filter(id__in=[ self.certificate_type.id,]), widget=forms.Select( attrs={'class':'textfieldUSERinfo',}))
 
 
-        }
 class WarishForm(forms.ModelForm):
     class Meta:
         model = Warish
@@ -70,11 +76,14 @@ class WarishForm(forms.ModelForm):
         
 
 class CertificateDownloadForm(forms.ModelForm):
-    tracking_no= forms.CharField(label="ট্র্যাকিং নং- ",required=True,widget=forms.TextInput(attrs={'class': 'textfieldUSERinfo',}))
-    name= forms.ModelChoiceField(label="সার্টিফিকেটসমূহঃ ",required=True,queryset=CertificateType.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo',}))
+    tracking_no= forms.CharField(label="ট্র্যাকিং নং- ",required=True, widget=forms.TextInput(attrs={'class': 'textfieldUSERinfo',}))
+    name= forms.ModelChoiceField(label="সার্টিফিকেটসমূহঃ ",required=True, queryset=CertificateType.objects.all(), widget=forms.Select(attrs={'class': 'textfieldUSERinfo',}))
     class Meta:
         model = Certificate
         fields = []
+
+
+
 
         
 class AdressForm(forms.ModelForm):
@@ -87,9 +96,7 @@ class AdressForm(forms.ModelForm):
             'ward': forms.Select(attrs={'class': 'textfieldUSER','onkeypress' : "myFunction(this.id);",'label':'Street No.'}),
             'post_office': forms.Select(attrs={'class': 'textfieldUSER', 'onkeypress' : "myFunction(this.id);"}),
             
-
-
-        }
+}
     
 
 

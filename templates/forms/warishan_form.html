@@ -37,7 +37,7 @@
             <div id="qbox-container">
                     <div id="steps-container">
                         <div class="step d-block">
-                          <div><h1 style="text-align: center;"><u>ওয়ারিশান সনদ ফর্ম</u></h1></div>
+                          <div><h1 style="text-align: center;"><u>{{certificate_type.name}} ফর্ম</u></h1></div>
 
                           <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
 
@@ -97,7 +97,7 @@
                                   </tbody>
                                 </table>
                               </fieldset>
-
+                              {% if formset %}
                               <fieldset>
                                 <table width="100%" border="1" cellspacing="0" cellpadding="3">
                                   <thead style="height: 25px; background-color: #245b80; color: #fff;">
@@ -129,7 +129,7 @@
                                       
                                 </tbody></table>
                               </fieldset>
-                          
+                              {% endif %}
                               <fieldset>
                                 <table width="100%" border="1" cellspacing="" cellpadding="5">
                                   <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">মেম্বর সুপারিশ ফাইল ও এনআইডি</th></thead>

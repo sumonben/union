@@ -150,7 +150,7 @@
        @media(max-width: 991px){
         fieldset{
           width: auto;
-          margin-left: 20px;
+          margin: auto;
           font-family:kalpurush;
         }
           .box_container{
@@ -180,15 +180,15 @@
     <table width="1000"  border="0" align="center" cellpadding="0" cellspacing="0">
       <tbody><tr>
         <td>
-          <table width="1000"  border="0" cellspacing="0" cellpadding="0">
+          <table width="1000" align="center"  border="0" cellspacing="0" cellpadding="0">
             <tbody><tr>
-              <td width="19"><img src="{% static 'images/main_01.png'%}" width="19" height="22"></td>
+              <td width="19"><img id="img1" src="{% static 'images/main_01.png'%}" width="19" height="22"></td>
               <td width="961" class="main-top">&nbsp;</td>
-              <td width="20"><img src="{% static 'images/main_03.png'%}" width="20" height="22"></td>
+              <td width="20"><img id="img3" src="{% static 'images/main_03.png'%}" width="20" height="22"></td>
             </tr>
             <tr>
               <td class="main-left">&nbsp;</td>
-              <td bgcolor="#E7E7E7" align="center">
+              <td style="padding:2em;" bgcolor="#E7E7E7" align="center">
                 <table width="961" height="1000"  border="0" cellpadding="0" cellspacing="0" class="gap01">
                 <tbody>
                 <tr>
@@ -237,7 +237,8 @@
   <td align="left" valign="top">&nbsp;</td>
 </tr>
 <tr>
-  <td align="left" valign="top" bgcolor="#B3CBE6" class="bdr-body"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <td align="left" valign="top" bgcolor="#B3CBE6" class="bdr-body">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tbody><tr>
        <td width="0%" height="50" align="center" valign="middle" class="black10">&nbsp;</td>
       <td width="49%" height="50" align="left" valign="middle">
@@ -266,9 +267,9 @@
 <td class="main-right">&nbsp;</td>
 </tr>
 <tr>
-<td><img src="{% static 'images/main_07.png'%}" width="19" height="19"></td>
+<td><img id="img7" src="{% static 'images/main_07.png'%}" width="19" height="19"></td>
 <td class="main-button">&nbsp;</td>
-<td><img src="{% static 'images/main_09.png'%}" width="20" height="19"></td>
+<td><img id="img9" src="{% static 'images/main_09.png'%}" width="20" height="19"></td>
 </tr>
 </tbody>
 </table>
@@ -276,5 +277,5 @@
 </tr>
 </tbody>
 </table>
-    
-    </body></html>
+  
+</body></html>

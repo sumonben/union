@@ -12,6 +12,11 @@ COMMENT_CHOICE={
     '1':'বর্তমানে মৃত',
 
 }
+LANGUAGE_CHOICE={
+    '1':'বাংলা',
+    '2':'English',
+
+}
 
 
 class Relation(models.Model):
@@ -40,8 +45,8 @@ class Warish(models.Model):
 
 class CertificateType(models.Model):
     serial=models.IntegerField(default=10)
-    name=models.CharField(max_length=25)
-    name_en=models.CharField(max_length=25)
+    name=models.CharField(max_length=250)
+    name_en=models.CharField(max_length=250)
     amount=models.IntegerField(default=10)
     is_active=models.BooleanField(default=False)
     class Meta:
@@ -88,6 +93,7 @@ class Certificate(models.Model):
     warish=models.ManyToManyField(Warish,blank=True,verbose_name="ওয়ারিশগণ")
     tracking_no=models.CharField(max_length=25,null=True, blank=True,verbose_name="ট্র্যাকিং নং")
     is_verified=models.BooleanField(default=False,verbose_name="ভেরিফাইড কিনা?")
+    language=models.CharField(max_length=25,choices=LANGUAGE_CHOICE,blank=True,null=True,verbose_name="ভাষা")
     
     class Meta:
         verbose_name="সনদসমূহ"
@@ -130,7 +136,7 @@ class WarishanCertificate(models.Model):
     warish=models.ManyToManyField(Warish,blank=True,verbose_name="ওয়ারিশগণ")
     tracking_no=models.CharField(max_length=25,null=True, blank=True,verbose_name="ট্র্যাকিং নং")
     is_verified=models.BooleanField(default=False,verbose_name="ভেরিফাইড কিনা?")
-    
+    language=models.CharField(max_length=25,choices=LANGUAGE_CHOICE,blank=True,null=True,verbose_name="ভাষা")
     class Meta:
         verbose_name="ওয়ারিশান সনদ"
         verbose_name_plural="ওয়ারিশান সনদ"

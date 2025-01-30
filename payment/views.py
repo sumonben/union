@@ -83,7 +83,7 @@ class CheckoutSuccessView(View):
             )
             #print("data['value_d']:",tran_purpose.payment_type)
             
-            if tran_purpose.certificate_type_id == 1:
+            if transaction:
                 print("data['value_d']:",tran_purpose)
                 certificate=WarishanCertificate.objects.filter(tracking_no=data['value_a']).first()
                 certificate.transaction=transaction
@@ -93,14 +93,14 @@ class CheckoutSuccessView(View):
                 context['purpose']=tran_purpose
                 context['certificate']=certificate
                 return render(request,self.template_name,context)
-            if tran_purpose.payment_type.id == 2:
-                #print("data['value_d']:",tran_purpose.payment_type)
-                student=Certificate.objects.filter(class_roll=data['value_a']).first()
-                #print(student)
-                context['transaction']=transaction
-                context['purpose']=tran_purpose
-                context['certificate']=certificate
-                return render(request,self.template_name,context)
+            # if tran_purpose.payment_type.id == 2:
+            #     #print("data['value_d']:",tran_purpose.payment_type)
+            #     student=Certificate.objects.filter(class_roll=data['value_a']).first()
+            #     #print(student)
+            #     context['transaction']=transaction
+            #     context['purpose']=tran_purpose
+            #     context['certificate']=certificate
+            #     return render(request,self.template_name,context)
 
             
             messages.success(request,'Payment Successful!!')
