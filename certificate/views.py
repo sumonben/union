@@ -182,7 +182,7 @@ class DownloadCertificateView(View):
         return render(request,self.template_name, context)
     def post(self, request, *args, **kwargs):
         context={}
-        certificate=WarishanCertificate.objects.filter(tracking_no=request.POST.get('tracking_no'),certificate_type=request.POST.get('name')).first()
+        certificate=WarishanCertificate.objects.filter(tracking_no=request.POST.get('tracking_no'),certificate_type=request.POST.get('certificate_type')).first()
         transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
         if certificate:
             if transaction:

@@ -32,7 +32,7 @@
         </div>-->
         <!-- FORMS -->
         <div >
-  <form class="needs-validation" action="{% url 'submit_form' %}" id="form-wrapper" method="post" name="form-wrapper" novalidate="" enctype="multipart/form-data" target="_blank">
+  <form  action="{% url 'submit_form' %}" method="post" enctype="multipart/form-data" target="_blank">
         {% csrf_token %}
             <div id="qbox-container">
                     <div id="steps-container">

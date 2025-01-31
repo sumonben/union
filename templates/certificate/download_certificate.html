@@ -23,11 +23,12 @@
     <div class="" style="margin: auto;width: 100%;">
        
 <div >
-  <form class="needs-validation" action="" id="form-wrapper" method="post" name="form-wrapper" novalidate="" enctype="multipart/form-data">
+  <form  action="{% url 'download_certificate_form' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
             <div id="qbox-container">
-                    <div id="steps-container">
-                        <div class="step d-block">
+                    <div id="steps-container" >
+                        <div class="step d-block" style="min-height:500px">
+                          <div style="margin-top:10%;">
                           <div><h1 style="text-align: center;"><u>আপনার সনদটি ডাউনলোড করুন</u></h1></div>
 
                           <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
@@ -35,12 +36,10 @@
                             <tbody>
                             <tr>
                               <td align="left">
-                                <fieldset>
                                 <table width="100%" border="1" cellspacing="0" cellpadding="10">
                                   {% if message %}
                                   <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 40px; background-color:rgb(168, 8, 8); color: #fff;padding: 15px;"> {{message}} </th></thead>
                                   {% endif %}
-                                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 40px; background-color: #245b80; color: #fff;padding: 15px;"> ট্র্যাকিং নং ও সনদের ধরণ এন্ট্রি দিন </th></thead>
                                   <tbody>
                                   {% for field in form %}
                                   {{ field.errors }}
@@ -62,17 +61,19 @@
                                   
     
                                 </tbody></table>
-                              </fieldset>
                             </td>
                             
                           </tr>
                               
                           </tbody>
                         </table>
-                        
-                          
 
-                          
+                        <div id="q-box__buttons" >
+                      
+                          <button id="submit-btn" type="submit" >সাবমিট</button>
+                      </div>
+                      </div>
+                        
 
                         </div>
                        
@@ -81,10 +82,7 @@
                     
                     
                 </div>
-                    <div id="q-box__buttons" >
                       
-                      <button id="submit-btn" type="submit" class="d-inline-block">সাবমিট</button>
-                  </div>   
             </div>
             
           </form>

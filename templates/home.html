@@ -246,14 +246,79 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                             <tbody>
                             <tr>
                               <td align="left">
-                                <fieldset>
-                                    <div>
-                                        <a href="{% url 'apply_for_certificate' 1 %}">নাগরিকত্ব ও চারিত্রিক সনদ </a>
+                                <fieldset class="card_fieldset"  >
+                                    <div >
+                                        <a   href="{% url 'apply_for_certificate' 1 %}">নাগরিকত্ব ও চারিত্রিক সনদ </a>
+                                        <br>
+                                        <img src="{% static 'images/citizen.png' %}" alt="Citizenship">
                                      </div>
+                                    </fieldset>
+                                <fieldset class="card_fieldset" >
+
                                      <div>
-                                        <a href="{% url 'apply_for_certificate' 2 %}">ওয়ারিশান সনদ </a>
+                                        <a href="{% url 'apply_for_certificate' 2 %}">ওয়ারিশান সনদ </a><br>
+                                        <img src="{% static 'images/citizen.png' %}" alt="Citizenship">
+
                                      </div>
-                              </fieldset>
+                              </fieldset><fieldset class="card_fieldset"  >
+                                <div >
+                                    <a   href="{% url 'apply_for_certificate' 3 %}">ভোটার হওয়ার জন্য সনদ </a><br>
+                                    <img src="{% static 'images/citizen.png' %}" alt="Citizenship">
+
+                                 </div>
+                                </fieldset>
+                            <fieldset class="card_fieldset" >
+
+                                 <div>
+                                    <a href="{% url 'apply_for_certificate' 2 %}">ওয়ারিশান সনদ </a><br>
+                                    <img src="{% static 'images/citizen.png' %}" alt="Citizenship">
+
+                                 </div>
+                          </fieldset><fieldset class="card_fieldset"  >
+                            <div >
+                                <a   href="{% url 'apply_for_certificate' 1 %}">নাগরিকত্ব ও চারিত্রিক সনদ </a><br>
+                                <img src="{% static 'images/citizen.png' %}" alt="Citizenship">
+
+                             </div>
+                            </fieldset>
+                        <fieldset class="card_fieldset" >
+
+                             <div>
+                                <a href="{% url 'apply_for_certificate' 2 %}">ওয়ারিশান সনদ </a>
+                                <img src="{% static 'images/citizen.png' %}" alt="Citizenship">
+
+                             </div>
+                      </fieldset><fieldset class="card_fieldset"  >
+                        <div >
+                            <a   href="{% url 'apply_for_certificate' 1 %}">নাগরিকত্ব ও চারিত্রিক সনদ </a>
+                         </div>
+                        </fieldset>
+                    <fieldset class="card_fieldset" >
+
+                         <div>
+                            <a href="{% url 'apply_for_certificate' 2 %}">ওয়ারিশান সনদ </a>
+                         </div>
+                  </fieldset><fieldset class="card_fieldset"  >
+                    <div >
+                        <a   href="{% url 'apply_for_certificate' 1 %}">নাগরিকত্ব ও চারিত্রিক সনদ </a>
+                     </div>
+                    </fieldset>
+                <fieldset class="card_fieldset" >
+
+                     <div>
+                        <a href="{% url 'apply_for_certificate' 2 %}">ওয়ারিশান সনদ </a>
+                     </div>
+              </fieldset><fieldset class="card_fieldset"  >
+                <div >
+                    <a   href="{% url 'apply_for_certificate' 1 %}">নাগরিকত্ব ও চারিত্রিক সনদ </a>
+                 </div>
+                </fieldset>
+            <fieldset class="card_fieldset" >
+
+                 <div>
+                    <a href="{% url 'apply_for_certificate' 2 %}">ওয়ারিশান সনদ </a>
+                 </div>
+          </fieldset>
                             </td>
                             
                           </tr>
@@ -270,10 +335,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                     
                     
                 </div>
-                    <div id="q-box__buttons" >
                       
-                        <button id="submit-btn" class="btn-default" onclick="window.print()" >প্রিন্ট অথবা ডাউনলোড</button>
-                    </div>   
                    
          
 
@@ -283,8 +345,6 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
           
 
  
-    <img id="graph-image" height="500px" src="{% static 'images/gmrwc_logo.png' %}" alt="" >
-    {% comment %} <div style="float:right;margin:2%"><img  height="80px" src="{% static 'images/principal_signature.png' %}" alt="" ><br>Principal</div> {% endcomment %}
 
   </div>
 
