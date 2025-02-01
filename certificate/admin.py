@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Certificate,Adress,WarishanCertificate,Warish,CertificateType,Relation,Cause
+from .models import Certificate,Adress,Person,CertificateType,Relation,Cause
 from import_export.admin import ExportActionMixin,ImportExportMixin
 # Register your models here.
 
@@ -10,14 +10,14 @@ class CertificateAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display_links = ['name','email','phone',]
     list_filter=['is_verified']
 
-@admin.register(WarishanCertificate)
-class WarishanCertificateAdmin(ImportExportMixin,admin.ModelAdmin):
-    search_fields=[  'email','phone',]
-    list_display=[ 'name','tracking_no','email','phone','transaction_detaills','paid_at','is_verified']
-    list_display_links = ['name','email','phone',]
-    list_filter=['is_verified']
+# @admin.register(WarishanCertificate)
+# class WarishanCertificateAdmin(ImportExportMixin,admin.ModelAdmin):
+#     search_fields=[  'email','phone',]
+#     list_display=[ 'name','tracking_no','email','phone','transaction_detaills','paid_at','is_verified']
+#     list_display_links = ['name','email','phone',]
+#     list_filter=['is_verified']
 
-@admin.register(Warish)
+@admin.register(Person)
 class WarishAdmin(ExportActionMixin,admin.ModelAdmin):
     pass
 @admin.register(Cause)

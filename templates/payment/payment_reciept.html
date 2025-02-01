@@ -81,11 +81,46 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
 
 
 @media print and (min-width: 480px) {
-    #heading{
-        margin-top:20px;
-        margin-left:10px;
+  #second{
+    margin-top:-50px;
+}
+ #main_table{
+   padding:5em;
+   -webkit-print-color-adjust: exact; 
 
+ }
+ #img1,#img3,#img7,#img9{
+   display:none;
+ }
+   #heading{
+       margin-top:20px;
+       margin-left:10px;
+       
+
+   }
+   #first_table{
+       width:100%;
+   }
+   #column{
+     width:100%;
+   }
+ 
+   .main-left{
+     display:none;
     }
+    .main-right{
+     display:none;
+    }
+   
+ .main-button {
+   display:none;
+
+ }
+ .main-top{
+   display:none;
+
+ } 
+
     #first_table{
         width:100%;
     }
@@ -93,15 +128,7 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
       width:100%;
     }
   
-    #graph-image{
-      opacity: 0.1; 
-      left: 0; 
-      right: 0; 
-      position: absolute; 
-      margin-left: 27%; 
-      margin-right: 18%; 
-      margin-top: -30%;
-    } 
+   
     
     table.result{
       width:100%;
@@ -126,26 +153,7 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
       width:100%;
       margin-left:0%;
     }
-    #graph-image{
-      opacity: 0.1; 
-      left: 0; 
-      right: 0; 
-      position: absolute; 
-      margin-left: 25%; 
-      margin-right: 20%; 
-      margin-top: -55%;
-    }
-    #google_translate_element{
-      display:none;
-    }
-    #graph-image1{
-      opacity: 1; 
-      left: 0; 
-      right: 0; 
-      position: absolute; 
-      margin-left: 70%; 
-      margin-top: -11%;
-    }
+   
   }
   
   
@@ -168,23 +176,7 @@ table.result th, table.result td {
 
 
 
-#graph-image{
-  opacity: 0.1; 
-  left: 0; 
-  right: 0; 
-  position: absolute; 
-  margin-left: 30%; 
-  margin-right: 25%; 
-  margin-top: -30%;
-}
-#graph-image1{
-  opacity: 1; 
-  left: 0; 
-  right: 0; 
-  position: relative; 
-  margin-left: 80%; 
-  margin-top: -20%;
-}
+
 #column{
   width:95%;
   margin-left:2%;
@@ -194,26 +186,7 @@ table.result th, table.result td {
     width:100%;
     margin-left:0%;
   }
-  #graph-image{
-    opacity: 0.1; 
-    left: 0; 
-    right: 0; 
-    position: absolute; 
-    margin-left: 27%; 
-    margin-right: 20%; 
-    margin-top: -30%;
-  }
-  #google_translate_element{
-    display:none;
-  }
-  #graph-image1{
-    opacity: 1; 
-    left: 0; 
-    right: 0; 
-    position: absolute; 
-    margin-left: 70%; 
-    margin-top: -11%;
-  }
+  
 }
 
 
@@ -237,7 +210,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
         <!-- FORMS -->
         <div >
                         <div class="step d-block">
-                            <div><h1 style="text-align: center;"><u>{{certificate.certificate_type.title}}-এর জন্য আবেদন</u></h1></div>
+                            <div><h1 style="text-align: center;"><u>{{certificate.certificate_type.name}}-এর জন্য আবেদন</u></h1></div>
 
                             <div id="heading"><h3 style="text-align: left; margin-left:2%">ট্র্যাকিং নম্বর:<u>{{certificate.tracking_no}}</u></h3></div>
 
@@ -290,7 +263,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ওয়ার্ডঃ</b>  </td>
                                         <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
                                           <label>
-                                            {{certificate.adress.village.word}}                                        
+                                            {{certificate.adress.village.ward.name}}                                        
                                           </label>
 
                                       </tr>
@@ -343,8 +316,6 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
           
 
  
-    <img id="graph-image" height="500px" src="{% static 'images/gmrwc_logo.png' %}" alt="" >
-    {% comment %} <div style="float:right;margin:2%"><img  height="80px" src="{% static 'images/principal_signature.png' %}" alt="" ><br>Principal</div> {% endcomment %}
 
   </div>
 

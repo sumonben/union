@@ -32,7 +32,7 @@
         </div>-->
         <!-- FORMS -->
         <div >
-  <form  action="{% url 'warishan_form' %}"  method="post" enctype="multipart/form-data">
+  <form class="needs-validation" action="{% url 'certificate_form' %}" id="form-wrapper" method="post" name="form-wrapper"  enctype="multipart/form-data">
         {% csrf_token %}
             <div id="qbox-container">
                     <div id="steps-container">
@@ -43,15 +43,32 @@
 
                             <tbody>
                             <tr>
+                              
                               <td align="left">
                                 <fieldset>
                                 <table width="100%" border="1" cellspacing="0" cellpadding="2">
-                                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;"> ব্যক্তিগত তথ্য</th></thead>
+                                  <thead style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;">
+                                     ব্যক্তিগত তথ্য                                   
+                                     {% if certificate_type.serial == 1 %}
+                                    &nbsp(সনদটি ইংরেজিতে চাইলে নাম, বাবার নাম ও মায়ের নাম ইংরেজিতে পুরণ করুন ও ভাষা ইংরেজি সিলেক্ট করুন)                                  
+                                    {% endif %}
+                                  </th></thead>
+                                  
                                   <tbody>
+                                    <tr>
+                                      <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="15%" align="left" valign="middle" class="black12"></td>
+                                        <td width="75%" align="right" valign="middle"><span id="sprytextfield1" style="margin:50px;">
+                                          <label>
+                                            <br>{{form.language.label_tag}}&nbsp{{form.language}} &nbsp&nbsp                                       
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+
+                                    </tr>   
                                   {% for field in form %}
                                   {{ field.errors }}
-                                  {% if field.label != 'মেম্বারের সুপারিশ ফাইল' and field.label != 'এনআইডি-জন্ম নিবন্ধন' %}
-
+                                  {% if field.name != 'file' and field.name != 'nid_file' and field.name != 'language'  %}
+                                    
                                     <tr>
                                         <td width="10%" align="left" valign="middle">&nbsp;</td>
                                         <td width="15%" align="left" valign="middle" class="black12">{{field.label_tag}}</td>
@@ -77,9 +94,10 @@
                               
                           </tbody>
                         </table>
+
                         <fieldset>
                                   <table width="100%" border="1" cellspacing="0" cellpadding="5">
-                                    <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;"> ঠিকানা</th></thead>
+                                    <thead style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;"> ঠিকানা</th></thead>
                                     <tbody>
                                       {% for field in adress_form %}
                                       <tr>
@@ -97,11 +115,13 @@
                                   </tbody>
                                 </table>
                               </fieldset>
+
                               {% if formset %}
+
                               <fieldset>
                                 <table width="100%" border="1" cellspacing="0" cellpadding="3">
-                                  <thead style="height: 25px; background-color: #245b80; color: #fff;">
-                                    <th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">ওয়ারিশগণ</th>
+                                  <thead style="height: 25px; background-color: #035a4c; color: #fff;">
+                                    <th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;">ওয়ারিশগণ</th>
                                   </thead>
                                   <tbody>
                                     <tr><td colspan="5" align="center">
@@ -129,10 +149,10 @@
                                       
                                 </tbody></table>
                               </fieldset>
-                              {% endif %}
+                             {% endif %}
                               <fieldset>
                                 <table width="100%" border="1" cellspacing="" cellpadding="5">
-                                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">মেম্বর সুপারিশ ফাইল ও এনআইডি</th></thead>
+                                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;">মেম্বর সুপারিশ ফাইল ও এনআইডি</th></thead>
                                   <tbody>
                                     <tr>
                                         <td width="10%" align="left" valign="middle">&nbsp;</td>

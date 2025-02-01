@@ -349,7 +349,8 @@ input[type="text"]:focus, input[type="email"]:focus {
 }
 @media (max-width: 767px) {
   #qbox-container {
-    padding: 30px;
+    padding: 40px;
+    padding-top: 62px;
   }
   #steps-container {
     width: 100%;
@@ -362,6 +363,7 @@ input[type="text"]:focus, input[type="email"]:focus {
 @media (max-width: 560px) {
   #qbox-container {
     padding: 40px;
+    padding-top: 62px;
   }
   #title-container {
     padding-top: 45px;

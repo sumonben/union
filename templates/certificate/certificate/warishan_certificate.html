@@ -254,7 +254,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                                 <td width="75%" align="center" valign="middle"><span id="sprytextfield1"><b>সম্পর্ক</b></td>
                                                 <td width="15%" align="center" valign="middle" class="sprytextfield1"><b> মন্তব্য </b></td>
                                             </tr>
-                                        {% for warish in certificate.warish.all %}
+                                        {% for warish in certificate.person.all %}
                                             <tr>
                                                 
                                                 <td  width="15%" align="center" valign="middle" class="sprytextfield1"><h5>{{forloop.counter}} </h5></td>
@@ -268,10 +268,10 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         </table>
                                     </td>
                                     <tr valign="bottom">
-                                      <td  colspan="1" align="center"></div><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Tracking No: {{certificate.tracking_no}}&amp;size=200x200" width="120px" height="120px" alt="" title="{{student.class_roll}}:{{student.name}}" width="50" height="50" /></div></td>
+                                      <td  colspan="1" align="center"></div><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{certificate.certificate_type.name_en}}%0DTracking No: {{certificate.tracking_no}}%0DName:{{certificate.name}}&amp;size=200x200" width="120px" height="120px" alt="{{certificate.name}}" title="{{certificate.certificate_type.name_en}}:{{certificate.name}}" width="50" height="50" /></div></td>
 
                                         <td  colspan="2" align="right"><br><br><br></div></td>
-                                        <td  colspan="1" align="right"><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if chairman.signature %}{{chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{chairman.name}}<br>{{chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
+                                        <td  colspan="1" align="right"><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if certificate.chairman.signature %}{{certificate.chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{certificate.chairman.name}}<br>{{certificate.chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
 
                                        
                                    </tr>

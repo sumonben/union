@@ -56,6 +56,7 @@ def sslcommerz_payment_gateway(request, certificate,certificate_type):
 
     response = sslcommez.createSession(body)
     #print(response)   
-    return  response["GatewayPageURL"]
+    #return  response["GatewayPageURL"]
+    return 'https://sandbox.sslcommerz.com/gwprocess/v4/gw.php?Q=pay&SESSIONKEY=' + response["sessionkey"]
     return 'https://securepay.sslcommerz.com/gwprocess/v4/api.php?Q=pay&SESSIONKEY=' + response["sessionkey"]
 

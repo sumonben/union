@@ -12,7 +12,7 @@ from .models import Transaction,PaymentPurpose
 from .sslcommerz import sslcommerz_payment_gateway
 from sslcommerz_lib import SSLCOMMERZ 
 from django.contrib.auth import get_user_model
-from certificate.models import Certificate,WarishanCertificate,CertificateType
+from certificate.models import Certificate,CertificateType
 
 # Create your views here.
 cradentials = {'store_id': 'israb672a4e32dfea5',
@@ -85,7 +85,7 @@ class CheckoutSuccessView(View):
             
             if transaction:
                 print("data['value_d']:",tran_purpose)
-                certificate=WarishanCertificate.objects.filter(tracking_no=data['value_a']).first()
+                certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
                 certificate.transaction=transaction
                 certificate.save()
                 print('Cerficate paid:',certificate)
