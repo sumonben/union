@@ -457,7 +457,7 @@ fieldset {
 }
 .link-home {
 	font-family: kalpurush;
-	font-size: 17px;
+	font-size: 20px;
 	color: rgb(255, 82, 51);
 	text-decoration: none;
 	font-weight: bold;
@@ -465,7 +465,7 @@ fieldset {
 }
 .link-home:hover {
 	font-family: kalpurush;
-	font-size: 17px;
+	font-size: 20px;
 	color: #09F;
 	text-decoration: none;
 	font-weight: bold;
@@ -753,4 +753,17 @@ fieldset {
 	text-decoration: none;
 	font-weight: bold;
 	page-break-before: always;
+}
+@media(max-width:767px){
+
+	.bdr-body {
+		font-family: kalpurush;
+		font-size: 12px;
+		color: #323A89;
+		text-decoration: none;
+		border: 1px solid #89AED8;
+		font-weight: normal;
+		border-radius: 4px;
+	}
+	
 }

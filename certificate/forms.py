@@ -31,9 +31,9 @@ LANGUAGE_CHOICE={
 WarishFormSet = modelformset_factory(
     Person, fields=("name", "relation","comment"), extra=1,
     widgets = {
-            'name': forms.TextInput(attrs={'class': 'textfieldUSER',}),
-            'relation': forms.Select(attrs={'class': 'textfieldUSER',}),            
-            'comment': forms.Select(choices=COMMENT_CHOICE,attrs={'class': 'textfieldUSER',}),            
+            'name': forms.TextInput(attrs={'class': 'textfieldUSERinfo',}),
+            'relation': forms.Select(attrs={'class': 'textfieldUSERinfo',}),            
+            'comment': forms.Select(choices=COMMENT_CHOICE,attrs={'class': 'textfieldUSERinfo',}),            
         }
 )
 
@@ -109,8 +109,8 @@ class CertificateDownloadForm(forms.ModelForm):
         model = Certificate
         fields = ['tracking_no','certificate_type']
         widgets = {
-            'tracking_no': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'এনআইডি অথবা জন্ম নিবন্ধন','onkeypress' : "myFunction(this.id);",'required':True,}),
-            'certificate_type': forms.Select(attrs={'class': 'textfieldUSER','onkeypress' : "myFunction(this.id);",'required':True,}),
+            'tracking_no': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'এনআইডি অথবা জন্ম নিবন্ধন','onkeypress' : "myFunction(this.id);",'required':True,}),
+            'certificate_type': forms.Select(attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id);",'required':True,}),
     }
 
 
@@ -122,9 +122,9 @@ class AdressForm(forms.ModelForm):
         fields = "__all__"
         exclude=['serial','holding_no','union','district','upazilla']
         widgets = {
-            'village': forms.Select(attrs={'class': 'textfieldUSER','onkeypress' : "myFunction(this.id);",'label':'Village/house','required':True}),
-            'ward': forms.Select(attrs={'class': 'textfieldUSER','onkeypress' : "myFunction(this.id);",'label':'Street No.','required':True}),
-            'post_office': forms.Select(attrs={'class': 'textfieldUSER', 'onkeypress' : "myFunction(this.id);",'required':True}),
+            'village': forms.Select(attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id);",'label':'Village/house','required':True}),
+            'ward': forms.Select(attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id);",'label':'Street No.','required':True}),
+            'post_office': forms.Select(attrs={'class': 'textfieldUSERinfo', 'onkeypress' : "myFunction(this.id);",'required':True}),
             
 }
     

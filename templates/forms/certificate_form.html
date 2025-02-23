@@ -72,11 +72,11 @@
                                     <tr>
                                         <td width="10%" align="left" valign="middle">&nbsp;</td>
                                         <td width="15%" align="left" valign="middle" class="black12">{{field.label_tag}}</td>
-                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <td width="75%" align="left" valign="middle">
                                           <label>
                                             {{field}}                                        
                                           </label>
-                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                          </td>
 
                                       </tr>
                                       {% endif %}
@@ -96,7 +96,8 @@
                         </table>
 
                         <fieldset>
-                                  <table width="100%" border="1" cellspacing="0" cellpadding="5">
+                             
+                                  <table width="100%" border="1" valign="middle" align="center" cellspacing="0" cellpadding="5">
                                     <thead style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;"> ঠিকানা</th></thead>
                                     <tbody>
                                       {% for field in adress_form %}

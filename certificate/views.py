@@ -16,6 +16,17 @@ import random
 def gernerate_tracking_no( size=8, chars=string.ascii_uppercase + string.digits):
     return "".join(random.choice(chars) for _ in range(size))
 
+
+class FrontView(View):
+    model = Certificate()
+    template_name = 'front.html'
+    def get(self, request, *args, **kwargs):
+        context={}
+        return render(request,'front.html',context)
+    def post(self, request, *args, **kwargs):
+        context={}
+        return render(request,'front.html',context)
+
 class HomeView(View):
     model = Certificate()
     template_name = 'home.html'
