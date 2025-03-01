@@ -2,7 +2,7 @@
 <style>
     .heading{
         color:#fff;
-        font-size: 30px;
+        font-size: 40px;
 
 
     }
@@ -74,13 +74,13 @@
         <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler mMenu collapsed"><span class="fas fa-bars"></span></button>
         <div id="navbarSupportedContent" class="navbar-collapse collapse" style="">
             <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler mMenu collapsed"><span class="fa fa-close"></span></button>
-            <ul class="navbar-nav ml-auto" style="float:right;">
-                <li class="nav-item"><a href="/" class="{% if request.resolver_match.url_name in 'home' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}" aria-current="page">Home</a></li>
-                <li class="nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name == 'about' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">About us</a>
+            <ul class="navbar-nav ml-auto" style="float:right; margin-left:20%;">
+                <li class="nav-item"><a href="/" class="{% if request.resolver_match.url_name in 'home' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}" aria-current="page">হোম</a></li>
+                <li class="nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name == 'about' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">আবেদন করুন</a>
                     <div aria-labelledby="navbarDropdown" class="dropDown dropdown-menu megamenu megamenu-lg">
                         <div class="row m-0">
                             <div class="col-lg-4 pr-0">
-                                <h4 class="menu-head"><a href="/content/about-basis-1" class="">About BCSGEICTA</a></h4>
+                                <h4 class="menu-head"><a href="/content/about-basis-1" class="">আবেদন করুন</a></h4>
                                           <ul>
                                              
                                             </ul>
@@ -98,15 +98,15 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name in 'membership' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">Membership</a>
+                <li class="nav-item nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name in 'membership' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">সনদ ডাউনলোড করুন</a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <ul>
                               
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name in 'media' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">Media
-                        Center</a>
+                <li class="nav-item nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name in 'media' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">সনদ যাচাই করুন
+                        </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <ul>
                             <li class="subMenu"><span class="fas fa-arrow-right"><a href="" class="nav-link">News</a></span>
@@ -116,7 +116,7 @@
                     </div>
                 </li>
                 
-                <li class="nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Important Links</a>
+                <li class="nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">যোগাযোগ</a>
                     <div aria-labelledby="navbarDropdown" class="dropDown dropdown-menu megamenu megamenu-lg">
                         <div class="row m-0">
                             <div class="col-lg-4 pr-0">
@@ -190,7 +190,7 @@
                     </form> <button type="button" class="close text-light search-box-close"><i class="mdi mdi-close"></i></button>
                 </div>
             </div>
-            <ul class="social-menu navbar-nav">
+            {% comment %} <ul class="social-menu navbar-nav">
                 <li class="nav-item"><a href="javascript:void(0)" class="nav-link top-search search-box-open text-danger"> <i class="fa fa-search" aria-hidden="true"></i></a></li>
                 <li class="nav-item"><a target="_blank" href="https://www.facebook.com/profile.php?id=100084759775076" class="nav-link">
                         <p><i class="bi bi-facebook"></i></p>
@@ -204,7 +204,7 @@
                 <li class="nav-item"><a target="_blank" href="https://www.instagram.com/tarique_sumon/" class="nav-link">
                         <p><i class="bi bi-linkedin"></i></p>
                     </a></li>
-            </ul>
+            </ul> {% endcomment %}
            
         </div>
     </nav>

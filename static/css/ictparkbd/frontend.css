@@ -2325,8 +2325,8 @@ pre code {
 .form-control {
     display: block;
     width: 100%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
+    height: calc(1.5em + .75rem + 60px);
+    padding: .1rem .75rem;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -2445,7 +2445,7 @@ select.form-control:focus::-ms-value {
 .form-control-sm {
     height: calc(1.5em + .5rem + 2px);
     padding: .25rem .5rem;
-    font-size: .875rem;
+    font-size: .900rem;
     line-height: 1.5;
     border-radius: .2rem
 }
@@ -9068,7 +9068,7 @@ button.bg-black:hover {
 
 .pt-5,
 .py-5 {
-    padding-top: 3rem !important
+    padding-top: 1rem !important
 }
 
 .pr-5,
@@ -38841,7 +38841,7 @@ img[lazy=loaded] {
     left: 0;
     width: 100%;
     z-index: 1030;
-    background: #10707f;
+    background: #035a4c;
     -webkit-transform: translate(0);
     transform: translate(0);
     -webkit-transition: -webkit-transform .3s cubic-bezier(.17, .67, .54, .44);
@@ -38994,15 +38994,15 @@ button.close.text-light.search-box-close {
 
 @media (min-width:768px) {
     .logo img {
-        height: 65px;
+        height: 80px;
         margin-top: -60px;
         -webkit-transition: all .8s ease;
         transition: all .8s ease
     }
 
     .header.sticky .logo img {
-        height: 60px;
-        margin-top: -10px
+        height: 70px;
+        margin-top: -20px
     }
     .mongram{
     opacity: 0.5;
@@ -39010,9 +39010,9 @@ button.close.text-light.search-box-close {
 }
 }
 
-@media (max-width:768px) {
+@media (max-width:767px) {
     .header .navbar {
-        background: #f4f4f4
+        background: #fff
     }
 
     .logo img {
@@ -39671,7 +39671,7 @@ button.close.text-light.search-box-close {
 }
 
 .footer-bottom {
-    background: #3f3f40;
+    background: #035a4c;
     padding: 1rem 0
 }
 
@@ -40314,7 +40314,9 @@ button.close.text-light.search-box-close {
 }
 
 .loginBox input,
+.loginBox select,
 .loginBox label {
+    height:35px;
     padding-left: 2rem !important
 }
 
@@ -41688,7 +41690,7 @@ button.close.text-light.search-box-close {
 .services {
     position: relative;
     overflow: hidden;
-    padding: 4rem 0;
+    padding: 2rem 0;
     background: rgba(109, 200, 190, .2);
     background-attachment: fixed
 }

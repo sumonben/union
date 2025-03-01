@@ -19,23 +19,19 @@
     }
 </style>
 <div class="services">
-  <div><h3 style="text-align: center;"><u>আপনার প্রয়োজনীয় সনদ বাছাই করুন</u></h3></div>
+  <div><h1 style="text-align: center;"><u>আপনার প্রয়োজনীয় সনদ বাছাই করুন</u></h1></div>
   
   <div data-v-6f04a53f="" class="memberRegistration py-5">
     <div class="container-wrapper">
       <div class="row justify-content-md-center">
-        <div class="col col-lg-10">
+        <div class="col col-lg-8">
           <div class="card login-body shadow-lg rounded-10 py-5">
-            <table width="100%" border="1" cellspacing="0" cellpadding="10">
-              <thead><th colspan="5" style="height: 40px; background-color: #035a4c; color: #fff;padding: 15px;font-size:20px;text-align:center;"> সনদ বাছাই ফর্ম </th></thead>
-              <tbody>
-              </tbody>
-            </table>
+  
                 <div class="card-body">
-
                 <span class="bubbleNew"><img src="{%static 'images/ictpark_monogram.png'%}" class="rounded-circle" style="width: 200px;height: 200px;" /></span>
 
-            <span class="shape"><img align="center" src="{% static 'images\ictparkbd_logo.jpg' %}"></span> 
+            <span class="shape"><img align="center" src="{% static 'images\ictparkbd_logo.jpg' %}"></span> <h4 class="text-center"><big>সদস্য হতে</big></h4> <h3 class="text-center mb-4">রেজিস্ট্রেশন করুন</h3> <!--  --> 
+            
              {%if email %}
             
             <div class="alert alert-danger" role="alert">
@@ -75,7 +71,7 @@
                             <div class="col-sm-8 form-group" style="margin:auto;">
                               <div class="row">
                                 <div class="col-sm-10" >
-                                  <label for="" class="col-form-label-sm m-0" style="font-size:20px;">{{field.label}}</label> 
+                                  <label for="" class="col-form-label-sm m-0">{{field.label}}</label> 
                                   <div class="loginBox">
                                             {{field}}                                        
                                   </div> <!--  --> <div class="invalid-feedback"></div>
@@ -106,16 +102,93 @@
                               </div>
                             </div>
                           </div>
+                    
                             {% endif %}
 
                     {% endfor %}
-                
+                <div class="col-sm-12 form-group">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">আপনার নাম</label> 
+                    <div class="loginBox">
+                      <input type="text" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'নাম লিখুন'" placeholder="নাম লিখুন " name="name" class="form-control form-control-sm" /> <span class="fa fa-user"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">
+                      ইমেইল (
+                      <span class="text-danger">সক্রিয়</span>)
+                    </label>
+                    <div class="loginBox">
+                      <input type="text" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ie: member@mail.com'" placeholder="ie: member@mail.com" name="email" class="form-control form-control-sm" /> <span class="fa fa-email"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div> <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">
+                      মোবাইল (
+                      <span class="text-danger">১২ ডিজিট</span>)
+                    </label>
+                    <div class="loginBox">
+                      <input type="text" autocomplete="off" id="mobile12" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ie: 01*********'" placeholder="ie: 01*********" name="phone" class="form-control form-control-sm" /> <span class="fa fa-phone"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+              </div>
               
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="" class="col-form-label-sm m-0">গ্রুপ</label> <div class="loginBox">
+                          <select  autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ie: A-Z, a-z,digit(0-9),special character'" placeholder="ie: A-Z, a-z, digit(0-9),special character" name="group" class="form-control form-control-sm" >  <option>মানবিক </option><option> বিজ্ঞান</option><option>ব্যবসা </option> <option> স্নাতক</option> <option>  প্রযোজ্য নয় </option></select>
+                        </div> <!--  --> <div class="invalid-feedback"></div>
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="" class="col-form-label-sm m-0">সেশন</label> <div class="loginBox">
+                          <select  autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ie: A-Z, a-z,digit(0-9),special character'" placeholder="ie: A-Z, a-z, digit(0-9),special character" name="session" class="form-control form-control-sm" >  <option>2023-24 </option><option> 2024-25 </option><option>2025-26  </option>2026-27 <option> প্রযোজ্য নয় </option></select>
+                        </div> <!--  --> <div class="invalid-feedback"></div>
+                      </div>
+                </div>
+              </div>
               
-             
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">পাসওয়ার্ড</label> <div class="loginBox">
+                      <input type="password" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ie: A-Z, a-z,digit(0-9),special character'" placeholder="ie: A-Z, a-z, digit(0-9),special character" name="password" class="form-control form-control-sm" /> <span class="fa fa-key"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">কনফার্ম পাসওয়ার্ড</label> <div class="loginBox">
+                      <input type="password" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Re-type your password'" placeholder="Re-type your password" name="password_confirmation" class="form-control form-control-sm" /> <span class="fa fa-key"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                 <input style="display:none" type="text" name="roll" id="roll" value="00000" >
+                 <input style="display:none" type="text" name="college" id="college" value="Enter College">
+              </div> 
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                  <div class="custom-control custom-checkbox">
+                    <div class="col-form-label-sm font-weight-bold mb-0 custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" value="true" id="__BVID__164" /><label class="custom-control-label" for="__BVID__164">
+                        পাসওয়ার্ড ভুলে গেলে
+                        <a target="__blank" href=""> এখানে ক্লিক করুন</a>
+                      </label>
+                    </div> <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+              </div> 
+              <div class="col-sm-3 form-group mb-0">
+                <button type="submit" class="btn btn-primary text-white"><span>সাবমিট</span></button>
+              </div> 
               <div class="col-sm-9 form-group">
                 <p class="text-right">
-                  <button type="submit" class="btn btn-danger text-white"><span>সাবমিট</span></button>
+                  যদি সদস্য হয়ে থাকেন ?
+                  <a href="" class="btn btn-danger font-weight-bold rounded-50 ml-2">লগিন</a>
                 </p>
               </div>
             </form>
@@ -126,7 +199,94 @@
   </div>
 </div>
 
+<div class="container-wrapper">
 
+<!-- CONTAINER -->
+<div class="box_container" style="width: 100%; margin: 0px;">
+    <div class="" style="margin: auto;width: 100%;">
+        <!-- TITLE 
+        <div class="col-lg-4 offset-lg-1 mx-0 px-0">
+            <div id="title-container">
+                <img class="covid-image" src="./img/covid-check.png">
+                <h2>COVID-19</h2>
+                <h3>Self Checker Form</h3>
+                <p>A clinical assessment multi-step form that will assist individuals on deciding when to seek testing or medical care if they suspect they or someone they know has contracted COVID-19 or has come into close contact with someone who has COVID-19</p>
+            </div>
+        </div>-->
+        <!-- FORMS -->
+        <div >
+  <form  action=""  method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+            <div id="qbox-container">
+                    <div id="steps-container">
+                        <div class="step d-block">
+                          <div><h1 style="text-align: center;"><u>আপনার প্রয়োজনীয় সনদ বাছাই করুন</u></h1></div>
+
+                          <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
+
+                            <tbody>
+                            <tr>
+                              <td align="left">
+                                <fieldset>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="10">
+                                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 40px; background-color: #245b80; color: #fff;padding: 15px;"> সনদ বাছাই ফর্ম </th></thead>
+                                  <tbody>
+                                  {% for field in form %}
+                                  {{ field.errors }}
+                                  {% if field.label != 'মেম্বারের সুপারিশ ফাইল' and field.label != 'এনআইডি-জন্ম নিবন্ধন' %}
+
+                                    <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="15%" align="left" valign="middle" class="black12" style="font-size:25px">{{field.label}}</td>
+                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{field}}                                        
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+
+                                      </tr>
+                                      {% endif %}
+
+                                    {% endfor %}
+                                    
+                                      
+                                  
+    
+                                </tbody></table>
+                              </fieldset>
+                            </td>
+                            
+                          </tr>
+                              
+                          </tbody>
+                        </table>
+                        
+                          
+
+                          
+
+                        </div>
+                       
+                        
+                       
+                    
+                    
+                </div>
+                    <div id="q-box__buttons" >
+                      
+                      <button id="submit-btn" type="submit" class="d-inline-block">সাবমিট</button>
+                  </div>   
+            </div>
+            
+          </form>
+
+          
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
 <!-- PRELOADER -->
 <div id="preloader-wrapper">
   <div id="preloader"></div>

@@ -20,7 +20,7 @@ STATIC_DIR =os.path.join(BASE_DIR,'static')
 MEDIA_ROOT =  BASE_DIR / 'media' 
 MEDIA_URL = '/media/'
 STATIC_URL = 'static/'
-#STATICFILES_DIRS= [STATIC_DIR, ]
+STATICFILES_DIRS= [STATIC_DIR, ]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-7$wq_6k@%@d&7=(p-t*)_fc%+cv5)_a+2&s1uc#yct*r*3q#o%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['aihostbd.com','www.aihostbd.com','127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -128,7 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT=os.path.join(BASE_DIR,'static/')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

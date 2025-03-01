@@ -38,7 +38,7 @@ WarishFormSet = modelformset_factory(
 )
 
 class CertificateTypeForm(forms.ModelForm):
-    name= forms.ModelChoiceField(label="সার্টিফিকেটসমূহঃ ",required=True,queryset=CertificateType.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo',}))
+    name= forms.ModelChoiceField(label="সার্টিফিকেটসমূহঃ ",required=True,queryset=CertificateType.objects.all(),widget=forms.Select(attrs={'class': 'form-control form-control-sm',}))
     class Meta:
         model = CertificateType
         fields = []

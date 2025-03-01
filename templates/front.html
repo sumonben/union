@@ -1,7 +1,6 @@
 {% extends 'basepage/ictparkbd_layout.html' %} 
 {% block content %}
 {% load static %}
-{% include 'components/navbarfront.html'%}           
                
                    
                              
@@ -148,7 +147,90 @@
                         
                
                            
- 
+                        <div class="box_container" style="width: 100%; margin: 0px;">
+                            <div class="" style="margin: auto;width: 100%;">
+                                <!-- TITLE 
+                                <div class="col-lg-4 offset-lg-1 mx-0 px-0">
+                                    <div id="title-container">
+                                        <img class="covid-image" src="./img/covid-check.png">
+                                        <h2>COVID-19</h2>
+                                        <h3>Self Checker Form</h3>
+                                        <p>A clinical assessment multi-step form that will assist individuals on deciding when to seek testing or medical care if they suspect they or someone they know has contracted COVID-19 or has come into close contact with someone who has COVID-19</p>
+                                    </div>
+                                </div>-->
+                                <!-- FORMS -->
+                                <div >
+                          <form  action=""  method="post"  enctype="multipart/form-data">
+                                {% csrf_token %}
+                                    <div id="qbox-container">
+                                            <div id="steps-container">
+                                                <div class="step d-block">
+                                                  <div><h1 style="text-align: center;"><u>আপনার প্রয়োজনীয় সনদ বাছাই করুন</u></h1></div>
+                        
+                                                  <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
+                        
+                                                    <tbody>
+                                                    <tr>
+                                                      <td align="left">
+                                                        <fieldset>
+                                                        <table width="100%" border="1" cellspacing="0" cellpadding="10">
+                                                          <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 40px; background-color: #245b80; color: #fff;padding: 15px;"> সনদ বাছাই ফর্ম </th></thead>
+                                                          <tbody>
+                                                          {% for field in form %}
+                                                          {{ field.errors }}
+                                                          {% if field.label != 'মেম্বারের সুপারিশ ফাইল' and field.label != 'এনআইডি-জন্ম নিবন্ধন' %}
+                        
+                                                            <tr>
+                                                                <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                                                <td width="15%" align="left" valign="middle" class="black12" style="font-size:25px">{{field.label}}</td>
+                                                                <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                                  <label>
+                                                                    {{field}}                                        
+                                                                  </label>
+                                                                  <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                        
+                                                              </tr>
+                                                              {% endif %}
+                        
+                                                            {% endfor %}
+                                                            
+                                                              
+                                                          
+                            
+                                                        </tbody></table>
+                                                      </fieldset>
+                                                    </td>
+                                                    
+                                                  </tr>
+                                                      
+                                                  </tbody>
+                                                </table>
+                                                
+                                                  
+                        
+                                                  
+                        
+                                                </div>
+                                               
+                                                
+                                               
+                                            
+                                            
+                                        </div>
+                                            <div id="q-box__buttons" >
+                                              
+                                              <button id="submit-btn" type="submit" class="d-inline-block">সাবমিট</button>
+                                          </div>   
+                                    </div>
+                                    
+                                  </form>
+                        
+                                  
+                        
+                                </div>
+                            </div>
+                        </div>
+                        
                                               
                        <div class="benifits">
                            <div class="container-wrapper">
