@@ -10,7 +10,7 @@ from django import views as django_views
 urlpatterns = [
     
     path('',views.HomeView.as_view(), name='home'),
-    path('apply_for_certificate/<int:serial>/',views.ApplyForCertificate.as_view(), name='apply_for_certificate'),
+    path('apply_for_certificate/<int:id>/',views.ApplyForCertificate.as_view(), name='apply_for_certificate'),
     path('select_certificate/',views.SelectCertificate.as_view(), name='select_certificate'),
     path('certificate_form/', views.CertificateView.as_view(), name="certificate_form"),
     path('submit_form/', views.submitFormView.as_view(), name="submit_form"),

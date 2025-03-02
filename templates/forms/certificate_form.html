@@ -1,7 +1,8 @@
-{% extends 'basepage/basepage.html' %}
+{% extends 'basepage/ictparkbd_layout.html' %}
 
 {% block content %}
 {% load static %}
+
 <style>
     .main_body{
         width:100%;
@@ -17,204 +18,294 @@
         }   
     }
 </style>
+<div class="services">
+  <div><h3 style="text-align: center;text-shadow: 2px 2px #ff0000;color:#fff;"><u>{{certificate_type.name}} ফর্ম</u></h3></div>
+  
+  <div data-v-6f04a53f="" class="memberRegistration py-5">
+    <div class="container-wrapper">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-10">
+          <div class="card login-body shadow-lg rounded-10 py-5">
+            <table width="100%" border="1" cellspacing="0" cellpadding="10">
+              <thead><th colspan="5" style="height: 40px; background-color: #035a4c; color: #fff;padding: 15px;font-size:20px;text-align:center;">  ব্যক্তিগত তথ্য                                   
+                {% if certificate_type.serial == 1 %}
+               &nbsp(সনদটি ইংরেজিতে চাইলে নাম, বাবার নাম ও মায়ের নাম ইংরেজিতে পুরণ করুন ও ভাষা ইংরেজি সিলেক্ট করুন)                                  
+               {% endif %}</th></thead>
+              <tbody>
+              </tbody>
+            </table>
+                <div class="card-body">
 
-<!-- CONTAINER -->
-<div class="box_container" style="width: 100%; margin: 0px;">
-    <div class="" style="margin: auto;width: 100%;">
-        <!-- TITLE 
-        <div class="col-lg-4 offset-lg-1 mx-0 px-0">
-            <div id="title-container">
-                <img class="covid-image" src="./img/covid-check.png">
-                <h2>COVID-19</h2>
-                <h3>Self Checker Form</h3>
-                <p>A clinical assessment multi-step form that will assist individuals on deciding when to seek testing or medical care if they suspect they or someone they know has contracted COVID-19 or has come into close contact with someone who has COVID-19</p>
-            </div>
-        </div>-->
-        <!-- FORMS -->
-        <div >
-  <form class="needs-validation" action="{% url 'certificate_form' %}" id="form-wrapper" method="post" name="form-wrapper"  enctype="multipart/form-data">
-        {% csrf_token %}
-            <div id="qbox-container">
-                    <div id="steps-container">
-                        <div class="step d-block">
-                          <div><h1 style="text-align: center;"><u>{{certificate_type.name}} ফর্ম</u></h1></div>
+                <span class="bubbleNew"><img src="{%static 'images/ictpark_monogram.png'%}" class="rounded-circle" style="width: 200px;height: 200px;" /></span>
 
-                          <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
-
-                            <tbody>
-                            <tr>
-                              
-                              <td align="left">
-                                <fieldset>
-                                <table width="100%" border="1" cellspacing="0" cellpadding="2">
-                                  <thead style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;">
-                                     ব্যক্তিগত তথ্য                                   
-                                     {% if certificate_type.serial == 1 %}
-                                    &nbsp(সনদটি ইংরেজিতে চাইলে নাম, বাবার নাম ও মায়ের নাম ইংরেজিতে পুরণ করুন ও ভাষা ইংরেজি সিলেক্ট করুন)                                  
-                                    {% endif %}
-                                  </th></thead>
-                                  
-                                  <tbody>
-                                    <tr>
-                                      <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                        <td width="15%" align="left" valign="middle" class="black12"></td>
-                                        <td width="75%" align="right" valign="middle"><span id="sprytextfield1" style="margin:50px;">
-                                          <label>
-                                            <br>{{form.language.label_tag}}&nbsp{{form.language}} &nbsp&nbsp                                       
-                                          </label>
-                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-
-                                    </tr>   
-                                  {% for field in form %}
-                                  {{ field.errors }}
-                                  {% if field.name != 'file' and field.name != 'nid_file' and field.name != 'language'  %}
-                                    
-                                    <tr>
-                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                        <td width="15%" align="left" valign="middle" class="black12">{{field.label_tag}}</td>
-                                        <td width="75%" align="left" valign="middle">
-                                          <label>
-                                            {{field}}                                        
-                                          </label>
-                                          </td>
-
-                                      </tr>
-                                      {% endif %}
-
-                                    {% endfor %}
-                                    
-                                      
-                                  
-    
-                                </tbody></table>
-                              </fieldset>
-                            </td>
-                            
-                          </tr>
-                              
-                          </tbody>
-                        </table>
-
-                        <fieldset>
-                             
-                                  <table width="100%" border="1" valign="middle" align="center" cellspacing="0" cellpadding="5">
-                                    <thead style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;"> ঠিকানা</th></thead>
-                                    <tbody>
-                                      {% for field in adress_form %}
-                                      <tr>
-                                          <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                          <td width="15%" align="left" valign="middle" class="black12">{{field.label_tag}}</td>
-                                          <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
-                                            <label>
-                                              {{field}}                                        
-                                            </label>
-                                            <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                          <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                      </tr>
-                                      {% endfor %}
-                                      
-                                  </tbody>
-                                </table>
-                              </fieldset>
-
-                              {% if formset %}
-
-                              <fieldset>
-                                <table width="100%" border="1" cellspacing="0" cellpadding="3">
-                                  <thead style="height: 25px; background-color: #035a4c; color: #fff;">
-                                    <th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;">ওয়ারিশগণ</th>
-                                  </thead>
-                                  <tbody>
-                                    <tr><td colspan="5" align="center">
-
-                                        <div id="form-container">
-
-                                          {{formset.management_form}}
-
-                                          {% for form in formset %}
-                                          <div class="bird-form">
-                                            <table >
-                                            <tr>
-                                              <td>{{form.name.label_tag}} </td><td>{{form.name}}</td><td rowspan="3"><button id="{{ form.prefix }}-row" style="font-size:18px;color:red;float:right" type="button" onclick="removeForm( this.id )" > <i class="fa fa-trash-o" ></i></button></td></tr><tr><td>{{form.relation.label_tag}}: </td><td>{{form.relation}}</td></tr><tr><td>{{form.comment.label_tag}}: </td><td>{{form.comment}}</td></tr>
-                                          </table>
-                                          <br>
-                                        </div>
-                                        
-                                          {% endfor %}
-                                          <button id="add-form" style="font-size:18px;color:green;"  type="button">আরও যুক্ত করুন<i class="fa fa-plus" ></i></button>
-   
-
-                                        </div>
-                                    </td></tr>
-                                    
-                                      
-                                </tbody></table>
-                              </fieldset>
-                             {% endif %}
-                              <fieldset>
-                                <table width="100%" border="1" cellspacing="" cellpadding="5">
-                                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;">মেম্বর সুপারিশ ফাইল ও এনআইডি</th></thead>
-                                  <tbody>
-                                    <tr>
-                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                        <td width="25%" align="left" valign="middle" class="black12">{{form.file.label_tag}}</td>
-                                        <td width="65%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            {{form.file}}                                        
-                                          </label>
-                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                        <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                      <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                      <td width="25%" align="left" valign="middle" class="black12">{{form.nid_file.label_tag}}</td>
-                                      <td width="65%" align="left" valign="middle"><span id="sprytextfield1">
-                                        <label>
-                                          {{form.nid_file}}                                        
-                                        </label>
-                                        <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                      <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                  </tr>
-                                  
-                                </tbody>
-                              </table>
-                          
-                              </fieldset>
-                          
-
-                        </div>
-                       
-                        
-                       
-                    
-                    
-                </div>
-                    <div id="q-box__buttons" >
-                      
-                      <button id="submit-btn" type="submit" class="d-inline-block">সাবমিট</button>
-                  </div>   
+            <span class="shape"><img align="center" src="{% static 'images\ictparkbd_logo.jpg' %}"></span> 
+             {%if email %}
+            
+            <div class="alert alert-danger" role="alert">
+              <strong>{{email}}</strong> 
             </div>
             
-          </form>
-
-          <div id="download_form_id">
-            <div class="mt-5">
-
-              <form id="form_download_id" method="post" action="" target="_blank" >
-                {% csrf_token %}
-              <input type="hidden" value="{{student}}" id="student_id" name="student_id">
-              <div id="q-box__buttons" >
-
-                <button type="submit" id="btn_admission_form" style="width:300px;">Download Admission form</button>
-                </div>
-              </form>
-                <a style="margin-top: 20px; margin-bottom: 20px; margin-left: 10%;" class="back-link" href="">Go back from the beginning ➜</a>
+            {% endif %}
+            {%if phone %}
+            
+            <div class="alert alert-danger" role="alert">
+              <strong>{{phone}}</strong> 
             </div>
-        </div>
+            
+            {% endif %} 
+            
+            {%if password %}
+            
+            <div class="alert alert-danger" role="alert">
+              <strong>{{password}}</strong> 
+            </div>
+            
+            {% endif %}
+            
+            {%if success %}
+            
+            <div class="alert alert-success" role="alert">
+              <strong>{{success}}</strong> 
+            </div>
+            
+            {% endif %}
+            
+            <form  id="form" class="form-row px-3" method="post" action="{% url 'certificate_form' %}">
+              {% csrf_token %}
+              {% if certificate_type.serial == 1 %}
 
+              <div class="col-sm-12 form-group" >
+                
+                <div class="row" style="float:right;">
+                    <label>
+                      <br>{{form.language.label_tag}}&nbsp{{form.language}} &nbsp&nbsp                                       
+                    </label>
+                  
+                </div>
+              </div>
+              {% endif %}
+              
+              <div class="col-sm-12 form-group">
+                
+                <div class="row">
+                  
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">আপনার নাম</label> 
+                    <div class="loginBox">
+                      {{form.name}}
+                      <span class="fa fa-user"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">
+                      মোবাইল (
+                        <span class="text-danger">১২ ডিজিট</span>)
+                    </label>
+                    <div class="loginBox">
+                      {% comment %} <input type="text" name="phone" id="id_phone" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ie: member@mail.com'" placeholder="ie: member@mail.com" name="email" class="form-control form-control-sm" />  {% endcomment %}
+                      {{form.phone}}
+                      <span class="fa fa-phone"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div> 
+                  
+                </div>
+              </div>
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.email.label_tag}}</label> 
+                    <div class="loginBox">
+                      {{form.email}}
+                      <span class="fa fa-envelope"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">
+                      {{form.nid_file.label_tag}} 
+                    </label>
+                    <div class="loginBox">
+                      {{form.nid}}
+                      <span class="fa fa-id-card"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="" class="col-form-label-sm m-0">                      {{form.father_name.label_tag}} 
+                        </label>
+                         <div class="loginBox">
+                          {{form.father_name}}
+                          <span class="fa fa-user"></span>                        
+                        </div> <!--  --> <div class="invalid-feedback"></div>
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="" class="col-form-label-sm m-0">                      {{form.mother_name.label_tag}} 
+                        </label>
+                         <div class="loginBox">
+                          {{form.mother_name}}
+                          <span class="fa fa-user"></span>                        
+                        </div> <!--  --> <div class="invalid-feedback"></div>
+                      </div>
+                </div>
+              </div>
+              
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.certificate_type.label_tag}}</label> <div class="loginBox">
+                      {{form.certificate_type}}                      
+                      <span class="fa fa-key"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+
+                  
+
+                  {% if form.cause %}
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.cause.label_tag}}</label> 
+                    <div class="loginBox">
+                      {{form.cause}}
+                      <span class="fa fa-envelope"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  {% endif %}
+                </div>  
+              </div> 
+
+
+              <table width="100%" border="1" cellspacing="0" cellpadding="10">
+                <thead><th colspan="5" style="height: 40px; background-color:rgb(148, 238, 223); color: #fff;padding: 15px;font-size:20px;text-align:center;">  ব্যক্তিগত তথ্য                                   
+                  </th></thead>
+                <tbody>
+                </tbody>
+              </table>
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <label for="" class="col-form-label-sm m-0">{{adress_form.ward.label_tag}}</label> <div class="loginBox">
+                      {{adress_form.ward}}                      
+                      <span class="fa fa-map-marker"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <label for="" class="col-form-label-sm m-0">{{adress_form.village.label_tag}}</label>
+                     <div class="loginBox">
+                      {{adress_form.village}}
+                      <span class="fa fa-home"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="" class="col-form-label-sm m-0">{{adress_form.post_office.label_tag}}</label>
+                     <div class="loginBox">
+                      {{adress_form.post_office}}
+                      <span class="fa fa-home"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+              </div>
+              
+              {% if formset %}
+                <table width="100%" border="1" cellspacing="0" cellpadding="3">
+                  <thead style="height: 25px; background-color: #035a4c; color: #fff;">
+                    <th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;">ওয়ারিশগণ</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="5" align="center">
+
+                        <div id="form-container">
+
+                          {{formset.management_form}}
+
+                          {% for form in formset %}
+                          <div class="bird-form">
+                            <table >
+                            <tr>
+                              <td>{{form.name.label_tag}} </td><td>{{form.name}}</td><td rowspan="3"><button id="{{ form.prefix }}-row" style="font-size:18px;color:red;float:right" type="button" onclick="removeForm( this.id )" > <i class="fa fa-trash-o" ></i></button></td></tr><tr><td>{{form.relation.label_tag}}: </td><td>{{form.relation}}</td></tr><tr><td>{{form.comment.label_tag}}: </td><td>{{form.comment}}</td></tr>
+                          </table>
+                          <br>
+                        </div>
+                        
+                          {% endfor %}
+                          <button id="add-form" style="font-size:18px;color:green;"  type="button">আরও যুক্ত করুন<i class="fa fa-plus" ></i></button>
+
+
+                        </div>
+                    </td></tr>
+                    
+                      
+                </tbody>
+              </table>
+              {% endif %}
+              <fieldset style="margin:auto;">
+                <table width="100%" border="1" cellspacing="" cellpadding="5">
+                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;">মেম্বর সুপারিশ ফাইল ও এনআইডি</th></thead>
+                  <tbody>
+                    <tr>
+                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                        <td width="25%" align="left" valign="middle" class="black12">{{form.file.label_tag}}</td>
+                        <td width="65%" align="left" valign="middle"><span id="sprytextfield1">
+                          <label>
+                            {{form.file}}                                        
+                          </label>
+                          
+                        </span>
+                      </td>
+                        <td width="5%" align="left" valign="middle">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td width="10%" align="left" valign="middle">&nbsp;</td>
+                      <td width="25%" align="left" valign="middle" class="black12">{{form.nid_file.label_tag}}</td>
+                      <td width="65%" align="left" valign="middle"><span id="sprytextfield1">
+                        <label>
+                          {{form.nid_file}}                                        
+                        </label>
+                        </span></td>
+                      <td width="5%" align="left" valign="middle">&nbsp;</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+          
+              </fieldset>
+          
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                  <div class="custom-control custom-checkbox">
+                    <div class="col-form-label-sm font-weight-bold mb-0 custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" value="true" id="__BVID__164" required /><label class="custom-control-label" for="__BVID__164">
+                        উপরের তথ্য সঠিক, কোনরূপ ভুল থাকলে দায় আমার
+                      </label>
+                    </div> <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+              </div> 
+              {% comment %} <div class="col-sm-4 form-group mb-0">
+                <button type="submit" class="btn btn-danger text-white"><span>সাবমিট</span></button>
+              </div>  {% endcomment %}
+              <div class="col-sm-9 form-group">
+                <p class="text-right">
+                  <button type="submit" class="btn btn-danger font-weight-bold rounded-50 ml-2">সাবমিট করুন</button>
+                </p>
+              </div>
+              
+              
+             
+              
+            </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
+
+
+
 
 
 
@@ -262,5 +353,286 @@
       birdForm2[formNum2].parentNode.removeChild(birdForm2[formNum2]);
       
   }          {% endcomment %}
+          
+    window.onload = (event) => {
+let compulsory_subject_initialized=document.getElementsByClassName('selector-available');
+let filter_compusory=document.getElementById('id_compulsory_subject_filter_selected');
+let remove_compusory=document.getElementById('id_compulsory_subject_remove_all_link');
+
+let selector_chooser=document.getElementsByClassName('selector-chooser');
+
+
+compulsory_subject_initialized[0].style.display='none';
+selector_chooser[0].style.display='none';
+
+filter_compusory.style.display='none';
+remove_compusory.style.display='none';
+
+z= compulsory_subject_initialized.getElementsByTagName("option");
+for (i = 0; i < z.length; i++) {
+
+z[i].setAttribute('disabled','true','readonly','true');
+
+}
+
+alert(compulsory_subject_initialized.length);
+};
+
+
+
+
+const progress = (value) => {
+document.getElementsByClassName('progress-bar')[0].style.width = `${value}%`;
+}
+
+let step = document.getElementsByClassName('step');
+let prevBtn = document.getElementById('prev-btn');
+let nextBtn = document.getElementById('next-btn');
+let submitBtn = document.getElementById('submit-btn');
+let form = document.getElementsByTagName('form')[0];
+let preloader = document.getElementById('preloader-wrapper');
+let bodyElement = document.querySelector('body');
+let succcessDiv = document.getElementById('success');
+let downloadDiv = document.getElementById('downlod_form_id');
+
+let addChoiceBtn=document.getElementsByName('id_fourth_subject');
+
+form.onsubmit = () => { return false }
+
+let current_step = 0;
+let stepCount = 4
+step[current_step].classList.add('d-block');
+if(current_step == 0){
+prevBtn.classList.add('d-none');
+submitBtn.classList.add('d-none');
+nextBtn.classList.add('d-inline-block');
+}
+
+
+nextBtn.addEventListener('click', () => {
+var x, y, i, valid = true;
+var options=document.getElementById('id_compulsory_subject_to').getElementsByTagName('option');
+for(i=0;i<options.length ;i++){
+options[i].selected = 'selected';
+}
+document.getElementById('id_compulsory_subject_to').disabled='disabled';
+
+
+//document.getElementById('toast-container').style.visibility ='hidden';
+current_step++;
+let previous_step = current_step - 1;
+let flag=validateForm();
+if(( current_step > 0) && (current_step <= stepCount) && flag){
+prevBtn.classList.remove('d-none');
+prevBtn.classList.add('d-inline-block');
+step[current_step].classList.remove('d-none');
+step[current_step].classList.add('d-block');
+step[previous_step].classList.remove('d-block');
+step[previous_step].classList.add('d-none');
+if (current_step == stepCount){
+submitBtn.classList.remove('d-none');
+submitBtn.classList.add('d-inline-block');
+nextBtn.classList.remove('d-inline-block');
+nextBtn.classList.add('d-none');
+}
+} else {
+if(current_step > stepCount){
+  form.onsubmit = () => { return true }
+}
+}
+progress((100 / stepCount) * current_step);
+function validateForm() {
+// This function deals with validation of the form fields
+if(current_step==4 ){
+
+
+if(document.getElementById('id_fourth_subject').value==''){
+valid= false;
+}
+/* var select=document.getElementsByName('compulsory_subject');
+var compulsory_subject=select[1];
+if(compulsory_subject.length<6){
+  valid= false;
+}*/
+
+
+
+
+}
+
+x = document.getElementsByClassName("step d-block");
+//alert(current_step);
+
+y = x[0].getElementsByTagName("input");
+z= x[0].getElementsByTagName("select");
+
+for (i = 0; i < y.length; i++) {
+// If a field is empty...
+//alert(y[i]+y[i].required);
+//alert(y[i].getAttribute('id')+": "+y[i].hasAttribute('required'));
+
+if (y[i].value == '' && y[i].hasAttribute('required') ) {
+
+
+  y[i].className='textfieldUSERinfoInvalid';
+
+valid = false;
+
+}
+}
+
+for (i = 0; i < z.length; i++) {
+// If a field is empty...
+
+if (z[i].value == '' && z[i].hasAttribute('required') ) {
+  //alert(z[i].getAttribute('id')+": "+z[i].hasAttribute('required'));
+
+ if(z[i].className=='textfieldUSER')
+   z[i].className='textfieldUSERInvalid';
+else
+  z[i].className='textfieldUSERinfoInvalid';
+  
+ valid = false;
+
+}
+}
+//alert("valid:"+valid);
+if(!valid){
+current_step--;
+var x = document.getElementById("toast-container");
+
+// Add the "show" class to DIV
+x.className = "show";
+
+// After 3 seconds, remove the show class from DIV
+setTimeout(function(){ x.className = x.className.replace("show", ""); }, 11000);
+/*var x = document.getElementById("toast-container");
+         x.className = "toast-top-center";
+         x.style.visibility="vissible"
+
+         setTimeout(function(){ 
+             x.className = x.className.replace("toast-top-center","");
+            
+             
+          }, 8000);*/
+          
+
+}
+return valid; // return the valid status
+}
+
+
+
+});
+
+
+
+prevBtn.addEventListener('click', () => {
+if(current_step > 0){
+current_step--;
+let previous_step = current_step + 1; 
+prevBtn.classList.add('d-none');
+prevBtn.classList.add('d-inline-block');
+step[current_step].classList.remove('d-none');
+step[current_step].classList.add('d-block')
+step[previous_step].classList.remove('d-block');
+step[previous_step].classList.add('d-none');
+if(current_step < stepCount){
+ submitBtn.classList.remove('d-inline-block');
+ submitBtn.classList.add('d-none');
+ nextBtn.classList.remove('d-none');
+ nextBtn.classList.add('d-inline-block');
+ prevBtn.classList.remove('d-none');
+ prevBtn.classList.add('d-inline-block');
+} 
+}
+
+if(current_step == 0){
+prevBtn.classList.remove('d-inline-block');
+prevBtn.classList.add('d-none');
+}
+progress((100 / stepCount) * current_step);
+});
+
+
+
+function fourthSubject(id){
+
+if(current_step==3){
+var compulsory_subject=document.getElementById('id_optional_subject_from');
+var selected_item = document.getElementById('id_fourth_subject');
+if(compulsory_subject.length==1){
+selected_item.value=compulsory_subject[0].value;
+alert(selected_item.value);
+
+return false;
+}
+
+
+
+
+
+
+}
+
+}
+function subjectChoice(id){
+alert("subjectChoice");
+
+}
+addChoiceBtn.addEventListener('change', () => {
+alert("subjectChoice");
+});
+
 </script>
+<script>
+$(document).ready(function () {
+  
+    $('#add_more').click(function() {
+        alert("hello");
+        cloneMore('div.table:last', 'service');
+    });
+  $('#submit-btn').on('click', function () {
+    var subjectCount=0;
+    var compulsory_options;
+    var options;
+    compulsory_options=document.getElementById('id_compulsory_subject_to').getElementsByTagName('option');
+    subjectCount=compulsory_options.length;
+    document.getElementById('id_compulsory_subject_to').disabled='';
+    try{
+    options=document.getElementById('id_optional_subject_to').getElementsByTagName('option');
+    var selected_4rth = document.getElementById('id_fourth_subject');
+    var flag_submit=0;
+    alert(selected_4rth.value);
+    for(i=0;i<options.length ;i++){
+      subjectCount++;
+      if(options[i].value==selected_4rth.value){
+        flag_submit=1;
+        break;
+
+      }
+    options[i].selected = 'selected';
+   }
+    if(subjectCount<6 || flag_submit==1){
+      alert("Choose All 7 Subject and do not repeat twice ");
+      return false;
+    }
+    
+    }catch(err){
+
+    }
+  //preloader.classList.add('d-block');
+  var frm = $('#form-wrapper')[0];
+  var form= new FormData(frm);
+  var form1=document.getElementById('form-wrapper');
+  form1.submit();
+  
+  });
+////////////////////Submit for admission form download/////////////////////
+
+ 
+
+});
+</script>
+ 
 {% endblock  %}

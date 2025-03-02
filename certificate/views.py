@@ -21,7 +21,9 @@ class FrontView(View):
     model = Certificate()
     template_name = 'front.html'
     def get(self, request, *args, **kwargs):
+        certificate_type=CertificateType.objects.all().order_by('serial')
         context={}
+        context['certificate_type']=certificate_type
         return render(request,'front.html',context)
     def post(self, request, *args, **kwargs):
         context={}
@@ -31,7 +33,9 @@ class HomeView(View):
     model = Certificate()
     template_name = 'home.html'
     def get(self, request, *args, **kwargs):
+        certificate_type=CertificateType.objects.all().order_by('serial')
         context={}
+        context['certificate_type']=certificate_type        
         return render(request,'home.html',context)
     def post(self, request, *args, **kwargs):
         context={}
@@ -40,9 +44,9 @@ class HomeView(View):
 class ApplyForCertificate(View):
     model = CertificateType()
     template_name = 'forms/certificate_form.html'
-    def get(self, request, serial, *args, **kwargs):
+    def get(self, request, id, *args, **kwargs):
         context={}
-        certificate_type=CertificateType.objects.filter(serial=serial).first()
+        certificate_type=CertificateType.objects.filter(id=id).first()
         context['certificate_type']=certificate_type
         form=CertificateForm(instance=certificate_type)
         form.certificate_type=certificate_type
@@ -51,7 +55,7 @@ class ApplyForCertificate(View):
         formset = WarishFormSet(queryset=Person.objects.none())
         context['form']=form
         context['adress_form']=adress_form
-        if certificate_type.serial== 2:
+        if certificate_type.id== 1:
             context['form2']=form2
             context['formset']=formset
         
@@ -83,7 +87,7 @@ class SelectCertificate(View):
         formset = WarishFormSet(queryset=Person.objects.none())
         context['form']=form
         context['adress_form']=adress_form
-        if certificate_type.serial== 2:
+        if certificate_type.id== 1:
             context['form2']=form2
             context['formset']=formset
         return render(request,self.template_name,context)

@@ -32,4 +32,4 @@ class AdressAdmin(ExportActionMixin,admin.ModelAdmin):
     pass
 @admin.register(CertificateType)
 class CertificateTypeAdmin(ExportActionMixin,admin.ModelAdmin):
-    pass
+    list_display=['id','name']

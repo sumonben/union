@@ -1,4 +1,4 @@
-{% extends 'basepage/basepage_certificate.html' %}
+{% extends 'basepage/ictparkbd_layout.html' %}
 
 {% block content %}
 {% load static %}
@@ -17,83 +17,105 @@
         }   
     }
 </style>
+<div class="services">
+  <div><h2 style="text-align: center;color: #035a4c ;text-shadow: 2px 2px 2px rgb(65, 7, 7);"><u>আপনার সনদটি ডাউনলোড করুন</u></h2></div>
+  
+  <div data-v-6f04a53f="" class="memberRegistration py-5">
+    <div class="container-wrapper">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-10">
+          <div class="card login-body shadow-lg rounded-10 py-5">
+            <table width="100%" border="1" cellspacing="0" cellpadding="10">
+              <thead><th colspan="5" style="height: 40px; background-color: #035a4c; color: #fff;padding: 15px;font-size:20px;text-align:center;"> সনদ ডাউনলোড ফর্ম </th></thead>
 
-<!-- CONTAINER -->
-<div class="box_container" style="width: 100%; margin: 0px;">
-    <div class="" style="margin: auto;width: 100%;">
-       
-<div >
-  <form  action="{% url 'download_certificate_form' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-            <div id="qbox-container">
-                    <div id="steps-container" >
-                        <div class="step d-block" style="min-height:500px">
-                          <div style="margin-top:10%;">
-                          <div><h1 style="text-align: center;"><u>আপনার সনদটি ডাউনলোড করুন</u></h1></div>
+              {% if message %}
+              <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 40px; background-color:rgb(168, 8, 8); color: #fff;padding: 15px;"> {{message}} </th></thead>
+              {% endif %}
+              <tbody>
+              </tbody>
+            </table>
+                <div class="card-body">
 
-                          <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
+                <span class="bubbleNew"><img src="{%static 'images/ictpark_monogram.png'%}" class="rounded-circle" style="width: 200px;height: 200px;" /></span>
 
-                            <tbody>
-                            <tr>
-                              <td align="left">
-                                <table width="100%" border="1" cellspacing="0" cellpadding="10">
-                                  {% if message %}
-                                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 40px; background-color:rgb(168, 8, 8); color: #fff;padding: 15px;"> {{message}} </th></thead>
-                                  {% endif %}
-                                  <tbody>
-                                  {% for field in form %}
-                                  {{ field.errors }}
-
-                                    <tr>
-                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                        <td width="15%" align="left" valign="middle" class="black12" style="font-size:25px">{{field.label}}</td>
-                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            {{field}}                                        
-                                          </label>
-                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-
-                                      </tr>
-
-                                    {% endfor %}
-                                    
-                                      
-                                  
-    
-                                </tbody></table>
-                            </td>
-                            
-                          </tr>
-                              
-                          </tbody>
-                        </table>
-
-                        <div id="q-box__buttons" >
-                      
-                          <button id="submit-btn" type="submit" >সাবমিট</button>
-                      </div>
-                      </div>
-                        
-
-                        </div>
-                       
-                        
-                       
-                    
-                    
-                </div>
-                      
+            <span class="shape"><img align="center" src="{% static 'images\ictparkbd_logo.jpg' %}"></span> 
+             {%if email %}
+            
+            <div class="alert alert-danger" role="alert">
+              <strong>{{email}}</strong> 
             </div>
             
-          </form>
+            {% endif %}
+            {%if phone %}
+            
+            <div class="alert alert-danger" role="alert">
+              <strong>{{phone}}</strong> 
+            </div>
+            
+            {% endif %} 
+            
+            {%if password %}
+            
+            <div class="alert alert-danger" role="alert">
+              <strong>{{password}}</strong> 
+            </div>
+            
+            {% endif %}
+            
+            {%if success %}
+            
+            <div class="alert alert-success" role="alert">
+              <strong>{{success}}</strong> 
+            </div>
+            
+            {% endif %}
+            
+            <form autocomplete="off" id="form" class="form-row px-3" method="post" action="">
+               {% csrf_token %}
+                            <div class="col-sm-8 form-group" style="margin:auto;">
+                              <div class="row">
+                                <div class="col-sm-10" >
+                                  <label for="" class="col-form-label-sm m-0" style="font-size:20px;">{{form.tracking_no.label}}</label> 
+                                  <div class="loginBox">
+                                            {{form.tracking_no}}     
+                                            <span class="fa fa-universal-access"></span>
+                                   
+                                  </div> <!--  --> <div class="invalid-feedback"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-8 form-group" style="margin:auto;">
+                              <div class="row">
+                                <div class="col-sm-10" >
+                                  <label for="" class="col-form-label-sm m-0" style="font-size:20px;">{{form.certificate_type.label}}</label> 
+                                  <div class="loginBox">
+                                            {{form.certificate_type}}     
+                                            <span class="fa fa-certificate"></span>
+                                   
+                                  </div> <!--  --> <div class="invalid-feedback"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
 
-          
-
+                
+              
+              
+             
+              <div class="col-sm-9 form-group">
+                <p class="text-right">
+                  <button type="submit" class="btn btn-danger text-white"><span>সাবমিট</span></button>
+                </p>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-<!-- PRELOADER -->
 
+<!-- CONTAINER -->
 
 
  

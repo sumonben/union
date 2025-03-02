@@ -2325,7 +2325,7 @@ pre code {
 .form-control {
     display: block;
     width: 100%;
-    height: calc(1.5em + .75rem + 60px);
+    height: calc(1.5em + .75rem +2px);
     padding: .1rem .75rem;
     font-size: 1rem;
     font-weight: 400;
@@ -38830,8 +38830,9 @@ img[lazy=loaded] {
 }
 
 .navbar-toggler {
-    color: #616161;
-    border: 1px solid #616161;
+    color: #035a4c;
+    border: 1px solid #035a4c;
+    margin-top: 30px;
     padding: .5rem 1rem
 }
 
@@ -41750,8 +41751,7 @@ button.close.text-light.search-box-close {
 }
 
 .services .service-item .card {
-    background-size: cover;
-    height: 170px;
+    height: 130px;
     text-align: center;
     overflow: hidden;
     border-radius: 20px;
@@ -41765,24 +41765,17 @@ button.close.text-light.search-box-close {
 }
 
 .services .service-item .card .iconbox {
-    width: 83px;
-    height: 83px;
-    border: 2px solid #ccc;
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-    border-radius: 7px;
+    border: 3px solid rgba(237, 28, 36, .3);
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
     text-align: center;
-    position: relative;
-    -webkit-transition: all .35s linear;
-    transition: all .35s linear;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    justify-content: center;
-    margin: 0 auto 25px
+    border-radius: 50%;
+    margin: -40px auto 15px;
+    background: #fff;
+    overflow: visible;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out
 }
 
 .services .service-item .card .iconbox i {
@@ -41864,11 +41857,7 @@ button.close.text-light.search-box-close {
     }
 }
 
-@media (max-width:768px) {
-    .service-item .card img {
-        height: 200px
-    }
-}
+
 
 .memberCalender {
     background: #f4f4f4;

@@ -12,8 +12,8 @@ from account.models import Member,Chairman
 
 class Relation(models.Model):
     serial=models.IntegerField(default=10,verbose_name="ক্রম")
-    name=models.CharField(max_length=25,verbose_name=" নাম(বাংলায়)")
-    name_en=models.CharField(max_length=25,verbose_name=" নাম(ইংরেজিতে)")
+    name=models.CharField(max_length=500,verbose_name=" নাম(বাংলায়)")
+    name_en=models.CharField(max_length=500,verbose_name=" নাম(ইংরেজিতে)")
     class Meta:
         ordering = ['serial']
         verbose_name="সম্পর্ক"
@@ -23,10 +23,10 @@ class Relation(models.Model):
 
 class Person(models.Model):
     serial=models.IntegerField(default=10)
-    name=models.CharField(max_length=25,verbose_name=" নাম(বাংলায়)")
-    name_en=models.CharField(max_length=25,verbose_name=" নাম(ইংরেজিতে)")
+    name=models.CharField(max_length=500,verbose_name=" নাম(বাংলায়)")
+    name_en=models.CharField(max_length=500,verbose_name=" নাম(ইংরেজিতে)")
     relation=models.ForeignKey(Relation,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="সম্পর্ক")
-    comment=models.CharField(max_length=25,blank=True,null=True,verbose_name="মন্তব্য")
+    comment=models.CharField(max_length=500,blank=True,null=True,verbose_name="মন্তব্য")
 
     class Meta:
         ordering = ['serial']
@@ -51,6 +51,7 @@ class CertificateType(models.Model):
     name=models.CharField(max_length=250)
     name_en=models.CharField(max_length=250)
     amount=models.IntegerField(default=10)
+    image=models.ImageField(upload_to='media/',blank=True,null=True,)
     is_active=models.BooleanField(default=False)
     class Meta:
         ordering = ['name_en']
@@ -82,16 +83,16 @@ class Adress(models.Model):
 
 
 class Certificate(models.Model):
-    name=models.CharField(max_length=250,verbose_name="নাম(বাংলায়)")
-    name_en=models.CharField(max_length=250,blank=True, null=True,verbose_name="নাম (ইংরেজিতে)")
+    name=models.CharField(max_length=500,verbose_name="নাম(বাংলায়)")
+    name_en=models.CharField(max_length=500,blank=True, null=True,verbose_name="নাম (ইংরেজিতে)")
     email=models.EmailField(max_length=100,blank=True,null=True,verbose_name="ইমেইল(যদি থাকে)")
     phone=models.CharField(max_length=11,blank=True,null=True,verbose_name="মোবাইল নং")
     nid=models.CharField(max_length=17,null=True,blank=True,verbose_name="জাতীয় পরিচপত্র")
     passport=models.CharField(max_length=17,null=True,blank=True,verbose_name="পাসপোর্ট নং")
-    father_name=models.CharField(max_length=250,verbose_name="বাবার নাম(বাংলায়)")
-    father_name_en=models.CharField(max_length=250,blank=True, null=True,verbose_name="বাবার নাম(ইংরেজিতে)")
-    mother_name=models.CharField(max_length=250,verbose_name="মায়ের নাম(বাংলায়)")
-    mother_name_en=models.CharField(max_length=250,blank=True, null=True,verbose_name="মায়ের নাম(ইংরেজিতে)")
+    father_name=models.CharField(max_length=500,verbose_name="বাবার নাম(বাংলায়)")
+    father_name_en=models.CharField(max_length=500,blank=True, null=True,verbose_name="বাবার নাম(ইংরেজিতে)")
+    mother_name=models.CharField(max_length=500,verbose_name="মায়ের নাম(বাংলায়)")
+    mother_name_en=models.CharField(max_length=500,blank=True, null=True,verbose_name="মায়ের নাম(ইংরেজিতে)")
     adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL,verbose_name="ঠিকানা")
     cause=models.ForeignKey(Cause,on_delete=models.SET_NULL,blank=True, null=True,verbose_name="কারণঃ")
     caste=models.CharField(max_length=500,blank=True, null=True,verbose_name="সম্প্রদায়")
@@ -106,7 +107,7 @@ class Certificate(models.Model):
     is_verified=models.BooleanField(default=False,verbose_name="ভেরিফাইড কিনা?")
     chairman=models.ForeignKey(Chairman,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="চেয়ারম্যান")
     member=models.ForeignKey(Member,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="সদস্য")
-    language=models.CharField(max_length=25,blank=True,null=True,verbose_name="ভাষা")
+    language=models.CharField(max_length=250,blank=True,null=True,verbose_name="ভাষা")
     
     class Meta:
         verbose_name="সনদসমূহ"

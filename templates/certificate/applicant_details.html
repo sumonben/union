@@ -1,4 +1,4 @@
-{% extends 'basepage/basepage.html' %}
+{% extends 'basepage/ictparkbd_layout.html' %}
 
 {% block content %}
 {% load static %}
@@ -19,143 +19,174 @@
 </style>
 
 <!-- CONTAINER -->
-<div class="box_container" style="width: 100%; margin: 0px;">
-    <div class="" style="margin: auto;width: 100%;">
-        <!-- TITLE 
-        <div class="col-lg-4 offset-lg-1 mx-0 px-0">
-            <div id="title-container">
-                <img class="covid-image" src="./img/covid-check.png">
-                <h2>COVID-19</h2>
-                <h3>Self Checker Form</h3>
-                <p>A clinical assessment multi-step form that will assist individuals on deciding when to seek testing or medical care if they suspect they or someone they know has contracted COVID-19 or has come into close contact with someone who has COVID-19</p>
-            </div>
-        </div>-->
-        <!-- FORMS -->
-        <div >
-  <form  action="{% url 'submit_form' %}" method="post" enctype="multipart/form-data" target="_blank">
-        {% csrf_token %}
-            <div id="qbox-container">
-                    <div id="steps-container">
-                        <div class="step d-block" >
-                          
-                          <div><h1 style="text-align: center;"><u>ট্র্যাকিং নম্বর ({{certificate.tracking_no}}) সংগ্রহে রাখুন </u></h1></div>
-                          <div><h2 style="text-align: center;">( {{certificate.certificate_type.name}} এর আবেদন ) </h2></div>
+<div class="services">
+  
+  <div data-v-6f04a53f="" class="memberRegistration py-5">
+    <div class="container-wrapper">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-10">
+          <div class="card login-body shadow-lg rounded-10 py-5">
+            <table width="100%" border="1" cellspacing="0" cellpadding="10">
+              <thead><th colspan="5" style="height: 40px; background-color: #035a4c; color: #fff;padding: 15px;font-size:20px;text-align:center;">( {{certificate.certificate_type.name}} এর আবেদনের তথ্য )  </th></thead>
+              <tbody>
+              </tbody>
+            </table>
+                <div class="card-body">
 
-                          <table  width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
+                <span class="bubbleNew"><img src="{%static 'images/ictpark_monogram.png'%}" class="rounded-circle" style="width: 200px;height: 200px;" /></span>
 
-                            <tbody>
-                            <tr>
-                              <td align="left">
-                                <fieldset>
-                                <table width="100%" border="1" cellspacing="0" cellpadding="2">
-                                  <thead style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;"> ব্যক্তিগত তথ্য</th></thead>
-                                  <tbody>
-                                  
-
-                                    <tr>
-                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                        <td width="15%" align="left" valign="middle" class="sprytextfield1">সনদের ট্র্যাকিং নম্বরঃ </td>
-                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            <input value="{{certificate.tracking_no}}" name="tracking_no" type="text" class="textfieldUSER">                                       
-                                          </label>
-                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-
-                                      </tr>
-
-                                      <tr>
-                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                        <td width="15%" align="left" valign="middle" class="sprytextfield1">নামঃ </td>
-                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            {{certificate.name}}                                        
-                                          </label>
-                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-
-                                      </tr>
-                                      <tr>
-                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                        <td width="15%" align="left" valign="middle" class="sprytextfield1">পিতার নামঃ </td>
-                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            {{certificate.father_name}}                                        
-                                          </label>
-                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-
-                                      </tr>
-                                      <tr>
-                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                        <td width="15%" align="left" valign="middle" class="sprytextfield1">মাতার নামঃ </td>
-                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            {{certificate.mother_name}}                                        
-                                          </label>
-                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-
-                                      </tr>
-                                      
-                                      <tr>
-                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                        <td width="15%" align="left" valign="middle" class="sprytextfield1">গ্রামঃ </td>
-                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            {{certificate.adress.village.name}}                                        
-                                          </label>
-                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-
-                                      </tr>
-                                      <tr>
-                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                        <td width="15%" align="left" valign="middle" class="sprytextfield1">ওয়ার্ডঃ  </td>
-                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            {{certificate.adress.village.ward.name}}                                        
-                                          </label>
-                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-
-                                      </tr>
-
-                                      <tr>
-                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                        <td width="15%" align="left" valign="middle" class="sprytextfield1"> </td>
-                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                           উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট                                          </label>
-                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-
-                                      </tr>
-                                    
-                                  
-    
-                                </tbody></table>
-                              </fieldset>
-                            </td>
-                            
-                          </tr>
-                              
-                          </tbody>
-                        </table>
-                          
-                              
-
-                        </div>
-                       
-                        
-                       
-                    
-                    
-                </div>
-                    <div id="q-box__buttons" >
-                      
-                      <button id="submit-btn" type="submit" class="d-inline-block">সাবমিট</button>
-                  </div>   
+            <span class="shape"><img align="center" src="{% static 'images\ictparkbd_logo.jpg' %}"></span> 
+             {%if email %}
+            
+            <div class="alert alert-danger" role="alert">
+              <strong>{{email}}</strong> 
             </div>
             
-          </form>
-
+            {% endif %}
+            {%if phone %}
+            
+            <div class="alert alert-danger" role="alert">
+              <strong>{{phone}}</strong> 
+            </div>
+            
+            {% endif %} 
+            
+            {%if password %}
+            
+            <div class="alert alert-danger" role="alert">
+              <strong>{{password}}</strong> 
+            </div>
+            
+            {% endif %}
+            
+            {%if success %}
+            
+            <div class="alert alert-success" role="alert">
+              <strong>{{success}}</strong> 
+            </div>
+            
+            {% endif %}
+            
+            <form  action="{% url 'submit_form' %}" method="post" enctype="multipart/form-data" target="_blank">
+              {% csrf_token %}
+                  <div id="qbox-container">
+                          <div id="steps-container">
+                              <div class="step d-block" >
+                                
+                                <div><h4 style="text-align: center;"><u>ট্র্যাকিং নম্বর ({{certificate.tracking_no}}) সংগ্রহে রাখুন </u></h4></div>
+                                <div><h3 style="text-align: center;">( {{certificate.certificate_type.name}} এর আবেদন ) </h3></div>
+      
+                                <table  width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
+      
+                                  <tbody>
+                                  <tr>
+                                    <td align="left">
+                                      <fieldset>
+                                      <table width="100%" border="1" cellspacing="0" cellpadding="2">
+                                        <thead style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;"> ব্যক্তিগত তথ্য</th></thead>
+                                        <tbody>
+                                        
+      
+                                          <tr>
+                                              <td width="25%" align="right" valign="middle" class="sprytextfield1">সনদের ট্র্যাকিং নম্বরঃ </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  <input value="{{certificate.tracking_no}}" name="tracking_no" type="text" class="form-control form-control-sm">                                       
+                                                </label>
+                                              </span></td>
+      
+                                            </tr>
+      
+                                            <tr>
+                                              <td width="25%" align="right" valign="middle" class="sprytextfield1">নামঃ </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  {{certificate.name}}                                        
+                                                </label>
+                                              </span></td>
+      
+                                            </tr>
+                                            <tr>
+                                              <td width="25%" align="left" valign="middle" class="sprytextfield1">পিতার নামঃ </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  {{certificate.father_name}}                                        
+                                                </label>
+                                              </span></td>
+      
+                                            </tr>
+                                            <tr>
+                                              <td width="25%" align="left" valign="middle" class="sprytextfield1">মাতার নামঃ </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  {{certificate.mother_name}}                                        
+                                                </label>
+                                                </span></td>
+      
+                                            </tr>
+                                            
+                                            <tr>
+                                              <td width="25%" align="left" valign="middle" class="sprytextfield1">গ্রামঃ </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  {{certificate.adress.village.name}}                                        
+                                                </label>
+                                               </span></td>
+      
+                                            </tr>
+                                            <tr>
+                                              <td width="25%" align="left" valign="middle" class="sprytextfield1">ওয়ার্ডঃ  </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  {{certificate.adress.village.ward.name}}                                        
+                                                </label>
+                                                </span></td>
+      
+                                            </tr>
+      
+                                            <tr>
+                                              <td width="25%" align="left" valign="middle" class="sprytextfield1"> </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                 উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট                                          </label>
+                                                </span></td>
+      
+                                            </tr>
+                                          
+                                        
           
+                                      </tbody></table>
+                                    </fieldset>
+                                  </td>
+                                  
+                                </tr>
+                                    
+                                </tbody>
+                              </table>
+                                
+                                    
+      
+                              </div>
+                             
+                              
+                             
+                          
+                          
+                      </div>
+                      <div class="col-sm-9 form-group">
+                        <p class="text-right">
+                          <br>
+                          <button type="submit" class="btn btn-danger text-white"><span>সাবমিট</span></button>
+                        </p>
+                      </div>  
+                  </div>
+                  
+                </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 
