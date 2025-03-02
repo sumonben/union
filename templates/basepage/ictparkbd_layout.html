@@ -79,9 +79,11 @@
     {% block content %}
     
     {% endblock %}
+    <a href="{%url 'select_certificate' %}" class="btn btn-whatsnew">আবেদন করুন</a> <a href="#" class="scroll-top"><i class="fa fa-arrow-up"></i></a>
+
  </div>
  </main>
-    <script src="https://basis.org.bd/public/js/frontend_app.js"></script>
+    {% comment %} <script src="https://basis.org.bd/public/js/frontend_app.js"></script> {% endcomment %}
 
     <a href="#" class="scroll-top"><i class="fa fa-arrow-up"></i></a>
     <a href="#" class="scroll-top active"><i class="fa fa-arrow-up"></i></a>
@@ -123,16 +125,27 @@
               // When the user scrolls down 50px from the top of the document, resize the header's font size
               window.onscroll = function() {
                   scrollFunction()
+
               };
           
               function scrollFunction() {
+                var x = window.matchMedia("(max-width: 980px)")
                   if (document.body.scrollTop >50 || document.documentElement.scrollTop > 50) {
                     document.getElementById("header").className = "header sticky";
+                    if (x.matches) { 
+                      // If media query matches
+                    } else {
+                      document.getElementById("sub-heading").style.display = "none";
+
+                    }
                       
                   } else {
                     document.getElementById("header").className = "header";
 
+                    document.getElementById("sub-heading").style.display = "block";
+
                   }
+                 
               }
           </script>
     <script src="{% static 'js/userscripts.js' %}"></script>

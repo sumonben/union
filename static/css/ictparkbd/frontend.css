@@ -4927,6 +4927,11 @@ input[type=submit].btn-block {
         padding-right: 0;
         padding-left: 0
     }
+    .navbar-brand {
+       
+        margin-right: 0.1rem;
+        
+    }
 }
 
 @media (min-width:768px) {
@@ -5244,7 +5249,7 @@ input[type=submit].btn-block {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: #f1f8f5;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem
@@ -39052,8 +39057,9 @@ button.close.text-light.search-box-close {
 .header .top-header .nav-item .nav-link {
     position: relative;
     font-size: 12px;
+    text-shadow: 1px 1px 1px rgb(65, 7, 7);
     font-weight: 500;
-    color: #fff;
+    color: #b4b5b6;
     padding: .225rem 0
 }
 
@@ -39086,9 +39092,10 @@ button.close.text-light.search-box-close {
 }
 
 .header .main-header .nav-item .nav-link {
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 700;
     color: #fff;
+    text-shadow: 1px 1px 1px rgb(65, 7, 7);
     padding: 1rem;
     -webkit-transition: all .3s ease;
     transition: all .3s ease
@@ -39100,7 +39107,7 @@ button.close.text-light.search-box-close {
 
 .header .main-header .nav-item .nav-link.active,
 .header .main-header .nav-item .nav-link:hover {
-    color: #6dc8be
+    color: #af0e14
 }
 
 @media (min-width:992px) {
@@ -39439,7 +39446,7 @@ button.close.text-light.search-box-close {
 
 @media screen and (max-width:1192px) {
     .header .main-header .nav-item .nav-link {
-        font-size: 13px;
+        font-size: 17px;
         padding: .5rem .8rem
     }
 
@@ -39454,7 +39461,7 @@ button.close.text-light.search-box-close {
 
 @media screen and (max-width:1092px) {
     .header .main-header .nav-item .nav-link {
-        font-size: 12px;
+        font-size: 17px;
         padding: .5rem .7rem
     }
 
@@ -41734,8 +41741,8 @@ button.close.text-light.search-box-close {
 }
 
 .services .nav-tabs .nav-item .nav-link {
-    color: #6dc8be;
-    border: 1px solid #6dc8be;
+    color: #035a4c;
+    border: 1px solid #035a4c;
     border-radius: 0;
     font-size: 1.1rem;
     font-weight: 500
@@ -41743,7 +41750,7 @@ button.close.text-light.search-box-close {
 
 .services .nav-tabs .nav-item .nav-link.active {
     color: #fff;
-    background: #6dc8be
+    background: #035a4c;
 }
 
 .services .service-item {
