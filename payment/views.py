@@ -12,7 +12,8 @@ from .models import Transaction,PaymentPurpose
 from .sslcommerz import sslcommerz_payment_gateway
 from sslcommerz_lib import SSLCOMMERZ 
 from django.contrib.auth import get_user_model
-from certificate.models import Certificate,CertificateType
+from certificate.models import Certificate,CertificateType 
+from license.models import License,LicenseType
 
 # Create your views here.
 cradentials = {'store_id': 'israb672a4e32dfea5',
@@ -48,10 +49,9 @@ class CheckoutSuccessView(View):
         data = self.request.POST
         #print(data)
 
-        certificate_type=CertificateType.objects.filter(id=data['value_d']).first()
+        
         tran_purpose=PaymentPurpose.objects.filter(certificate_type_id=data['value_d']).first()
-        context['certificate_type']=certificate_type
-        print(tran_purpose)
+        
         transaction=None
         try:
             transaction=Transaction.objects.create(
@@ -82,10 +82,14 @@ class CheckoutSuccessView(View):
 
             )
             #print("data['value_d']:",tran_purpose.payment_type)
-            
+            print(transaction)
             if transaction:
-                print("data['value_d']:",tran_purpose)
-                certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
+                if data['value_d']== 1:
+                    certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
+                    context['certificate_type']=certificate.certificate_type
+                else:
+                    certificate=License.objects.filter(tracking_no=data['value_a']).first()
+                    context['license_type']=certificate.license_type
                 certificate.transaction=transaction
                 certificate.save()
                 print('Cerficate paid:',certificate)

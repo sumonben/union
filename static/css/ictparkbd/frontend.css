@@ -31,7 +31,9 @@
     --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
 }
-
+.subMenu{
+    content:'\f099' ;
+}
 html {
     font-family: sans-serif;
     line-height: 1.15;
@@ -2419,7 +2421,8 @@ select.form-control:focus::-ms-value {
 .col-form-label-sm {
     padding-top: calc(.25rem + 1px);
     padding-bottom: calc(.25rem + 1px);
-    font-size: .875rem;
+    font-size: 1.1rem;
+    text-shadow: .3px .3px .3px rgb(58, 31, 31);
     line-height: 1.5
 }
 
@@ -5249,7 +5252,7 @@ input[type=submit].btn-block {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #f1f8f5;
+    background-color: #e4ebec;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem
@@ -17151,14 +17154,14 @@ a.text-dark:hover {
  * Font Awesome Free 5.9.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
-@font-face {
+/* @font-face {
     font-family: Font Awesome\ 5 Free;
     font-style: normal;
     font-weight: 900;
     font-display: auto;
     src: url(../fonts/fa-solid-900.eot);
     src: url(../fonts/fa-solid-900.eot?#iefix) format("embedded-opentype"), url(../fonts/fa-solid-900.woff2) format("woff2"), url(../fonts/fa-solid-900.woff) format("woff"), url(../fonts/fa-solid-900.ttf) format("truetype"), url(../fonts/fa-solid-900.svg#fontawesome) format("svg")
-}
+} */
 
 .fa,
 .far,
@@ -38835,8 +38838,8 @@ img[lazy=loaded] {
 }
 
 .navbar-toggler {
-    color: #035a4c;
-    border: 1px solid #035a4c;
+    color: #888;
+    border: 2px solid #888;
     margin-top: 30px;
     padding: .5rem 1rem
 }
@@ -39218,7 +39221,7 @@ button.close.text-light.search-box-close {
     .dropdown .dropdown-menu {
         position: absolute;
         top: 100%;
-        left: 0;
+        left: -100px;
         width: 100%;
         z-index: 9999;
         padding: 1rem;
@@ -39246,12 +39249,12 @@ button.close.text-light.search-box-close {
 
     .megamenu-lg {
         min-width: 700px !important;
-        padding: 1rem
+        padding: .5rem
     }
 
     .megamenu-md {
         min-width: 500px !important;
-        padding: 1rem
+        padding: .5rem
     }
 }
 
@@ -39311,9 +39314,10 @@ button.close.text-light.search-box-close {
 }
 
 .dropdown-menu li a {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
-    color: #7b0f13;
+    color: #fff;
+    text-shadow: 2px 2px 2px rgb(65, 7, 7);
     padding: 3px 10px;
     display: inline-block;
     text-decoration: none
@@ -39321,7 +39325,6 @@ button.close.text-light.search-box-close {
 
 @media (min-width:992px) {
     .dropdown-menu li a:before {
-        content: "\F13E";
         font: normal normal normal 24px/1 Material Design Icons;
         position: absolute;
         left: 0;
@@ -39333,7 +39336,7 @@ button.close.text-light.search-box-close {
 
 .dropdown-menu li a.active,
 .dropdown-menu li a:hover {
-    color: #6dc8be
+    color: #af0e14
 }
 
 @-webkit-keyframes pullDown {
@@ -39680,6 +39683,8 @@ button.close.text-light.search-box-close {
 
 .footer-bottom {
     background: #035a4c;
+    border-top-left-radius: 25%;
+    border-top-right-radius: 25%;
     padding: 1rem 0
 }
 
@@ -39693,9 +39698,6 @@ button.close.text-light.search-box-close {
     text-decoration: none
 }
 
-.footer-bottom a img {
-    width: 25px
-}
 
 .footer-bottom li {
     padding: .5rem
@@ -39709,7 +39711,7 @@ button.close.text-light.search-box-close {
 .scroll-top {
     position: fixed;
     bottom: 107%;
-    right: 36px;
+    right: 10px;
     width: 52px;
     height: 52px;
     line-height: 48px;
@@ -39905,7 +39907,7 @@ button.close.text-light.search-box-close {
     background: #6dc8be;
     opacity: .2;
     position: absolute;
-    top: 0;
+    top: 15%;
     right: -150px;
     border-radius: 80px;
     -webkit-transform: rotate(45deg);
@@ -41243,15 +41245,17 @@ button.close.text-light.search-box-close {
 }
 
 .bubbleNew{
-    width: 200px;
-    height: 200px;
-    left: 500px;
+    width: 60px;
+    height: 60px;
+    left: 93%;
+    bottom:2%;
     background: #007f3d;
-    opacity: .15;
-    position: absolute;
+    opacity: .20;
+    position: fixed;
     border-radius: 50%;
-    -webkit-animation: circle 12s linear infinite;
-    animation: circle 12s linear infinite
+    overflow: hidden;
+    -webkit-animation: circlenew 12s  linear infinite;
+    animation: circlenew 12s linear infinite
 
 }
 .leftside-menu .card .bubble1,
@@ -41692,6 +41696,29 @@ button.close.text-light.search-box-close {
     to {
         -webkit-transform: rotate(1turn) translate(-165px) rotate(-1turn);
         transform: rotate(1turn) translate(-165px) rotate(-1turn)
+    }
+}
+@-webkit-keyframes circlenew {
+    0% {
+        -webkit-transform: rotate(0deg) translate(-50px) rotate(0deg);
+        transform: rotate(0deg) translate(-50px) rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: rotate(1turn) translate(-50px) rotate(-1turn);
+        transform: rotate(1turn) translate(-50px) rotate(-1turn)
+    }
+}
+
+@keyframes circlenew {
+    0% {
+        -webkit-transform: rotate(0deg) translate(-50px) rotate(0deg);
+        transform: rotate(0deg) translate(-50px) rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: rotate(1turn) translate(-50px) rotate(-1turn);
+        transform: rotate(1turn) translate(-50px) rotate(-1turn)
     }
 }
 

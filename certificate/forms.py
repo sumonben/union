@@ -36,6 +36,12 @@ WarishFormSet = modelformset_factory(
             'comment': forms.Select(choices=COMMENT_CHOICE,attrs={'class': 'form-control form-control-sm',}),            
         }
 )
+SamePersonFormSet = modelformset_factory(
+    Person, fields=("name",), extra=1,
+    widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
+                  }
+)
 
 class CertificateTypeForm(forms.ModelForm):
     name= forms.ModelChoiceField(label="সার্টিফিকেটসমূহঃ ",required=True,queryset=CertificateType.objects.all(),widget=forms.Select(attrs={'class': 'form-control form-control-sm',}))
@@ -47,7 +53,7 @@ class CertificateForm(forms.ModelForm):
     class Meta:
         model = Certificate
         fields = "__all__"
-        exclude=['serial','name_en','transaction','is_verified','father_name_en','mother_name_en','passport','tracking_no','adress','cause','person','chairman','member','caste','income','profession','language']
+        exclude=['serial','name_en','transaction','is_verified','father_name_en','mother_name_en','passport','tracking_no','adress','description','cause','person','chairman','member','caste','income','profession','language']
     
             
         
@@ -63,11 +69,22 @@ class CertificateForm(forms.ModelForm):
 
         if self.certificate_type:
             self.fields['certificate_type']=forms.ModelChoiceField(label='সনদের ধরণ',queryset=CertificateType.objects.filter(id__in=[self.certificate_type.id,]),initial=CertificateType.objects.filter(id__in=[ self.certificate_type.id,]), widget=forms.Select( attrs={'class':'form-control form-control-sm',}))
-            if self.certificate_type.serial==1:
+            if self.certificate_type.id==2:
                 self.fields['language']=forms.ChoiceField(label='ভাষা', choices=LANGUAGE_CHOICE, widget=forms.Select( attrs={}))
-            if self.certificate_type.serial==3:
+            if self.certificate_type.id==3:
                 self.fields['cause']=forms.ModelChoiceField(label='কারণ',queryset=Cause.objects.all(),initial=Cause.objects.filter(serial__in=[ 1,]), widget=forms.Select( attrs={'class':'form-control form-control-sm',}))
-           
+            if self.certificate_type.id==4:
+                self.fields['description']=forms.CharField( label='কারণ বর্ণনা',widget=forms.Textarea( attrs={'class':'form-control form-control-sm','placeholder':'সনদেটি কি কারণে প্রয়োজন তার বর্ণনা '}))
+                self.fields['language']=forms.ChoiceField(label='ভাষা', choices=LANGUAGE_CHOICE, widget=forms.Select( attrs={}))
+            if self.certificate_type.id==6:
+                self.fields['income']=forms.CharField( label='মাসিক আয়',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'মাসিক আয়'}))
+                self.fields['profession']=forms.CharField( label='পেশা',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'পেশা-বৃত্তি'}))
+            if self.certificate_type.id==7:
+                self.fields['income']=forms.CharField( label='অভিভাবকের মাসিক আয়',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'অভিভাবকের মাসিক আয়'}))
+                self.fields['profession']=forms.CharField( label='অভিভাবকের পেশা',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'অভিভাবকের পেশা-বৃত্তি'}))
+            if self.certificate_type.id==8:
+                self.fields['description']=forms.CharField( label='পরিবর্তন গুলো লিখুন',widget=forms.Textarea( attrs={'class':'form-control form-control-sm','placeholder':'সনদেটি কি কারণে প্রয়োজন তার বর্ণনা '}))
+       
 
 # class WarishanCertificateForm(forms.ModelForm):
 #     class Meta:
@@ -128,6 +145,16 @@ class AdressForm(forms.ModelForm):
             'post_office': forms.Select(attrs={'class': 'form-control form-control-sm', 'onkeypress' : "myFunction(this.id);",'required':True}),
             
 }
-    
+class AdressFormExtra(forms.ModelForm):
+    class Meta:
+        model = Adress
+        fields = "__all__"
+        exclude=['serial','holding_no','union','district','upazilla']
+        widgets = {
+            'village': forms.Select(attrs={'class': 'form-control form-control-sm','onkeypress' : "myFunction(this.id);",'label':'Village/house','required':True}),
+            'ward': forms.Select(attrs={'class': 'form-control form-control-sm','onkeypress' : "myFunction(this.id);",'label':'Street No.','required':True}),
+            'post_office': forms.Select(attrs={'class': 'form-control form-control-sm', 'onkeypress' : "myFunction(this.id);",'required':True}),
+            
+}
 
 

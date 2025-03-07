@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'sslcommerz_lib',
     'account',
     'certificate',
+    'license',
     'region',
     'payment',
 ]

@@ -2414,7 +2414,7 @@ select.form-control:focus::-ms-value {
 .col-form-label-sm {
     padding-top: calc(.25rem + 1px);
     padding-bottom: calc(.25rem + 1px);
-    font-size: .875rem;
+    font-size: 1rem;
     line-height: 1.5
 }
 
@@ -3032,6 +3032,18 @@ fieldset:disabled a.btn {
 .show>.btn-info.dropdown-toggle:focus {
     box-shadow: 0 0 0 .2rem rgba(58, 176, 195, .5)
 }
+a.btn.btn-whatsnew {
+    position: fixed;
+    left: -54px;
+    top: 50%;
+    background: rgb(7, 58, 52);
+    color: rgb(0 0 0);
+    font-size: 18px;
+    transform: rotate(-90deg);
+    padding: 7px 16px;
+    font-weight: 600;
+}
+
 
 .btn-warning {
     color: #212529;
@@ -19276,16 +19288,7 @@ a.text-dark:hover {
     font-weight: 400
 }
 
-.mdi-set,
-.mdi:before {
-    display: inline-block;
-    font: normal normal normal 24px/1 Material Design Icons;
-    font-size: inherit;
-    text-rendering: auto;
-    line-height: inherit;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale
-}
+
 
 .mdi-ab-testing:before {
     content: "\F001C"
@@ -30463,13 +30466,9 @@ a.text-dark:hover {
     content: "\FAD1"
 }
 
-.mdi-material-design:before {
-    content: "\F985"
-}
 
-.mdi-material-ui:before {
-    content: "\F357"
-}
+
+
 
 .mdi-math-compass:before {
     content: "\F358"
@@ -39144,8 +39143,7 @@ button.close.text-light.search-box-close {
 
 @media (min-width:992px) {
     .dropdown-menu li a:before {
-        content: "\F13E";
-        font: normal normal normal 24px/1 Material Design Icons;
+        
         position: absolute;
         left: 0;
         font-size: 14px;
@@ -39539,8 +39537,8 @@ button.close.text-light.search-box-close {
     font-size: 17px;
     text-align: center;
     color: #fff;
-    background: #007f3d;
-    border: 2px solid #007f3d;
+    background-color: #035a4c;
+    border: 2px solid #050506;
     border-radius: 7px;
     box-shadow: 0 0 10px 0 rgba(79, 169, 160, .8);
     z-index: 999;
@@ -39699,8 +39697,7 @@ button.close.text-light.search-box-close {
 }
 
 .leftside-menu .card .nav-item .nav-link:before {
-    content: "\FE59";
-    font-family: Material Design Icons;
+    
     position: absolute;
     left: 0;
     padding-left: 15px
@@ -40022,8 +40019,7 @@ button.close.text-light.search-box-close {
 }
 
 .service-menu .nav-link:before {
-    content: "\F13E";
-    font-family: Material Design Icons;
+    
     font-weight: 400;
     position: absolute;
     left: 0
@@ -40395,8 +40391,7 @@ button.close.text-light.search-box-close {
 
 .vdp-datepicker:before {
     content: "\F0EF";
-    font-family: Material Design Icons;
-    font-weight: 400;
+    
     position: absolute;
     right: 10px;
     z-index: 100
@@ -42740,14 +42735,12 @@ button.close.text-light.search-box-close {
 }
 
 .basis-member.staff button[aria-expanded=true]:before {
-    content: "\F377";
-    font-family: Material Design Icons;
+    
     float: right
 }
 
 .basis-member.staff button[aria-expanded=false]:before {
-    content: "\F419";
-    font-family: Material Design Icons;
+   
     float: right
 }
 
@@ -43208,8 +43201,7 @@ button.close.text-light.search-box-close {
 }
 
 .company-profile .services .nav-item .nav-link:before {
-    content: "\F05A";
-    font: normal normal normal 24px/1 Material Design Icons;
+   
     font-size: 14px;
     position: absolute;
     left: 0;
@@ -43383,8 +43375,7 @@ button.close.text-light.search-box-close {
 }
 
 .platform .nav-link:before {
-    content: "\F05A";
-    font: normal normal normal 24px/1 Material Design Icons;
+    
     font-size: 14px;
     position: absolute;
     left: 0;
@@ -43403,8 +43394,7 @@ button.close.text-light.search-box-close {
 }
 
 .gallery .nav-link:before {
-    content: "\F05A";
-    font: normal normal normal 24px/1 Material Design Icons;
+    
     font-size: 14px;
     position: absolute;
     left: 0;
@@ -43983,8 +43973,7 @@ button.close.text-light.search-box-close {
 }
 
 .company-dashboard .member-services .payment-info .card-body .nav-item .nav-link:before {
-    content: "\F63E";
-    font-family: Material Design Icons;
+   
     position: absolute;
     left: 0
 }
@@ -44046,8 +44035,7 @@ button.close.text-light.search-box-close {
 }
 
 .sidemenu .nav-item .nav-link:before {
-    content: "\F13E";
-    font-family: Material Design Icons;
+   
     position: absolute;
     left: 0;
     padding-left: .5rem

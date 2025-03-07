@@ -79,3 +79,16 @@ class Village(models.Model):
         ordering = ['name_en']
     def __str__(self):
         return self.name+'('+self.name_en+')'
+    
+class Mouja(models.Model):
+    name=models.CharField(max_length=25)
+    name_en=models.CharField(max_length=25)
+    village=models.ForeignKey(Village, on_delete=models.CASCADE,blank=True,null=True)
+    ward=models.ForeignKey(Ward, on_delete=models.CASCADE,blank=True,null=True)
+    post_office=models.ForeignKey(PostOffice, on_delete=models.CASCADE,blank=True,null=True)
+    link=models.CharField(max_length=15,null=True,blank=True)
+
+    class Meta:
+        ordering = ['name_en']
+    def __str__(self):
+        return self.name+'('+self.name_en+')'

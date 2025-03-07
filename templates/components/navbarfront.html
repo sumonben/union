@@ -48,7 +48,9 @@
 <header data-v-6f04a53f="" class="header" id="header" >
     <div class="search-box">
         <div class="box">
-            <form id="searchform2"><input list="browsers" type="search" placeholder="What are you looking for?"> <span class="mdi mdi-magnify"></span>
+            <form id="searchform2"> 
+           
+            <input list="browsers" type="search" placeholder="What are you looking for?"> <span class="mdi mdi-magnify"></span>
                 <!---->
             </form> <button type="button" class="close text-light search-box-close"><i class="mdi mdi-close"></i></button>
         </div>
@@ -93,108 +95,112 @@
             <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler mMenu collapsed" style="margin-top:20px;"><span class="fa fa-close"></span></button>
             <ul class="navbar-nav ml-auto" style="float:right; margin-left:20%;">
                 <li class="nav-item"><a href="/" class="{% if request.resolver_match.url_name in 'home' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}" aria-current="page">হোম</a></li>
-                <li class="nav-item dropdown"><a href="{% url 'select_certificate' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name == 'select_certificate' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">আবেদন করুন</a>
+                <li class="nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">সেবাসমুহ</a>
                     <div aria-labelledby="navbarDropdown" class="dropDown dropdown-menu megamenu megamenu-lg">
                         <div class="row m-0">
                             <div class="col-lg-4 pr-0">
+                                <h4 class="menu-head"><a href="/ea/local/awards" class="">প্রথম ভাগ</a></h4>
+                                     
+                                <ul>
+                                    
+                                    {% for certificate in certificate_types|slice:'0:10'  %}
+                                        
+                                        
+                                    <li class="subMenu"><span class="fa fa-hand-o-up"></span>
+                                        <a href="{% url 'apply_for_certificate' certificate.id %}" target="_blank" class="">
+                                       {{certificate.name}}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+
+                                    
+                                </ul>
+                            </div>
+                            <div class="col-lg-4 pr-0">
+                                <h4 class="menu-head"><a href="/ea/local/events" class="">দ্বিতীয় ভাগ</a></h4>
+                                <ul>
+                                    {% for certificate in certificate_types|slice:'0:20'  %}
+                                        
+                                        
+                                    <li class="subMenu"><span class="fa fa-hand-o-up"></span>
+                                        <a href="{% url 'apply_for_certificate' certificate.id %}" target="_blank" class="">
+                                       {{certificate.name}}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                    
+                                </ul>
+                            </div>
+                            <div class="col-lg-4 pr-0">
+                                <h4 class="menu-head"><span>
+                                        তৃতীয় ভাগ
+                                    </span></h4>
+                                <ul>
+                                    {% for certificate in certificate_types|slice:'0:30'  %}
+                                        
+                                        
+                                    <li class="subMenu"><span class="fa fa-hand-o-up"></span>
+                                        <a href="{% url 'apply_for_certificate' certificate.id %}" target="_blank" class="">
+                                       {{certificate.name}}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                        </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item dropdown"><a href="{% url 'select_certificate' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name == 'select_certificate' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">আবেদন করুন</a>
+                    <div aria-labelledby="navbarDropdown" class="dropDown dropdown-menu megamenu megamenu-lg">
+                        <div class="row m-0">
+                            <div class="col-lg-6 pr-0">
                                 <h4 class="menu-head"><a href="{% url 'select_certificate' %}" class="">আবেদন করুন</a></h4>
                                           <ul>
                                              
                                             </ul>
                             </div>
-                            <div class="col-lg-4 pr-0">
+                            <div class="col-lg-6 pr-0">
                                 <h4 class="menu-head"><a href="/secretariat" class="">Our Team</a></h4>
                                         <ul>
-                                            <li class="subMenu"><span class="fas fa-user">
-                                            </span><a href="https://israbentech.com/frontend/about/excutive-council" class="nav-link" onclick="myFunctionNavbar(this.id)">Excutive Council</a></li>
+                                            {% comment %} <li class="subMenu"><span class="fa fa-angle-double-right"></span>
+                                            <a href="https://israbentech.com/frontend/about/excutive-council" class="nav-link" onclick="myFunctionNavbar(this.id)">Excutive Council</a></li>
                                                 <li class="fas fa-eye"><a href="https://israbentech.com/frontend/about/previous-excutive-council" class="nav-link">Previous Excutive Council</a></li>
-                                                        <li class="subMenu"><span class="fab fa-think-peaks"> </span><a href="https://israbentech.com/frontend/about/members" class="nav-link">Members</a></li>
+                                                        <li class="subMenu"><span class="fab fa-think-peaks"> </span><a href="https://israbentech.com/frontend/about/members" class="nav-link">Members</a></li> {% endcomment %}
                                             </ul>
                             </div>
                           
                         </div>
                     </div>
                 </li>
-                <li class="nav-item"><a href="{% url 'download_certificate_form' %}" class="{% if request.resolver_match.url_name in 'download_certificate_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}" aria-current="page">সনদ ডাউনলোড করুন</a></li>
+                <li class="nav-item nav-item dropdown"><a href="{% url 'download_certificate_form' %}" class="{% if request.resolver_match.url_name in 'download_certificate_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}" aria-expanded="false" aria-current="page">সনদ ডাউনলোড করুন</a></li>
 
-                {% comment %} <li class="nav-item nav-item dropdown"><a href="{% url 'download_certificate_form' %}"  aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name in 'membership' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">সনদ ডাউনলোড করুন</a>
-                    <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <ul>
-                              
-                        </ul>
-                    </div>
-                </li> {% endcomment %}
+                <li class="nav-item nav-item dropdown"><a href="{% url 'download_license_form' %}"   aria-expanded="false" class="{% if request.resolver_match.url_name in 'download_license_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">লাইসেন্স ডাউনলোড করুন</a>
+                   
+                </li> 
                 <li class="nav-item nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name in 'media' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">সনদ যাচাই করুন
                         </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <ul>
-                            <li class="subMenu"><span class="fas fa-arrow-right"><a href="" class="nav-link">News</a></span>
-                            </li>
-                           
-                        </ul>
+                        <div class="row m-0">
+                            <div class="col-lg-6 pr-0">
+                                <h4 class="menu-head"><a href="{% url 'select_certificate' %}" class="">আবেদন করুন</a></h4>
+                                          <ul>
+                                             
+                                            </ul>
+                            </div>
+                            <div class="col-lg-6 pr-0">
+                                <h4 class="menu-head"><a href="/secretariat" class="">Our Team</a></h4>
+                                        <ul>
+                                            {% comment %} <li class="subMenu"><span class="fa fa-angle-double-right"></span>
+                                            <a href="https://israbentech.com/frontend/about/excutive-council" class="nav-link" onclick="myFunctionNavbar(this.id)">Excutive Council</a></li>
+                                                <li class="fas fa-eye"><a href="https://israbentech.com/frontend/about/previous-excutive-council" class="nav-link">Previous Excutive Council</a></li>
+                                                        <li class="subMenu"><span class="fab fa-think-peaks"> </span><a href="https://israbentech.com/frontend/about/members" class="nav-link">Members</a></li> {% endcomment %}
+                                            </ul>
+                            </div>
+                          
                     </div>
                 </li>
                 
-                <li class="nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">যোগাযোগ</a>
-                    <div aria-labelledby="navbarDropdown" class="dropDown dropdown-menu megamenu megamenu-lg">
-                        <div class="row m-0">
-                            <div class="col-lg-4 pr-0">
-                                <h4 class="menu-head"><a href="/ea/local/awards" class="">Educational Organization</a></h4>
-                                     
-                                <ul>
-                                    <li class="subMenu"><a href="https://moedu.gov.bd/" target="_blank" class="">
-                                        Ministry of Education
-                                    </a></li>
-                                    <li class="subMenu"><a href="https://www.shed.gov.bd/" target="_blank" class="">
-                                            Secondary &amp; Higher Secondery Division 
-                                        </a></li>
-                                    <li class="subMenu"><a href="https://dshe.gov.bd/" target="_blank" class="">
-                                            Secondary &amp; Higher Secondery Department
-                                        </a></li>
-                                    <li class="subMenu"><a href="https://www.bcsgea.org.bd/" target="_blank" class="">
-                                            BCE(General Education) Association
-                                        </a></li>
-                                    <li class="subMenu"><a href="http://www.nctb.gov.bd/" target="_blank" class="">
-                                            NCTB
-                                        </a></li>
-                                    <li class="subMenu"><a href="https://imli.portal.gov.bd/" target="_blank" class="">
-                                            international mother language institute
-                                        </a></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-4 pr-0">
-                                <h4 class="menu-head"><a href="/ea/local/events" class="">For Members</a></h4>
-                                <ul>
-                                    <li class="subMenu"><a href="http://103.248.15.123/EMIS" target="_blank" class="">
-                                            EMIS Link
-                                        </a></li>
-                                    <li class="subMenu"><a href="http://103.113.200.27:8080/tmis/f?p=111:LOGIN_DESKTOP:11377104420057:::::" target="_blank" class="">
-                                            TMIS Links
-                                        </a></li>
-                                    <li class="subMenu"><a href="/event-details/cebit-thailand-1" target="_blank" class="">
-                                            Transfer Application
-                                        </a></li>
-                                    <li class="subMenu"><a href="http://www.educationboard.gov.bd/" target="_blank" class="">
-                                            Education Boards
-                                        </a></li>
-                                    <li class="subMenu"><a href="https://www.nu.ac.bd/" target="_blank" class="">
-                                            National University
-                                        </a></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-4 pr-0">
-                                <h4 class="menu-head"><span>
-                                        Others Link
-                                    </span></h4>
-                                <ul>
-                                    <li class="subMenu"><a href="https://ictd.gov.bd/" target="_blank">ICT Divistion</a></li>
-                                    <li class="subMenu"><a href="/content/basis-students-forum-1" class="">Education Scholarship</a></li>
-                                    <li class="subMenu"><a href="https://www.startupbangladesh.vc/" class="">ICT Start-Up</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
                 
                 {% comment %} <li class="nav-item"><a href="" class="nav-link" target="__blank" ><img width="30px" height="30px" src="{% static 'images/blog.jpg'%}" alt="blog_icon"><span class="fas fa-arrow-right">Blog</span></a></li> {% endcomment %}
             </ul>
@@ -202,15 +208,20 @@
 
             <div class="mobile-search-box">
                 <div class="box">
+                    
                     <form id="searchform">
                         <div class="input-group mb-2"><input list="browsers" type="search" placeholder="What are you looking for?" class="form-control shadow-sm">
                             <div class="input-group-prepend">
-                                <div class="input-group-text"><span class="mdi mdi-magnify"></span></div>
+                                
+                                <div class="input-group-text"><span class="fa fa-search"></span></div>
                             </div>
                         </div>
-                        <!---->
                     </form> <button type="button" class="close text-light search-box-close"><i class="mdi mdi-close"></i></button>
                 </div>
+                <strong><a  style="float:right;width:80px;height:80px" href="https://bangladesh.gov.bd/" target="_blank"><img style="float:right;width:80px;height:80px"  alt="Tarique Sumon" data-src="/images/sumon.jpg" src="{% static 'images/logo.png'%}" lazy="loaded"> 
+                </a></strong>
+                <strong><a  style="float:left;width:80px" href="https://bangladesh.gov.bd/" target="_blank"><img  alt="Tarique Sumon" data-src="/images/sumon.jpg" src="{% static 'images/tilokpur_logo.png'%}" lazy="loaded"> 
+                </a></strong> 
             </div>
 
             {% comment %} <ul class="social-menu navbar-nav">

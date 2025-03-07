@@ -6,7 +6,7 @@ from import_export.admin import ExportActionMixin,ImportExportMixin
 @admin.register(Certificate)
 class CertificateAdmin(ImportExportMixin,admin.ModelAdmin):
     search_fields=[  'email','phone',]
-    list_display=[ 'tracking_no','name','email','phone','transaction_detaills','paid_at','is_verified']
+    list_display=[ 'tracking_no','name','email','phone','certificate_type','transaction_detaills','paid_at','is_verified']
     list_display_links = ['name','email','phone',]
     list_filter=['is_verified']
 

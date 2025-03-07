@@ -270,7 +270,7 @@
                                             
                                             
                                         
-                                        {% for certificate in certificate_type  %}
+                                        {% for certificate in certificate_types  %}
                                             
                                             
                                             
@@ -293,117 +293,9 @@
 
                                             {% endfor %}
 
-                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init" style="margin-bottom:25px;">
-                                                <a href="{{chapter.get_absolute_url}}" class="">
-
-                                                <div class="card card-body shadow-sm mb-4" style="overflow:visible">
-                                                    <div class="circle1">                                                        <img src="{% static 'images/certificate/citizen.png' %}" alt="Citizenship" height="80">
-                                                    </div>
-                                                    <div >
-                                                        <a   href="{% url 'apply_for_certificate' 1 %}">নাগরিকত্ব ও চারিত্রিক সনদ </a>
-                                                        <br>
-                                                     </div>
-                                                    
-                                                </div>
-                                            </a>
                                             
-                                            </div>
-                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init" style="margin-bottom:25px;">
-                                                <a href="{{chapter.get_absolute_url}}" class="">
-
-                                                <div class="card card-body shadow-sm mb-4" style="overflow:visible">
-                                                    <div class="circle1">                                                        <img src="{% static 'images/certificate/citizen.png' %}" alt="Citizenship" height="80">
-                                                    </div>
-                                                    <div >
-                                                        <a   href="{% url 'apply_for_certificate' 1 %}">নাগরিকত্ব ও চারিত্রিক সনদ </a>
-                                                        <br>
-                                                     </div>
-                                                    
-                                                </div>
-                                            </a>
-                                            
-                                            </div>
-                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init" style="margin-bottom:25px;">
-                                                <a href="{{chapter.get_absolute_url}}" class="">
-
-                                                <div class="card card-body shadow-sm mb-2" style="overflow:visible;">
-                                                    <div class="circle1">                                                        <img src="{% static 'images/certificate/citizen.png' %}" alt="Citizenship" height="80">
-                                                    </div>
-                                                    <div >
-                                                        <a   href="{% url 'apply_for_certificate' 1 %}">নাগরিকত্ব ও চারিত্রিক সনদ </a>
-                                                        <br>
-                                                     </div>
-                                                    
-                                                </div>
-                                            </a>
-                                            
-                                            </div>
-                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init">
-                                                <a href="{{chapter.get_absolute_url}}" class="">
-
-                                                <div class="card card-body shadow-sm mb-4" style="overflow:visible">
-                                                    <div class="circle1">                                                        <img src="{% static 'images/certificate/citizen.png' %}" alt="Citizenship" height="80">
-                                                    </div>
-                                                    <div >
-                                                        <br>
-                                                        <br>
-                                                        <br>
-                                                        <a   href="{% url 'apply_for_certificate' 1 %}">নাগরিকত্ব ও চারিত্রিক সনদ </a>
-                                                       
-                                                     </div>
-                                                    
-                                                </div>
-                                            </a>
-                                            
-                                            </div>
-
-                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init">
-                                                <a href="{{chapter.get_absolute_url}}" class="">
-
-                                                <div class="card card-body shadow-sm mb-4">
-                                                    <div >
-                                                        <a   href="{% url 'apply_for_certificate' 1 %}">নাগরিকত্ব ও চারিত্রিক সনদ </a>
-                                                        <br>
-                                                        <img src="{% static 'images/certificate/citizen.png' %}" alt="Citizenship">
-                                                     </div>
-                                                    
-                                                </div>
-                                            </a>
-                                            
-                                            </div>
-                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init">
-                                                <a href="{{chapter.get_absolute_url}}" class="">
-
-                                                <div class="card card-body shadow-sm mb-4">
-                                                    <div >
-                                                        <a   href="{% url 'apply_for_certificate' 1 %}">নাগরিকত্ব ও চারিত্রিক সনদ </a>
-                                                        <br>
-                                                        <img src="{% static 'images/certificate/citizen.png' %}" alt="Citizenship">
-                                                     </div>
-                                                    
-                                                </div>
-                                            </a>
-                                            
-                                            </div>
-                                            {% for chapter in chapters %}                                             
-                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init">
-                                                <a href="{{chapter.get_absolute_url}}" class="">
-
-                                                <div class="card card-body shadow-sm mb-4">
-                                                    <div >
-                                                        <a   href="{% url 'apply_for_certificate' 1 %}">নাগরিকত্ব ও চারিত্রিক সনদ </a>
-                                                        <br>
-                                                        <img src="{% static 'images/certificate/citizen.png' %}" alt="Citizenship">
-                                                     </div>
-                                                    
-                                                </div>
-                                            </a>
-                                            
-                                            </div>
-                                            {% endfor %}
-                                                  
                                              
-                                                                                        </div>
+                                        </div>
                                         <div class="row pt-5">
                                             <div class="col-lg-12 text-center"><a href="/service/member" class="btn btn-lg btn-primary rounded-50">
                                                     View All
@@ -414,21 +306,30 @@
                                     <div id="nonmembers" role="tabpanel" aria-labelledby="nonmembers-tab" class="nonmembers tab-pane fade">
                                         <div class="row">
                                                 
-                                                                                           
-                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init aos-animate"><a href="/service-details/30/member" class="">
-                                              
-                                                <div class="card card-body shadow-sm mb-4">
-                                                    <label>Chapter : 2<br> Topic : ৪।  ডাটা কমিউনিকেশন মাধ্যম </label>
-                                                    <form class="p-3 mt-3" method="POST" action="https://israbentech.com/downloadbase64file">
-                                                        <input type="hidden" name="_token" value="s1jrPtVBdGFxHOfnJRuqRy6uZXqkCielnj1vQjvS">                                                                <input style="display: none" type="text" name="download" id="download" value="9">
-                                                        <input type="submit" value="Download">
-                                                    </form>
-                                                    <h3>ডাটা কমিউনিকেশন ও নেটওয়ার্কিং</h3>
+                                            {% for license in license_types  %}
+                                            
+                                            
+                                            
+                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init" style="margin-bottom:25px;">
+                                                <a href="{% url 'apply_for_license' license.id %}" >
+
+                                                <div class="card card-body shadow-sm mb-4" style="overflow:visible;">
+                                                    <div class="circle1">                                                        <img src="{{license.image.url}}" alt="Citizenship" height="80">
+                                                    </div>
+                                                    <div >
+                                
+                                                        <div class="card-text">{{license.name}}</div>
+                                                        
+                                                     </div>
                                                     
                                                 </div>
                                             </a>
+                                            
                                             </div>
-                                                          
+
+                                            {% endfor %}
+                                              
+                                             
 
                                                 
                                     
@@ -1217,7 +1118,6 @@
            </div>
        </div>
         
-   <script src="https://basis.org.bd/public/js/frontend_app.js"></script>
    <div>
        <div class="toast-container toast-top-right"></div>
        <div class="toast-container toast-bottom-right"></div>

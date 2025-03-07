@@ -1,0 +1,400 @@
+
+
+{% extends 'basepage/basepage_certificate.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+    .main_body{
+        width:100%;
+        height:100%;
+        color:red;
+    }
+    @media(max-width:767px){
+        .main_body{
+            width:100%;
+            height:700px;
+            color:red;
+            background-color:green;
+        }   
+    }
+</style>
+
+
+  <link rel="icon" href="{% static 'images/gmrwc_logo.png'%}" type="image/x-icon">
+
+  
+  
+<style>
+body{
+    font-weight: normal;
+    font-style:normal;
+        
+      
+}
+#first_table{
+    width:80%;
+    height:100%
+}
+    .row{
+        margin-left:15%;
+    }
+  button#print, button#next-btn, button#submit-btn {
+  font-size: 17px;
+  font-weight: bold;
+  position: relative;
+  width: 300px;
+  height: 50px;
+  background: #DC3545;
+  margin-left: 50%;
+  margin-top: 20px;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  transition: color .3s;
+  text-align: center;
+  color: #fff;
+  border: 0;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+button#print:after, button#next-btn:after, button#submit-btn:after {
+  result: absolute;
+  top: 90%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #05812a;
+  content: "";
+  z-index: -2;
+  transition: transform .3s;
+}
+button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover::after {
+  transform: translateY(-80%);
+  transition: transform .3s;
+}
+
+
+
+@media print and (min-width: 480px) {
+    
+ #second{
+     margin-top:-50px;
+ }
+  #main_table{
+    padding:5em;
+    -webkit-print-color-adjust: exact; 
+
+  }
+  #img1,#img3,#img7,#img9{
+    display:none;
+  }
+    #heading{
+        margin-top:20px;
+        margin-left:10px;
+        
+
+    }
+    #first_table{
+        width:100%;
+    }
+    #column{
+      width:100%;
+    }
+  
+    .main-left{
+      display:none;
+     }
+     .main-right{
+      display:none;
+     }
+    
+  .main-button {
+    display:none;
+
+  }
+  .main-top{
+    display:none;
+
+  } 
+
+
+    
+    table.result{
+      width:100%;
+    }
+      
+      table th, table td {
+        
+              padding: .5em;
+
+              -webkit-print-color-adjust: exact; 
+      
+          }
+
+            #submit-btn {
+              display: none !important;;
+            }
+          
+  }
+
+    
+    
+
+  @media (max-width:767px){
+    
+    #column{
+      width:100%;
+      margin-left:0%;
+    }
+   
+  }
+  
+  
+  table.result {
+    width:70%;
+     } 
+              
+table.result th, table.result td {
+                border:1px solid rgb(255, 255, 255);
+                padding:0em;
+                -webkit-print-color-adjust: exact; 
+        
+                }
+    
+  
+  
+
+#heading {
+    color: #000080 !important;;
+  }
+
+
+
+
+#column{
+  width:95%;
+  margin-left:2%;
+}
+@media (max-width:767px){
+    table.result {
+       width:70%;
+        }
+
+  
+}
+
+
+
+
+goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07Ob *, .VIpgJd-ZVi9od-vH1Gmf *, .VIpgJd-ZVi9od-l9xktf *{
+  display:none;
+}
+</style>
+<div class="box_container" style="width: 100%; margin: 0px;">
+    <div  style="margin: auto;width: 100%;">
+       
+                  <div >
+                        <div class="step d-block" style="margin-top:20px;height:100%">
+                            <div ><h1 class="certificate_title" style="text-align: center;color:#035a4c;text-shadow: 2px 2px 2px rgb(65, 7, 7);"><u><b>{{certificate_type.name}}</b></u></h1></div>
+                            <div ><h3 class="certificate_title" style="text-align: center;color:rgb(172, 34, 34);text-shadow: 2px 2px 2px #035a4c"><u><b>({% if certificate.person.all == 1 %}দুই {% else %}তিন {% endif %} নামে একই ব্যক্তি)</b></u></h3></div>
+                            
+                            <table width="100%" valign="middle">
+                              <tr>
+                              <td>
+                                <div  align="left"><h4 style="text-align: left; margin-left:2%">
+                                  ট্র্যাকিং নম্বর: &nbsp<u>{{certificate.tracking_no}}</u></h4>
+                              </div>
+                              </td>
+                              <td>                            
+                                <div  id="date" align="right"><h4 style="text-align: right; margin-left:2%">
+                                  তারিখঃ &nbsp{{certificate.transaction.tran_date|date:"d-m-Y"}}&nbsp</h4>
+                                </div>
+                              </td>
+                            </tr></table>
+
+
+                         
+                          <table  width="900"  align="center" valign="middle" cellspacing="0" cellpadding="4">
+
+                            <tbody>
+                            <tr>
+                              <td align="left">
+                                <table  width="100%"   cellspacing="0" cellpadding="5">
+                                  <tbody>
+                                  
+
+                                    <tr>
+                                        <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify;font-family:solaimanlipi;"><h5 style="font-weight:500; line-height:2"> এই মর্মে প্রত্যয়ন করিতেছি যে, নামঃ <span style="display: inline-block; width:200px;text-align:center;"><b>{{certificate.name}}</b></span> পিতাঃ {{certificate.father_name}}, মাতাঃ {{certificate.mother_name}} গ্রামঃ {{certificate.adress.village.name}}, ডাকঘরঃ {{certificate.adress.post_office.name}}, ওয়ার্ড নং-{{certificate.adress.ward.ward_no}}, উপজেলাঃ আক্কেলপুর,  জেলাঃ জয়পুরহাট।
+                                            সে আমার পরিচিত। আমার জানামতে সে অত্র ০৪ নং তিলকপুর ইউনিয়নের {{certificate.adress.ward.name}} এর একজন স্থায়ী বাসিন্দা ও জন্মসুত্রে বাংলাদেশের নাগরিক। তার ব্যবহার ও স্বভাব চরিত্র ভাল। সে কোন প্রকার রাষ্ট্র বা সমাজ বিরোধী কাজে লিপ্ত নয়।
+                                            আমার জানামতে <b>{{certificate.name}} {% for person in certificate.person.all %} ওরফে {{person.name}} {% endfor %} </b> একই ব্যক্তি {% if certificate.person.all == 1 %}দুই {% else %} তিন {% endif %} নামে পরিচিত।
+                                            <br><br><br>
+                                            আমি তার সার্বিক উন্নতি ও মঙ্গল কামনা করি।                             
+                                        </tr>
+                                    
+                                    <tr valign="bottom">
+                        
+                                      <td  colspan="1" align="center"><br><br><br><br><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{certificate.certificate_type.name_en}}%0DTracking No: {{certificate.tracking_no}}%0DName:{{certificate.name}}&amp;size=200x200" width="200px" height="200px" alt="{{certificate.name}}" title="{{certificate.name}}:{{certificate.certificate_type.name_en}}" width="50" height="50" /></div></td>
+
+                                        <td  colspan="2" align="right"><br><br><br></div></td>
+                                        <td  colspan="1" align="right"><br><br><br><br><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if certificate.chairman.signature %}{{certificate.chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{certificate.chairman.name}}<br>{{certificate.chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
+
+                                       
+                                   </tr>
+                                    <tr>
+                                        
+                                        {% comment %} <td  colspan="4" align="center"><br><br> <img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Tracking No: {{certificate.tracking_no}}&amp;size=200x200" width="120px" height="120px" alt="" title="{{student.class_roll}}:{{student.name}}" width="50" height="50" /></td> {% endcomment %}
+           
+                                       
+                                   </tr>
+                                  
+                                      
+                                      
+                                     
+                                </tbody></table>
+                            </td>
+                            
+                          </tr>
+                              
+                          </tbody>
+                        </table>
+                          
+                              
+
+                        </div>
+                       
+                        
+                       
+                    
+                
+                </div>
+
+                    <div id="q-box__buttons" >
+                        
+                        <button id="submit-btn" class="btn-default" onclick="window.print()" >প্রিন্ট অথবা ডাউনলোড</button>
+                    </div>   
+                   
+         
+
+    </div>
+
+
+          
+
+ 
+    {% comment %} <img id="graph-image" height="500px" src="{% static 'images/gmrwc_logo.png' %}" alt="" > {% endcomment %}
+    {% comment %} <div style="float:right;margin:2%"><img  height="80px" src="{% static 'images/principal_signature.png' %}" alt="" ><br>Principal</div> {% endcomment %}
+
+  </div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+          
+             
+              <div class="graph-image graph-7">
+    </div>
+     
+
+
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+       
+
+        window.onload = (event) => {
+
+        var numbers = {
+            0: '০',
+            1: '১',
+            2: '২',
+            3: '৩',
+            4: '৪',
+            5: '৫',
+            6: '৬',
+            7: '৭',
+            8: '৮',
+            9: '৯'
+        };
+        var output = '';
+        function replaceNumbers(input) {
+            var output = [];
+            for (var i = 0; i < input.length; ++i) {
+              if (numbers.hasOwnProperty(input[i])) {
+                output.push(numbers[input[i]]);
+              } else {
+                output.push(input[i]);
+              }
+            }
+            return output.join('');
+          }
+        input =document.getElementById("date").textContent.toString();
+        document.getElementById('date').textContent = replaceNumbers(input);
+        input =document.getElementById("para1").textContent.toString();
+        document.getElementById('para1').textContent = replaceNumbers(input);
+        input =document.getElementById("para2").textContent.toString();
+        document.getElementById('para2').textContent = replaceNumbers(input);
+        input =document.getElementById("para3").textContent.toString();
+        document.getElementById('para3').textContent = replaceNumbers(input);
+        input =document.getElementById("para4").textContent.toString();
+        document.getElementById('para4').textContent = replaceNumbers(input);
+        input =document.getElementById("para5").textContent.toString();
+        document.getElementById('para5').textContent = replaceNumbers(input);
+        input =document.getElementById("date").textContent.toString();
+        document.getElementById('date').textContent = replaceNumbers(input);
+        
+        }
+
+        function goToPrint(){
+            document.getElementById("submit-btn").style.display="none";
+            document.getElementById("google_translate_element").style.display="none";
+
+            
+            window.print();
+            document.getElementById("submit-btn").style.display="block";
+
+        }
+        $( document ).ready(function() {
+          const d = new Date();
+          var nric = 'Tracking No: {{certificate.tracking_no}}';
+          alert(nric)
+          var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + nric + '&amp;size=200x200';
+          $('#barcode').attr('src', url);
+        });
+    </script>
+    
+    {% endblock  %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

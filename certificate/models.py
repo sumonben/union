@@ -3,7 +3,7 @@ from django.urls import reverse
 from payment.models import Transaction
 from django.utils.html import format_html
 from django.template.defaultfilters import escape
-from region.models import District,Division,Upazilla,Union,PostOffice,Village,Ward
+from region.models import District,Division,Upazilla,Union,PostOffice,Village,Ward,Mouja
 from account.models import Member,Chairman
 #from account.models import UserModel
 # Create your models here.
@@ -65,6 +65,7 @@ class Adress(models.Model):
     serial=models.IntegerField(default=10)
     holding_no=models.CharField(max_length=50,blank=True,null=True,verbose_name=" হোল্ডিং নং")
     ward=models.ForeignKey(Ward,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="ওয়ার্ড নং ")
+    mouja=models.ForeignKey(Mouja,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="মৌজা")
     village=models.ForeignKey(Village,on_delete=models.SET_NULL,blank=True,null=True,verbose_name=" গ্রাম/মহল্লা")
     post_office=models.ForeignKey(PostOffice,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="ডাকঘর ")
     district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL,verbose_name=" জেলা ")
@@ -94,6 +95,7 @@ class Certificate(models.Model):
     mother_name=models.CharField(max_length=500,verbose_name="মায়ের নাম(বাংলায়)")
     mother_name_en=models.CharField(max_length=500,blank=True, null=True,verbose_name="মায়ের নাম(ইংরেজিতে)")
     adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL,verbose_name="ঠিকানা")
+    description=models.TextField(max_length=1000,null=True,blank=True,verbose_name="কারণ বর্ণনাঃ")
     cause=models.ForeignKey(Cause,on_delete=models.SET_NULL,blank=True, null=True,verbose_name="কারণঃ")
     caste=models.CharField(max_length=500,blank=True, null=True,verbose_name="সম্প্রদায়")
     profession=models.CharField(max_length=500,blank=True, null=True,verbose_name="পেশা")

@@ -11,7 +11,7 @@ def generator_trangection_id( size=10, chars=string.ascii_uppercase + string.dig
 
     
 
-def sslcommerz_payment_gateway(request, certificate,certificate_type):
+def sslcommerz_payment_gateway(request, certificate,certificate_type, type):
     
     print(certificate,certificate_type)
     gateway = PaymentGateway.objects.all().first()
@@ -31,7 +31,10 @@ def sslcommerz_payment_gateway(request, certificate,certificate_type):
     body['fail_url'] = 'http://localhost:8000/payment/payment/failed/'
     body['cancel_url'] = 'http://localhost:8000/payment/canceled/'
     body['emi_option'] = 0
-    body['cus_name'] = certificate.name
+    if type == 1:
+        body['cus_name'] = certificate.name
+    else:
+        body['cus_name'] = certificate.licensed_name
     body['cus_email'] = 'request.data["email"]'
     if certificate.phone:
         body['cus_phone'] = certificate.phone
@@ -47,10 +50,13 @@ def sslcommerz_payment_gateway(request, certificate,certificate_type):
     body['product_category'] = "Test Category"
     body['product_profile'] = "general"
     body['value_a'] = certificate.tracking_no
-    body['value_b'] = certificate.name
+    if type == 1:
+       body['value_b'] =certificate.name 
+    else:
+        body['value_b'] = certificate.license_owner_name
     body['value_c'] = certificate.phone
-    body['value_d'] = certificate_type.id
-
+    body['value_d'] = type
+    
     
 
 

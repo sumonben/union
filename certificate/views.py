@@ -1,9 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import Person,CertificateType,Certificate,Cause
+from license.models import LicenseType,License
 from payment.models import Transaction
 from account.models import Chairman, Member
-from .forms import AdressForm,WarishFormSet,WarishForm,CertificateTypeForm,CertificateForm,CertificateDownloadForm
+from .forms import AdressForm,WarishFormSet,WarishForm,SamePersonFormSet,CertificateTypeForm,CertificateForm,CertificateDownloadForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
 from django.forms import formset_factory
@@ -21,9 +22,11 @@ class FrontView(View):
     model = Certificate()
     template_name = 'front.html'
     def get(self, request, *args, **kwargs):
-        certificate_type=CertificateType.objects.all().order_by('serial')
+        certificate_types=CertificateType.objects.all().order_by('serial')
+        license_types=LicenseType.objects.all().order_by('serial')
         context={}
-        context['certificate_type']=certificate_type
+        context['certificate_types']=certificate_types
+        context['license_types']=license_types
         return render(request,'front.html',context)
     def post(self, request, *args, **kwargs):
         context={}
@@ -33,9 +36,12 @@ class HomeView(View):
     model = Certificate()
     template_name = 'home.html'
     def get(self, request, *args, **kwargs):
-        certificate_type=CertificateType.objects.all().order_by('serial')
         context={}
-        context['certificate_type']=certificate_type        
+        certificate_types=CertificateType.objects.all().order_by('serial')
+        license_types=LicenseType.objects.all().order_by('serial')
+        context={}
+        context['certificate_types']=certificate_types
+        context['license_types']=license_types
         return render(request,'home.html',context)
     def post(self, request, *args, **kwargs):
         context={}
@@ -48,15 +54,18 @@ class ApplyForCertificate(View):
         context={}
         certificate_type=CertificateType.objects.filter(id=id).first()
         context['certificate_type']=certificate_type
+        certificate_types=CertificateType.objects.all().order_by('serial')
+        context['certificate_types']=certificate_types
         form=CertificateForm(instance=certificate_type)
         form.certificate_type=certificate_type
         adress_form=AdressForm()
-        form2=WarishForm()
-        formset = WarishFormSet(queryset=Person.objects.none())
         context['form']=form
         context['adress_form']=adress_form
         if certificate_type.id== 1:
-            context['form2']=form2
+            formset = WarishFormSet(queryset=Person.objects.none())
+            context['formset']=formset
+        if certificate_type.id== 9:
+            formset = SamePersonFormSet(queryset=Person.objects.none())
             context['formset']=formset
         
         return render(request,self.template_name,context)
@@ -64,6 +73,8 @@ class ApplyForCertificate(View):
     def post(self, request,id, *args, **kwargs):
         print('post: ',id)
         context={}
+        certificate_types=CertificateType.objects.all().order_by('serial')
+        context['certificate_types']=certificate_types
         return render(request,self.template_name,context)
 
     
@@ -72,6 +83,8 @@ class SelectCertificate(View):
     template_name = 'forms/certificate_form.html'
     def get(self, request, *args, **kwargs):
         context={}
+        certificate_types=CertificateType.objects.all().order_by('serial')
+        context['certificate_types']=certificate_types
         form=CertificateTypeForm()
         context['form']=form
         return render(request,'certificate/select_certificate.html',context)
@@ -80,16 +93,22 @@ class SelectCertificate(View):
         print(request.POST.get('name'))
         certificate_type=CertificateType.objects.filter(id=request.POST.get('name')).first()
         context['certificate_type']=certificate_type
+        certificate_types=CertificateType.objects.all().order_by('serial')
+        context['certificate_types']=certificate_types
         form=CertificateForm(instance=certificate_type)
         form.certificate_type=certificate_type
         adress_form=AdressForm()
-        form2=WarishForm()
-        formset = WarishFormSet(queryset=Person.objects.none())
         context['form']=form
         context['adress_form']=adress_form
+           
         if certificate_type.id== 1:
-            context['form2']=form2
+            formset = WarishFormSet(queryset=Person.objects.none())
             context['formset']=formset
+        if certificate_type.id== 9:
+            formset = SamePersonFormSet(queryset=Person.objects.none())
+            context['formset']=formset
+            
+         
         return render(request,self.template_name,context)
         
 
@@ -98,6 +117,8 @@ class CertificateView(View):
     template_name = 'forms/certificate_form.html'
     def get(self, request, *args, **kwargs):
         context={}
+        certificate_types=CertificateType.objects.all().order_by('serial')
+        context['certificate_types']=certificate_types
         form=CertificateForm()
         adress_form=AdressForm()
         formset = WarishFormSet(queryset=Person.objects.none())
@@ -109,10 +130,14 @@ class CertificateView(View):
     def post(self, request, *args, **kwargs):
         context={}
 
-        formset = WarishFormSet(data=self.request.POST)
         form = CertificateForm(request.POST, request.FILES)
-        print(form.certificate_type)
+        if form.certificate_type == 9:
+            formset = SamePersonFormSet(data=self.request.POST)
+        else:
+            formset = WarishFormSet(data=self.request.POST)
         adress_form = AdressForm(data=self.request.POST)
+        certificate_types=CertificateType.objects.all().order_by('serial')
+        context['certificate_types']=certificate_types
         certificate=Certificate.objects.filter(phone=request.POST.get('phone')).first()
         if certificate:
             if certificate.transaction == None:
@@ -129,8 +154,9 @@ class CertificateView(View):
                 certificate.save()
             if formset.is_valid():
                 person=formset.save()
-                print(person)
+                
                 for person in person:
+                    print(person)
                     certificate.person.add(person)
                 #return HttpResponse('Form saved')
             certificate.tracking_no=tracking_no
@@ -144,6 +170,7 @@ class CertificateView(View):
             certificate.income=request.POST.get('income')
             certificate.profession=request.POST.get('profession')
             certificate.caste=request.POST.get('caste')
+            certificate.description=request.POST.get('description')
             
             certificate.save()
 
@@ -212,18 +239,23 @@ class submitFormView(View):
     def post(self, request, *args, **kwargs):
         certificate=Certificate.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
         certificate_type=certificate.certificate_type
-        return redirect(sslcommerz_payment_gateway(request, certificate, certificate_type))
+        type=1
+        return redirect(sslcommerz_payment_gateway(request, certificate, certificate_type,type))
 
 class DownloadCertificateView(View):
     model = Certificate
     template_name = 'certificate/download_certificate.html'
     def get(self, request, *args, **kwargs):
         context={}
+        certificate_types=CertificateType.objects.all().order_by('serial')
+        context['certificate_types']=certificate_types
         form=CertificateDownloadForm()
         context['form']=form
         return render(request,self.template_name, context)
     def post(self, request, *args, **kwargs):
         context={}
+        certificate_types=CertificateType.objects.all().order_by('serial')
+        context['certificate_types']=certificate_types
         certificate=Certificate.objects.filter(tracking_no=request.POST.get('tracking_no'),certificate_type=request.POST.get('certificate_type')).first()
         transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
         if certificate:
@@ -239,8 +271,24 @@ class DownloadCertificateView(View):
                 context['certificate']=certificate
                 context['certificate_type']=certificate_type
 
-                if certificate_type.serial == 2:
+                if certificate_type.id == 1:
                     return render(request,'certificate/certificate/warishan_certificate.html', context)
+                if certificate_type.id == 3:
+                    return render(request,'certificate/certificate/voter_inclussion.html', context)
+             
+                if certificate_type.id == 4:
+                    return render(request,'certificate/certificate/bn_attestation_certificate.html', context)
+                if certificate_type.id == 5:
+                    return render(request,'certificate/certificate/passport_attestation_certificate.html', context)
+                if certificate_type.id == 6:
+                    return render(request,'certificate/certificate/monthly_income_certificate.html', context)
+                if certificate_type.id == 7:
+                    return render(request,'certificate/certificate/guardian_income_certificate.html', context)
+                if certificate_type.id == 8:
+                    return render(request,'certificate/certificate/voter_info_correction_certificate.html', context)
+                if certificate_type.id == 9:
+                    return render(request,'certificate/certificate/same_person_certificate.html', context)
+          
                 return render(request,'certificate/certificate/citizenship_certificate.html', context)
             context['message']="দুখিঃত! আপনার সনদটির জন্য পেমেন্ট করা হয়নি"
             form=CertificateDownloadForm()

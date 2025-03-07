@@ -1,0 +1,544 @@
+
+
+{% extends 'basepage/basepage_license.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+    .main_body{
+        width:100%;
+        height:100%;
+        color:red;
+    }
+    @media(max-width:767px){
+        .main_body{
+            width:100%;
+            height:700px;
+            color:red;
+            background-color:green;
+        }   
+    }
+</style>
+
+
+  <link rel="icon" href="{% static 'images/gmrwc_logo.png'%}" type="image/x-icon">
+
+  
+  
+<style>
+body{
+    font-weight: normal;
+    font-style:normal;
+        
+      
+}
+#first_table{
+    width:80%;
+    height:100%
+}
+    .row{
+        margin-left:15%;
+    }
+  button#print, button#next-btn, button#submit-btn {
+  font-size: 17px;
+  font-weight: bold;
+  position: relative;
+  width: 300px;
+  height: 50px;
+  background: #DC3545;
+  margin-left: 50%;
+  margin-top: 20px;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  transition: color .3s;
+  text-align: center;
+  color: #fff;
+  border: 0;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+button#print:after, button#next-btn:after, button#submit-btn:after {
+  result: absolute;
+  top: 90%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #05812a;
+  content: "";
+  z-index: -2;
+  transition: transform .3s;
+}
+button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover::after {
+  transform: translateY(-80%);
+  transition: transform .3s;
+}
+
+
+
+@media print and (min-width: 480px) {
+    
+ #second{
+  
+  
+  -webkit-print-color-adjust: exact; 
+}  
+  #main_table{
+   
+    -webkit-print-color-adjust: exact; 
+
+  }
+ 
+    
+    #first_table{
+        width:100%;
+    }
+    #column{
+      width:100%;
+    }
+  
+   
+    
+  .main-button {
+    display:none;
+
+  }
+  .main-top{
+    display:none;
+
+  } 
+
+
+    
+    table.result{
+      width:80%;
+    }
+      
+      table th, table td {
+        
+             
+            
+              -webkit-print-color-adjust: exact; 
+      
+          }
+
+            #submit-btn {
+              display: none !important;;
+            }
+          
+  }
+
+    
+    
+
+  @media (max-width:767px){
+    
+    #column{
+      width:100%;
+      margin-left:0%;
+    }
+   
+  }
+  
+  table.result th table.result  td {
+    border:1px solid rgb(255, 255, 255);
+    text-align:center
+    
+    }
+
+    .main-left{
+        display:none;
+       }
+       .main-right{
+        display:none;
+       }
+      
+    .main-button {
+      display:none;
+  
+    }
+    .main-top{
+      display:none;
+  
+    }
+              
+
+    
+  
+  
+
+#heading {
+    color: #000080 !important;;
+  }
+
+
+
+
+#column{
+  width:95%;
+  margin-left:2%;
+}
+
+
+
+
+
+goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07Ob *, .VIpgJd-ZVi9od-vH1Gmf *, .VIpgJd-ZVi9od-l9xktf *{
+  display:none;
+}
+</style>
+<div class="box_container" style="width: 100%; margin: 0px;">
+    <div  style="margin: auto;width: 100%;">
+        
+                  <div >
+                        <div class="step d-block" >
+                            <div><h3 style="text-align: center; color:#000"><u>{{license_type.name}}</u></h3></div>
+                            <table align="center" width="90%">
+                              <tr style="padding:0px;">
+                              <td>
+                                <div  align="left"><h4 style="text-align: left; margin-left:2%">
+                                  লাইসেন্স নম্বর: &nbsp<u>{{license.tracking_no}}</u></h4>
+                              </div>
+                              </td>
+                              <td>                            
+                                <div  id="date" align="right"><h4 style="text-align: right;height:40px;">
+                                  তারিখঃ &nbsp{{license.transaction.tran_date|date:"d-m-Y"}}&nbsp</h4>
+                                </div>
+                              </td>
+                            </tr></table>
+
+
+                         
+                          <table  width="690"  align="center" valign="middle" cellspacing="0" cellpadding="0">
+
+                            <tbody>
+                            <tr>
+                              <td  align="center">
+                                <table class="result"  width="80%" align="center" style="font-size:18px;"  cellspacing="0" cellpadding="0">
+                                  <tbody>
+                                  
+                                    <tr>
+                                        <td colspan="6"  align="left"  >
+                                         
+                                            <div style="display:inline-block;line-height:1;">
+                                              
+                                                    স্বত্তাধিকারী/লাইসেন্সধারীর নামঃ 
+                                            </div>
+                                            <div style="display:inline-block;margin-left: 20px;">
+                                               
+                                                {{license.licensed_name}} 
+                                        </div>
+                                        
+                                        </td> 
+                                     
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6"  align="left"  >
+                                            <div style="display:inline-block;">
+                                              
+                                                জাতীয় পরিচয় পত্র /জন্ম নিবন্ধন নংঃ 
+                                            </div>
+                                            <div style="display:inline-block; margin-left: 20px;">
+                                               
+                                                <u>{{license.license_owner_name}} </u>
+                                        </div>
+                                        </td> 
+                                     
+                                      
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6"  align="left"  >
+                                            <div style="display:inline-block;">
+                                                
+                                                    পিতার নামঃ 
+                                            </div>
+                                          
+                                        
+                                      
+                                           
+                                            <div style="display:inline-block; margin-left: 20px;">
+                                                
+                                                    <u>{{license.licensed_name}} </u>
+                                            </div>
+                                            <div style="display:inline-block; margin-left: 20px;">
+                                                
+                                                মাতার নামঃ  
+                                        </div>
+                                        <div style="display:inline-block; margin-left: 20px;">
+                                                
+                                            <u>{{license.licensed_name}} </u>
+                                     </div>
+
+                                        </td> 
+                    
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left" valign="middle" >
+                                            <div style="display:inline-block;">
+                                              
+                                                ঠিকানাঃ 
+                                            </div>
+                                            <div style="display:inline-block;margin-left: 20px;">
+                                            
+                                                {{license.licensed_name}} 
+                                            </div>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left" valign="middle" >
+                                            <div style="display:inline-block;">
+                                              
+                                                ব্যবসা প্রতিষ্ঠানের ঠিকানাঃ 
+                                            </div>
+                                            <div style="display:inline-block;margin-left: 20px;">
+                                            
+                                                {{license.licensed_name}} 
+                                            </div>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left" valign="middle" >
+                                            <div style="display:inline-block;">
+                                              
+                                                ব্যবসা /পেশার ধরণঃ 
+                                            </div>
+                                            <div style="display:inline-block;margin-left: 20px;">
+                                            
+                                                {{license.licensed_name}} 
+                                            </div>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left" valign="middle" >
+                                            <div style="display:inline-block;">
+                                              
+                                                পরিশোধিত মূলধনের পরিমাণঃ
+                                            </div>
+                                            <div style="display:inline-block;margin-left: 20px;">
+                                            
+                                                {{license.licensed_name}} 
+                                            </div>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left" valign="middle" >
+                                            <div style="display:inline-block;">
+                                              
+                                                বৈধতার মেয়াদঃ                                            
+                                            </div>
+                                            <div style="display:inline-block;margin-left: 20px;">
+                                            
+                                                {{license.licensed_name}} 
+                                            </div>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left" valign="middle" >
+                                            <div style="display:inline-block;">
+                                              
+                                               <b> ফি ও করের পরিমাণঃ </b>                                         
+                                            </div>
+                                           
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left" valign="middle" >
+                                            <table class="result" width="100%" align="center">
+                                                <tr >
+                                                    <td>পেশা ব্যবসা ও বৃত্তির উপর কর</td>
+                                                    <td>পেশা ব্যবসা ও বৃত্তির লাইসেন্স ফি</td>
+                                                    <td>ভ্যাট ও অন্যান্য</td>
+                                                    <td>মোট</td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                </tr>
+                                               
+                                            </table>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left" valign="middle" >
+                                            <div style="display:inline-block;text-align:justify">
+                                              উপর্যুক্ত ফি ও কর প্রাপ্ত হয়ে ৪ নং তিলকপুর ইউনিয়ন পরিষদের সীমানায় তাহার ব্যবসা/বৃত্তি/পেশা চালিয়ে যাবার জন্য এই লাইসেন্স প্রদান করা হলো।
+                                                                                      
+                                            </div>
+                                           
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" width="690" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify">     </td>
+
+                                    </tr>
+                                  
+                                  
+                                    <tr valign="bottom">
+                                      <td  colspan="2" align="center"></div><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{license.license_type.name_en}}%0DTracking No: {{license.tracking_no}}%0DName:{{license.name}}&amp;size=200x200" width="120px" height="120px" alt="{{license.name}}" title="{{license.license_type.name_en}}:{{license.name}}" width="50" height="50" /></div></td>
+
+                                        <td  colspan="2" align="right"><br><br><br></div></td>
+                                        <td  colspan="2" align="right"><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if license.chairman.signature %}{{license.chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{license.chairman.name}}<br>{{license.chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
+
+                                       
+                                   </tr>
+                                    <tr>
+                                        
+                                        {% comment %} <td  colspan="4" align="center"><br><br> <img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Tracking No: {{license.tracking_no}}&amp;size=200x200" width="120px" height="120px" alt="" title="{{student.class_roll}}:{{student.name}}" width="50" height="50" /></td> {% endcomment %}
+           
+                                       
+                                   </tr>
+                                  
+                                      
+                                      
+                                     
+                                </tbody></table>
+                            </td>
+                            
+                          </tr>
+                              
+                          </tbody>
+                        </table>
+                          
+                              
+
+                        </div>
+                       
+                        
+                       
+                    
+                
+                </div>
+
+                    <div id="q-box__buttons" >
+                        
+                        <button id="submit-btn" class="btn-default" onclick="window.print()" >প্রিন্ট অথবা ডাউনলোড</button>
+                    </div>   
+                   
+         
+
+    </div>
+
+
+          
+
+ 
+    {% comment %} <img id="graph-image" height="500px" src="{% static 'images/gmrwc_logo.png' %}" alt="" > {% endcomment %}
+    {% comment %} <div style="float:right;margin:2%"><img  height="80px" src="{% static 'images/principal_signature.png' %}" alt="" ><br>Principal</div> {% endcomment %}
+
+  </div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+          
+             
+              <div class="graph-image graph-7">
+    </div>
+     
+
+
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+       
+
+        window.onload = (event) => {
+
+        var numbers = {
+            0: '০',
+            1: '১',
+            2: '২',
+            3: '৩',
+            4: '৪',
+            5: '৫',
+            6: '৬',
+            7: '৭',
+            8: '৮',
+            9: '৯'
+        };
+        var output = '';
+        function replaceNumbers(input) {
+            var output = [];
+            for (var i = 0; i < input.length; ++i) {
+              if (numbers.hasOwnProperty(input[i])) {
+                output.push(numbers[input[i]]);
+              } else {
+                output.push(input[i]);
+              }
+            }
+            return output.join('');
+          }
+        input =document.getElementById("date").textContent.toString();
+        document.getElementById('date').textContent = replaceNumbers(input);
+        input =document.getElementById("para1").textContent.toString();
+        document.getElementById('para1').textContent = replaceNumbers(input);
+        input =document.getElementById("para2").textContent.toString();
+        document.getElementById('para2').textContent = replaceNumbers(input);
+        input =document.getElementById("para3").textContent.toString();
+        document.getElementById('para3').textContent = replaceNumbers(input);
+        input =document.getElementById("para4").textContent.toString();
+        document.getElementById('para4').textContent = replaceNumbers(input);
+        input =document.getElementById("para5").textContent.toString();
+        document.getElementById('para5').textContent = replaceNumbers(input);
+        input =document.getElementById("date").textContent.toString();
+        document.getElementById('date').textContent = replaceNumbers(input);
+        
+        }
+
+        function goToPrint(){
+            document.getElementById("submit-btn").style.display="none";
+            document.getElementById("google_translate_element").style.display="none";
+
+            
+            window.print();
+            document.getElementById("submit-btn").style.display="block";
+
+        }
+        $( document ).ready(function() {
+          const d = new Date();
+          var nric = 'Tracking No: {{license.tracking_no}}';
+          alert(nric)
+          var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + nric + '&amp;size=200x200';
+          $('#barcode').attr('src', url);
+        });
+    </script>
+    
+    {% endblock  %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,7 +9,17 @@
         height:100%;
         color:red;
     }
+    .formset{
+      width:70%;
+      margin-left:15%;
+      margin-bottom:30px;
+    }
     @media(max-width:767px){
+      .formset{
+        width:100%;
+        margin-left:0%;
+        margin-bottom:30px;
+      }
         .main_body{
             width:100%;
             height:700px;
@@ -19,26 +29,30 @@
     }
 </style>
 <div class="services">
-  <div><h3 style="text-align: center;text-shadow: 2px 2px #ff0000;color:#fff;"><u>{{certificate_type.name}} ফর্ম</u></h3></div>
+  <div><h3 style="text-align: center;text-shadow: 2px 2px 2px rgb(11, 73, 55);color:rgb(238, 103, 103);"><u>{{certificate_type.name}} ফর্ম</u></h3></div>
   
   <div data-v-6f04a53f="" class="memberRegistration py-5">
+
     <div class="container-wrapper">
       <div class="row justify-content-md-center">
         <div class="col col-lg-10">
           <div class="card login-body shadow-lg rounded-10 py-5">
+            <div class="col-sm-12 form-group" >
+
             <table width="100%" border="1" cellspacing="0" cellpadding="10">
-              <thead><th colspan="5" style="height: 40px; background-color: #035a4c; color: #fff;padding: 15px;font-size:20px;text-align:center;">  ব্যক্তিগত তথ্য                                   
-                {% if certificate_type.serial == 1 %}
+              <thead><th colspan="5" style="height: 30px; background-color: #035a4c; color: #fff;text-shadow: 10px 10px 10px rgb(73, 25, 11);padding: 15px;font-size:23px;text-align:center;">  ব্যক্তিগত তথ্য                                   
+                {% if certificate_type.id == 2 or  certificate_type.id == 4 %}
                &nbsp(সনদটি ইংরেজিতে চাইলে নাম, বাবার নাম ও মায়ের নাম ইংরেজিতে পুরণ করুন ও ভাষা ইংরেজি সিলেক্ট করুন)                                  
                {% endif %}</th></thead>
               <tbody>
               </tbody>
             </table>
+          </div>
                 <div class="card-body">
 
-                <span class="bubbleNew"><img src="{%static 'images/ictpark_monogram.png'%}" class="rounded-circle" style="width: 200px;height: 200px;" /></span>
 
-            <span class="shape"><img align="center" src="{% static 'images\ictparkbd_logo.jpg' %}"></span> 
+            <span class="shape"><img align="center" src="{% static 'images\ictparkbd_logo.jpg' %}"><img align="center" style="height:60%;margin-top:10%;rotate: -50deg;" src="{% static 'images\tilokpur_logo.png' %}"></span> 
+
              {%if email %}
             
             <div class="alert alert-danger" role="alert">
@@ -72,7 +86,7 @@
             
             <form  id="form" class="form-row px-3" method="post" action="{% url 'certificate_form' %}">
               {% csrf_token %}
-              {% if certificate_type.serial == 1 %}
+              {% if certificate_type.id == 2 or certificate_type.id == 4 %}
 
               <div class="col-sm-12 form-group" >
                 
@@ -152,32 +166,73 @@
                 </div>
               </div>
               
+              
               <div class="col-sm-12 form-group">
                 <div class="row">
+                  
+                  {% if form.profession %}
+
                   <div class="col-sm-6">
-                    <label for="" class="col-form-label-sm m-0">{{form.certificate_type.label_tag}}</label> <div class="loginBox">
-                      {{form.certificate_type}}                      
-                      <span class="fa fa-certificate"></span>
+                    <label for="" class="col-form-label-sm m-0">{{form.profession.label_tag}}</label> <div class="loginBox">
+                      {{form.profession}}                      
+                      <span class="fas fa-skating"></span>
                     </div> <!--  --> <div class="invalid-feedback"></div>
                   </div>
 
-                  
+                  {% endif %}
+                  {% if form.income %}
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.income.label_tag}}</label> 
+                    <div class="loginBox">
+                      {{form.income}}
+                      <i class="fa-solid fa-bangladeshi-taka-sign"></i>
+                      <span class="fa fa-usd"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  {% endif %}
 
                   {% if form.cause %}
                   <div class="col-sm-6">
                     <label for="" class="col-form-label-sm m-0">{{form.cause.label_tag}}</label> 
                     <div class="loginBox">
                       {{form.cause}}
-                      <span class="fa fa-envelope"></span>
+                      <span class="fa fa-default"></span>
                     </div> <!--  --> <div class="invalid-feedback"></div>
                   </div>
                   {% endif %}
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.certificate_type.label_tag}}</label> <div class="loginBox">
+                      {{form.certificate_type}}                      
+                      <span class="fa fa-certificate"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                </div>  
+              </div>
+
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                 
+                  
+                  {% if form.description %}
+
+                  <div class="col-sm-12">
+                    <label for="" class="col-form-label-sm m-0">{{form.description.label_tag}}</label> <div class="loginBox">
+                      {{form.description}}                      
+                      <span class="fas fa-id-card-alt"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+
+                  {% endif %}
+                  
+
+
+                 
                 </div>  
               </div> 
 
 
               <table width="100%" border="1" cellspacing="0" cellpadding="10">
-                <thead><th colspan="5" style="height: 40px; background-color:rgb(148, 238, 223); color: #fff;padding: 15px;font-size:20px;text-align:center;">  ব্যক্তিগত তথ্য                                   
+                <thead><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 5px 5px 5px rgb(73, 25, 11);padding: 15px;font-size:20px;text-align:center;">  ঠিকানা                                 
                   </th></thead>
                 <tbody>
                 </tbody>
@@ -209,10 +264,77 @@
               </div>
               
               {% if formset %}
-                <table width="100%" border="1" cellspacing="0" cellpadding="3">
-                  <thead style="height: 25px; background-color: #035a4c; color: #fff;">
-                    <th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;">ওয়ারিশগণ</th>
-                  </thead>
+              <fieldset class="formset">
+              <table width="100%" border="1" cellspacing="0" cellpadding="3">
+                <tr style="height: 25px; background-color: #035a4c; color: #fff;">
+                  {% if certificate_type.id == 9 %}
+                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">অন্য নামসমূহ</td>
+                  {% else %}
+                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">ওয়ারিশগণ</td>
+                  {% endif %}
+                </tr>
+                <tbody>
+                  <tr>
+                    <td colspan="5" align="center">
+
+                      <div id="form-container">
+
+                        {{formset.management_form}}
+
+                        {% for form in formset %}
+                        <div class="bird-form">
+                          <table >
+                            
+                            {% if certificate_type.id == 9 %}
+                            <tr>
+                              <td>{{form.name.label_tag}} </td><td style="height: 40px;" rowspan="2"><button id="{{ form.prefix }}-row" style="font-size:25px;background-color:rgb(177, 41, 8); color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);float:right" type="button" onclick="removeForm( this.id )" > <i class="fa fa-trash-o" ></i></button></td>
+                            </tr>
+                            <tr>
+                            <td>{{form.name}}</td>
+                          </tr>
+                            
+                            {% else %}
+                            <tr>
+                            <td colspan="10">{{form.name.label_tag}} </td><td  rowspan="4"><button id="{{ form.prefix }}-row" style="font-size:18px;background-color:rgb(177, 41, 8); color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);float:right" type="button" onclick="removeForm( this.id )" > <i class="fa fa-trash-o" ></i></button></td>
+                            </tr>
+                           <tr>
+                            <td colspan="10">{{form.name}}</td>
+                           </tr>
+                          <tr>
+                            <td colspan="5">{{form.relation.label_tag}}: </td>
+                            <td colspan="5">{{form.comment.label_tag}}: </td>
+                          </tr>
+                          <tr>
+                            <td colspan="5">{{form.relation}}</td>
+                            <td colspan="5">{{form.comment}}</td>
+                          </tr>
+                          
+                            {% endif %}
+                              
+
+                        </table>
+                        <br>
+                      </div>
+                      
+                        {% endfor %}
+                        <button id="add-form" style="font-size:18px;background-color: #035a4c; color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);"  type="button">আরও যুক্ত করুন<i class="fa fa-plus" ></i></button>
+
+
+                      </div>
+                  </td></tr>
+                  
+                    
+              </tbody>
+            </table>
+          </fieldset>
+                {% comment %} <table width="100%" border="1" cellspacing="0" cellpadding="3">
+                  <tr style="height: 25px; background-color: #035a4c; color: #fff;">
+                    {% if certificate_type.id == 9 %}
+                    <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">অন্য নামসমূহ</td>
+                    {% else %}
+                    <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">ওয়ারিশগণ</td>
+                    {% endif %}
+                  </tr>
                   <tbody>
                     <tr>
                       <td colspan="5" align="center">
@@ -223,15 +345,29 @@
 
                           {% for form in formset %}
                           <div class="bird-form">
-                            <table >
-                            <tr>
-                              <td>{{form.name.label_tag}} </td><td>{{form.name}}</td><td rowspan="3"><button id="{{ form.prefix }}-row" style="font-size:18px;color:red;float:right" type="button" onclick="removeForm( this.id )" > <i class="fa fa-trash-o" ></i></button></td></tr><tr><td>{{form.relation.label_tag}}: </td><td>{{form.relation}}</td></tr><tr><td>{{form.comment.label_tag}}: </td><td>{{form.comment}}</td></tr>
+                            <table>
+                              
+                              {% if certificate_type.id == 9 %}
+                              <tr>
+                                <td>{{form.name.label_tag}} </td><td style="height: 40px;" rowspan="3"><button id="{{ form.prefix }}-row" style="font-size:25px;background-color:rgb(177, 41, 8); color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);float:right" type="button" onclick="removeForm( this.id )" > <i class="fa fa-trash-o" ></i></button></td>
+                              </tr>
+                              <tr>
+                              <td>{{form.name}}</td>
+                            </tr>
+                              
+                              {% else %}
+                              <tr>
+                              <td>{{form.name.label_tag}} </td><td>{{form.name}}</td><td rowspan="3"><button id="{{ form.prefix }}-row" style="font-size:18px;background-color:rgb(177, 41, 8); color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);float:right" type="button" onclick="removeForm( this.id )" > <i class="fa fa-trash-o" ></i></button></td></tr><tr><td>{{form.relation.label_tag}}: </td><td>{{form.relation}}</td></tr><tr><td>{{form.comment.label_tag}}: </td><td>{{form.comment}}</td>
+                              </tr>
+                              {% endif %}
+                                
+
                           </table>
                           <br>
                         </div>
                         
                           {% endfor %}
-                          <button id="add-form" style="font-size:18px;color:green;"  type="button">আরও যুক্ত করুন<i class="fa fa-plus" ></i></button>
+                          <button id="add-form" style="font-size:18px;background-color: #035a4c; color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);"  type="button">আরও যুক্ত করুন<i class="fa fa-plus" ></i></button>
 
 
                         </div>
@@ -239,11 +375,12 @@
                     
                       
                 </tbody>
-              </table>
+              </table> {% endcomment %}
               {% endif %}
+
               <fieldset style="margin:auto;">
-                <table width="100%" border="1" cellspacing="" cellpadding="5">
-                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;">মেম্বর সুপারিশ ফাইল ও এনআইডি</th></thead>
+                <table width="100%" border="1" cellspacing="" cellpadding="5" style="margin-right:10%;">
+                  <tr><td colspan="4" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);font-size:20px;padding: 15px;">মেম্বর সুপারিশ ফাইল ও এনআইডি</td></tr>
                   <tbody>
                     <tr>
                         <td width="10%" align="left" valign="middle">&nbsp;</td>
@@ -278,7 +415,7 @@
                   <div class="custom-control custom-checkbox">
                     <div class="col-form-label-sm font-weight-bold mb-0 custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input" value="true" id="__BVID__164" required /><label class="custom-control-label" for="__BVID__164">
-                        উপরের তথ্য সঠিক, কোনরূপ ভুল থাকলে দায় আমার
+                        উপরের সকল তথ্য সঠিক, কোনরূপ ভুল থাকলে কর্তৃপক্ষ দায়ী নয়
                       </label>
                     </div> <div class="invalid-feedback"></div>
                   </div>
@@ -289,7 +426,7 @@
               </div>  {% endcomment %}
               <div class="col-sm-9 form-group">
                 <p class="text-right">
-                  <button type="submit" class="btn btn-danger font-weight-bold rounded-50 ml-2">সাবমিট করুন</button>
+                  <button type="submit" class="rounded-50 ml-2" style="height: 40px; background-color: #035a4c; color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);font-size:20px;padding-left:8px;padding-right:8px;">সাবমিট করুন</button>
                 </p>
               </div>
               
@@ -302,6 +439,8 @@
       </div>
     </div>
   </div>
+  <span class="bubbleNew"><img src="{%static 'images/tilokpur_logo.png'%}" class="rounded-circle" style="width: 200px;height: 200px;" /></span>
+
 </div>
 
 
