@@ -653,8 +653,8 @@ pre code {
     display: -webkit-box;
     display: flex;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px
+    margin-right: -10px;
+    margin-left: -10px
 }
 
 .no-gutters {

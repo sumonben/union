@@ -154,13 +154,13 @@
                 <li class="nav-item dropdown"><a href="{% url 'select_certificate' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name == 'select_certificate' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">আবেদন করুন</a>
                     <div aria-labelledby="navbarDropdown" class="dropDown dropdown-menu megamenu megamenu-lg">
                         <div class="row m-0">
-                            <div class="col-lg-6 pr-0">
+                            <div class="col-lg-4 pr-0">
                                 <h4 class="menu-head"><a href="{% url 'select_certificate' %}" class="">আবেদন করুন</a></h4>
                                           <ul>
                                              
                                             </ul>
                             </div>
-                            <div class="col-lg-6 pr-0">
+                            <div class="col-lg-4 pr-0">
                                 <h4 class="menu-head"><a href="/secretariat" class="">Our Team</a></h4>
                                         <ul>
                                             {% comment %} <li class="subMenu"><span class="fa fa-angle-double-right"></span>
@@ -173,9 +173,29 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item nav-item dropdown"><a href="{% url 'download_certificate_form' %}" class="{% if request.resolver_match.url_name in 'download_certificate_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}" aria-expanded="false" aria-current="page">সনদ ডাউনলোড করুন</a></li>
+                <li class="nav-item nav-item dropdown"><a href="{% url 'download_certificate_form' %}" class="{% if request.resolver_match.url_name in 'download_certificate_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}" aria-expanded="false" aria-current="page">সনদ ডাউনলোড</a>
+                    <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                        <div class="row m-0">
+                            <div class="col-lg-6">
+                                <h4 class="menu-head"><a href="{% url 'download_certificate_form' %}" class="">সনদ ডাউনলোড</a></h4>
+                                          <ul>
+                                             
+                                            </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4 class="menu-head"><a href="{% url 'download_license_form' %}" class="">লাইসেন্স ডাউনলোড</a></h4>
+                                        <ul>
+                                            {% comment %} <li class="subMenu"><span class="fa fa-angle-double-right"></span>
+                                            <a href="https://israbentech.com/frontend/about/excutive-council" class="nav-link" onclick="myFunctionNavbar(this.id)">Excutive Council</a></li>
+                                                <li class="fas fa-eye"><a href="https://israbentech.com/frontend/about/previous-excutive-council" class="nav-link">Previous Excutive Council</a></li>
+                                                        <li class="subMenu"><span class="fab fa-think-peaks"> </span><a href="https://israbentech.com/frontend/about/members" class="nav-link">Members</a></li> {% endcomment %}
+                                            </ul>
+                            </div>
+                          
+                    </div>
+                </li>
 
-                <li class="nav-item nav-item dropdown"><a href="{% url 'download_license_form' %}"   aria-expanded="false" class="{% if request.resolver_match.url_name in 'download_license_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">লাইসেন্স ডাউনলোড করুন</a>
+                <li class="nav-item nav-item dropdown"><a href="{% url 'download_license_form' %}"   aria-expanded="false" class="{% if request.resolver_match.url_name in 'download_license_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">লাইসেন্স ডাউনলোড</a>
                    
                 </li> 
                 <li class="nav-item nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name in 'media' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">সনদ যাচাই করুন

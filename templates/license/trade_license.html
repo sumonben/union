@@ -21,7 +21,7 @@
 </style>
 
 
-  <link rel="icon" href="{% static 'images/gmrwc_logo.png'%}" type="image/x-icon">
+ 
 
   
   
@@ -87,7 +87,6 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
 @media print and (min-width: 480px) {
     
  #second{
-  
   
   -webkit-print-color-adjust: exact; 
 }  
@@ -262,7 +261,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                             </div>
                                             <div style="display:inline-block; margin-left: 20px;">
                                                
-                                                <u>{{license.license_owner_name}} </u>
+                                                <u>{{license.nid}} </u>
                                         </div>
                                         </td> 
                                      
@@ -295,14 +294,28 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                     
                                     </tr>
                                     <tr>
-                                        <td  colspan="6" align="left" valign="middle" >
+                                        <td  colspan="1" align="left" valign="middle" >
                                             <div style="display:inline-block;">
                                               
                                                 ঠিকানাঃ 
                                             </div>
+                                          </td>
+                                    </tr>
+                                    <tr>
+                  
+                                          <td  colspan="5" align="left" valign="middle" >
                                             <div style="display:inline-block;margin-left: 20px;">
                                             
-                                                গ্রামঃ {{license.adress.village.name}} 
+                                              গ্রামঃ {{license.adress.village}}, ইউনিয়নঃ {{license.adress.union.name}}
+                                            </div>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                       
+                                        <td  colspan="5" align="left" valign="middle" >
+                                            <div style="display:inline-block;margin-left: 20px;">
+                                            
+                                              উপজেলাঃ {{license.adress.upazilla.name}}, জেলাঃ {{license.adress.district.name}}।
                                             </div>
                                         </td> 
                                     </tr>
@@ -312,6 +325,10 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                               
                                                 ব্যবসা প্রতিষ্ঠানের ঠিকানাঃ 
                                             </div>
+                                          </td>
+                                    </tr>  
+                                          <tr>
+                                            <td colspan="5" align="left" valign="middle">
                                             <div style="display:inline-block;margin-left: 20px;">
                                             
                                                গ্রামঃ {{license.adress_of_license.village.name}},  মৌজাঃ {{license.adress_of_license.mouja.name}} <br>  
@@ -320,7 +337,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         </td> 
                                     </tr>
                                     <tr>
-                                      <td  colspan="6" align="left" valign="middle" >
+                                      <td  colspan="5" align="left" valign="middle" >
                                          
                                           <div style="display:inline-block;margin-left: 20px;">
                                         
@@ -335,8 +352,11 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                                 ব্যবসা /পেশার ধরণঃ 
                                             </div>
                                             <div style="display:inline-block;margin-left: 20px;">
-                                            
+                                              {% if license.profession %}
                                                 {{license.profession}} 
+                                                {% else %}
+                                                ---------
+                                                {% endif %}
                                             </div>
                                         </td> 
                                     </tr>
@@ -347,8 +367,14 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                                 পরিশোধিত মূলধনের পরিমাণঃ
                                             </div>
                                             <div style="display:inline-block;margin-left: 20px;">
-                                            
-                                                {{license.capital}} 
+                                                
+                                                {% if license.capital %}
+                                                {{license.capital}}
+                                                {% else %}
+                                                ----------
+                                                {% endif %}
+                                                  
+                                                
                                             </div>
                                         </td> 
                                     </tr>
@@ -359,8 +385,11 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                                 বৈধতার মেয়াদঃ                                       
                                             </div>
                                             <div style="display:inline-block;margin-left: 20px;">
-                                            
+                                              {% if license.duration_to %}
                                               ১ জুলাই, {{license.duration_form|date:"Y"}}  হতে ৩০ জুন, {{license.duration_to|date:"Y"}}
+                                              {% else %}
+                                              ----------
+                                              {% endif %}
                                             </div>
                                         </td> 
                                     </tr>
@@ -383,13 +412,49 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                                     <td>মোট</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>{{license.tax}}</td>
-                                                    <td>{{license.fee}}</td>
-                                                    <td>{{license.vat_n_others}}</td>
-                                                    <td>{{license.total_payment}}</td>
+                                                    <td>
+                                                      {% if license.tax %}
+                                                      {{license.tax}}
+                                                      {% else %}
+                                                      ------
+                                                      {% endif %}
+                                                     
+                                                    </td>
+                                                    <td>
+                                                      {% if license.fee %}
+                                                      {{license.fee}}
+                                                      {% else %}
+                                                      ------
+                                                      {% endif %}
+                                                      
+                                                    </td>
+                                                    <td>
+                                                      {% if license.vat_n_others %}
+                                                      {{license.vat_n_others}}
+                                                      {% else %}
+                                                      ------
+                                                      {% endif %}
+                                                      
+                                                    </td>
+                                                    <td>
+                                                      {% if license.total_payment %}
+                                                      {{license.total_payment}}
+                                                      {% else %}
+                                                      ------
+                                                      {% endif %}
+                                                     
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                  <td colspan="4">কথায়ঃ {{license.total_payment_in_word}}<td>
+                                                  <td colspan="3">কথায়ঃ 
+                                                    {% if license.total_payment_in_word %}
+                                                      {{license.total_payment_in_word}}
+                                                      {% else %}
+                                                      ------
+                                                      {% endif %}
+                                                   
+                                                    <td>
+                                                     
                                                 </tr>
                                                
                                             </table>

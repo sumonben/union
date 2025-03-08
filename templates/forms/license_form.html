@@ -251,15 +251,41 @@
                 <tbody>
                 </tbody>
               </table>
+
               <div class="col-sm-12 form-group">
                 <div class="row">
                     <div class="col-sm-4">
-                        <label for="" class="col-form-label-sm m-0">{{adress_form.ward.label_tag}}</label> <div class="loginBox">
-                          {{adress_form.ward}}                      
+                        <label for="" class="col-form-label-sm m-0">{{adress_form.division.label_tag}}</label> <div class="loginBox">
+                          {{adress_form.division}}                      
                           <span class="fa fa-map-marker"></span>
                         </div> <!--  --> <div class="invalid-feedback"></div>
                       </div>
 
+                  <div class="col-sm-4">
+                    <label for="" class="col-form-label-sm m-0">{{adress_form.district.label_tag}}</label>
+                     <div class="loginBox">
+                      {{adress_form.district}}
+                      <span class="fa fa-home"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="" class="col-form-label-sm m-0">{{adress_form.upazilla.label_tag}}</label>
+                     <div class="loginBox">
+                      {{adress_form.upazilla}}
+                      <span class="fa fa-home"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <label for="" class="col-form-label-sm m-0">{{adress_form.union.label_tag}}</label>
+                     <div class="loginBox">
+                      {{adress_form.union}}
+                      <span class="fa fa-home"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
                   <div class="col-sm-4">
                     <label for="" class="col-form-label-sm m-0">{{adress_form.village.label_tag}}</label>
                      <div class="loginBox">
@@ -276,6 +302,7 @@
                   </div>
                 </div>
               </div>
+             
             
             
                
@@ -289,7 +316,7 @@
                         {% for form in formset_adress %}
                         
                         <table width="100%" border="1" cellspacing="0" cellpadding="10">
-                            <thead><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 5px 5px 5px rgb(73, 25, 11);padding: 15px;font-size:20px;text-align:center;"> স্বত্তাধিকারীর ঠিকানা                                 
+                            <thead><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 5px 5px 5px rgb(73, 25, 11);padding: 15px;font-size:20px;text-align:center;"> ব্যবসা প্রতিষ্ঠানের ঠিকানা                                 
                               </th></thead>
                             <tbody>
                             </tbody>
@@ -467,6 +494,72 @@
 
 
 
+<script>
+
+  function myFunctionTeacher(id){
+    
+    var division=document.getElementById(id).value;
+    url="{% url 'get_district'%}";
+    alert(url);
+    var $j = jQuery.noConflict();
+    
+      $.ajax({
+      type: 'GET',
+      url: "{% url 'get_district' %}",
+      cache:'false',  // Adjust the URL as per your project structure
+      data: {id:id,'value':division},
+     
+     
+      success: function (response) {
+        alert(response.district);
+          //document.getElementById("student_form").reset();
+          if (response.status === 'success') {
+            if(id=='id_division'){
+            $("#id_district option").remove();
+            $("#id_district").append('<option '+'value="0">'+ '-----------' +'</option>');
+                  for (var i = response.district.length - 1; i >= 0; i--) {
+                                $("#id_district").append('<option '+'value="'+response.district[i].id+'">'+response.district[i].name +'('+response.district[i].name_en+ ')' +'</option>');
+                            }
+              }
+            if(id=='id_district'){
+
+              $("#id_upazilla option").remove();
+            $("#id_upazilla").append('<option '+'value="0">'+ '-------------' +'</option>');
+                  for (var i = response.district.length - 1; i >= 0; i--) {
+                                $("#id_upazilla").append('<option '+'value="'+response.district[i].id+'">'+ response.district[i].name +'('+response.district[i].name_en + ')'+'</option>');
+                            }
+
+            }
+            if(id=='id_upazilla'){
+
+              $("#id_union option").remove();
+            $("#id_union").append('<option '+'value="0">'+ '-------------' +'</option>');
+                  for (var i = response.district.length - 1; i >= 0; i--) {
+                                $("#id_union").append('<option '+'value="'+response.district[i].id+'">'+ response.district[i].name + '('+response.district[i].name_en + ')' +'</option>');
+                            }
+
+            }
+
+          } else {
+           ///alert("Success message not found");
+                  
+              }
+              
+      },
+      error: function (xhr, status, error) {
+         
+          var err = eval("(" + xhr.responseText + ")");
+          alert(err.Message);
+      }
+  });
+
+    
+  } 
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
     let birdForm = document.querySelectorAll(".bird-form")
@@ -504,294 +597,7 @@
       
       
     }
-    {% comment %} function removeForm(e){
-      e.preventDefault()
-
-      let birdForm2 = document.querySelectorAll(".bird-form")
-      let formNum2 = birdForm2.length-1
-      birdForm2[formNum2].parentNode.removeChild(birdForm2[formNum2]);
-      
-  }          {% endcomment %}
-          
-    window.onload = (event) => {
-let compulsory_subject_initialized=document.getElementsByClassName('selector-available');
-let filter_compusory=document.getElementById('id_compulsory_subject_filter_selected');
-let remove_compusory=document.getElementById('id_compulsory_subject_remove_all_link');
-
-let selector_chooser=document.getElementsByClassName('selector-chooser');
-
-
-compulsory_subject_initialized[0].style.display='none';
-selector_chooser[0].style.display='none';
-
-filter_compusory.style.display='none';
-remove_compusory.style.display='none';
-
-z= compulsory_subject_initialized.getElementsByTagName("option");
-for (i = 0; i < z.length; i++) {
-
-z[i].setAttribute('disabled','true','readonly','true');
-
-}
-
-alert(compulsory_subject_initialized.length);
-};
-
-
-
-
-const progress = (value) => {
-document.getElementsByClassName('progress-bar')[0].style.width = `${value}%`;
-}
-
-let step = document.getElementsByClassName('step');
-let prevBtn = document.getElementById('prev-btn');
-let nextBtn = document.getElementById('next-btn');
-let submitBtn = document.getElementById('submit-btn');
-let form = document.getElementsByTagName('form')[0];
-let preloader = document.getElementById('preloader-wrapper');
-let bodyElement = document.querySelector('body');
-let succcessDiv = document.getElementById('success');
-let downloadDiv = document.getElementById('downlod_form_id');
-
-let addChoiceBtn=document.getElementsByName('id_fourth_subject');
-
-form.onsubmit = () => { return false }
-
-let current_step = 0;
-let stepCount = 4
-step[current_step].classList.add('d-block');
-if(current_step == 0){
-prevBtn.classList.add('d-none');
-submitBtn.classList.add('d-none');
-nextBtn.classList.add('d-inline-block');
-}
-
-
-nextBtn.addEventListener('click', () => {
-var x, y, i, valid = true;
-var options=document.getElementById('id_compulsory_subject_to').getElementsByTagName('option');
-for(i=0;i<options.length ;i++){
-options[i].selected = 'selected';
-}
-document.getElementById('id_compulsory_subject_to').disabled='disabled';
-
-
-//document.getElementById('toast-container').style.visibility ='hidden';
-current_step++;
-let previous_step = current_step - 1;
-let flag=validateForm();
-if(( current_step > 0) && (current_step <= stepCount) && flag){
-prevBtn.classList.remove('d-none');
-prevBtn.classList.add('d-inline-block');
-step[current_step].classList.remove('d-none');
-step[current_step].classList.add('d-block');
-step[previous_step].classList.remove('d-block');
-step[previous_step].classList.add('d-none');
-if (current_step == stepCount){
-submitBtn.classList.remove('d-none');
-submitBtn.classList.add('d-inline-block');
-nextBtn.classList.remove('d-inline-block');
-nextBtn.classList.add('d-none');
-}
-} else {
-if(current_step > stepCount){
-  form.onsubmit = () => { return true }
-}
-}
-progress((100 / stepCount) * current_step);
-function validateForm() {
-// This function deals with validation of the form fields
-if(current_step==4 ){
-
-
-if(document.getElementById('id_fourth_subject').value==''){
-valid= false;
-}
-/* var select=document.getElementsByName('compulsory_subject');
-var compulsory_subject=select[1];
-if(compulsory_subject.length<6){
-  valid= false;
-}*/
-
-
-
-
-}
-
-x = document.getElementsByClassName("step d-block");
-//alert(current_step);
-
-y = x[0].getElementsByTagName("input");
-z= x[0].getElementsByTagName("select");
-
-for (i = 0; i < y.length; i++) {
-// If a field is empty...
-//alert(y[i]+y[i].required);
-//alert(y[i].getAttribute('id')+": "+y[i].hasAttribute('required'));
-
-if (y[i].value == '' && y[i].hasAttribute('required') ) {
-
-
-  y[i].className='textfieldUSERinfoInvalid';
-
-valid = false;
-
-}
-}
-
-for (i = 0; i < z.length; i++) {
-// If a field is empty...
-
-if (z[i].value == '' && z[i].hasAttribute('required') ) {
-  //alert(z[i].getAttribute('id')+": "+z[i].hasAttribute('required'));
-
- if(z[i].className=='textfieldUSER')
-   z[i].className='textfieldUSERInvalid';
-else
-  z[i].className='textfieldUSERinfoInvalid';
-  
- valid = false;
-
-}
-}
-//alert("valid:"+valid);
-if(!valid){
-current_step--;
-var x = document.getElementById("toast-container");
-
-// Add the "show" class to DIV
-x.className = "show";
-
-// After 3 seconds, remove the show class from DIV
-setTimeout(function(){ x.className = x.className.replace("show", ""); }, 11000);
-/*var x = document.getElementById("toast-container");
-         x.className = "toast-top-center";
-         x.style.visibility="vissible"
-
-         setTimeout(function(){ 
-             x.className = x.className.replace("toast-top-center","");
-            
-             
-          }, 8000);*/
-          
-
-}
-return valid; // return the valid status
-}
-
-
-
-});
-
-
-
-prevBtn.addEventListener('click', () => {
-if(current_step > 0){
-current_step--;
-let previous_step = current_step + 1; 
-prevBtn.classList.add('d-none');
-prevBtn.classList.add('d-inline-block');
-step[current_step].classList.remove('d-none');
-step[current_step].classList.add('d-block')
-step[previous_step].classList.remove('d-block');
-step[previous_step].classList.add('d-none');
-if(current_step < stepCount){
- submitBtn.classList.remove('d-inline-block');
- submitBtn.classList.add('d-none');
- nextBtn.classList.remove('d-none');
- nextBtn.classList.add('d-inline-block');
- prevBtn.classList.remove('d-none');
- prevBtn.classList.add('d-inline-block');
-} 
-}
-
-if(current_step == 0){
-prevBtn.classList.remove('d-inline-block');
-prevBtn.classList.add('d-none');
-}
-progress((100 / stepCount) * current_step);
-});
-
-
-
-function fourthSubject(id){
-
-if(current_step==3){
-var compulsory_subject=document.getElementById('id_optional_subject_from');
-var selected_item = document.getElementById('id_fourth_subject');
-if(compulsory_subject.length==1){
-selected_item.value=compulsory_subject[0].value;
-alert(selected_item.value);
-
-return false;
-}
-
-
-
-
-
-
-}
-
-}
-function subjectChoice(id){
-alert("subjectChoice");
-
-}
-addChoiceBtn.addEventListener('change', () => {
-alert("subjectChoice");
-});
-
-</script>
-<script>
-$(document).ready(function () {
-  
-    $('#add_more').click(function() {
-        alert("hello");
-        cloneMore('div.table:last', 'service');
-    });
-  $('#submit-btn').on('click', function () {
-    var subjectCount=0;
-    var compulsory_options;
-    var options;
-    compulsory_options=document.getElementById('id_compulsory_subject_to').getElementsByTagName('option');
-    subjectCount=compulsory_options.length;
-    document.getElementById('id_compulsory_subject_to').disabled='';
-    try{
-    options=document.getElementById('id_optional_subject_to').getElementsByTagName('option');
-    var selected_4rth = document.getElementById('id_fourth_subject');
-    var flag_submit=0;
-    alert(selected_4rth.value);
-    for(i=0;i<options.length ;i++){
-      subjectCount++;
-      if(options[i].value==selected_4rth.value){
-        flag_submit=1;
-        break;
-
-      }
-    options[i].selected = 'selected';
-   }
-    if(subjectCount<6 || flag_submit==1){
-      alert("Choose All 7 Subject and do not repeat twice ");
-      return false;
-    }
-    
-    }catch(err){
-
-    }
-  //preloader.classList.add('d-block');
-  var frm = $('#form-wrapper')[0];
-  var form= new FormData(frm);
-  var form1=document.getElementById('form-wrapper');
-  form1.submit();
-  
-  });
-////////////////////Submit for admission form download/////////////////////
-
+  </script>
  
-
-});
-</script>
  
 {% endblock  %}

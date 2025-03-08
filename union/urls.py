@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('certificate.urls')),
     path('payment/', include('payment.urls')),
     path('license/', include('license.urls')),
+    path('region/', include('region.urls')),
 
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

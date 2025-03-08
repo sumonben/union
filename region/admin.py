@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Division,District,Union,Upazilla,Ward,Village,PostOffice,Mouja
+from .models import Division,District,Union,Upazilla,Ward,Village,PostOffice,Mouja,OthersAdress
 from import_export.admin import ExportActionMixin,ImportExportMixin
 
 # Register your models here.
@@ -54,3 +54,6 @@ class MoujaAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display_links = ['name','name_en']
     search_fields = ['name','name_en','ward']
     autocomplete_fields = ['ward','village',]
+@admin.register(OthersAdress)
+class AdressAdmin(ExportActionMixin,admin.ModelAdmin):
+    pass

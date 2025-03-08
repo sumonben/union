@@ -83,12 +83,12 @@
                                     <td align="left">
                                       <fieldset>
                                       <table width="100%" border="1" cellspacing="0" cellpadding="2">
-                                        <thead style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;"> আবেদনের তথ্য</th></thead>
+                                        <thead style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;text-shadow: 3px 3px 3px rgb(73, 25, 11);"> আবেদনের তথ্য</th></thead>
                                         <tbody>
                                         
       
                                           <tr>
-                                              <td width="25%" align="right" valign="middle" class="sprytextfield1">সনদের ট্র্যাকিং নম্বরঃ </td>
+                                              <td width="25%" align="right" valign="middle" class="sprytextfield1"><b>সনদের ট্র্যাকিং নম্বরঃ </b></td>
                                               <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                                 <label>
                                                   <input value="{{license.tracking_no}}" name="tracking_no" type="text" class="form-control form-control-sm">                                       
@@ -98,7 +98,7 @@
                                             </tr>
       
                                             <tr>
-                                                <td width="25%" align="right" valign="middle" class="sprytextfield1">প্রতিষ্ঠানের নামঃ </td>
+                                                <td width="25%" align="right" valign="middle" class="sprytextfield1"><b>প্রতিষ্ঠানের নামঃ </b></td>
                                                 <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                                   <label>
                                                     {{license.licensed_name}}                                        
@@ -106,7 +106,7 @@
                                                 </span></td>
         
                                               </tr><tr>
-                                                <td width="25%" align="right" valign="middle" class="sprytextfield1">স্বত্তাধিকারীর নামঃ </td>
+                                                <td width="25%" align="right" valign="middle" class="sprytextfield1"><b>স্বত্তাধিকারীর নামঃ </b></td>
                                                 <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                                   <label>
                                                     {{license.license_owner_name}}                                        
@@ -115,7 +115,7 @@
         
                                               </tr>
                                             <tr>
-                                              <td width="25%" align="left" valign="middle" class="sprytextfield1">পিতার নামঃ </td>
+                                              <td width="25%" align="left" valign="middle" class="sprytextfield1"><b>পিতার নামঃ </b></td>
                                               <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                                 <label>
                                                   {{license.father_name}}                                        
@@ -124,7 +124,7 @@
       
                                             </tr>
                                             <tr>
-                                              <td width="25%" align="left" valign="middle" class="sprytextfield1">মাতার নামঃ </td>
+                                              <td width="25%" align="left" valign="middle" class="sprytextfield1"><b>মাতার নামঃ</b> </td>
                                               <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                                 <label>
                                                   {{license.mother_name}}                                        
@@ -134,33 +134,41 @@
                                             </tr>
                                             
                                             <tr>
-                                              <td width="25%" align="left" valign="middle" class="sprytextfield1">গ্রামঃ </td>
-                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                              <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ঠিকানাঃ </b></td>
+                                              <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
                                                 <label>
-                                                  {{license.adress.village.name}}                                        
+                                                  গ্রামঃ {{license.adress.union.name}}, ইউনিয়নঃ {{license.adress.union.name}} <br> উপজেলাঃ {{license.adress.upazilla.name}}, জেলাঃ {{license.adress.district.name}}। 
                                                 </label>
-                                               </span></td>
+      
+                                            </tr>
+                                           
+                                            <tr>
+                                              <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>প্রতিষ্ঠানের নামঃ </b>  </td>
+                                              <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label id="date">
+                                                  {{license.licensed_name}}                                          
+                                              </label>
+      
+                                            </tr>
+      
+                                            <tr>
+                                              <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>প্রতিষ্ঠানের ঠিকানাঃ </b>  </td>
+                                              <td colspan="2" align="center" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  গ্রামঃ {{license.adress_of_license.village.name}} মৌজাঃ {{license.adress_of_license.mouja.name}}<br>
+                                                  ইউনিয়নঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট। 
+                                                </label>
       
                                             </tr>
                                             <tr>
-                                              <td width="25%" align="left" valign="middle" class="sprytextfield1">ওয়ার্ডঃ  </td>
-                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
-                                                <label>
-                                                  {{license.adress.village.ward.name}}                                        
-                                                </label>
-                                                </span></td>
+                                              <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>অনলাইন চার্জঃ  </b>  </td>
+                                              <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label id="date">
+                                                 ১২.২৫ টাকা                                          
+                                              </label>
       
                                             </tr>
-      
-                                            <tr>
-                                              <td width="25%" align="left" valign="middle" class="sprytextfield1"> </td>
-                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
-                                                <label>
-                                                 উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট                                          </label>
-                                                </span></td>
-      
-                                            </tr>
-                                          
+                                           
                                         
           
                                       </tbody></table>
@@ -181,6 +189,17 @@
                           
                           
                       </div>
+                      <div class="col-sm-12 form-group">
+                        <div class="row">
+                          <div class="custom-control custom-checkbox">
+                            <div class="col-form-label-sm font-weight-bold mb-0 custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" value="true" id="__BVID__164" required /><label class="custom-control-label" for="__BVID__164">
+                                উপরের সকল তথ্য সঠিক এবং অনলাইন চার্জ প্রদান করতে সম্মত আছি
+                              </label>
+                            </div> <div class="invalid-feedback"></div>
+                          </div>
+                        </div>
+                      </div> 
                       <div class="col-sm-9 form-group">
                         <p class="text-right">
                           <br>

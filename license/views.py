@@ -7,6 +7,7 @@ from certificate.models import CertificateType,Certificate,Person,Adress
 from payment.models import Transaction
 from account.models import Chairman, Member,Secretary
 from .forms import LicenseTypeForm,LicenseForm,AdressFormSet,LicenceDownloadForm
+from region.forms import OthersAdressForm
 from certificate.forms import AdressForm,WarishFormSet,WarishForm,SamePersonFormSet,AdressFormExtra
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
@@ -20,7 +21,7 @@ import random
 
 
 class ApplyForLicense(View):
-    model = LicenseType()
+    model = LicenseType
     template_name = 'forms/license_form.html'
     def get(self, request, id, *args, **kwargs):
         context={}
@@ -34,8 +35,8 @@ class ApplyForLicense(View):
         license_types=LicenseType.objects.all().order_by('serial')
         context['license_types']=license_types
         form=LicenseForm(instance=license_type)
-        form.license_type=license_type
-        adress_form=AdressForm()
+        adress_form=OthersAdressForm()
+        
         if license_type.id == 1:
             formset = SamePersonFormSet(queryset=Person.objects.none()) 
             formset_adress = AdressFormSet(queryset=Adress.objects.none())
@@ -74,10 +75,9 @@ class LicenseView(View):
 
     def post(self, request, *args, **kwargs):
         context={}
-        adress_form_extra=None
         formset=None
         form = LicenseForm(request.POST, request.FILES)
-        adress_form = AdressForm(data=self.request.POST)
+        adress_form = OthersAdressForm(data=self.request.POST)
 
         
         formset = SamePersonFormSet(data=self.request.POST)
@@ -97,23 +97,29 @@ class LicenseView(View):
         if form.is_valid():
             license=form.save(commit=False)
             person=None
-            adress=None
-            adress_of_license=None
+           
             if adress_form.is_valid:
                 license.adress=adress_form.save()
+                license.save()
             if formset1.is_valid():
                 #print(formset1)
                 adresses=formset1.save()
                
                 for fs in adresses:
                     license.adress_of_license=fs
+                    license.save()
+            if formset.is_valid():
+                person=formset.save()
+                
+                for person in person:
+                    license.person.add(person)
                    
 
                     
             license.tracking_no=tracking_no
             chairman=Chairman.objects.all().order_by('-id').first()
             secretary=Secretary.objects.all().order_by('-id').first()
-            member=Member.objects.filter(ward=license.adress.village.ward).last()
+            member=Member.objects.filter(ward=license.adress_of_license.village.ward).last()
             license.chairman=chairman
             license.secretary=secretary
             license.member=member
@@ -185,3 +191,4 @@ class DownloadLicenseView(View):
         form=LicenceDownloadForm()
         context['form']=form
         return render(request,self.template_name, context)
+

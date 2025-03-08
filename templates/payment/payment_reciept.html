@@ -210,9 +210,15 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
         <!-- FORMS -->
         <div >
                         <div class="step d-block">
-                            <div><h1 style="text-align: center;"><u>{{certificate.certificate_type.name}}-এর জন্য আবেদন</u></h1></div>
+                          {% if type == 1 %}
+                            <div>
+                              
+                            
+                              <h1 style="text-align: center;"><u>{{certificate.certificate_type.name}}-এর জন্য আবেদন</u></h1>
+                            
+                            </div>
 
-                            <div id="heading"><h3 style="text-align: left; margin-left:2%">ট্র্যাকিং নম্বরঃ <u>&nbsp{{certificate.tracking_no}}</u></h3></div>
+                   <div id="heading"><h3 style="text-align: left; margin-left:2%">ট্র্যাকিং নম্বরঃ <u>&nbsp{{certificate.tracking_no}}</u></h3></div>
 
 
                           <table  width="900"  align="center" valign="middle" cellspacing="0" cellpadding="4">
@@ -298,9 +304,100 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
 
                         </div>
                        
-                        
-                       
-                    
+                        {% else %}
+
+                        <div>
+                        <h1 style="text-align: center;"><u>{{license.license_type.name}}-এর জন্য আবেদন</u></h1>
+                        </div>
+                        <div id="heading"><h3 style="text-align: left; margin-left:2%">ট্র্যাকিং নম্বরঃ <u>&nbsp{{license.tracking_no}}</u></h3></div>
+
+
+                          <table  width="900"  align="center" valign="middle" cellspacing="0" cellpadding="4">
+
+                            <tbody>
+                            <tr>
+                              <td align="left">
+                                <fieldset>
+                                <table class="result" width="100%"  cellspacing="0" cellpadding="5">
+                                  <tbody>
+                                  
+
+
+                                      <tr>
+                                        <td width="15%" align="right" valign="middle" class="sprytextfield1"><b>আবেদনকারীর নামঃ </b></td>
+                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{license.license_owner_name}}                                        
+                                          </label>
+
+                                      </tr>
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>পিতার নামঃ </b></td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{license.father_name}}                                        
+                                          </label>
+
+                                      </tr>
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>মাতার নামঃ</b> </td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{license.mother_name}}                                        
+                                          </label>
+
+                                      </tr>
+                                      
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ঠিকানাঃ </b></td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            গ্রামঃ {{license.adress.union.name}}, ইউনিয়নঃ {{license.adress.union.name}}, <br>উপজেলাঃ {{license.adress.upazilla.name}}, জেলাঃ {{license.adress.district.name}}। 
+                                          </label>
+
+                                      </tr>
+                                     
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>প্রতিষ্ঠানের নামঃ </b>  </td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label id="date">
+                                            {{license.licensed_name}}                                          
+                                        </label>
+
+                                      </tr>
+
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>প্রতিষ্ঠানের ঠিকানাঃ </b>  </td>
+                                        <td colspan="2" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            গ্রামঃ {{license.adress_of_license.village.name}} মৌজাঃ {{license.adress_of_license.mouja.name}}<br>
+                                            ইউনিয়নঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট। 
+                                          </label>
+
+                                      </tr>
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>অনলাইন চার্জঃ  </b>  </td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label id="date">
+                                           ১২.২৫ টাকা                                          
+                                        </label>
+
+                                      </tr>
+                                     
+    
+                                </tbody></table>
+                              </fieldset>
+                            </td>
+                            
+                          </tr>
+                              
+                          </tbody>
+                        </table>
+                          
+                              
+
+                        </div>
+                        {% endif %}
                     
                 </div>
                     <div id="q-box__buttons" >

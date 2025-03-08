@@ -86,16 +86,25 @@ class CheckoutSuccessView(View):
             if transaction:
                 if data['value_d']== 1:
                     certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
+                    context['certificate']=certificate
                     context['certificate_type']=certificate.certificate_type
+                    type=1
+                    context['type']=type
+                    certificate.transaction=transaction
+                    certificate.save()
                 else:
-                    certificate=License.objects.filter(tracking_no=data['value_a']).first()
-                    context['license_type']=certificate.license_type
-                certificate.transaction=transaction
-                certificate.save()
-                print('Cerficate paid:',certificate)
+                    license=License.objects.filter(tracking_no=data['value_a']).first()
+                    context['license']=license
+                    context['license_type']=license.license_type
+                    type=2
+                    context['type']=type
+                    license.transaction=transaction
+                    license.save()
+                
+               
                 context['transaction']=transaction
                 context['purpose']=tran_purpose
-                context['certificate']=certificate
+                
                 return render(request,self.template_name,context)
             # if tran_purpose.payment_type.id == 2:
             #     #print("data['value_d']:",tran_purpose.payment_type)

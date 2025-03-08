@@ -3,7 +3,7 @@ from django.urls import reverse
 from payment.models import Transaction
 from django.utils.html import format_html
 from django.template.defaultfilters import escape
-from region.models import District,Division,Upazilla,Union,PostOffice,Village,Ward
+from region.models import District,Division,Upazilla,Union,PostOffice,Village,Ward,OthersAdress
 from account.models import Member,Chairman,Secretary
 from certificate.models import Adress,Person
 # Create your models here.
@@ -37,7 +37,7 @@ class License(models.Model):
     father_name_en=models.CharField(max_length=500,blank=True, null=True,verbose_name="বাবার নাম(ইংরেজিতে)")
     mother_name=models.CharField(max_length=500,verbose_name="মায়ের নাম(বাংলায়)")
     mother_name_en=models.CharField(max_length=500,blank=True, null=True,verbose_name="মায়ের নাম(ইংরেজিতে)")
-    adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL,verbose_name="ঠিকানা")
+    adress=models.ForeignKey(OthersAdress,null=True, blank=True,on_delete=models.SET_NULL,verbose_name="ঠিকানা")
     adress_of_license=models.ForeignKey(Adress,related_name='adress_of_linsence',null=True, blank=True,on_delete=models.SET_NULL,verbose_name="প্রতিষ্ঠানের ঠিকানা")
     license_type=models.ForeignKey(LicenseType,on_delete=models.SET_NULL,null=True, blank=True,verbose_name="লাইসেন্সের ধরণ")
     person=models.ManyToManyField(Person,blank=True,verbose_name="সংশিষ্ট ব্যক্তিবর্গ")

@@ -43,6 +43,7 @@ class Union(models.Model):
         ordering = ['name_en']
     def __str__(self):
         return self.name+'('+self.name_en+')'
+    
 class Ward(models.Model):
     name=models.CharField(max_length=25)
     name_en=models.CharField(max_length=25)
@@ -92,3 +93,24 @@ class Mouja(models.Model):
         ordering = ['name_en']
     def __str__(self):
         return self.name+'('+self.name_en+')'
+
+class OthersAdress(models.Model):
+    serial=models.IntegerField(default=10)
+    holding_no=models.CharField(max_length=100,blank=True,null=True,verbose_name=" হোল্ডিং নং")
+    village=models.CharField(max_length=50,blank=True,null=True,verbose_name=" গ্রাম/মহল্লা")
+    post_office=models.CharField(max_length=50,blank=True,null=True,verbose_name="ডাকঘর ")
+    division=models.ForeignKey(Division,blank=True,null=True,on_delete=models.SET_NULL,verbose_name=" বিভাগ ")
+    district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL,verbose_name=" জেলা ")
+    upazilla=models.ForeignKey(Upazilla,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="উপজেলা ")
+    union=models.ForeignKey(Union,blank=True,null=True,on_delete=models.SET_NULL,verbose_name=" ইউনিয়ন ")
+
+    class Meta:
+        ordering = ['serial']
+        verbose_name="অন্যান্য ঠিকানা"
+        verbose_name_plural=" অন্যান্য ঠিকানা"
+    def __str__(self):
+        if self.village:
+            return self.village
+        else:
+            return '1'
+
