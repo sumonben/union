@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from .models import Adress,Person,CertificateType,Certificate,Cause
 from django.forms import modelformset_factory
-
+from django.contrib.admin.widgets import AdminDateWidget
 COMMENT_CHOICE={
     '0':'------',
     '1':'বর্তমানে মৃত',
@@ -14,6 +14,22 @@ COMMENT_CHOICE={
 LANGUAGE_CHOICE={
     '1':'বাংলা',
     '2':'English',
+
+}
+AMOUNT_CHOICE={
+    '0':'------',
+    '1':'০',
+    '2':'১',
+    '3':'২',
+    '4':'৩',
+    '5':'৪',
+    '6':'৫',
+    '7':'৬',
+    '8':'৭',
+    '9':'৮',
+    '10':'৯',
+    '11':'১০',
+    
 
 }
 
@@ -53,7 +69,7 @@ class CertificateForm(forms.ModelForm):
     class Meta:
         model = Certificate
         fields = "__all__"
-        exclude=['serial','name_en','transaction','is_verified','father_name_en','mother_name_en','passport','tracking_no','adress','description','cause','person','chairman','member','caste','income','profession','language']
+        exclude=['serial','name_en','transaction','is_verified','father_name_en','mother_name_en','passport','tracking_no','adress','description','cause','amount','person','chairman','member','caste','income','profession','language']
     
             
         
@@ -84,7 +100,13 @@ class CertificateForm(forms.ModelForm):
                 self.fields['profession']=forms.CharField( label='অভিভাবকের পেশা',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'অভিভাবকের পেশা-বৃত্তি'}))
             if self.certificate_type.id==8:
                 self.fields['description']=forms.CharField( label='পরিবর্তন গুলো লিখুন',widget=forms.Textarea( attrs={'class':'form-control form-control-sm','placeholder':'সনদেটি কি কারণে প্রয়োজন তার বর্ণনা '}))
-       
+            if self.certificate_type.id==11:
+                self.fields['amount']=forms.ChoiceField( choices=AMOUNT_CHOICE,label='জমির পরিমাণ(শতাংশে)',widget=forms.Select( attrs={'class':'form-control form-control-sm','placeholder':'জমির পরিমাণ উল্লেখ করুন (শতাংশে ) '}))
+            if self.certificate_type.id==12:
+                self.fields['dob']=forms.DateField(label='জন্ম তারিখ',widget=forms.DateInput(attrs=dict(type='date')))
+                self.fields['date']=forms.DateField(label='মৃত্যু তারিখ',widget=forms.DateInput(attrs=dict(type='date')))
+                self.fields['description']=forms.CharField( label='মৃত্যুর কারণ',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'উদাহরণঃ স্বাভাবিকভাবে / দূর্ঘটনার কারণে ইত্যাদি... '}))
+
 
 # class WarishanCertificateForm(forms.ModelForm):
 #     class Meta:

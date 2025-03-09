@@ -2,13 +2,14 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import Person,CertificateType,Certificate,Cause
 from license.models import LicenseType,License
-from payment.models import Transaction
+from payment.models import Transaction,PaymentPurpose,PaymentType
 from account.models import Chairman, Member
 from .forms import AdressForm,WarishFormSet,WarishForm,SamePersonFormSet,CertificateTypeForm,CertificateForm,CertificateDownloadForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
 from django.forms import formset_factory
 from payment.sslcommerz import sslcommerz_payment_gateway
+from django.contrib import messages
 
 import string
 import random
@@ -166,6 +167,7 @@ class CertificateView(View):
             certificate.member=member
             cause=Cause.objects.filter(id=request.POST.get('cause')).first()
             certificate.language=request.POST.get('language')
+            certificate.amount=request.POST.get('amount')
             certificate.cause=cause
             certificate.income=request.POST.get('income')
             certificate.profession=request.POST.get('profession')
@@ -239,8 +241,19 @@ class submitFormView(View):
     def post(self, request, *args, **kwargs):
         certificate=Certificate.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
         certificate_type=certificate.certificate_type
-        type=1
-        return redirect(sslcommerz_payment_gateway(request, certificate, certificate_type,type))
+        
+        payment_purpose=PaymentPurpose.objects.create(
+                serial=certificate.id,
+                certificate_type_id=certificate_type.id,
+                title =certificate_type.name,
+                payment_type_id=1,
+                
+
+            )
+        return redirect(sslcommerz_payment_gateway(request, certificate, certificate_type,payment_purpose))
+        
+        return HttpResponse 
+
 
 class DownloadCertificateView(View):
     model = Certificate
@@ -288,6 +301,10 @@ class DownloadCertificateView(View):
                     return render(request,'certificate/certificate/voter_info_correction_certificate.html', context)
                 if certificate_type.id == 9:
                     return render(request,'certificate/certificate/same_person_certificate.html', context)
+                if certificate_type.id == 11:
+                    return render(request,'certificate/certificate/landless_certificate.html', context)
+                if certificate_type.id == 12:
+                    return render(request,'certificate/certificate/dead_certificate.html', context)
           
                 return render(request,'certificate/certificate/citizenship_certificate.html', context)
             context['message']="দুখিঃত! আপনার সনদটির জন্য পেমেন্ট করা হয়নি"

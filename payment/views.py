@@ -47,11 +47,10 @@ class CheckoutSuccessView(View):
         
         context={}
         data = self.request.POST
-        #print(data)
+        print(data)
 
-        
-        tran_purpose=PaymentPurpose.objects.filter(certificate_type_id=data['value_d']).first()
-        
+        id=int(data['value_d'])
+        tran_purpose=PaymentPurpose.objects.filter(id=id).first()
         transaction=None
         try:
             transaction=Transaction.objects.create(
@@ -82,28 +81,25 @@ class CheckoutSuccessView(View):
 
             )
             #print("data['value_d']:",tran_purpose.payment_type)
-            print(transaction)
             if transaction:
-                if data['value_d']== 1:
+                if tran_purpose.payment_type.id == 1:
                     certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
                     context['certificate']=certificate
                     context['certificate_type']=certificate.certificate_type
-                    type=1
-                    context['type']=type
+                   
                     certificate.transaction=transaction
                     certificate.save()
                 else:
                     license=License.objects.filter(tracking_no=data['value_a']).first()
                     context['license']=license
                     context['license_type']=license.license_type
-                    type=2
-                    context['type']=type
+                    
                     license.transaction=transaction
                     license.save()
                 
                
                 context['transaction']=transaction
-                context['purpose']=tran_purpose
+                context['tran_purpose']=tran_purpose
                 
                 return render(request,self.template_name,context)
             # if tran_purpose.payment_type.id == 2:

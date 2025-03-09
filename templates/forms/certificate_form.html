@@ -190,6 +190,16 @@
                     </div> <!--  --> <div class="invalid-feedback"></div>
                   </div>
                   {% endif %}
+                  {% if form.amount %}
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.amount.label_tag}}</label> 
+                    <div class="loginBox">
+                      {{form.amount}}
+                      <i class="fa-solid fa-bangladeshi-taka-sign"></i>
+                      <span class="fa fa-square"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  {% endif %}
 
                   {% if form.cause %}
                   <div class="col-sm-6">
@@ -200,12 +210,42 @@
                     </div> <!--  --> <div class="invalid-feedback"></div>
                   </div>
                   {% endif %}
-                  <div class="col-sm-6">
-                    <label for="" class="col-form-label-sm m-0">{{form.certificate_type.label_tag}}</label> <div class="loginBox">
+                  
+                  {% if form.date %}
+
+                  <div class="col-sm-4">
+                    <label for="" class="col-form-label-sm m-0">{{form.certificate_type.label_tag}}</label> 
+                    <div class="loginBox">
                       {{form.certificate_type}}                      
                       <span class="fa fa-certificate"></span>
                     </div> <!--  --> <div class="invalid-feedback"></div>
                   </div>
+
+                  <div class="col-sm-4">
+                    <label for="" class="col-form-label-sm m-0">{{form.dob.label_tag}}</label> <div class="loginBox">
+                      {{form.dob}}                      
+                      <span class="fa fa-birthday-cake"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+
+                  <div class="col-sm-4" style="float:right;">
+                    <label for="" class="col-form-label-sm m-0">{{form.date.label_tag}}</label> <div class="loginBox">
+                      {{form.date}}                      
+                      <span class="fa fa-paw"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  {% else %}
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.certificate_type.label_tag}}</label> 
+                    <div class="loginBox">
+                      {{form.certificate_type}}                      
+                      <span class="fa fa-certificate"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  {% endif %}
+
+
+
                 </div>  
               </div>
 

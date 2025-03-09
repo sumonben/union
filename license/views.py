@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import LicenseType,License
 from certificate.models import CertificateType,Certificate,Person,Adress
-from payment.models import Transaction
+from payment.models import Transaction,PaymentPurpose,PaymentType
 from account.models import Chairman, Member,Secretary
 from .forms import LicenseTypeForm,LicenseForm,AdressFormSet,LicenceDownloadForm
 from region.forms import OthersAdressForm
@@ -14,6 +14,7 @@ from django.views.generic import View
 from certificate.views import gernerate_tracking_no
 from django.forms import formset_factory
 from payment.sslcommerz import sslcommerz_payment_gateway
+from django.contrib import messages
 
 import string
 import random
@@ -146,9 +147,17 @@ class submitLicenseFormView(View):
     def post(self, request, *args, **kwargs):
         license=License.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
         license_type=license.license_type
-        type=2
-        return redirect(sslcommerz_payment_gateway(request, license, license_type, type))
-    
+        payment_type=PaymentType.objects.filter(id=1).first()
+        payment_purpose=PaymentPurpose.objects.create(
+                serial=license.id,
+                certificate_type_id=license_type.id,
+                title =license_type.name,
+                payment_type_id=2,
+                
+
+            )
+        return redirect(sslcommerz_payment_gateway(request, license, license_type,payment_purpose))
+        
 class DownloadLicenseView(View):
     model = License
     template_name = 'license/download_license_form.html'

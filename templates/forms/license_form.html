@@ -218,7 +218,7 @@
                   <div class="col-sm-6">
                     <label for="" class="col-form-label-sm m-0">{{form.license_type.label_tag}}</label> <div class="loginBox">
                       {{form.license_type}}                      
-                      <span class="fa fa-license"></span>
+                      <span class="fa fa-certificate"></span>
                     </div> <!--  --> <div class="invalid-feedback"></div>
                   </div>
                 </div>  
@@ -500,7 +500,6 @@
     
     var division=document.getElementById(id).value;
     url="{% url 'get_district'%}";
-    alert(url);
     var $j = jQuery.noConflict();
     
       $.ajax({
@@ -511,7 +510,6 @@
      
      
       success: function (response) {
-        alert(response.district);
           //document.getElementById("student_form").reset();
           if (response.status === 'success') {
             if(id=='id_division'){

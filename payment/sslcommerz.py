@@ -2,7 +2,7 @@ import string
 import random
 from django.conf import settings
 from sslcommerz_lib import SSLCOMMERZ
-from .models import PaymentGateway
+from .models import PaymentGateway,PaymentPurpose,PaymentType
 
 
 def generator_trangection_id( size=10, chars=string.ascii_uppercase + string.digits):
@@ -11,9 +11,8 @@ def generator_trangection_id( size=10, chars=string.ascii_uppercase + string.dig
 
     
 
-def sslcommerz_payment_gateway(request, certificate,certificate_type, type):
+def sslcommerz_payment_gateway(request, certificate,certificate_type, payment_purpose):
     
-    print(certificate,certificate_type)
     gateway = PaymentGateway.objects.all().first()
     cradentials = {'store_id': 'israb672a4e32dfea5',
             'store_pass': 'israb672a4e32dfea5@ssl', 'issandbox': True} 
@@ -31,7 +30,7 @@ def sslcommerz_payment_gateway(request, certificate,certificate_type, type):
     body['fail_url'] = 'http://localhost:8000/payment/payment/failed/'
     body['cancel_url'] = 'http://localhost:8000/payment/canceled/'
     body['emi_option'] = 0
-    if type == 1:
+    if payment_purpose.payment_type.id == 1:
         body['cus_name'] = certificate.name
     else:
         body['cus_name'] = certificate.licensed_name
@@ -50,12 +49,12 @@ def sslcommerz_payment_gateway(request, certificate,certificate_type, type):
     body['product_category'] = "Test Category"
     body['product_profile'] = "general"
     body['value_a'] = certificate.tracking_no
-    if type == 1:
+    if payment_purpose.payment_type.id == 1:
        body['value_b'] =certificate.name 
     else:
         body['value_b'] = certificate.license_owner_name
     body['value_c'] = certificate.phone
-    body['value_d'] = type
+    body['value_d'] = payment_purpose.id
     
     
 

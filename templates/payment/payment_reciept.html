@@ -210,7 +210,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
         <!-- FORMS -->
         <div >
                         <div class="step d-block">
-                          {% if type == 1 %}
+                          {% if tran_purpose.payment_type.id == 1 %}
                             <div>
                               
                             
@@ -322,7 +322,25 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                   <tbody>
                                   
 
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ব্যবসা প্রতিষ্ঠানের নামঃ </b>  </td>
+                                      <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label id="date">
+                                          {{license.licensed_name}}                                          
+                                      </label>
 
+                                    </tr>
+
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ব্যবসা প্রতিষ্ঠানের ঠিকানাঃ </b>  </td>
+                                      <td colspan="2" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          গ্রামঃ {{license.adress_of_license.village.name}} মৌজাঃ {{license.adress_of_license.mouja.name}}<br>
+                                          ইউনিয়নঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট। 
+                                        </label>
+
+                                    </tr>
+                     
                                       <tr>
                                         <td width="15%" align="right" valign="middle" class="sprytextfield1"><b>আবেদনকারীর নামঃ </b></td>
                                         <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
@@ -357,25 +375,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
 
                                       </tr>
                                      
-                                      <tr>
-                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>প্রতিষ্ঠানের নামঃ </b>  </td>
-                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label id="date">
-                                            {{license.licensed_name}}                                          
-                                        </label>
-
-                                      </tr>
-
-                                      <tr>
-                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>প্রতিষ্ঠানের ঠিকানাঃ </b>  </td>
-                                        <td colspan="2" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            গ্রামঃ {{license.adress_of_license.village.name}} মৌজাঃ {{license.adress_of_license.mouja.name}}<br>
-                                            ইউনিয়নঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট। 
-                                          </label>
-
-                                      </tr>
-                                      <tr>
+                                                    <tr>
                                         <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>অনলাইন চার্জঃ  </b>  </td>
                                         <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
                                           <label id="date">
