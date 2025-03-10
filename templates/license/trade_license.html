@@ -21,7 +21,7 @@
 </style>
 
 
- 
+  <link rel="icon" href="{% static 'images/gmrwc_logo.png'%}" type="image/x-icon">
 
   
   
@@ -32,13 +32,9 @@ body{
         
       
 }
-#first_table {
+#first_table{
     width:80%;
     height:100%
-}
-.table_bottom td{
-  border:1px solid rgb(94, 45, 45);
-  text-align:center;
 }
     .row{
         margin-left:15%;
@@ -90,26 +86,10 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
       -webkit-print-color-adjust: exact; 
 
 }
-.main-left{
-  display:block;
- }
- .main-right{
-  display:block;
- }
-
-.main-button {
-display:block;
-
-}
-.main-top{
-display:block;
-
-}
 #submit-btn {
   display: none !important;;
 }        
 }
-
     
     
 
@@ -122,29 +102,16 @@ display:block;
    
   }
   
-  table.result th table.result  td {
-    border:1px solid rgb(255, 255, 255);
-    text-align:center
-    
-    }
-
-    .main-left{
-        display:none;
-       }
-       .main-right{
-        display:none;
-       }
-      
-    .main-button {
-      display:none;
   
-    }
-    .main-top{
-      display:none;
-  
-    }
+  table.result {
+    width:70%;
+     } 
               
-
+table.result th, table.result td {
+                padding:0em;
+                -webkit-print-color-adjust: exact; 
+        
+                }
     
   
   
@@ -154,13 +121,23 @@ display:block;
   }
 
 
-
+  table.table_bottom td{
+    border: 1px solid #000;
+    text-align:center;
+    
+  }
 
 #column{
   width:95%;
   margin-left:2%;
 }
+@media (max-width:767px){
+    table.result {
+       width:70%;
+        }
 
+  
+}
 
 
 
@@ -178,13 +155,13 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                             <table align="center" width="95%">
                               <tr style="padding:0px;">
                               <td>
-                                <div  align="left"><h4 style="text-align: left; margin-left:6%">
-                                  লাইসেন্স নম্বর: &nbsp<u>{{license.tracking_no}}</u></h4>
+                                <div  align="left"><h5 style="text-align: left; margin-left:6%">
+                                  লাইসেন্স নম্বর: &nbsp<u>{{license.tracking_no}}</u></h5>
                               </div>
                               </td>
                               <td>                            
-                                <div   align="right"><h4 style="text-align: right;height:40px;">
-                                  তারিখঃ &nbsp<div id="date" style="display:inline">{{license.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
+                                <div   align="right"><h5 style="text-align: right;">
+                                  তারিখঃ &nbsp<div id="date" style="display:inline">{{license.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h5>
                                 </div>
                               </td>
                             </tr></table>
@@ -256,7 +233,12 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                                 
                                                     <u>{{license.father_name}} </u>
                                             </div>
-                                            <div style="display:inline-block; margin-left: 20px;">
+                                          </td>
+                                        </tr>
+                                          <tr>
+                                            <td colspan="6"  align="left"  >
+
+                                            <div style="display:inline-block;">
                                                 
                                                 মাতার নামঃ  
                                         </div>
@@ -279,7 +261,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                     <tr>
                   
                                           <td  colspan="5" align="left" valign="middle" >
-                                            <div style="display:inline-block;margin-left: 20px;">
+                                            <div style="display:inline-block;">
                                             
                                               গ্রামঃ {{license.adress.village}}, ইউনিয়নঃ {{license.adress.union.name}}
                                             </div>
@@ -288,7 +270,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                       <tr>
                                        
                                         <td  colspan="5" align="left" valign="middle" >
-                                            <div style="display:inline-block;margin-left: 20px;">
+                                            <div style="display:inline-block;">
                                             
                                               উপজেলাঃ {{license.adress.upazilla.name}}, জেলাঃ {{license.adress.district.name}}।
                                             </div>
@@ -304,7 +286,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                     </tr>  
                                           <tr>
                                             <td colspan="5" align="left" valign="middle">
-                                            <div style="display:inline-block;margin-left: 20px;">
+                                            <div style="display:inline-block;">
                                             
                                                মৌজাঃ {{license.adress_of_license.mouja.name}}, গ্রামঃ {{license.adress_of_license.village.name}} <br>  
                                               
@@ -314,7 +296,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                     <tr>
                                       <td  colspan="5" align="left" valign="middle" >
                                          
-                                          <div style="display:inline-block;margin-left: 20px;">
+                                          <div style="display:inline-block;">
                                         
                                              ইউনিয়নঃ তিলকপুর, উপজেলা আক্কেলপুর, জেলাঃ জয়পুরহাট। 
                                           </div>
@@ -378,7 +360,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         </td> 
                                     </tr>
                                     <tr>
-                                        <td  colspan="6" align="left" valign="middle" >
+                                        <td  colspan="6"  valign="middle" >
                                             <table class="table_bottom" width="100%"  align="center">
                                                 <tr >
                                                     <td>পেশা ব্যবসা ও বৃত্তির উপর কর</td>
@@ -439,7 +421,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         <td  colspan="6" align="left" valign="middle" >
                                             <div style="display:inline-block;text-align:justify">
                                               উপর্যুক্ত ফি ও কর প্রাপ্ত হয়ে ৪ নং তিলকপুর ইউনিয়ন পরিষদের সীমানায় তাহার ব্যবসা/বৃত্তি/পেশা চালিয়ে যাবার জন্য এই লাইসেন্স প্রদান করা হলো।
-                                                                                      
+                                                                                 
                                             </div>
                                            
                                         </td> 
@@ -585,29 +567,3 @@ function googleTranslateElementInit() {
     </script>
     
     {% endblock  %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
