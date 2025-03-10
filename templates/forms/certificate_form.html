@@ -220,6 +220,7 @@
                       <span class="fa fa-certificate"></span>
                     </div> <!--  --> <div class="invalid-feedback"></div>
                   </div>
+                  {% if form.dob %}
 
                   <div class="col-sm-4">
                     <label for="" class="col-form-label-sm m-0">{{form.dob.label_tag}}</label> <div class="loginBox">
@@ -227,6 +228,7 @@
                       <span class="fa fa-birthday-cake"></span>
                     </div> <!--  --> <div class="invalid-feedback"></div>
                   </div>
+                  {% endif %}
 
                   <div class="col-sm-4" style="float:right;">
                     <label for="" class="col-form-label-sm m-0">{{form.date.label_tag}}</label> <div class="loginBox">
@@ -279,27 +281,27 @@
               </table>
               <div class="col-sm-12 form-group">
                 <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <label for="" class="col-form-label-sm m-0">{{adress_form.ward.label_tag}}</label> <div class="loginBox">
                       {{adress_form.ward}}                      
                       <span class="fa fa-map-marker"></span>
                     </div> <!--  --> <div class="invalid-feedback"></div>
                   </div>
 
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <label for="" class="col-form-label-sm m-0">{{adress_form.village.label_tag}}</label>
                      <div class="loginBox">
                       {{adress_form.village}}
                       <span class="fa fa-home"></span>
                     </div> <!--  --> <div class="invalid-feedback"></div>
                   </div>
-                  <div class="col-sm-4">
+                  {% comment %} <div class="col-sm-4">
                     <label for="" class="col-form-label-sm m-0">{{adress_form.post_office.label_tag}}</label>
                      <div class="loginBox">
                       {{adress_form.post_office}}
                       <span class="fa fa-home"></span>
                     </div> <!--  --> <div class="invalid-feedback"></div>
-                  </div>
+                  </div> {% endcomment %}
                 </div>
               </div>
               
@@ -309,6 +311,8 @@
                 <tr style="height: 25px; background-color: #035a4c; color: #fff;">
                   {% if certificate_type.id == 9 %}
                   <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">অন্য নামসমূহ</td>
+                  {% elif certificate_type.id == 15 %}
+                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">স্বামীর নাম</td>
                   {% else %}
                   <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">ওয়ারিশগণ</td>
                   {% endif %}
@@ -332,7 +336,13 @@
                             <tr>
                             <td>{{form.name}}</td>
                           </tr>
-                            
+                          {% elif certificate_type.id == 15  %}
+                          <tr>
+                            <td>{{form.name.label_tag}} </td><td style="height: 40px;"></td>
+                          </tr>
+                          <tr>
+                          <td>{{form.name}}</td>
+                        </tr>
                             {% else %}
                             <tr>
                             <td colspan="10">{{form.name.label_tag}} </td><td  rowspan="4"><button id="{{ form.prefix }}-row" style="font-size:18px;background-color:rgb(177, 41, 8); color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);float:right" type="button" onclick="removeForm( this.id )" > <i class="fa fa-trash-o" ></i></button></td>
@@ -357,8 +367,9 @@
                       </div>
                       
                         {% endfor %}
-                        <button id="add-form" style="font-size:18px;background-color: #035a4c; color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);"  type="button">আরও যুক্ত করুন<i class="fa fa-plus" ></i></button>
-
+                        {% if certificate_type.id != 15  %}
+                                                <button id="add-form" style="font-size:18px;background-color: #035a4c; color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);"  type="button">আরও যুক্ত করুন<i class="fa fa-plus" ></i></button>
+                        {% endif %}
 
                       </div>
                   </td></tr>
@@ -483,6 +494,53 @@
 
 </div>
 
+<script>
+
+  function unionAdress(id){
+    
+    var division=document.getElementById(id).value;
+    url="{% url 'get_subordinations'%}";
+    var $j = jQuery.noConflict();
+    
+      $.ajax({
+      type: 'GET',
+      url: "{% url 'get_subordinations' %}",
+      cache:'false',  // Adjust the URL as per your project structure
+      data: {id:id,'value':division},
+     
+     
+      success: function (response) {
+          //document.getElementById("student_form").reset();
+          if (response.status === 'success') {
+            if(id=='id_ward'){
+            $("#id_village option").remove();
+            $("#id_village").append('<option '+'value="0">'+ '-----------' +'</option>');
+                  for (var i = response.village.length - 1; i >= 0; i--) {
+                                $("#id_village").append('<option '+'value="'+response.village[i].id+'">'+response.village[i].name +'('+response.village[i].name_en+ ')' +'</option>');
+                            }
+              }
+           
+            
+          } else {
+           ///alert("Success message not found");
+                  
+              }
+              
+      },
+      error: function (xhr, status, error) {
+         
+          var err = eval("(" + xhr.responseText + ")");
+          alert(err.Message);
+      }
+  });
+
+    
+  } 
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
 

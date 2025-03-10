@@ -12,6 +12,7 @@ class LicenseType(models.Model):
     name=models.CharField(max_length=250)
     name_en=models.CharField(max_length=250)
     amount=models.IntegerField(default=10)
+    template=models.CharField(max_length=250,blank=True,null=True)
     image=models.ImageField(upload_to='media/',blank=True,null=True,)
     is_active=models.BooleanField(default=False)
     class Meta:

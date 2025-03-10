@@ -69,7 +69,7 @@ class CertificateForm(forms.ModelForm):
     class Meta:
         model = Certificate
         fields = "__all__"
-        exclude=['serial','name_en','transaction','is_verified','father_name_en','mother_name_en','passport','tracking_no','adress','description','cause','amount','person','chairman','member','caste','income','profession','language']
+        exclude=['serial','name_en','transaction','is_verified','father_name_en','mother_name_en','passport','tracking_no','adress','dob','description','cause','amount','date','person','chairman','member','caste','income','profession','language']
     
             
         
@@ -106,6 +106,8 @@ class CertificateForm(forms.ModelForm):
                 self.fields['dob']=forms.DateField(label='জন্ম তারিখ',widget=forms.DateInput(attrs=dict(type='date')))
                 self.fields['date']=forms.DateField(label='মৃত্যু তারিখ',widget=forms.DateInput(attrs=dict(type='date')))
                 self.fields['description']=forms.CharField( label='মৃত্যুর কারণ',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'উদাহরণঃ স্বাভাবিকভাবে / দূর্ঘটনার কারণে ইত্যাদি... '}))
+            if self.certificate_type.id==15:
+                self.fields['date']=forms.DateField(label='স্বামীর মৃত্যু তারিখ',widget=forms.DateInput(attrs=dict(type='date')))
 
 
 # class WarishanCertificateForm(forms.ModelForm):
@@ -144,7 +146,7 @@ class WarishForm(forms.ModelForm):
 
 class CertificateDownloadForm(forms.ModelForm):
     tracking_no= forms.CharField(label="ট্র্যাকিং নং-ঃ ",required=True, widget=forms.TextInput(attrs={'class': 'form-control form-control-sm',}))
-    certificate_type= forms.ModelChoiceField(label="সার্টিফিকেটসমূহঃ ",required=True, queryset=CertificateType.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm',}))
+    certificate_type= forms.ModelChoiceField(label="সার্টিফিকেটসমূহঃ ",required=True, queryset=CertificateType.objects.all().order_by('name'), widget=forms.Select(attrs={'class': 'form-control form-control-sm',}))
     class Meta:
         model = Certificate
         fields = ['tracking_no','certificate_type']
@@ -162,9 +164,9 @@ class AdressForm(forms.ModelForm):
         fields = "__all__"
         exclude=['serial','holding_no','union','district','upazilla']
         widgets = {
-            'village': forms.Select(attrs={'class': 'form-control form-control-sm','onkeypress' : "myFunction(this.id);",'label':'Village/house','required':True}),
-            'ward': forms.Select(attrs={'class': 'form-control form-control-sm','onkeypress' : "myFunction(this.id);",'label':'Street No.','required':True}),
-            'post_office': forms.Select(attrs={'class': 'form-control form-control-sm', 'onkeypress' : "myFunction(this.id);",'required':True}),
+            'village': forms.Select(attrs={'class': 'form-control form-control-sm','onchange' : "unionAdress(this.id);",'label':'Village/house','required':True}),
+            'ward': forms.Select(attrs={'class': 'form-control form-control-sm', 'onchange' : "unionAdress(this.id);",'label':'Street No.','required':True}),
+            'post_office': forms.Select(attrs={'class': 'form-control form-control-sm', 'onchange' : "unionAdress(this.id);" ,'required':True}),
             
 }
 class AdressFormExtra(forms.ModelForm):

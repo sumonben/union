@@ -323,12 +323,7 @@
                           </table>
                           <div class="col-sm-12 form-group">
                             <div class="row">
-                                <div class="col-sm-4">
-                                    <label for="" class="col-form-label-sm m-0">{{form.mouja.label_tag}}</label> <div class="loginBox">
-                                      {{form.mouja}}                      
-                                      <span class="fa fa-map-marker"></span>
-                                    </div> <!--  --> <div class="invalid-feedback"></div>
-                                  </div> <div class="col-sm-4">
+                                 <div class="col-sm-4">
                                     <label for="" class="col-form-label-sm m-0">{{form.ward.label_tag}}</label> <div class="loginBox">
                                       {{form.ward}}                      
                                       <span class="fa fa-map-marker"></span>
@@ -343,10 +338,9 @@
                                 </div> <!--  --> <div class="invalid-feedback"></div>
                               </div>
                               <div class="col-sm-4">
-                                <label for="" class="col-form-label-sm m-0">{{form.post_office.label_tag}}</label>
-                                 <div class="loginBox">
-                                  {{form.post_office}}
-                                  <span class="fa fa-home"></span>
+                                <label for="" class="col-form-label-sm m-0">{{form.mouja.label_tag}}</label> <div class="loginBox">
+                                  {{form.mouja}}                      
+                                  <span class="fa fa-map-marker"></span>
                                 </div> <!--  --> <div class="invalid-feedback"></div>
                               </div>
                             </div>
@@ -496,6 +490,54 @@
 
 <script>
 
+    function unionAdress(id){
+      
+      var division=document.getElementById(id).value;
+      url="{% url 'get_subordinations'%}";
+      var $j = jQuery.noConflict();
+      
+        $.ajax({
+        type: 'GET',
+        url: "{% url 'get_subordinations' %}",
+        cache:'false',  // Adjust the URL as per your project structure
+        data: {id:id,'value':division},
+       
+       
+        success: function (response) {
+            //document.getElementById("student_form").reset();
+            if (response.status === 'success') {
+              if(id=='id_form-0-ward'){
+              $("#id_form-0-village option").remove();
+              $("#id_form-0-village").append('<option '+'value="0">'+ '-----------' +'</option>');
+                    for (var i = response.village.length - 1; i >= 0; i--) {
+                                  $("#id_form-0-village").append('<option '+'value="'+response.village[i].id+'">'+response.village[i].name +'('+response.village[i].name_en+ ')' +'</option>');
+                              }
+                }
+                if(id=='id_form-0-village'){
+                  $("#id_form-0-mouja option").remove();
+                  $("#id_form-0-mouja").append('<option '+'value="0">'+ '-----------' +'</option>');
+                        for (var i = response.mouja.length - 1; i >= 0; i--) {
+                                      $("#id_form-0-mouja").append('<option '+'value="'+response.mouja[i].id+'">'+response.mouja[i].name +'('+response.mouja[i].name_en+ ')' +'</option>');
+                                  }
+                    }
+              
+            } else {
+             ///alert("Success message not found");
+                    
+                }
+                
+        },
+        error: function (xhr, status, error) {
+           
+            var err = eval("(" + xhr.responseText + ")");
+            alert(err.Message);
+        }
+    });
+  
+      
+    } 
+  
+  
   function myFunctionTeacher(id){
     
     var division=document.getElementById(id).value;

@@ -79,68 +79,16 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
 }
 
 
-
 @media print and (min-width: 480px) {
     
- #second{
-     margin-top:-50px;
- }
-  #main_table{
-    padding:5em;
-    -webkit-print-color-adjust: exact; 
+  table{
+      -webkit-print-color-adjust: exact; 
 
-  }
-  #img1,#img3,#img7,#img9{
-    display:none;
-  }
-    #heading{
-        margin-top:20px;
-        margin-left:10px;
-        
-
-    }
-    #first_table{
-        width:100%;
-    }
-    #column{
-      width:100%;
-    }
-  
-    .main-left{
-      display:none;
-     }
-     .main-right{
-      display:none;
-     }
-    
-  .main-button {
-    display:none;
-
-  }
-  .main-top{
-    display:none;
-
-  } 
-
-
-    
-    table.result{
-      width:100%;
-    }
-      
-      table th, table td {
-        
-              padding: .5em;
-
-              -webkit-print-color-adjust: exact; 
-      
-          }
-
-            #submit-btn {
-              display: none !important;;
-            }
-          
-  }
+}
+#submit-btn {
+  display: none !important;;
+}        
+}
 
     
     
@@ -211,8 +159,8 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                               </div>
                               </td>
                               <td>                            
-                                <div  id="date" align="right"><h4 style="text-align: right; margin-left:2%">
-                                  তারিখঃ &nbsp{{certificate.transaction.tran_date|date:"d-m-Y"}}&nbsp</h4>
+                                <div   align="right"><h4 style="text-align: right; margin-left:2%">
+                                  তারিখঃ &nbsp<div id="date" style="display:inline;">{{certificate.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
                                 </div>
                               </td>
                             </tr></table>
@@ -229,7 +177,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                   
 
                                     <tr>
-                                        <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify;font-family:solaimanlipi;"><h5 style="font-weight:500; line-height:2"> এই মর্মে প্রত্যয়ন করিতেছি যে, নামঃ <span ><b>&nbsp&nbsp{{certificate.name}}&nbsp&nbsp</b></span> পিতাঃ {{certificate.father_name}}, মাতাঃ {{certificate.mother_name}} গ্রামঃ {{certificate.adress.village.name}}, ডাকঘরঃ {{certificate.adress.post_office.name}}, ওয়ার্ড নং-{{certificate.adress.ward.ward_no}}, উপজেলাঃ আক্কেলপুর,  জেলাঃ জয়পুরহাট।
+                                        <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify;font-family:solaimanlipi;"><h5 style="font-weight:500; line-height:2"> এই মর্মে প্রত্যয়ন করিতেছি যে, নামঃ <span ><b>&nbsp&nbsp{{certificate.name}}&nbsp&nbsp</b></span> পিতাঃ {{certificate.father_name}}, মাতাঃ {{certificate.mother_name}} গ্রামঃ {{certificate.adress.village.name}}, ডাকঘরঃ {{certificate.adress.village.post_office.name}}, ওয়ার্ড নং-{{certificate.adress.ward.ward_no}}, উপজেলাঃ আক্কেলপুর,  জেলাঃ জয়পুরহাট।
                                             সে আমার পরিচিত। আমার জানামতে সে অত্র ০৪ নং তিলকপুর ইউনিয়নের {{certificate.adress.ward.name}} এর একজন স্থায়ী বাসিন্দা ও জন্মসুত্রে বাংলাদেশের নাগরিক। তার ব্যবহার ও স্বভাব চরিত্র ভাল। সে কোন প্রকার রাষ্ট্র বা সমাজ বিরোধী কাজে লিপ্ত নয়।
                                             আমার জানামতে <b>{{certificate.name}} {% for person in certificate.person.all %} ওরফে {{person.name}} {% endfor %} </b> একই ব্যক্তি {% if certificate.person.all == 1 %}দুই {% else %} তিন {% endif %} নামে পরিচিত।
                                             <br><br><br>

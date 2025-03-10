@@ -65,7 +65,7 @@ class ApplyForCertificate(View):
         if certificate_type.id== 1:
             formset = WarishFormSet(queryset=Person.objects.none())
             context['formset']=formset
-        if certificate_type.id== 9:
+        if certificate_type.id== 9 or certificate_type.id == 15 :
             formset = SamePersonFormSet(queryset=Person.objects.none())
             context['formset']=formset
         
@@ -105,7 +105,7 @@ class SelectCertificate(View):
         if certificate_type.id== 1:
             formset = WarishFormSet(queryset=Person.objects.none())
             context['formset']=formset
-        if certificate_type.id== 9:
+        if certificate_type.id== 9 or certificate_type.id == 15 :
             formset = SamePersonFormSet(queryset=Person.objects.none())
             context['formset']=formset
             
@@ -168,6 +168,8 @@ class CertificateView(View):
             cause=Cause.objects.filter(id=request.POST.get('cause')).first()
             certificate.language=request.POST.get('language')
             certificate.amount=request.POST.get('amount')
+            certificate.dob=request.POST.get('dob')
+            certificate.date=request.POST.get('date')
             certificate.cause=cause
             certificate.income=request.POST.get('income')
             certificate.profession=request.POST.get('profession')
@@ -252,7 +254,6 @@ class submitFormView(View):
             )
         return redirect(sslcommerz_payment_gateway(request, certificate, certificate_type,payment_purpose))
         
-        return HttpResponse 
 
 
 class DownloadCertificateView(View):
@@ -284,29 +285,8 @@ class DownloadCertificateView(View):
                 context['certificate']=certificate
                 context['certificate_type']=certificate_type
 
-                if certificate_type.id == 1:
-                    return render(request,'certificate/certificate/warishan_certificate.html', context)
-                if certificate_type.id == 3:
-                    return render(request,'certificate/certificate/voter_inclussion.html', context)
-             
-                if certificate_type.id == 4:
-                    return render(request,'certificate/certificate/bn_attestation_certificate.html', context)
-                if certificate_type.id == 5:
-                    return render(request,'certificate/certificate/passport_attestation_certificate.html', context)
-                if certificate_type.id == 6:
-                    return render(request,'certificate/certificate/monthly_income_certificate.html', context)
-                if certificate_type.id == 7:
-                    return render(request,'certificate/certificate/guardian_income_certificate.html', context)
-                if certificate_type.id == 8:
-                    return render(request,'certificate/certificate/voter_info_correction_certificate.html', context)
-                if certificate_type.id == 9:
-                    return render(request,'certificate/certificate/same_person_certificate.html', context)
-                if certificate_type.id == 11:
-                    return render(request,'certificate/certificate/landless_certificate.html', context)
-                if certificate_type.id == 12:
-                    return render(request,'certificate/certificate/dead_certificate.html', context)
-          
-                return render(request,'certificate/certificate/citizenship_certificate.html', context)
+                
+                return render(request,certificate_type.template, context)
             context['message']="দুখিঃত! আপনার সনদটির জন্য পেমেন্ট করা হয়নি"
             form=CertificateDownloadForm()
             context['form']=form

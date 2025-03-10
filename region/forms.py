@@ -15,8 +15,8 @@ class OthersAdressForm(forms.ModelForm):
         fields = "__all__"
         exclude=['serial','holding_no',]
         widgets = {
-            'village': forms.TextInput(attrs={'class': 'form-control form-control-sm','onkeypress' : "myFunction(this.id);",'label':'Village/house','required':True}),
-            'post_office': forms.TextInput(attrs={'class': 'form-control form-control-sm', 'onkeypress' : "myFunction(this.id);",'required':True}),
+            'village': forms.TextInput(attrs={'class': 'form-control form-control-sm','label':'Village/house','required':True}),
+            'post_office': forms.TextInput(attrs={'class': 'form-control form-control-sm','required':True}),
             'union': forms.Select(choices=None,attrs={'class': 'form-control form-control-sm','onchange' : "myFunctionTeacher(this.id);",'label':'Street No.','required':True}),
             'upazilla': forms.Select(choices=None,attrs={'class': 'form-control form-control-sm','onchange' : "myFunctionTeacher(this.id);",'label':'Street No.','required':True}),
             'district': forms.Select(choices=None,attrs={'class': 'form-control form-control-sm','onchange' : "myFunctionTeacher(this.id);",'label':'Street No.','required':True}),

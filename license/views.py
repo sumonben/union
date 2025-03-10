@@ -188,10 +188,9 @@ class DownloadLicenseView(View):
                 context['license_type']=license_type
 
                 if license_type.id == 1:
-                    return render(request,'license/trade_license.html', context)
+                    return render(request,license_type.template, context)
                
                 
-                return render(request,'license/trade_license.html', context)
             context['message']="দুখিঃত! আপনার সনদটির জন্য পেমেন্ট করা হয়নি"
             form=LicenceDownloadForm()
             context['form']=form

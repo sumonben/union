@@ -86,54 +86,29 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
 
 @media print and (min-width: 480px) {
     
- #second{
-  
-  -webkit-print-color-adjust: exact; 
-}  
-  #main_table{
-   
-    -webkit-print-color-adjust: exact; 
+  table{
+      -webkit-print-color-adjust: exact; 
 
-  }
- 
-    
-    #first_table{
-        width:100%;
-    }
-    #column{
-      width:100%;
-    }
-  
-   
-    
-  .main-button {
-    display:none;
+}
+.main-left{
+  display:block;
+ }
+ .main-right{
+  display:block;
+ }
 
-  }
-  .main-top{
-    display:none;
+.main-button {
+display:block;
 
-  } 
+}
+.main-top{
+display:block;
 
-
-    
-    table.result{
-      width:80%;
-    }
-      
-      table th, table td {
-        
-             
-            
-              -webkit-print-color-adjust: exact; 
-      
-          }
-
-            #submit-btn {
-              display: none !important;;
-            }
-          
-  }
+}
+#submit-btn {
+  display: none !important;;
+}        
+}
 
     
     
@@ -200,16 +175,16 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                   <div >
                         <div class="step d-block" >
                             <div><h3 style="text-align: center; color:rgb(2, 71, 8);text-shadow: 2px 2px 2px rgb(231, 12, 12);">{{license_type.name}}</h3></div>
-                            <table align="center" width="90%">
+                            <table align="center" width="95%">
                               <tr style="padding:0px;">
                               <td>
-                                <div  align="left"><h4 style="text-align: left; margin-left:2%">
+                                <div  align="left"><h4 style="text-align: left; margin-left:6%">
                                   লাইসেন্স নম্বর: &nbsp<u>{{license.tracking_no}}</u></h4>
                               </div>
                               </td>
                               <td>                            
-                                <div  id="date" align="right"><h4 style="text-align: right;height:40px;">
-                                  তারিখঃ &nbsp{{license.transaction.tran_date|date:"d-m-Y"}}&nbsp</h4>
+                                <div   align="right"><h4 style="text-align: right;height:40px;">
+                                  তারিখঃ &nbsp<div id="date" style="display:inline">{{license.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
                                 </div>
                               </td>
                             </tr></table>
@@ -331,7 +306,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                             <td colspan="5" align="left" valign="middle">
                                             <div style="display:inline-block;margin-left: 20px;">
                                             
-                                               গ্রামঃ {{license.adress_of_license.village.name}},  মৌজাঃ {{license.adress_of_license.mouja.name}} <br>  
+                                               মৌজাঃ {{license.adress_of_license.mouja.name}}, গ্রামঃ {{license.adress_of_license.village.name}} <br>  
                                               
                                             </div>
                                         </td> 

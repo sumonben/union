@@ -10,9 +10,9 @@ from certificate.forms import LANGUAGE_CHOICE
 AdressFormSet = modelformset_factory(
     Adress, fields=('mouja','village','ward','post_office'), extra=1,
     widgets = {
-            'mouja': forms.Select(choices=Mouja.objects.all(),attrs={'class': 'form-control form-control-sm',}),
-            'village': forms.Select(choices=Village.objects.all(),attrs={'class': 'form-control form-control-sm',}),
-            'ward': forms.Select(choices=Ward.objects.all(),attrs={'class': 'form-control form-control-sm',}),            
+            'mouja': forms.Select(choices=Mouja.objects.all(),attrs={'class': 'form-control form-control-sm' , 'onchange' : "unionAdress(this.id);"}),
+            'village': forms.Select(choices=Village.objects.all(),attrs={'class': 'form-control form-control-sm', 'onchange' : "unionAdress(this.id);",}),
+            'ward': forms.Select(choices=Ward.objects.all(),attrs={'class': 'form-control form-control-sm', 'onchange' : "unionAdress(this.id);"}),            
             'post_office': forms.Select(choices=PostOffice.objects.all(),attrs={'class': 'form-control form-control-sm',}),            
         }
 )
