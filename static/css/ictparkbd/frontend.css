@@ -41079,11 +41079,12 @@ button.close.text-light.search-box-close {
     text-align: center;
     padding: 3rem;
     -webkit-transition: all .3s ease-in;
-    transition: all .3s ease-in
+    transition: all .3s ease-in;
 }
 
 .missionVission .box .box-body {
-    position: relative
+    position: relative;
+
 }
 
 .missionVission .box .box-body h3 {

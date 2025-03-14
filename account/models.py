@@ -18,8 +18,10 @@ class Post(models.Model):
 
 class Chairman(models.Model):
     serial=models.IntegerField(default=10)
-    name=models.CharField(max_length=25,verbose_name=" নাম(বাংলায়)")
-    name_en=models.CharField(max_length=25,verbose_name=" নাম(ইংরেজিতে)")
+    name=models.CharField(max_length=250,verbose_name=" নাম(বাংলায়)")
+    name_en=models.CharField(max_length=250,verbose_name=" নাম(ইংরেজিতে)")
+    phone=models.CharField(max_length=11,blank=True,null=True,verbose_name=" মোবাইল")
+    email=models.CharField(max_length=250,blank=True,null=True,verbose_name=" ই-মেইল(ইংরেজিতে)")
     post=models.ForeignKey(Post,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="পদবী")
     union=models.ForeignKey(Union,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ইউনিয়ন")
     upazilla=models.ForeignKey(Upazilla,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="উপজেলা")
@@ -37,8 +39,10 @@ class Chairman(models.Model):
         return self.name+'('+self.name_en+')'
 class Secretary(models.Model):
     serial=models.IntegerField(default=10)
-    name=models.CharField(max_length=25,verbose_name=" নাম(বাংলায়)")
-    name_en=models.CharField(max_length=25,verbose_name=" নাম(ইংরেজিতে)")
+    name=models.CharField(max_length=250,verbose_name=" নাম(বাংলায়)")
+    name_en=models.CharField(max_length=250,verbose_name=" নাম(ইংরেজিতে)")
+    phone=models.CharField(max_length=11,blank=True,null=True,verbose_name=" মোবাইল")
+    email=models.CharField(max_length=250,blank=True,null=True,verbose_name=" ই-মেইল(ইংরেজিতে)")
     post=models.ForeignKey(Post,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="পদবী")
     union=models.ForeignKey(Union,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ইউনিয়ন")
     upazilla=models.ForeignKey(Upazilla,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="উপজেলা")
@@ -57,8 +61,10 @@ class Secretary(models.Model):
     
 class Member(models.Model):
     serial=models.IntegerField(default=10)
-    name=models.CharField(max_length=25,verbose_name=" নাম(বাংলায়)")
-    name_en=models.CharField(max_length=25,verbose_name=" নাম(ইংরেজিতে)")
+    name=models.CharField(max_length=250,verbose_name=" নাম(বাংলায়)")
+    name_en=models.CharField(max_length=250,verbose_name=" নাম(ইংরেজিতে)")
+    phone=models.CharField(max_length=11,blank=True,null=True,verbose_name=" মোবাইল")
+    email=models.CharField(max_length=250,blank=True,null=True,verbose_name=" ই-মেইল(ইংরেজিতে)")
     post=models.ForeignKey(Post,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="পদবী")
     ward=models.ForeignKey(Ward,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ওয়ার্ড")
     union=models.ForeignKey(Union,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ইউনিয়ন")

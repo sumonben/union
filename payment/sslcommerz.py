@@ -29,6 +29,9 @@ def sslcommerz_payment_gateway(request, certificate,certificate_type, payment_pu
     body['success_url'] = 'http://localhost:8000/payment/success/'
     body['fail_url'] = 'http://localhost:8000/payment/payment/failed/'
     body['cancel_url'] = 'http://localhost:8000/payment/canceled/'
+    # body['success_url'] = 'http://tilokpursonod.gov.bd/payment/success/'
+    # body['fail_url'] = 'http://tilokpursonod.gov.bd/payment/payment/failed/'
+    # body['cancel_url'] = 'http://tilokpursonod.gov.bd/payment/canceled/'
     body['emi_option'] = 0
     if payment_purpose.payment_type.id == 1:
         body['cus_name'] = certificate.name

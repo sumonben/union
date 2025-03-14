@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from .models import Person,CertificateType,Certificate,Cause
 from license.models import LicenseType,License
 from payment.models import Transaction,PaymentPurpose,PaymentType
-from account.models import Chairman, Member
+from account.models import Chairman, Member,Post,Secretary
 from .forms import AdressForm,WarishFormSet,WarishForm,SamePersonFormSet,CertificateTypeForm,CertificateForm,CertificateDownloadForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
@@ -40,9 +40,14 @@ class HomeView(View):
         context={}
         certificate_types=CertificateType.objects.all().order_by('serial')
         license_types=LicenseType.objects.all().order_by('serial')
+        chairman=Chairman.objects.all().order_by('-id').first()
+        secretary=Secretary.objects.all().order_by('-id').first()
+            
         context={}
         context['certificate_types']=certificate_types
         context['license_types']=license_types
+        context['chairman']=chairman
+        context['secretary']=secretary
         return render(request,'home.html',context)
     def post(self, request, *args, **kwargs):
         context={}

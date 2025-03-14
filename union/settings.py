@@ -32,6 +32,7 @@ SECRET_KEY = 'django-insecure-7$wq_6k@%@d&7=(p-t*)_fc%+cv5)_a+2&s1uc#yct*r*3q#o%
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','209.74.88.131','tilokpursonod.gov.bd','www.tilokpursonod.gov.bd']
+#ALLOWED_HOSTS = ['209.74.88.131','tilokpursonod.gov.bd','www.tilokpursonod.gov.bd']
 
 
 # Application definition
@@ -129,7 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+#STATIC_ROOT=os.path.join(BASE_DIR,'static/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
