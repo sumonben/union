@@ -62,6 +62,8 @@ class ApplyForCertificate(View):
         context['certificate_type']=certificate_type
         certificate_types=CertificateType.objects.all().order_by('serial')
         context['certificate_types']=certificate_types
+        license_types=LicenseType.objects.all().order_by('serial')
+        context['license_types']=license_types
         form=CertificateForm(instance=certificate_type)
         form.certificate_type=certificate_type
         adress_form=AdressForm()
@@ -81,6 +83,8 @@ class ApplyForCertificate(View):
         context={}
         certificate_types=CertificateType.objects.all().order_by('serial')
         context['certificate_types']=certificate_types
+        license_types=LicenseType.objects.all().order_by('serial')
+        context['license_types']=license_types
         return render(request,self.template_name,context)
 
     
@@ -91,6 +95,8 @@ class SelectCertificate(View):
         context={}
         certificate_types=CertificateType.objects.all().order_by('serial')
         context['certificate_types']=certificate_types
+        license_types=LicenseType.objects.all().order_by('serial')
+        context['license_types']=license_types
         form=CertificateTypeForm()
         context['form']=form
         return render(request,'certificate/select_certificate.html',context)
@@ -101,6 +107,8 @@ class SelectCertificate(View):
         context['certificate_type']=certificate_type
         certificate_types=CertificateType.objects.all().order_by('serial')
         context['certificate_types']=certificate_types
+        license_types=LicenseType.objects.all().order_by('serial')
+        context['license_types']=license_types
         form=CertificateForm(instance=certificate_type)
         form.certificate_type=certificate_type
         adress_form=AdressForm()
@@ -125,6 +133,8 @@ class CertificateView(View):
         context={}
         certificate_types=CertificateType.objects.all().order_by('serial')
         context['certificate_types']=certificate_types
+        license_types=LicenseType.objects.all().order_by('serial')
+        context['license_types']=license_types
         form=CertificateForm()
         adress_form=AdressForm()
         formset = WarishFormSet(queryset=Person.objects.none())
@@ -135,7 +145,7 @@ class CertificateView(View):
 
     def post(self, request, *args, **kwargs):
         context={}
-
+        print("Files",request.FILES)
         form = CertificateForm(request.POST, request.FILES)
         if form.certificate_type == 9:
             formset = SamePersonFormSet(data=self.request.POST)
@@ -144,6 +154,8 @@ class CertificateView(View):
         adress_form = AdressForm(data=self.request.POST)
         certificate_types=CertificateType.objects.all().order_by('serial')
         context['certificate_types']=certificate_types
+        license_types=LicenseType.objects.all().order_by('serial')
+        context['license_types']=license_types
         certificate=Certificate.objects.filter(phone=request.POST.get('phone')).first()
         if certificate:
             if certificate.transaction == None:
@@ -180,6 +192,7 @@ class CertificateView(View):
             certificate.profession=request.POST.get('profession')
             certificate.caste=request.POST.get('caste')
             certificate.description=request.POST.get('description')
+            
             
             certificate.save()
 
@@ -248,7 +261,6 @@ class submitFormView(View):
     def post(self, request, *args, **kwargs):
         certificate=Certificate.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
         certificate_type=certificate.certificate_type
-        
         payment_purpose=PaymentPurpose.objects.create(
                 serial=certificate.id,
                 certificate_type_id=certificate_type.id,
@@ -268,6 +280,8 @@ class DownloadCertificateView(View):
         context={}
         certificate_types=CertificateType.objects.all().order_by('serial')
         context['certificate_types']=certificate_types
+        license_types=LicenseType.objects.all().order_by('serial')
+        context['license_types']=license_types
         form=CertificateDownloadForm()
         context['form']=form
         return render(request,self.template_name, context)
@@ -275,6 +289,8 @@ class DownloadCertificateView(View):
         context={}
         certificate_types=CertificateType.objects.all().order_by('serial')
         context['certificate_types']=certificate_types
+        license_types=LicenseType.objects.all().order_by('serial')
+        context['license_types']=license_types
         certificate=Certificate.objects.filter(tracking_no=request.POST.get('tracking_no'),certificate_type=request.POST.get('certificate_type')).first()
         transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
         if certificate:

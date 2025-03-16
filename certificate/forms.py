@@ -66,6 +66,7 @@ class CertificateTypeForm(forms.ModelForm):
         fields = []
 
 class CertificateForm(forms.ModelForm):
+    
     class Meta:
         model = Certificate
         fields = "__all__"
@@ -82,7 +83,9 @@ class CertificateForm(forms.ModelForm):
         self.fields['nid']=forms.CharField(required=False,label='জাতীয় পরিচয়/জন্ম নিবন্ধন', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'না থাকলে প্রয়োজন নেই'}))
         self.fields['father_name']=forms.CharField(label='বাবার নাম', widget=forms.TextInput( attrs={'class':'form-control form-control-sm',}))
         self.fields['mother_name']=forms.CharField(label='মায়ের নাম', widget=forms.TextInput( attrs={'class':'form-control form-control-sm',}))
-
+        
+        
+        
         if self.certificate_type:
             self.fields['certificate_type']=forms.ModelChoiceField(label='সনদের ধরণ',queryset=CertificateType.objects.filter(id__in=[self.certificate_type.id,]),initial=CertificateType.objects.filter(id__in=[ self.certificate_type.id,]), widget=forms.Select( attrs={'class':'form-control form-control-sm',}))
             if self.certificate_type.id==2:

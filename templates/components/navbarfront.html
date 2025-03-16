@@ -88,15 +88,15 @@
         <div class="top-header">
             <ul class="nav align-items-center justify-content-end" style="position: relative;">
                 {% if user.is_authenticated %}
-                <li class="nav-item"><a href="" class="nav-link"> Dashboard </a></li>
+                <li class="nav-item"><a href="{% url 'admin:index' %}" class="nav-link"> ড্যাশবোর্ড </a></li>
                 {% else %}
-                <li class="nav-item"><a href="" class="nav-link"> Member Login </a></li>
+                    <li class="nav-item"><a href="{% url 'admin:index' %}" class="nav-link"> লগিন </a></li>
                 {% endif %}
-                <li class="nav-item"><a href="" class="nav-link">Register</a></li>
+                <li class="nav-item"><a href="" class="nav-link">রেজিস্ট্রার</a></li>
                 <li class="nav-item"><a href="" class="nav-link">
-                        Blog
+                        মন্তব্য
                     </a></li>
-                <li class="nav-item"><a href="/digitalshop" class="nav-link"><b>Documents</b></a>
+                <li class="nav-item"><a href="/digitalshop" class="nav-link"><b>যোগাযোগ</b></a>
                 </li>
             </ul>
         </div>
@@ -148,7 +148,7 @@
                             <div class="col-lg-4 pr-0">
                                 <h4 class="menu-head"><a href="/ea/local/events" class="">দ্বিতীয় ভাগ</a></h4>
                                 <ul>
-                                    {% for certificate in certificate_types|slice:'0:20'  %}
+                                    {% for certificate in certificate_types|slice:'10:20'  %}
                                         
                                         
                                     <li class="subMenu"><span class="fa fa-hand-o-up"></span>
@@ -161,16 +161,16 @@
                                 </ul>
                             </div>
                             <div class="col-lg-4 pr-0">
-                                <h4 class="menu-head"><span>
+                                <h4 class="menu-head" ><span style="color:rgb(180, 9, 9)">
                                         তৃতীয় ভাগ
                                     </span></h4>
                                 <ul>
-                                    {% for certificate in certificate_types|slice:'0:30'  %}
+                                    {% for license in license_types  %}
                                         
                                         
                                     <li class="subMenu"><span class="fa fa-hand-o-up"></span>
-                                        <a href="{% url 'apply_for_certificate' certificate.id %}" target="_blank" class="">
-                                       {{certificate.name}}
+                                        <a href="{% url 'apply_for_license' license.id %}" target="_blank" class="">
+                                       {{license.name}}
                                         </a>
                                     </li>
                                     {% endfor %}
@@ -180,8 +180,8 @@
                     </div>
                 </li>
                 
-                <li class="nav-item dropdown"><a href="{% url 'select_certificate' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name == 'select_certificate' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">আবেদন করুন</a>
-                    <div aria-labelledby="navbarDropdown" class="dropDown dropdown-menu megamenu megamenu-lg">
+                <li class="nav-item nav-item dropdown"><a href="{% url 'select_certificate' %}" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name == 'select_certificate' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">আবেদন করুন</a>
+                    {% comment %} <div aria-labelledby="navbarDropdown" class="dropDown dropdown-menu megamenu megamenu-lg">
                         <div class="row m-0">
                             <div class="col-lg-4 pr-0">
                                 <h4 class="menu-head"><a href="{% url 'select_certificate' %}" class="">আবেদন করুন</a></h4>
@@ -192,18 +192,18 @@
                             <div class="col-lg-4 pr-0">
                                 <h4 class="menu-head"><a href="/secretariat" class="">Our Team</a></h4>
                                         <ul>
-                                            {% comment %} <li class="subMenu"><span class="fa fa-angle-double-right"></span>
+                                            <li class="subMenu"><span class="fa fa-angle-double-right"></span>
                                             <a href="https://israbentech.com/frontend/about/excutive-council" class="nav-link" onclick="myFunctionNavbar(this.id)">Excutive Council</a></li>
                                                 <li class="fas fa-eye"><a href="https://israbentech.com/frontend/about/previous-excutive-council" class="nav-link">Previous Excutive Council</a></li>
-                                                        <li class="subMenu"><span class="fab fa-think-peaks"> </span><a href="https://israbentech.com/frontend/about/members" class="nav-link">Members</a></li> {% endcomment %}
+                                                        <li class="subMenu"><span class="fab fa-think-peaks"> </span><a href="https://israbentech.com/frontend/about/members" class="nav-link">Members</a></li> 
                                             </ul>
                             </div>
                           
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                 </li>
                 <li class="nav-item nav-item dropdown"><a href="{% url 'download_certificate_form' %}" class="{% if request.resolver_match.url_name in 'download_certificate_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}" aria-expanded="false" aria-current="page">সনদ ডাউনলোড</a>
-                    <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                    {% comment %} <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <div class="row m-0">
                             <div class="col-lg-6">
                                 <h4 class="menu-head"><a href="{% url 'download_certificate_form' %}" class="">সনদ ডাউনলোড</a></h4>
@@ -214,14 +214,14 @@
                             <div class="col-lg-6">
                                 <h4 class="menu-head"><a href="{% url 'download_license_form' %}" class="">লাইসেন্স ডাউনলোড</a></h4>
                                         <ul>
-                                            {% comment %} <li class="subMenu"><span class="fa fa-angle-double-right"></span>
+                                             <li class="subMenu"><span class="fa fa-angle-double-right"></span>
                                             <a href="https://israbentech.com/frontend/about/excutive-council" class="nav-link" onclick="myFunctionNavbar(this.id)">Excutive Council</a></li>
                                                 <li class="fas fa-eye"><a href="https://israbentech.com/frontend/about/previous-excutive-council" class="nav-link">Previous Excutive Council</a></li>
-                                                        <li class="subMenu"><span class="fab fa-think-peaks"> </span><a href="https://israbentech.com/frontend/about/members" class="nav-link">Members</a></li> {% endcomment %}
+                                                        <li class="subMenu"><span class="fab fa-think-peaks"> </span><a href="https://israbentech.com/frontend/about/members" class="nav-link">Members</a></li> 
                                             </ul>
                             </div>
                           
-                    </div>
+                    </div> {% endcomment %}
                 </li>
 
                 <li class="nav-item nav-item dropdown"><a href="{% url 'download_license_form' %}"   aria-expanded="false" class="{% if request.resolver_match.url_name in 'download_license_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">লাইসেন্স ডাউনলোড</a>

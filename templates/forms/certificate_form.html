@@ -42,7 +42,7 @@
             <table width="100%" border="1" cellspacing="0" cellpadding="10">
               <thead><th colspan="5" style="height: 30px; background-color: #035a4c; color: #fff;text-shadow: 10px 10px 10px rgb(73, 25, 11);padding: 15px;font-size:23px;text-align:center;">  ব্যক্তিগত তথ্য                                   
                 {% if certificate_type.id == 2 or  certificate_type.id == 4 %}
-               &nbsp(সনদটি ইংরেজিতে চাইলে নাম, বাবার নাম ও মায়ের নাম ইংরেজিতে পুরণ করুন ও ভাষা ইংরেজি সিলেক্ট করুন)                                  
+               &nbsp<h5>(সনদটি ইংরেজিতে চাইলে নাম, বাবার নাম ও মায়ের নাম ইংরেজিতে পুরণ করুন ও ভাষা ইংরেজি সিলেক্ট করুন)  </h5>                                
                {% endif %}</th></thead>
               <tbody>
               </tbody>
@@ -84,8 +84,9 @@
             
             {% endif %}
             
-            <form  id="form" class="form-row px-3" method="post" action="{% url 'certificate_form' %}">
+            <form  id="form" class="form-row px-3" method="post" action="{% url 'certificate_form' %}" enctype="multipart/form-data">
               {% csrf_token %}
+              {{form.media}}
               {% if certificate_type.id == 2 or certificate_type.id == 4 %}
 
               <div class="col-sm-12 form-group" >
@@ -113,7 +114,7 @@
                   <div class="col-sm-6">
                     <label for="" class="col-form-label-sm m-0">
                       মোবাইল (
-                        <span class="text-danger">১২ ডিজিট</span>)
+                        <span class="text-danger">১১ ডিজিট</span>)
                     </label>
                     <div class="loginBox">
                       {% comment %} <input type="text" name="phone" id="id_phone" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ie: member@mail.com'" placeholder="ie: member@mail.com" name="email" class="form-control form-control-sm" />  {% endcomment %}
