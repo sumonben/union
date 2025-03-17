@@ -28,6 +28,7 @@
     
     
     <style>
+      
       .pagebody{
         margin-top: 118px;
       }
@@ -181,24 +182,30 @@
               };
           
               function scrollFunction() {
-                var x = window.matchMedia("(max-width: 980px)")
+                var x = window.matchMedia("(max-width: 989px)")
                   if (document.body.scrollTop >50 || document.documentElement.scrollTop > 50) {
                     document.getElementById("header").className = "header sticky";
 
                     
-                    if (x.matches) { 
+                    {% comment %} if (x.matches) { 
                       // If media query matches
                     } else {
                       document.getElementById("heading").style= "padding-top:-20px;font-size:35px;";
                       document.getElementById("sub-heading").style.display = "none";
 
                      
-                    }
+                    } {% endcomment %}
                       
                   } else {
                     document.getElementById("header").className = "header";
-
                     document.getElementById("sub-heading").style.display = "block";
+
+                    {% comment %} if (x.matches) { 
+                      // If media query matches
+                    } else {
+                    document.getElementById("heading").style= "padding-top:-20px;font-size:40px;";
+                    } {% endcomment %}
+
 
                   }
                  

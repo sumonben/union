@@ -5,7 +5,6 @@
         text-shadow: 8px 8px 8px rgb(65, 7, 7);
         font-size: 40px;
         text-align:center;
-
         
 
     }
@@ -23,7 +22,14 @@
     .header.sticky #main-heading{
         margin-top: -20px;
     }
-    @media(max-width:600px){
+    .header.sticky .heading{
+        font-size:35px;
+        line-height:1;
+    } 
+    .header.sticky .sub-heading{
+        display:none;
+    } 
+    @media(max-width:767px){
         
         .heading{
             color:#035a4c;
@@ -31,10 +37,11 @@
             font-size: 23px;
             padding:0px;
             text-align:center;
+            font-weight:bold;
         } 
         .sub-heading{
             color:#035a4c;
-            margin-left:25px;
+            margin-left:10px;
             text-shadow: 1px 1px 1px rgb(65, 7, 7);
             font-size:14px;
 
@@ -47,32 +54,55 @@
         }
         .header.sticky #main-heading{
             margin-top: -10px;
+        }
+        .header.sticky .heading{
+            font-size:23px;
+        } 
+        .header.sticky .sub-heading{
+            display:block;
         } 
     }
-    @media(min-width:601px and max-width:767px){
-        
+    @media(min-width:768px) and (max-width:989px){
+        #navbarSupportedContent{
+            background-color:#035a4c;
+        }
+        .navbar-toggler{
+            margin-top:-20px;
+
+        }
         .heading{
-            color:#035a4c;
+            color:#fff;
             text-shadow: 1px 1px 1px rgb(65, 7, 7);
-            font-size: 27px;
-            margin-left:-20px;
+            font-size: 30px;
+            margin-left:-150px;
+            margin-top:-110px;
             padding:0px;
-            text-align:left;
+            text-align:center;
         } 
-        .sub-heading{
-            color:#035a4c;
+        .header .sub-heading{
+            color:#fff;
             font-size:15px;
+            margin-left:-150px;
+            margin-top:-110px;
     
         }
         #main-heading{
             width:100px;
-            margin-top:-10px;
             margin-left:-130px;
         }
         .header.sticky #main-heading{
-            margin-top: -10px;
+            margin-top:-90px;
+        } 
+        .header.sticky .heading{
+            font-size:30px;
+        } 
+        .header.sub-heading{
+            display:block;
+        }.header .sticky .sub-heading{
+            display:block;
         } 
     }
+
 </style>
 <header data-v-6f04a53f="" class="header" id="header" >
     <div class="search-box">

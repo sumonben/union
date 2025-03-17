@@ -5,6 +5,8 @@ from django.contrib.admin.widgets import FilteredSelectMultiple
 from .models import Adress,Person,CertificateType,Certificate,Cause
 from django.forms import modelformset_factory
 from django.contrib.admin.widgets import AdminDateWidget
+from ckeditor.widgets import CKEditorWidget
+
 COMMENT_CHOICE={
     '0':'------',
     '1':'বর্তমানে মৃত',
@@ -102,7 +104,7 @@ class CertificateForm(forms.ModelForm):
                 self.fields['income']=forms.CharField( label='অভিভাবকের মাসিক আয়',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'অভিভাবকের মাসিক আয়'}))
                 self.fields['profession']=forms.CharField( label='অভিভাবকের পেশা',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'অভিভাবকের পেশা-বৃত্তি'}))
             if self.certificate_type.id==8:
-                self.fields['description']=forms.CharField( label='পরিবর্তন গুলো লিখুন',widget=forms.Textarea( attrs={'class':'form-control form-control-sm','placeholder':'সনদেটি কি কারণে প্রয়োজন তার বর্ণনা '}))
+                self.fields['description']=forms.CharField( label='পরিবর্তন গুলো লিখুন',widget=CKEditorWidget(config_name='default'))
             if self.certificate_type.id==11:
                 self.fields['amount']=forms.ChoiceField( choices=AMOUNT_CHOICE,label='জমির পরিমাণ(শতাংশে)',widget=forms.Select( attrs={'class':'form-control form-control-sm','placeholder':'জমির পরিমাণ উল্লেখ করুন (শতাংশে ) '}))
             if self.certificate_type.id==12:

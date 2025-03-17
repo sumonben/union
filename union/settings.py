@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
     'import_export',
     'sslcommerz_lib',
     'account',
@@ -83,6 +84,51 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'union.wsgi.application'
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': [
+            [ 'Format','Font', 'FontSize','Undo', 'Redo',
+             '-', 'Bold', 'Italic', 'Underline',
+             '-', 'RemoveFormat','Cut', 'Copy', 'Paste','Find', 'Replace', '-', 'SelectAll',
+             
+             '-', 'Maximize',
+             
+            ],
+        ],
+        
+        'height':150,
+        'width': 'full',
+        'toolbarCanCollapse': True,
+
+    },
+    
+    'awesome_ckeditor': {
+        'toolbar': [
+            [ 'Format','Undo', 'Redo',
+             
+             '-', 'Maximize',
+             
+            ],
+        ],  
+        'width': 'auto',
+        'toolbarCanCollapse': True,
+    },
+     'body_ckeditor': {
+        'toolbar': [
+            ['Undo', 'Redo',
+             '-', 'Bold', 'Italic', 'Underline',
+             '-', 'Link', 'Unlink', 'Anchor',
+             '-', 'Format',
+             
+             '-', 'Maximize',
+             
+            ],
+        ],  
+        'width': '95%',
+        'toolbarCanCollapse': True,
+        'height': '50%',
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -124,7 +170,8 @@ TIME_ZONE = 'Asia/Dhaka'
 USE_I18N = True
 
 USE_TZ = True
-
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/

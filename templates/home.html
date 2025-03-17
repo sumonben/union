@@ -108,9 +108,9 @@
                        </div> {% endcomment %}
                                            
                        
-                       <div class="parent" >
+                    <div class="parent" >
                            
-                            <div id="rightpan" data-aos="fade-left" data-aos-offset="100" data-aos-duration="1000" class="col-lg-4 tab-pane active aos-init aos-animate">
+                            <div id="rightpan" data-aos="fade-left" data-aos-offset="100" data-aos-duration="1000" class="col-lg-4 tab-pane active aos-init ">
                                 
                        
                                <div style=" position: relative" class="card border">
@@ -233,7 +233,7 @@
                    
                        
                        <!---->
-                       <div class="services">
+                    <div class="services">
                         {% comment %} <span class="shape1"></span> <span class="shape2"></span>
                         
                        <marquee  width="100%" direction="left" height="25px" style="font-size: 20px;margin-top: 5px">
@@ -318,16 +318,17 @@
                             <div class="service-tab">
                                 <div class="content-header mb-5">
                                       
-                                        <div class="filters filter-menu">
+                                    <div class="filters filter-menu">
 
-                                    <ul id="myTab" role="tablist" class="nav nav-tabs justify-content-center">
-                                        <li class="nav-item"><a id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true" class="nav-link active">সনদসমূহ</a></li>
-                                        <li class="nav-item"><a id="nonmembers-tab" data-toggle="tab" href="#nonmembers" role="tab" aria-controls="nonmembers" aria-selected="false" class="nav-link">লাইসেন্সসমূহ</a></li>
-                                        </div>
-                                    </ul>
+                                        <ul id="myTab" role="tablist" class="nav nav-tabs justify-content-center">
+                                            <li class="nav-item"><a id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true" class="nav-link active">সনদসমূহ</a></li>
+                                            <li class="nav-item"><a id="nonmembers-tab" data-toggle="tab" href="#nonmembers" role="tab" aria-controls="nonmembers" aria-selected="false" class="nav-link">লাইসেন্সসমূহ</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                                                                     
                                 <div id="myTabContent" class="service-item tab-content">
+                                    
                                     <div id="members" role="tabpanel" aria-labelledby="members-tab" class="members tab-pane fade show active">
                                         <div  class="row" style="margin-top: 70px;">
 
@@ -343,7 +344,8 @@
                                                 <a href="{% url 'apply_for_certificate' certificate.id %}" >
 
                                                 <div class="card card-body shadow-sm mb-4" style="overflow:visible;">
-                                                    <div class="circle1">                                                        <img src="{{certificate.image.url}}" alt="Citizenship" height="80">
+                                                    <div class="circle1">                                                        
+                                                        <img src="{{certificate.image.url}}" alt="Citizenship" height="80">
                                                     </div>
                                                     <div >
                                 
@@ -364,14 +366,14 @@
                                         
                                     </div>
                                     
-                                    <div id="nonmembers" role="tabpanel" aria-labelledby="nonmembers-tab" class="nonmembers tab-pane fade">
+                                <div id="nonmembers" role="tabpanel" aria-labelledby="nonmembers-tab" class="nonmembers tab-pane fade show">
                                         <div class="row" style="margin-top: 70px;">
                                                 
                                             {% for license in license_types  %}
                                             
                                             
                                             
-                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init" style="margin-bottom:25px;">
+                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init aos-animate" style="margin-bottom:25px;">
                                                 <a href="{% url 'apply_for_license' license.id %}" >
 
                                                 <div class="card card-body shadow-sm mb-4" style="overflow:visible;">
@@ -409,7 +411,11 @@
               
                 </div>
             </div>
-                       <div data-v-2fe1039c="" id="counter" class="num-counter">
+                       
+            <div class="services">
+                {% comment %} <span class="shape1"></span> <span class="shape2"></span> {% endcomment %}
+                <div class="container-wrapper">
+            <div data-v-2fe1039c="" id="counter" class="num-counter">
                         <div data-v-2fe1039c="" class="container-wrapper">
                             <div data-v-2fe1039c="" class="row justify-content-center">
                                 <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="500" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate"><a data-v-2fe1039c="" href="https://israbentech.com/home/memberlist" class="text-black">
@@ -837,6 +843,8 @@
         </div>
     </div>
 
+</div>
+</div>
 
  {% comment %} <div class="gallery-tab">
      <div class="container-wrapper">

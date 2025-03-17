@@ -28,14 +28,32 @@
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
-    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
-}
+    }
 .subMenu{
     content:'\f099' ;
 }
+@font-face {
+    font-family: "kalpurushregular";
+    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot");
+    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff"),
+      url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.ttf") format("truetype"),
+      url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.svg#Kalpurush") format("svg"),
+      url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot?#iefix") format("embedded-opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+body {
+  font-family: kalpurush;
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  background-color: #fff;
+  font-size: 16px;
+  color: #000;
+}
 html {
-    font-family: sans-serif;
+    font-family: kalpurush;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
@@ -54,18 +72,6 @@ section {
     display: block
 }
 
-body {
-    width:100%;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    text-align: left;
-    background-color: #fff;
-    margin-left:5%;
-
-}
 
 [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important
@@ -17122,14 +17128,7 @@ a.text-dark:hover {
  * Font Awesome Free 5.9.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
-@font-face {
-    font-family: Font Awesome\ 5 Brands;
-    font-style: normal;
-    font-weight: 400;
-    font-display: auto;
-    src: url(../fonts/fa-brands-400.eot);
-    src: url(../fonts/fa-brands-400.eot?#iefix) format("embedded-opentype"), url(../fonts/fa-brands-400.woff2) format("woff2"), url(../fonts/fa-brands-400.woff) format("woff"), url(../fonts/fa-brands-400.ttf) format("truetype"), url(../fonts/fa-brands-400.svg#fontawesome) format("svg")
-}
+
 
 .fab {
     font-family: Font Awesome\ 5 Brands
@@ -37818,20 +37817,7 @@ a.text-dark:hover {
     }
 }
 
-@font-face {
-    font-family: Flaticon;
-    src: url(../fonts/Flaticon.eot);
-    src: url(../fonts/Flaticon.eot?#iefix) format("embedded-opentype"), url(../fonts/Flaticon.woff2) format("woff2"), url(../fonts/Flaticon.woff) format("woff"), url(../fonts/Flaticon.ttf) format("truetype"), url(../fonts/Flaticon.svg#Flaticon) format("svg");
-    font-weight: 400;
-    font-style: normal
-}
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-    @font-face {
-        font-family: Flaticon;
-        src: url(../fonts/Flaticon.svg#Flaticon) format("svg")
-    }
-}
 
 [class*=" flaticon-"]:after,
 [class*=" flaticon-"]:before,
@@ -39448,15 +39434,20 @@ button.close.text-light.search-box-close {
     background: #616161;
     padding: 30px 0;
     border-top: 3px solid #007f3d
+
 }
 
 .footer .logo {
     height: 60px
 }
-
+@media (max-width:767px){
+    .footer{
+    margin:2px
+    }
+}
 @media (min-width:992px) {
     .footer-box {
-        padding: 2rem
+        padding: 2rem;
     }
 
     .footer-box span.left-cover,
@@ -39575,11 +39566,11 @@ button.close.text-light.search-box-close {
     border-top-left-radius: 25%;
     border-top-right-radius: 25%;
     padding: 1rem 0
+    
 }
 
 .footer-bottom p {
     color: #fff;
-    margin-bottom: 0
 }
 
 .footer-bottom a {

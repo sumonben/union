@@ -5,6 +5,8 @@ from django.utils.html import format_html
 from django.template.defaultfilters import escape
 from region.models import District,Division,Upazilla,Union,PostOffice,Village,Ward,Mouja
 from account.models import Member,Chairman
+from ckeditor.fields import RichTextField
+
 #from account.models import UserModel
 # Create your models here.
 
@@ -97,7 +99,7 @@ class Certificate(models.Model):
     mother_name_en=models.CharField(max_length=500,blank=True, null=True,verbose_name="মায়ের নাম(ইংরেজিতে)")
     dob=models.DateField(null=True,blank=True)
     adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL,verbose_name="ঠিকানা")
-    description=models.TextField(max_length=1000,null=True,blank=True,verbose_name="কারণ বর্ণনাঃ")
+    description=RichTextField(max_length=1000,null=True,blank=True,verbose_name="কারণ বর্ণনাঃ")
     cause=models.ForeignKey(Cause,on_delete=models.SET_NULL,blank=True, null=True,verbose_name="কারণঃ")
     caste=models.CharField(max_length=500,blank=True, null=True,verbose_name="সম্প্রদায়")
     profession=models.CharField(max_length=500,blank=True, null=True,verbose_name="পেশা")

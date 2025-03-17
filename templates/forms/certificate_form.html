@@ -252,26 +252,21 @@
                 </div>  
               </div>
 
-              <div class="col-sm-12 form-group">
-                <div class="row">
                  
                   
                   {% if form.description %}
+                  <label for="" class="col-form-label-sm m-0">{{form.description.label_tag}}</label> 
+                  <br>
 
-                  <div class="col-sm-12">
-                    <label for="" class="col-form-label-sm m-0">{{form.description.label_tag}}</label> <div class="loginBox">
-                      {{form.description}}                      
-                      <span class="fas fa-id-card-alt"></span>
-                    </div> <!--  --> <div class="invalid-feedback"></div>
-                  </div>
+                  {{form.description}}                      
+                     
 
                   {% endif %}
                   
 
 
                  
-                </div>  
-              </div> 
+              
 
 
               <table width="100%" border="1" cellspacing="0" cellpadding="10">
@@ -494,6 +489,9 @@
   <span class="bubbleNew"><img src="{%static 'images/tilokpur_logo.png'%}" class="rounded-circle" style="width: 200px;height: 200px;" /></span>
 
 </div>
+
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 
 <script>
 

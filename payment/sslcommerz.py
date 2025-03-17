@@ -26,9 +26,9 @@ def sslcommerz_payment_gateway(request, certificate,certificate_type, payment_pu
     body['total_amount'] = certificate_type.amount
     body['currency'] = "BDT"
     body['tran_id'] = generator_trangection_id()
-    body['success_url'] = 'http://localhost:8000/payment/success/'
-    body['fail_url'] = 'http://localhost:8000/payment/payment/failed/'
-    body['cancel_url'] = 'http://localhost:8000/payment/canceled/'
+    body['success_url'] = 'http://127.0.0.1:8000/payment/success/'
+    body['fail_url'] = 'http://127.0.0.1:8000/payment/payment/failed/'
+    body['cancel_url'] = 'http://127.0.0.1:8000/payment/canceled/'
     # body['success_url'] = 'http://tilokpursonod.gov.bd/payment/success/'
     # body['fail_url'] = 'http://tilokpursonod.gov.bd/payment/payment/failed/'
     # body['cancel_url'] = 'http://tilokpursonod.gov.bd/payment/canceled/'
