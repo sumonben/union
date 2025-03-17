@@ -5393,7 +5393,7 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
 }
 
 .toast {
-    font-family: 'Roboto', sans-serif !important;
+    font-family: kalpurush !important;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, .15);
     display: flex;
     padding: 0px !important;
@@ -6951,7 +6951,7 @@ a.ui.label {
 
 .ui.multiple.dropdown>.label i.icon.delete:before {
     content: "\D7";
-    font-family: Arial, sans-serif
+    font-family: kalpurush
 }
 
 .ui.multiple.dropdown>.label i.icon.delete {
@@ -8436,7 +8436,7 @@ img.vue-lb-modal-image {
     background-color: rgba(0, 0, 0, .7);
     height: 40px;
     width: 100%;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: kalpurush;
     text-align: center
 }
 
@@ -9671,7 +9671,7 @@ p.description[data-v-07579c86] {
     font-weight: 500;
     color: rgb(0 0 0);
     font-size: 13px;
-    font-family: "Raleway";
+    font-family: "kalpurush";
 }
 
 .item-text[data-v-07579c86] {
@@ -9698,7 +9698,7 @@ p.description[data-v-332592e6] {
     font-weight: 500;
     color: rgb(0 0 0);
     font-size: 13px;
-    font-family: "Raleway";
+    font-family: "kalpurush";
 }
 
 .item-text[data-v-332592e6] {
@@ -9864,7 +9864,7 @@ h2.item-title {
 }
 
 body {
-    font-family: sans-serif;
+    font-family: kalpurush;
     -webkit-print-color-adjust: exact;
 }
 
@@ -9993,7 +9993,7 @@ body {
 }
 
 table {
-    font-family: arial, sans-serif;
+    font-family: kalpurush;
     border-collapse: collapse;
     width: 100%;
 }
@@ -11007,14 +11007,14 @@ p {
 }
 
 body {
-    font-family: sans-serif;
+    font-family: kalpurush;
     font-size: 14px;
     -webkit-print-color-adjust: exact;
 }
 
 .money-receipt-table tr td {
     font-size: 14px;
-    font-family: sans-serif;
+    font-family: kalpurush;
     font-weight: normal;
     overflow: hidden;
     padding: 4px;
@@ -11046,7 +11046,7 @@ p {
 }
 
 .font-weight-bold {
-    font-family: sans-serif;
+    font-family: kalpurush;
     font-weight: 500;
 }
 
@@ -18820,7 +18820,7 @@ background-color: #007f3d;
         }
 
         .toast {
-            font-family: 'Roboto', sans-serif !important;
+            font-family: kalpurush !important;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, .15);
             display: flex;
             padding: 0px !important;
@@ -20377,7 +20377,7 @@ background-color: #007f3d;
 
         .ui.multiple.dropdown>.label i.icon.delete:before {
             content: "\D7";
-            font-family: Arial, sans-serif
+            font-family: kalpurush
         }
 
         .ui.multiple.dropdown>.label i.icon.delete {
@@ -21863,7 +21863,7 @@ background-color: #007f3d;
             background-color: rgba(0, 0, 0, .7);
             height: 40px;
             width: 100%;
-            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-family: kalpurush;
             text-align: center
         }
 
@@ -23097,7 +23097,7 @@ background-color: #007f3d;
             font-weight: 500;
             color: rgb(0 0 0);
             font-size: 13px;
-            font-family: "Raleway";
+            font-family: "kalpurush";
         }
 
         .item-text[data-v-07579c86] {
@@ -23124,7 +23124,7 @@ background-color: #007f3d;
             font-weight: 500;
             color: rgb(0 0 0);
             font-size: 13px;
-            font-family: "Raleway";
+            font-family: "kalpurush";
         }
 
         .item-text[data-v-332592e6] {
@@ -23290,7 +23290,7 @@ background-color: #007f3d;
         }
 
         body {
-            font-family: sans-serif;
+            font-family: kalpurush;
             -webkit-print-color-adjust: exact;
         }
 
@@ -23419,7 +23419,7 @@ background-color: #007f3d;
         }
 
         table {
-            font-family: arial, sans-serif;
+            font-family: kalpurush;
             border-collapse: collapse;
             width: 100%;
         }
@@ -24444,14 +24444,14 @@ background-color: #007f3d;
    
 
         body {
-            font-family: sans-serif;
+            font-family: kalpurush;
             font-size: 14px;
             -webkit-print-color-adjust: exact;
         }
 
         .money-receipt-table tr td {
             font-size: 14px;
-            font-family: sans-serif;
+            font-family: kalpurush;
             font-weight: normal;
             overflow: hidden;
             padding: 4px;
@@ -24483,7 +24483,7 @@ background-color: #007f3d;
         }
 
         .font-weight-bold {
-            font-family: sans-serif;
+            font-family: kalpurush;
             font-weight: 500;
         }
 

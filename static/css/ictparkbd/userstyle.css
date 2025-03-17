@@ -355,7 +355,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: SolaimanLipi;
+    font-family: kalpurush;
 }
 
 body {
@@ -372,7 +372,7 @@ body {
     min-height: 500px;
     margin: auto;
     margin-top: 8%;
-    font-family: SolaimanLipi;
+    font-family: kalpurush;
     padding: 15px 15px 15px 15px;
     background-color: #ecf0f3;
     border-radius: 15px;
@@ -385,7 +385,7 @@ body {
     min-height: 500px;
     margin: 0px;
     margin-top: 0%;
-    font-family: SolaimanLipi;
+    font-family: kalpurush;
 
 }
 }
@@ -394,7 +394,7 @@ body {
     animation-duration: 4s;
     margin: auto;
     margin-top: 10px;
-    font-family: SolaimanLipi;
+    font-family: kalpurush;
     padding: 10px 10px 10px 10px;
     background-color: #ecf0f3;
     border-radius: 15px;
@@ -455,7 +455,7 @@ body {
 
 
 .wrapper1 .name {
-    font-family: SolaimanLipi;
+    font-family: kalpurush;
     font-weight: 600;
     text-align: center;
     font-size: 1.4rem;
@@ -465,7 +465,7 @@ body {
 }
 
 .wrapper1 .form-field textarea {
-    font-family: SolaimanLipi;
+    font-family: kalpurush;
     width: 100%;
     min-height: 80px;
     display: block;
@@ -479,7 +479,7 @@ body {
 }
 
 .wrapper1 .form-field input {
-    font-family: SolaimanLipi;
+    font-family: kalpurush;
     width: 100%;
     display: block;
     border: none;
