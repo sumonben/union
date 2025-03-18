@@ -27,6 +27,9 @@
             background-color:green;
         }   
     }
+    button:hover {
+      background-color: #4e090c;    
+      }
 </style>
 <div class="services">
   <div><h3 style="text-align: center;text-shadow: 2px 2px 2px rgb(11, 73, 55);color:rgb(238, 103, 103);"><u>{{certificate_type.name}} ফর্ম</u></h3></div>
@@ -51,7 +54,7 @@
                 <div class="card-body">
 
 
-            <span class="shape"><img align="center" src="{% static 'images\ictparkbd_logo.jpg' %}"><img align="center" style="height:60%;margin-top:10%;rotate: -50deg;" src="{% static 'images\tilokpur_logo.png' %}"></span> 
+            <span class="shape"><img align="center" loading="lazy" src="{% static 'images\ictparkbd_logo.jpg' %}"><img align="center" loading="lazy" style="height:60%;margin-top:10%;rotate: -50deg;" src="{% static 'images\tilokpur_logo.png' %}"></span> 
 
              {%if email %}
             
@@ -486,7 +489,7 @@
       </div>
     </div>
   </div>
-  <span class="bubbleNew"><img src="{%static 'images/tilokpur_logo.png'%}" class="rounded-circle" style="width: 200px;height: 200px;" /></span>
+  <span class="bubbleNew"><img loading="lazy" src="{%static 'images/tilokpur_logo.png'%}" class="rounded-circle" style="width: 200px;height: 200px;" /></span>
 
 </div>
 

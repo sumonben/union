@@ -28,6 +28,26 @@
     
     
     <style>
+      @font-face {
+        font-family: "kalpurush";
+        src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff"),
+             url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.ttf") format("truetype"),
+              url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.svg#Kalpurush") format("svg"),
+                url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot?#iefix") format("embedded-opentype");
+    
+      font-weight: normal;
+        font-style: normal;
+      }
+      @media only screen and (min-width:320px) and (max-width:959px) and (max-width:786){
+        @font-face {
+              font-family: "kalpurush";
+              src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff");
+             
+              font-weight: normal;
+              font-style: normal;
+            }
+    
+    }
       
       .pagebody{
         margin-top: 118px;
@@ -112,11 +132,11 @@
                            <div class="row align-items-center">
                             
                             <div  style="margin:auto;">
-                              <p ><img style="width:20px;" alt="Tarique Sumon" data-src="/images/sumon.jpg" src="{% static 'images/tilokpur_logo.png'%}" lazy="loaded">©Copyright 2025</p>
+                              <p >©Copyright 2025<img style="width:20px;" loading="lazy" alt="Tarique Sumon" data-src="/images/sumon.jpg" src="{% static 'images/tilokpur_logo.png'%}" lazy="loaded"></p>
                             </div>
                             <div  style="margin:auto;">
                               <p >
-                                <strong><a class="provider" href="https://sslcommerz.com/" target="_blank"><img class="provider" alt="Tarique Sumon"  src="{% static 'images/ssl_logo.png'%}" lazy="loaded"> 
+                                <strong><a class="provider" href="https://sslcommerz.com/" target="_blank"><img class="provider" loading="lazy" alt="Tarique Sumon"  src="{% static 'images/ssl_logo.png'%}" lazy="loaded"> 
                                 </a></strong>
                                
                                </p>     
@@ -126,16 +146,16 @@
                             <div  style="margin:auto;">
                               <p >
                                 Contributed by :
-                                <strong><a class="client" href="https://bangladesh.gov.bd/" target="_blank"><img class="client" alt="Tarique Sumon" data-src="/images/sumon.jpg" src="{% static 'images/logo.png'%}" lazy="loaded"> |
+                                <strong><a class="client" href="https://bangladesh.gov.bd/" target="_blank"><img class="client" loading="lazy" alt="Tarique Sumon" data-src="/images/sumon.jpg" src="{% static 'images/logo.png'%}" lazy="loaded"> |
                                 </a></strong>
-                                <strong><a class="client" href="https://tilakpurup.joypurhat.gov.bd/" target="_blank"><img class="client" alt="Tarique Sumon" data-src="/images/sumon.jpg" src="{% static 'images/tilokpur_logo.png'%}" lazy="loaded"> 
+                                <strong><a class="client" href="https://tilakpurup.joypurhat.gov.bd/" target="_blank"><img class="client" loading="lazy" alt="Tarique Sumon" data-src="/images/sumon.jpg" src="{% static 'images/tilokpur_logo.png'%}" lazy="loaded"> 
                                 </a></strong>
                                </p>                            </div>
                             <div  style="margin:auto;">
                               <p >
                                 <a  style="display:inline-block;" href="https://ictparkbd.com/" target="_blank">
-                                Developed By:<img class="developer" alt="Tarique Sumon" src="{% static 'images/ictparkbd_logo.jpg'%}" lazy="loaded">
-                                <img style="width:20px;height:20px;" alt="Tarique Sumon" src="{% static 'images/ictpark_monogram.png'%}" lazy="loaded">
+                                Developed By:<img class="developer" alt="Tarique Sumon" src="{% static 'images/ictparkbd_logo.jpg'%}" loading="lazy">
+                                <img style="width:20px;height:20px;" alt="Tarique Sumon" src="{% static 'images/ictpark_monogram.png'%}" loading="lazy">
                                 </a>
                             </p>                            
                           </div>

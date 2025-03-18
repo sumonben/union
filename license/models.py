@@ -6,6 +6,8 @@ from django.template.defaultfilters import escape
 from region.models import District,Division,Upazilla,Union,PostOffice,Village,Ward,OthersAdress
 from account.models import Member,Chairman,Secretary
 from certificate.models import Adress,Person
+from ckeditor.fields import RichTextField
+
 # Create your models here.
 class LicenseType(models.Model):
     serial=models.IntegerField(default=10)
@@ -42,7 +44,7 @@ class License(models.Model):
     adress_of_license=models.ForeignKey(Adress,related_name='adress_of_linsence',null=True, blank=True,on_delete=models.SET_NULL,verbose_name="প্রতিষ্ঠানের ঠিকানা")
     license_type=models.ForeignKey(LicenseType,on_delete=models.SET_NULL,null=True, blank=True,verbose_name="লাইসেন্সের ধরণ")
     person=models.ManyToManyField(Person,blank=True,verbose_name="সংশিষ্ট ব্যক্তিবর্গ")
-    description=models.TextField(max_length=1000,null=True,blank=True,verbose_name="বর্ণনাঃ")
+    description=RichTextField(max_length=1000,null=True,blank=True,verbose_name="কারণ বর্ণনাঃ")
     caste=models.CharField(max_length=500,blank=True, null=True,verbose_name="সম্প্রদায়")
     profession=models.CharField(max_length=500,blank=True, null=True,verbose_name="পেশা")
     capital=models.IntegerField(null=True,blank=True,verbose_name="পরিশোধিত মূলধন")    

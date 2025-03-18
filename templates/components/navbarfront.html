@@ -5,7 +5,8 @@
         text-shadow: 8px 8px 8px rgb(65, 7, 7);
         font-size: 40px;
         text-align:center;
-        font-family:solaimanlipi;
+        font-family:kalpurush;
+        font-weight:bold;
         
 
     }
@@ -17,11 +18,11 @@
     }
     #main-heading{
         width:100px;
-        margin-top:-70px;
+        margin-top:-40px;
     }
     
     .header.sticky #main-heading{
-        margin-top: -20px;
+        margin-top: -5px;
     }
     .header.sticky .heading{
         font-size:35px;
@@ -33,28 +34,28 @@
     @media(max-width:767px){
         
         .heading{
-            color:#035a4c;
-            text-shadow: 1px 1px 1px rgb(65, 7, 7);
+            color:#fff;
+            text-shadow: 4px 4px 4px rgb(65, 7, 7);
             font-size: 23px;
             padding:0px;
             text-align:center;
             font-weight:bold;
         } 
         .sub-heading{
-            color:#035a4c;
+            color:#fff;
             margin-left:10px;
-            text-shadow: 1px 1px 1px rgb(65, 7, 7);
+            text-shadow: 2px 2px 2px rgb(65, 7, 7);
             font-size:14px;
 
     
         }
         #main-heading{
             width:100px;
-            margin-top:-10px;
+            margin-top:-15px;
             margin-left:-130px;
         }
         .header.sticky #main-heading{
-            margin-top: -10px;
+            margin-top: -15px;
         }
         .header.sticky .heading{
             font-size:23px;
@@ -74,7 +75,7 @@
         .heading{
             color:#fff;
             text-shadow: 1px 1px 1px rgb(65, 7, 7);
-            font-size: 30px;
+            font-size: 40px;
             margin-left:-150px;
             margin-top:-110px;
             padding:0px;
@@ -84,7 +85,6 @@
             color:#fff;
             font-size:15px;
             margin-left:-150px;
-            margin-top:-110px;
     
         }
         #main-heading{
@@ -92,7 +92,7 @@
             margin-left:-130px;
         }
         .header.sticky #main-heading{
-            margin-top:-90px;
+            margin-top:-30px;
         } 
         .header.sticky .heading{
             font-size:30px;
@@ -105,7 +105,7 @@
     }
 
 </style>
-<header data-v-6f04a53f="" class="header" id="header" >
+<header data-v-6f04a53f="" class="header" id="header" style="border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;" >
     <div class="search-box">
         <div class="box">
             <form id="searchform2"> 
@@ -115,7 +115,7 @@
             </form> <button type="button" class="close text-light search-box-close"><i class="mdi mdi-close"></i></button>
         </div>
     </div>
-    <div class="container-wrapper">
+    <div class="container-wrapper" >
         <div class="top-header">
             <ul class="nav align-items-center justify-content-end" style="position: relative;">
                 {% if user.is_authenticated %}
@@ -131,7 +131,7 @@
                 </li>
             </ul>
         </div>
-  <div class="main-header" style="height:100px;">
+  <div class="main-header">
                   
         <span class="shape2New"> </span><span class="shape3New"> </span><span class="shape1New"> </span>
     <nav class="navbar navbar-expand-lg p-lg-0" >

@@ -4,7 +4,6 @@ from django.conf import settings
 from sslcommerz_lib import SSLCOMMERZ
 from .models import PaymentGateway,PaymentPurpose,PaymentType
 
-
 def generator_trangection_id( size=10, chars=string.ascii_uppercase + string.digits):
     return "".join(random.choice(chars) for _ in range(size))
 
@@ -19,19 +18,16 @@ def sslcommerz_payment_gateway(request, certificate,certificate_type, payment_pu
     
     '''cradentials = {'store_id': 'gmrwcedubdlive',
             'store_pass': '677CD7B61AB5A81511', 'issandbox': False} '''
-    
     sslcommez = SSLCOMMERZ(cradentials)
     body = {}
     body['certificate'] = certificate
     body['total_amount'] = certificate_type.amount
     body['currency'] = "BDT"
     body['tran_id'] = generator_trangection_id()
-    body['success_url'] = 'http://127.0.0.1:8000/payment/success/'
-    body['fail_url'] = 'http://127.0.0.1:8000/payment/payment/failed/'
-    body['cancel_url'] = 'http://127.0.0.1:8000/payment/canceled/'
-    # body['success_url'] = 'http://tilokpursonod.gov.bd/payment/success/'
-    # body['fail_url'] = 'http://tilokpursonod.gov.bd/payment/payment/failed/'
-    # body['cancel_url'] = 'http://tilokpursonod.gov.bd/payment/canceled/'
+    body['success_url'] ='http://' +str(request.META['HTTP_HOST'])+'/payment/success/'
+    body['fail_url'] = 'http://' +str(request.META['HTTP_HOST'])+'/payment/failed/'
+    body['cancel_url'] = 'http://' +str(request.META['HTTP_HOST'])+'/payment/canceled/'
+    body['ipn_url'] = 'http://' +str(request.META['HTTP_HOST'])+'/payment/ipn/'
     body['emi_option'] = 0
     if payment_purpose.payment_type.id == 1:
         body['cus_name'] = certificate.name

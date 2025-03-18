@@ -19934,7 +19934,11 @@ label {
 }
 
 .rounded-50 {
-    border-radius: 50px
+    border-radius: 50px;
+
+}
+.rounded-50:hover {
+background-color: #4e090c;    
 }
 
 .table td {
@@ -20236,11 +20240,10 @@ button.close.text-light.search-box-close {
 
 .header .main-header {
     position: relative;
-    padding: .7rem 0
 }
 
 .logo {
-    padding: 0
+    padding: 0;
 }
 .mongram{
     display:none;
@@ -20250,14 +20253,14 @@ button.close.text-light.search-box-close {
 @media (min-width:768px) {
     .logo img {
         height: 80px;
-        margin-top: -60px;
+        margin-top: -40px;
         -webkit-transition: all .8s ease;
         transition: all .8s ease
     }
 
     .header.sticky .logo img {
         height: 70px;
-        margin-top: -20px
+        margin-top: -10px
     }
     .mongram{
     opacity: 0.5;
@@ -20267,25 +20270,31 @@ button.close.text-light.search-box-close {
 
 @media (max-width:767px) {
     .header .navbar {
-        background: #fff
+        background: #035a4c;
+        border-bottom-left-radius:20px;
+        border-bottom-right-radius:20px;
+
     }
 
     .logo img {
-        height: 65px;
-        margin-top: 0;
+        height: 70px;
+        margin-top: -10px;
         -webkit-transition: all .8s ease;
         transition: all .8s ease
     }
 
     .header.sticky .logo img {
         height: 60px;
-        margin-top: 0
+        margin-top: -10px;
     }
     .header .main-header {
         position: relative;
     }
     .header .top-header {
-        padding: .2rem 0
+        padding: 0rem 0
+    }
+    .header.sticky .top-header {
+        padding: .5rem 0
     }
     
 }
@@ -20736,7 +20745,7 @@ button.close.text-light.search-box-close {
     }
 }
 
-@media (max-width:768px) {
+@media (max-width:989px) {
     .header .main-header {
         position: unset
     }
@@ -21408,7 +21417,7 @@ button.close.text-light.search-box-close {
 
 .member-services-header .nav .nav-link .badge {
     font-size: 14px;
-    background: #007f3d;
+    background: #000;
     color: #fff
 }
 
@@ -21817,6 +21826,13 @@ button.close.text-light.search-box-close {
     height: 100%;
     -o-object-fit: cover;
     object-fit: cover
+}
+.service-tab .nav-tabs .nav-link {
+    color: #6dc8be;
+    border: 1px solid #6dc8be;
+    border-radius: 0;
+    font-size: 1.1rem;
+    font-weight: 500
 }
 
 .service-tab .nav-tabs .nav-link {
@@ -23023,19 +23039,21 @@ button.close.text-light.search-box-close {
 
 .services .nav-tabs {
     position: relative;
-    border: 0
 }
 
 .services .nav-tabs .nav-item .nav-link {
     color: #035a4c;
-    border: 1px solid #035a4c;
-    border-radius: 0;
-    font-size: 1.1rem;
-    font-weight: 500
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+     border-bottom-right-radius: 10px; 
+     border-bottom-left-radius: 10px;
 }
 
 .services .nav-tabs .nav-item .nav-link.active {
     color: #fff;
+    text-shadow: 4px 4px 4px rgb(73, 25, 11);
     background: #035a4c;
 }
 

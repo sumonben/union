@@ -47,7 +47,6 @@ class CheckoutSuccessView(View):
         
         context={}
         data = self.request.POST
-        print(data)
 
         id=int(data['value_d'])
         tran_purpose=PaymentPurpose.objects.filter(id=id).first()
@@ -130,108 +129,117 @@ class CheckoutFaildView(View):
         return render(request, self.template_name)
 
     def post(self, request, *args, **kwargs):
-        data=request.POST
         context={}
-        tran_purpose=PaymentPurpose.objects.filter(id=data['value_d']).first()
-        context['tran_purpose']=tran_purpose
-        
-        if tran_purpose.payment_type.id == 2:
-                print("data['value_d']:",tran_purpose.payment_type)
-                student=Certificate.objects.filter(class_roll=data['value_a']).first()
-                #print(student)
-                context['purpose']=tran_purpose
-                context['student']=student
-                form=()
-                context['form']=form
-                message='Payment Failed'
-                context['message']=message
-                
-                return render(request,self.template_name,context)
-        if tran_purpose.payment_type.id == 3:
-                #print("data['value_d']:",tran_purpose.payment_type)
-                student=Certificate.objects.filter(class_roll=data['value_a']).first()
-                #print(student)
-                context['purpose']=tran_purpose
-                context['student']=student
-                message='Payment Failed'
-                context['message']=message
-                form=()
-                context['form']=form
-                return render(request,self.template_name,context)
+        data = self.request.POST
 
+        id=int(data['value_d'])
+        tran_purpose=PaymentPurpose.objects.filter(id=id).first()
+        
         if tran_purpose.payment_type.id == 1:
+                    certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
+                    context['certificate']=certificate
+                    context['certificate_type']=certificate.certificate_type
+                    certificate.delete()
+                   
+                    
+        else:
+                    license=License.objects.filter(tracking_no=data['value_a']).first()
+                    license.delete()
+                    context['license']=license
+                    context['license_type']=license.license_type
+                    
+                    
                 
-                students=Certificate.objects.filter(phone=data['value_b'],user=None)
-                for std in students:
-                    std.delete()
-
-                #print(student)
-                context['purpose']=tran_purpose
-                context['student']=student
-                message='Payment Failed'
-                context['message']=message
-        
-        form=()
-        context['form']=form  
-        message='Payment Failed'
-        context['message']=message
+               
+        context['tran_purpose']=tran_purpose
+                
         return render(request,self.template_name,context)
-
+            
+        
 @method_decorator(csrf_exempt, name='dispatch')
 class CheckoutCanceledView(View):
+    template_name = 'payment/canceled.html'
+    
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
+
+    def post(self, request, *args, **kwargs):
+        context={}
+        data = self.request.POST
+
+        id=int(data['value_d'])
+        tran_purpose=PaymentPurpose.objects.filter(id=id).first()
+        
+        if tran_purpose.payment_type.id == 1:
+                    certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
+                    context['certificate']=certificate
+                    context['certificate_type']=certificate.certificate_type
+                    certificate.delete()
+                   
+                    
+        else:
+                    license=License.objects.filter(tracking_no=data['value_a']).first()
+                    license.delete()
+                    context['license']=license
+                    context['license_type']=license.license_type
+                    
+                    
+                
+               
+        context['tran_purpose']=tran_purpose
+                
+        return render(request,self.template_name,context)
+    
+
+@method_decorator(csrf_exempt, name='dispatch')
+class CheckoutIPNView(View):
     template_name = 'payment/search_payment.html'
     
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
 
     def post(self, request, *args, **kwargs):
-        data=request.POST
+        
         context={}
-        tran_purpose=PaymentPurpose.objects.filter(id=data['value_d']).first()
-        context['tran_purpose']=tran_purpose
-        messages.success(request,'Payment Canceled')
-        context['messages']=messages
-        
-        if tran_purpose.payment_type.id == 2:
-                print("data['value_d']:",tran_purpose.payment_type)
-                student=Certificate.objects.filter(class_roll=data['value_a']).first()
-                #print(student)
-                context['purpose']=tran_purpose
-                context['student']=student
-                form=()
-                context['form']=form
-                message='Payment Canceled'
-                context['message']=message
+        data = self.request.POST
+        print("IPN",self.request.POST)
+        id=int(data['value_d'])
+        tran_purpose=PaymentPurpose.objects.filter(id=id).first()
+        transaction=None
+        if transaction:
+                if tran_purpose.payment_type.id == 1:
+                    certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
+                    context['certificate']=certificate
+                    context['certificate_type']=certificate.certificate_type
+                   
+                    certificate.transaction=transaction
+                    certificate.save()
+                else:
+                    license=License.objects.filter(tracking_no=data['value_a']).first()
+                    context['license']=license
+                    context['license_type']=license.license_type
+                    
+                    license.transaction=transaction
+                    license.save()
+                
+               
+                context['transaction']=transaction
+                context['tran_purpose']=tran_purpose
                 
                 return render(request,self.template_name,context)
-        if tran_purpose.payment_type.id == 3:
-                #print("data['value_d']:",tran_purpose.payment_type)
-                student=Certificate.objects.filter(class_roll=data['value_a']).first()
-                #print(student)
-                context['purpose']=tran_purpose
-                context['student']=student
-                message='Payment Canceled'
-                context['message']=message
-                form=()
-                context['form']=form
-                return render(request,self.template_name,context)
+            # if tran_purpose.payment_type.id == 2:
+            #     #print("data['value_d']:",tran_purpose.payment_type)
+            #     student=Certificate.objects.filter(class_roll=data['value_a']).first()
+            #     #print(student)
+            #     context['transaction']=transaction
+            #     context['purpose']=tran_purpose
+            #     context['certificate']=certificate
+            #     return render(request,self.template_name,context)
 
-        if tran_purpose.payment_type.id == 1:
-                
-                students=Certificate.objects.filter(phone=data['value_b'],user=None)
-                for std in students:
-                    std.delete()
-
-                #print(student)
-                context['purpose']=tran_purpose
-                context['student']=student
-                message='Payment Canceled'
-                context['message']=message
-        
-        form=()
-        context['form']=form  
-        message='Payment Canceled'
-        context['message']=message
+            
+        messages.success(request,'Payment Successful!!')
+            
+    
         return render(request,self.template_name,context)
 
 def searchPayment(request):

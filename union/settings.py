@@ -30,6 +30,7 @@ SECRET_KEY = 'django-insecure-7$wq_6k@%@d&7=(p-t*)_fc%+cv5)_a+2&s1uc#yct*r*3q#o%
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1','209.74.88.131','tilokpursonod.gov.bd','www.tilokpursonod.gov.bd']
 #ALLOWED_HOSTS = ['209.74.88.131','tilokpursonod.gov.bd','www.tilokpursonod.gov.bd']

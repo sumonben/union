@@ -433,7 +433,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                   
                                   
                                     <tr valign="bottom">
-                                      <td  colspan="2" align="center"></div><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{license.license_type.name_en}}%0DTracking No: {{license.tracking_no}}%0DName:{{license.name}}&amp;size=200x200" width="120px" height="120px" alt="{{license.name}}" title="{{license.license_type.name_en}}:{{license.name}}" width="50" height="50" /></div></td>
+                                      <td  colspan="2" align="center"></div><div style="float:left;text-align:center"><img id='barcode' loading="lazy" src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{license.license_type.name_en}}%0DTracking No: {{license.tracking_no}}%0DName:{{license.name}}&amp;size=200x200" width="120px" height="120px" alt="{{license.name}}" title="{{license.license_type.name_en}}:{{license.name}}" width="50" height="50" /></div></td>
 
                                         <td  colspan="2" align="right"><br><br><br></div></td>
                                         <td  colspan="2" align="right"><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if license.chairman.signature %}{{license.chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{license.chairman.name}}<br>{{license.chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
