@@ -88,16 +88,16 @@ WSGI_APPLICATION = 'union.wsgi.application'
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': [
-            [ 'Format','Font', 'FontSize','Undo', 'Redo',
+            [ 'Format','Font', 'FontSize','Table','Undo', 'Redo',
              '-', 'Bold', 'Italic', 'Underline',
-             '-', 'RemoveFormat','Cut', 'Copy', 'Paste','Find', 'Replace', '-', 'SelectAll',
+             '-', 'RemoveFormat','Cut', 'Copy', 'Paste', '-', 'SelectAll',
              
              '-', 'Maximize',
              
             ],
         ],
         
-        'height':150,
+        'height':'100%',
         'width': 'full',
         'toolbarCanCollapse': True,
 

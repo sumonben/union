@@ -1,13 +1,14 @@
 from django.contrib import admin
-from .models import Transaction,PaymentPurpose,PaymentType,PaymentGateway
+from .models import Transaction,PaymentPurpose,PaymentType,PaymentGateway,PaymentURL
 # Register your models here.
 @admin.register(Transaction)
 class TransactionAdmin(admin.ModelAdmin):
     list_display = ('name','tracking_no','email','phone', 'card_no', 'amount', 'tran_id','tran_purpose','status', 'created_at',)
-    list_filter = ('status', 'created_at','tran_purpose')
+    list_filter = ('status', 'created_at')
     search_fields = ('currency', 'status')
 
 admin.site.register(PaymentGateway)
+admin.site.register(PaymentURL)
 
 @admin.register(PaymentPurpose)
 class UserAdmin(admin.ModelAdmin):

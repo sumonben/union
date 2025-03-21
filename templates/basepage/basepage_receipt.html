@@ -2,7 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     
+    {% if certificate.language == '2'  %}
+    <title>Union Certificate</title>
+
+    {% else %}
     <title>ইউনিয়ন সনদ</title>
+    {% endif %}
     <link rel="icon" href="{% static 'images/tilokpur_logo.png'%}" type="image/x-icon">
     <meta http-equiv="cache-control" content="no-cache">
     <meta name="publisher" content="Govt. Mujibur rahman Women's Collge">
@@ -197,12 +202,25 @@
                     <tbody><tr>
                       <td width="10%" height="95" align="center" valign="middle"><img src="{% static 'images/tilokpur_logo.png'%}" width="90" height="90"></td>
                       <td width="65%" height="95" align="left" valign="middle">
-                                              
-                      <span class="GrayBlue20bold" style="color:#fff">৪ নং তিলকপুর ইউনিয়ন পরিষদ</span><br>
-                      <span class="GrayBlue14b" style="color:#fff">ডাকঘরঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
-
+                        {% if certificate.language == '2'  %}
+                          <span class="GrayBlue20bold"  style="text-align: center;color:#fff;text-shadow: 3px 3px 3px rgb(65, 7, 7);">4 NO. TILALPUR UNION COUNCIL</span><br>
+                          <span style="color:#fff;margin-top:0px;font-weight:600;text-shadow: 3px 3px 3px rgb(65, 7, 7);">Post-Ofice: Tilakpur, Upazilla: Akkelpur, District: Jaypurhat.</span>
+                          
+                        {% else %}
+                          <span class="GrayBlue20bold"  style="text-align: center;color:#fff;text-shadow: 3px 3px 3px rgb(65, 7, 7);">৪ নং তিলকপুর ইউনিয়ন পরিষদ</span><br>
+                          <span style="color:#fff;margin-top:0px;font-weight:600;text-shadow: 3px 3px 3px rgb(65, 7, 7);">ডাকঘরঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
+                                            
+                          {% endif %}
+                                            
+                      
                       </td>
-                      <td width="25%" height="95" align="left" valign="middle"><span class="OffWhite12b" style="color:#fff">নিবেদকের কপি<sup></sup> <br></span><br>
+                      <td width="25%" height="95" align="left" valign="middle"><span class="OffWhite12b" style="color:#fff">
+                      {% if certificate.language == '2' %}
+                      APPLICANT'S COPY
+                        {% else %}
+                        নিবেদকের কপি
+                      {% endif %}
+                        <sup></sup> <br></span><br>
                <span class="black10"></span><br>
                <span class="black10bold"></span></td>
                       </tr>
@@ -241,25 +259,52 @@
        <td width="0%" height="50" align="center" valign="middle" class="black10">&nbsp;</td>
       <td width="49%" height="50" align="left" valign="middle">
       <table width="100%" border="0" cellpadding="5" cellspacing="0" class="black10">
-        <tbody><tr>
-          <td width="85%" align="left" valign="middle">হেল্পলাইন: অফিস (10:00am - 04:00pm)</td>
+        <tbody>
+          
+          
+          {% if certificate.language == '2' %}
+          <tr>
+            <td width="85%" align="left" valign="middle">Helpline: Union Office (10:00am - 04:00pm)</td>
+          </tr>
+          <tr
+            <td align="left" valign="middle">Tilakpur Union Council.<br>Check at:  https://tilokpursonod.gov.bd/download_certificate_form/ </td>
+          </tr>
+        </tbody></table></td>
+        <td width="40%" height="50" align="left" valign="middle"><table width="100%" border="0" cellpadding="5" cellspacing="0" class="black10">
+          <tbody><tr>
+            <td width="85%" align="right" valign="middle">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="right" valign="middle">Operated by</td>
+          </tr>
+        </tbody></table></td> 
+        <td width="10%" height="50" align="center" valign="middle"><img src="{% static 'images/tilokpur_logo.png'%}"  height="44" alt=""></td>
         </tr>
-        <tr
-          <td align="left" valign="middle"> তিলকপুর ইউনিয়ন পরিষদ.<br>Developed by Tarique Sumon </td>
+        
+          {% else %}
+          <tr>
+            <td width="85%" align="left" valign="middle">হেল্পলাইন: অফিস চলাকালীন (সকাল ১০ঃ০০ - বিকেল ৪ঃ০০)</td>
+          </tr>
+          <tr>
+            <td align="left" valign="middle"> তিলকপুর ইউনিয়ন পরিষদ.<br>সনদ  ডাউনলোড লিংকঃ  https://tilokpursonod.gov.bd/download_certificate_form/ </td>
+          </tr>
+        </tbody></table></td>
+        <td width="40%" height="50" align="left" valign="middle"><table width="100%" border="0" cellpadding="5" cellspacing="0" class="black10">
+          <tbody><tr>
+            <td width="85%" align="right" valign="middle">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="right" valign="middle">তত্বাবধানে</td>
+          </tr>
+        </tbody></table></td>
+        <td width="10%" height="50" align="center" valign="middle"><img src="{% static 'images/tilokpur_logo.png'%}"  height="44" alt=""></td>
         </tr>
-      </tbody></table></td>
-      <td width="40%" height="50" align="left" valign="middle"><table width="100%" border="0" cellpadding="5" cellspacing="0" class="black10">
-        <tbody><tr>
-          <td width="85%" align="right" valign="middle">&nbsp;</td>
-        </tr>
-        <tr>
-          <td align="right" valign="middle">তত্বাবধানে</td>
-        </tr>
-      </tbody></table></td>
-      <td width="10%" height="50" align="center" valign="middle"><img src="{% static 'images/tilokpur_logo.png'%}"  height="44" alt=""></td>
-      </tr>
-      
-  </tbody></table></td>
+        
+          {% endif %}
+            
+          
+    </tbody>
+</table></td>
 </tr>
 </tbody></table></td>
 <td class="main-right">&nbsp;</td>

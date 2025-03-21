@@ -27,7 +27,7 @@ class LicenseForm(forms.ModelForm):
     class Meta:
         model = License
         fields = "__all__"
-        exclude=['serial','licensed_name_en','transaction','is_verified','father_name_en','mother_name_en','passport','tax','fee','vat_n_others','tracking_no','adress','description','cause','person','chairman','member','caste','income','profession','language']
+        exclude=['serial','licensed_name_en','transaction','is_verified','father_name_en','mother_name_en','passport','tax','fee','vat_n_others','license_no','memorial_no','tracking_no','adress','description','cause','person','chairman','member','caste','income','profession','language']
     
             
         

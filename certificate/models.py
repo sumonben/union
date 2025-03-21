@@ -3,7 +3,7 @@ from django.urls import reverse
 from payment.models import Transaction
 from django.utils.html import format_html
 from django.template.defaultfilters import escape
-from region.models import District,Division,Upazilla,Union,PostOffice,Village,Ward,Mouja
+from region.models import District,Division,Upazilla,Union,PostOffice,Village,Ward,Mouja,OthersAdress
 from account.models import Member,Chairman
 from ckeditor.fields import RichTextField
 
@@ -11,6 +11,17 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 
 
+
+class Gender(models.Model):
+    serial=models.IntegerField(default=10,verbose_name="ক্রম")
+    name=models.CharField(max_length=500,verbose_name=" নাম(বাংলায়)")
+    name_en=models.CharField(max_length=500,verbose_name=" নাম(ইংরেজিতে)")
+    class Meta:
+        ordering = ['serial']
+        verbose_name="লিঙ্গ"
+        verbose_name_plural="লিঙ্গ"
+    def __str__(self):
+        return self.name+'('+self.name_en+')'
 
 class Relation(models.Model):
     serial=models.IntegerField(default=10,verbose_name="ক্রম")
@@ -46,7 +57,7 @@ class Cause(models.Model):
         verbose_name="কারণ"
         verbose_name_plural="কারণ"
     def __str__(self):
-        return self.name+'('+self.name_en+')'
+        return self.name
 
 class CertificateType(models.Model):
     serial=models.IntegerField(default=10)
@@ -97,13 +108,17 @@ class Certificate(models.Model):
     father_name_en=models.CharField(max_length=500,blank=True, null=True,verbose_name="বাবার নাম(ইংরেজিতে)")
     mother_name=models.CharField(max_length=500,verbose_name="মায়ের নাম(বাংলায়)")
     mother_name_en=models.CharField(max_length=500,blank=True, null=True,verbose_name="মায়ের নাম(ইংরেজিতে)")
+    memorial_no=models.CharField(max_length=500,blank=True, null=True,verbose_name="স্মারক নং")
+    title=models.CharField(max_length=500,blank=True, null=True,verbose_name="বিবিধ")
+    gender=models.ForeignKey(Gender,blank=True, null=True,on_delete=models.SET_NULL,verbose_name="লিঙ্গ")
     dob=models.DateField(null=True,blank=True)
     adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL,verbose_name="ঠিকানা")
+    others_adress=models.ManyToManyField(OthersAdress, blank=True,verbose_name="অন্যান্য এলাকাভুক্ত ঠিকানা")
     description=RichTextField(max_length=1000,null=True,blank=True,verbose_name="কারণ বর্ণনাঃ")
     cause=models.ForeignKey(Cause,on_delete=models.SET_NULL,blank=True, null=True,verbose_name="কারণঃ")
     caste=models.CharField(max_length=500,blank=True, null=True,verbose_name="সম্প্রদায়")
     profession=models.CharField(max_length=500,blank=True, null=True,verbose_name="পেশা")
-    income=models.IntegerField(null=True,blank=True,verbose_name="আয়")
+    income=models.CharField(max_length=500,null=True,blank=True,verbose_name="আয়")
     amount=models.CharField(max_length=10,null=True,blank=True,verbose_name="পরিমাণ")
     date = models.DateField(null=True,blank=True)
     file=models.FileField(upload_to='media/',blank=True,null=True,verbose_name="মেম্বারের সুপারিশ ফাইল")
@@ -139,6 +154,8 @@ class Certificate(models.Model):
         tran=self.transaction
         if tran:
             return  tran.created_at
+
+
 
 # class WarishanCertificate(models.Model):
 #     name=models.CharField(max_length=100,verbose_name="নাম(বাংলায়)")

@@ -105,7 +105,7 @@ class LicenseView(View):
             if formset1.is_valid():
                 #print(formset1)
                 adresses=formset1.save()
-               
+                print(adresses)
                 for fs in adresses:
                     license.adress_of_license=fs
                     license.save()
@@ -120,6 +120,7 @@ class LicenseView(View):
             license.tracking_no=tracking_no
             chairman=Chairman.objects.all().order_by('-id').first()
             secretary=Secretary.objects.all().order_by('-id').first()
+            print(license.adress_of_license)
             member=Member.objects.filter(ward=license.adress_of_license.village.ward).last()
             license.chairman=chairman
             license.secretary=secretary

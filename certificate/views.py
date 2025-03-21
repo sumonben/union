@@ -4,12 +4,14 @@ from .models import Person,CertificateType,Certificate,Cause
 from license.models import LicenseType,License
 from payment.models import Transaction,PaymentPurpose,PaymentType
 from account.models import Chairman, Member,Post,Secretary
-from .forms import AdressForm,WarishFormSet,WarishForm,SamePersonFormSet,CertificateTypeForm,CertificateForm,CertificateDownloadForm
+from .forms import AdressForm,WarishFormSet,WarishForm,SamePersonFormSet,CertificateTypeForm,CertificateForm,CertificateDownloadForm,OtherAdressFormSet
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
 from django.forms import formset_factory
+from region.forms import OthersAdressForm
 from payment.sslcommerz import sslcommerz_payment_gateway
 from django.contrib import messages
+
 
 import string
 import random
@@ -69,12 +71,14 @@ class ApplyForCertificate(View):
         adress_form=AdressForm()
         context['form']=form
         context['adress_form']=adress_form
-        if certificate_type.id== 1:
+        if certificate_type.id== 1 or certificate_type.id== 7 :
             formset = WarishFormSet(queryset=Person.objects.none())
             context['formset']=formset
         if certificate_type.id== 9 or certificate_type.id == 15 :
             formset = SamePersonFormSet(queryset=Person.objects.none())
             context['formset']=formset
+        
+
         
         return render(request,self.template_name,context)
     
@@ -121,7 +125,7 @@ class SelectCertificate(View):
         if certificate_type.id== 9 or certificate_type.id == 15 :
             formset = SamePersonFormSet(queryset=Person.objects.none())
             context['formset']=formset
-            
+                
          
         return render(request,self.template_name,context)
         
@@ -145,12 +149,14 @@ class CertificateView(View):
 
     def post(self, request, *args, **kwargs):
         context={}
-        print("Files",request.FILES)
         form = CertificateForm(request.POST, request.FILES)
+
+
         if form.certificate_type == 9:
             formset = SamePersonFormSet(data=self.request.POST)
         else:
             formset = WarishFormSet(data=self.request.POST)
+
         adress_form = AdressForm(data=self.request.POST)
         certificate_types=CertificateType.objects.all().order_by('serial')
         context['certificate_types']=certificate_types
@@ -172,11 +178,9 @@ class CertificateView(View):
                 certificate.save()
             if formset.is_valid():
                 person=formset.save()
-                
                 for person in person:
-                    print(person)
                     certificate.person.add(person)
-                #return HttpResponse('Form saved')
+
             certificate.tracking_no=tracking_no
             chairman=Chairman.objects.all().order_by('-id').first()
             member=Member.objects.filter(ward=certificate.adress.village.ward).last()
@@ -184,9 +188,12 @@ class CertificateView(View):
             certificate.member=member
             cause=Cause.objects.filter(id=request.POST.get('cause')).first()
             certificate.language=request.POST.get('language')
+            certificate.passport=request.POST.get('passport')
+            certificate.title=request.POST.get('title')
             certificate.amount=request.POST.get('amount')
             certificate.dob=request.POST.get('dob')
             certificate.date=request.POST.get('date')
+            certificate.caste=request.POST.get('caste')
             certificate.cause=cause
             certificate.income=request.POST.get('income')
             certificate.profession=request.POST.get('profession')
@@ -199,7 +206,6 @@ class CertificateView(View):
             certificate=Certificate.objects.filter(tracking_no=tracking_no).first()
 
             context['certificate']=certificate
-            print("Certificate:",certificate)
             return render(request,'certificate/applicant_details.html',context)
 
         
@@ -306,8 +312,10 @@ class DownloadCertificateView(View):
                 context['certificate']=certificate
                 context['certificate_type']=certificate_type
 
-                
-                return render(request,certificate_type.template, context)
+                # if certificate.language == '2':
+                #     return render(request,'certificate/en_certificate/en_'+certificate_type.template, context)
+                # else:
+                return render(request,'certificate/certificate/'+certificate_type.template, context)
             context['message']="দুখিঃত! আপনার সনদটির জন্য পেমেন্ট করা হয়নি"
             form=CertificateDownloadForm()
             context['form']=form

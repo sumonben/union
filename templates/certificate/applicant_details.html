@@ -73,6 +73,108 @@
                           <div id="steps-container">
                               <div class="step d-block" >
                                 
+                                {% if certificate.language == '2' %}
+
+                                <div><h4 style="text-align: center;"><u> Collect and Remember  Tracking No. ({{certificate.tracking_no}}) for the application of  </u></h4></div>
+                                <div><h3 style="text-align: center;">( {{certificate.certificate_type.name_en}} ) </h3></div>
+      
+                                <table  width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
+      
+                                  <tbody>
+                                  <tr>
+                                    <td align="left">
+                                      <fieldset>
+                                      <table width="100%" border="1" cellspacing="0" cellpadding="2">
+                                        <thead style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;"> Certificate Informations</th></thead>
+                                        <tbody>
+                                        
+      
+                                          <tr>
+                                              <td width="25%" align="right" valign="middle" class="sprytextfield1">Certificate Tracking No: </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  <input value="{{certificate.tracking_no}}" name="tracking_no" type="text" class="form-control form-control-sm">                                       
+                                                </label>
+                                              </span></td>
+      
+                                            </tr>
+      
+                                            <tr>
+                                              <td width="25%" align="right" valign="middle" class="sprytextfield1">Name:  </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  {{certificate.name}}                                        
+                                                </label>
+                                              </span></td>
+      
+                                            </tr>
+                                            <tr>
+                                              <td width="25%" align="left" valign="middle" class="sprytextfield1">Father's Name:  </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  {{certificate.father_name}}                                        
+                                                </label>
+                                              </span></td>
+      
+                                            </tr>
+                                            <tr>
+                                              <td width="25%" align="left" valign="middle" class="sprytextfield1">Mother's Name : </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  {{certificate.mother_name}}                                        
+                                                </label>
+                                                </span></td>
+      
+                                            </tr>
+                                            
+                                            <tr>
+                                              <td width="25%" align="left" valign="middle" class="sprytextfield1">Village:  </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                 
+                                                  {{certificate.adress.village.name_en}}                                        
+
+                                                </label>
+                                               </span></td>
+      
+                                            </tr>
+                                            <tr>
+                                              <td width="25%" align="left" valign="middle" class="sprytextfield1">Ward:   </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  
+                                                 
+                                                  {{certificate.adress.village.ward.name_en}}                                        
+
+                                                    
+                                                </label>
+                                                </span></td>
+      
+                                            </tr>
+      
+                                            <tr>
+                                              <td width="25%" align="left" valign="middle" class="sprytextfield1"> </td>
+                                              <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  Upazilla: Akkelpur, District: Jaypurhat, Bangladesh                                          
+                                                </label>
+                                                </span></td>
+      
+                                            </tr>
+                                          
+                                        
+          
+                                      </tbody></table>
+                                    </fieldset>
+                                  </td>
+                                  
+                                </tr>
+                                    
+                                </tbody>
+                              </table>
+                                
+
+                                {% else %}
                                 <div><h4 style="text-align: center;"><u>ট্র্যাকিং নম্বর ({{certificate.tracking_no}}) সংগ্রহে রাখুন </u></h4></div>
                                 <div><h3 style="text-align: center;">( {{certificate.certificate_type.name}} এর আবেদন ) </h3></div>
       
@@ -129,7 +231,9 @@
                                               <td width="25%" align="left" valign="middle" class="sprytextfield1">গ্রামঃ </td>
                                               <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                                 <label>
+                                                 
                                                   {{certificate.adress.village.name}}                                        
+
                                                 </label>
                                                </span></td>
       
@@ -138,7 +242,11 @@
                                               <td width="25%" align="left" valign="middle" class="sprytextfield1">ওয়ার্ডঃ  </td>
                                               <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                                 <label>
+                                                  
+                                                 
                                                   {{certificate.adress.village.ward.name}}                                        
+
+                                                    
                                                 </label>
                                                 </span></td>
       
@@ -148,7 +256,8 @@
                                               <td width="25%" align="left" valign="middle" class="sprytextfield1"> </td>
                                               <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                                 <label>
-                                                 উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট                                          </label>
+                                                  উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট                                          
+                                                </label>
                                                 </span></td>
       
                                             </tr>
@@ -164,19 +273,27 @@
                                 </tbody>
                               </table>
                                 
+                                {% endif %}
+                                  
+                                
                                     
       
                               </div>
-                             
-                              
-                             
-                          
                           
                       </div>
+
                       <div class="col-sm-9 form-group">
                         <p class="text-right">
                           <br>
+                          
+                          {% if certificate.language == '2' %}
+                          <button type="submit" class="btn btn-danger text-white"><span>Submit</span></button>
+
+                          {% else %}
                           <button type="submit" class="btn btn-danger text-white"><span>সাবমিট</span></button>
+
+                          {% endif %}
+                            
                         </p>
                       </div>  
                   </div>

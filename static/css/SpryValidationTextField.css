@@ -78,7 +78,7 @@
 {
 	display: inline;
 	color: #F00;
-	font-family: Verdana, Geneva, sans-serif;
+	font-family: kalpurush;
 	font-size: 12px;
 	border-top-style: none;
 	border-right-style: none;
@@ -125,7 +125,7 @@ input.textfieldMaxCharsState, .textfieldMaxCharsState input {
  */
 .textfieldFlashText input, input.textfieldFlashText {
 	color: red !important;
-	font-family: Verdana, Geneva, sans-serif;
+	font-family: kalpurush;
 }
 
 /* When the widget has the hint message on, the hint text can be styled differently than the user typed text. */

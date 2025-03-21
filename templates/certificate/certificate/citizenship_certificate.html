@@ -82,7 +82,7 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
 
 @media print and (min-width: 480px) {
     
-  *{
+  table{
       -webkit-print-color-adjust: exact; 
 
 }
@@ -157,8 +157,23 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
         <!-- FORMS -->
                   <div >
                         <div class="step d-block" style="margin-top:20px;height:100%">
-                          <div><h1 style="text-align: center;">                            <button  style="background-color:rgb(56, 73, 70); color: white;text-shadow: 3px 3px 3px rgb(73, 25, 11);border-radius:100%;padding:20px;">{{certificate_type.name}}</button></h1></div>
+                          <div><h1 style="text-align: center;">                            <button  style="background-color:rgb(56, 73, 70); color: white;text-shadow: 3px 3px 3px rgb(73, 25, 11);border-radius:100%;padding:20px;">{% if certificate.language == '2' %} {{certificate_type.name_en}} {% else %} {{certificate_type.name}} {% endif %}</button></h1></div>
                           <table width="100%" valign="middle">
+                            {% if certificate.language == '2' %}
+                            <tr>
+                                <td>
+                                  <div  align="left"><h4 style="text-align: left; margin-left:2%">
+                                    Tracking No.: &nbsp<u>{{certificate.tracking_no}}</u></h4>
+                                </div>
+                                </td>
+                                <td>                            
+                                  <div   align="right"><h4 style="text-align: right; margin-left:2%">
+                                    Date: &nbsp<div id="date" style="display:inline;">{{certificate.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
+                                  </div>
+                                </td>
+                              </tr>
+                            {% else %}
+                            
                               <tr>
                               <td>
                                 <div  align="left"><h4 style="text-align: left; margin-left:2%">
@@ -170,7 +185,9 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                   তারিখঃ &nbsp<div id="date" style="display:inline;">{{certificate.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
                                 </div>
                               </td>
-                            </tr></table>
+                            </tr>
+                          {% endif %}
+                          </table>
 
 
                          
@@ -181,22 +198,40 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                               <td align="left">
                                 <table  width="100%"   cellspacing="0" cellpadding="5">
                                   <tbody>
-                                  
-
                                     <tr>
+
+                                    {% if certificate.language == '2' %}
+                                    <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify"><h5 style="font-weight:500; line-height:2"> This is to certify that , Name:  <span ><b>&nbsp&nbsp{{certificate.name}}&nbsp&nbsp</b></span> Father's Name:  {{certificate.father_name}}, Mother's Name: {{certificate.mother_name}},  Village:  {{certificate.adress.village.name_en}}, Post-Office:  {{certificate.adress.village.post_office.name_en}}, Ward No. -{{certificate.adress.ward.ward_no_en}}, Upazilla: Akkkelpur, District: Jaypurhat.
+                                     
+                                     {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is known to me. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is Bangladeshi by Birth. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is permanent inhabitant in this locality. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} character is good as far I know. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is not involved in any offence against the State.
+                                      <br><br><br>
+                                      I wish{% if certificate.gender.id == 1 %} him {% else %} her {% endif %} every success in life.
+                                    </td>  
+                                    {% else %}
                                         <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify"><h5 style="font-weight:500; line-height:2"> এই মর্মে প্রত্যয়ন করিতেছি যে, নামঃ <span ><b>&nbsp&nbsp{{certificate.name}}&nbsp&nbsp</b></span> পিতাঃ {{certificate.father_name}}, মাতাঃ {{certificate.mother_name}},  গ্রামঃ {{certificate.adress.village.name}}, ডাকঘরঃ {{certificate.adress.village.post_office.name}}, ওয়ার্ড নং-{{certificate.adress.ward.ward_no}}, উপজেলাঃ আক্কেলপুর,  জেলাঃ জয়পুরহাট।
-                                            সে আমার পরিচিত। আমার জানামতে সে অত্র ০৪ নং তিলকপুর ইউনিয়নের {{certificate.adress.ward.name}} এর একজন স্থায়ী বাসিন্দা ও জন্মসুত্রে বাংলাদেশের নাগরিক। তার ব্যবহার ও স্বভাব চরিত্র ভাল। সে কোন প্রকার রাষ্ট্র বা সমাজ বিরোধী কাজে লিপ্ত নয়।
+                                            তিনি আমার পরিচিত। আমার জানামতে তিনি অত্র ০৪ নং তিলকপুর ইউনিয়নের {{certificate.adress.ward.name}} এর একজন স্থায়ী বাসিন্দা ও জন্মসুত্রে বাংলাদেশের নাগরিক। তাহার ব্যবহার ও স্বভাব চরিত্র ভাল। তিনি কোন প্রকার রাষ্ট্র বা সমাজ বিরোধী কাজে লিপ্ত নয়।
                                             <br><br><br>
-                                            আমি তার সার্বিক উন্নতি ও মঙ্গল কামনা করি।                             
-                                        </tr>
-                                    
+                                            আমি তাহার সার্বিক উন্নতি ও মঙ্গল কামনা করি। 
+                                          </td>                            
+                                    {% endif %}
+                                  </tr>
+
                                     <tr valign="bottom">
                         
+                                      {% if certificate.language == '2' %}
+                                      <td  colspan="1" align="center"><br><br><br><br><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{certificate.certificate_type.name_en}}%0DTracking No: {{certificate.tracking_no}}%0DName:{{certificate.name}}&amp;size=200x200" width="200px" height="200px" alt="{{certificate.name}}" title="{{certificate.name}}:{{certificate.certificate_type.name_en}}" width="50" height="50" /></div></td>
+
+                                      <td  colspan="2" align="right"><br><br><br></div></td>
+                                      <td  colspan="1" align="right"><br><br><br><br><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if certificate.chairman.signature %}{{certificate.chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>({{certificate.chairman.name_en}})<br>{{certificate.chairman.post.name_en}}<br>4 No. Tilakpur Union Council<br>Akkelpur, Jaypurhat.</div></td>
+                      
+                                      {% else %}
+                                        
                                       <td  colspan="1" align="center"><br><br><br><br><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{certificate.certificate_type.name_en}}%0DTracking No: {{certificate.tracking_no}}%0DName:{{certificate.name}}&amp;size=200x200" width="200px" height="200px" alt="{{certificate.name}}" title="{{certificate.name}}:{{certificate.certificate_type.name_en}}" width="50" height="50" /></div></td>
 
                                         <td  colspan="2" align="right"><br><br><br></div></td>
-                                        <td  colspan="1" align="right"><br><br><br><br><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if certificate.chairman.signature %}{{certificate.chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{certificate.chairman.name}}<br>{{certificate.chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
-
+                                        <td  colspan="1" align="right"><br><br><br><br><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if certificate.chairman.signature %}{{certificate.chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>({{certificate.chairman.name}})<br>{{certificate.chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
+                                      {% endif %}
+                                      
                                        
                                    </tr>
                                     <tr>
@@ -290,20 +325,23 @@ function googleTranslateElementInit() {
             }
             return output.join('');
           }
-        input =document.getElementById("date").textContent.toString();
-        document.getElementById('date').textContent = replaceNumbers(input);
-        input =document.getElementById("para1").textContent.toString();
-        document.getElementById('para1').textContent = replaceNumbers(input);
-        input =document.getElementById("para2").textContent.toString();
-        document.getElementById('para2').textContent = replaceNumbers(input);
-        input =document.getElementById("para3").textContent.toString();
-        document.getElementById('para3').textContent = replaceNumbers(input);
-        input =document.getElementById("para4").textContent.toString();
-        document.getElementById('para4').textContent = replaceNumbers(input);
-        input =document.getElementById("para5").textContent.toString();
-        document.getElementById('para5').textContent = replaceNumbers(input);
-        input =document.getElementById("date").textContent.toString();
-        document.getElementById('date').textContent = replaceNumbers(input);
+
+          if('{{certificate.language}}' != '2'){
+            input =document.getElementById("date").textContent.toString();
+            document.getElementById('date').textContent = replaceNumbers(input);
+            input =document.getElementById("para1").textContent.toString();
+            document.getElementById('para1').textContent = replaceNumbers(input);
+            input =document.getElementById("para2").textContent.toString();
+            document.getElementById('para2').textContent = replaceNumbers(input);
+            input =document.getElementById("para3").textContent.toString();
+            document.getElementById('para3').textContent = replaceNumbers(input);
+            input =document.getElementById("para4").textContent.toString();
+            document.getElementById('para4').textContent = replaceNumbers(input);
+            input =document.getElementById("para5").textContent.toString();
+            document.getElementById('para5').textContent = replaceNumbers(input);
+            input =document.getElementById("date").textContent.toString();
+            document.getElementById('date').textContent = replaceNumbers(input);
+            }
         
         }
 

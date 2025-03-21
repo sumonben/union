@@ -47,7 +47,7 @@ class CheckoutSuccessView(View):
         
         context={}
         data = self.request.POST
-
+        print(data)
         id=int(data['value_d'])
         tran_purpose=PaymentPurpose.objects.filter(id=id).first()
         transaction=None
@@ -83,6 +83,11 @@ class CheckoutSuccessView(View):
             if transaction:
                 if tran_purpose.payment_type.id == 1:
                     certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
+                    year=transaction.created_at.year
+                    if certificate.memorial_no is None:
+                        count=Transaction.objects.filter(tran_purpose__certificate_type_id=tran_purpose.certificate_type_id,tran_purpose__payment_type=tran_purpose.payment_type).filter(created_at__year=year).count()
+                        memorial_no=str(tran_purpose.payment_type.id).zfill(2)+'.'+str(tran_purpose.certificate_type_id).zfill(2)+'-'+str(year)+'-('+str(count)+')'
+                        certificate.memorial_no=memorial_no
                     context['certificate']=certificate
                     context['certificate_type']=certificate.certificate_type
                    
@@ -90,6 +95,13 @@ class CheckoutSuccessView(View):
                     certificate.save()
                 else:
                     license=License.objects.filter(tracking_no=data['value_a']).first()
+                    if license.memorial_no is None:
+                        year=transaction.created_at.year
+                        count=Transaction.objects.filter(tran_purpose__certificate_type_id=tran_purpose.certificate_type_id,tran_purpose__payment_type=tran_purpose.payment_type).filter(created_at__year=year).count()
+                        memorial_no=str(tran_purpose.payment_type.id).zfill(2)+'.'+str(tran_purpose.certificate_type_id).zfill(2)+'-'+str(year)+'-('+str(count)+')'
+                        license_no=str(tran_purpose.payment_type.id).zfill(2)+'-'+str(tran_purpose.certificate_type_id).zfill(2)+'-'+str(year).zfill(2)+'-'+str(count)
+                        license.license_no=license_no
+                        license.memorial_no=memorial_no
                     context['license']=license
                     context['license_type']=license.license_type
                     
@@ -131,7 +143,7 @@ class CheckoutFaildView(View):
     def post(self, request, *args, **kwargs):
         context={}
         data = self.request.POST
-
+        print(self.request.POST)
         id=int(data['value_d'])
         tran_purpose=PaymentPurpose.objects.filter(id=id).first()
         

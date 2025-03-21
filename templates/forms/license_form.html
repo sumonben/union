@@ -509,14 +509,14 @@
             if (response.status === 'success') {
               if(id=='id_form-0-ward'){
               $("#id_form-0-village option").remove();
-              $("#id_form-0-village").append('<option '+'value="0">'+ '-----------' +'</option>');
+              $("#id_form-0-village").append('<option '+'value="">'+ '-----------' +'</option>');
                     for (var i = response.village.length - 1; i >= 0; i--) {
                                   $("#id_form-0-village").append('<option '+'value="'+response.village[i].id+'">'+response.village[i].name +'('+response.village[i].name_en+ ')' +'</option>');
                               }
                 }
                 if(id=='id_form-0-village'){
                   $("#id_form-0-mouja option").remove();
-                  $("#id_form-0-mouja").append('<option '+'value="0">'+ '-----------' +'</option>');
+                  $("#id_form-0-mouja").append('<option '+'value="">'+ '-----------' +'</option>');
                         for (var i = response.mouja.length - 1; i >= 0; i--) {
                                       $("#id_form-0-mouja").append('<option '+'value="'+response.mouja[i].id+'">'+response.mouja[i].name +'('+response.mouja[i].name_en+ ')' +'</option>');
                                   }
@@ -557,7 +557,7 @@
           if (response.status === 'success') {
             if(id=='id_division'){
             $("#id_district option").remove();
-            $("#id_district").append('<option '+'value="0">'+ '-----------' +'</option>');
+            $("#id_district").append('<option '+'value="">'+ '-----------' +'</option>');
                   for (var i = response.district.length - 1; i >= 0; i--) {
                                 $("#id_district").append('<option '+'value="'+response.district[i].id+'">'+response.district[i].name +'('+response.district[i].name_en+ ')' +'</option>');
                             }
@@ -565,7 +565,7 @@
             if(id=='id_district'){
 
               $("#id_upazilla option").remove();
-            $("#id_upazilla").append('<option '+'value="0">'+ '-------------' +'</option>');
+            $("#id_upazilla").append('<option '+'value="">'+ '-------------' +'</option>');
                   for (var i = response.district.length - 1; i >= 0; i--) {
                                 $("#id_upazilla").append('<option '+'value="'+response.district[i].id+'">'+ response.district[i].name +'('+response.district[i].name_en + ')'+'</option>');
                             }
@@ -574,7 +574,7 @@
             if(id=='id_upazilla'){
 
               $("#id_union option").remove();
-            $("#id_union").append('<option '+'value="0">'+ '-------------' +'</option>');
+            $("#id_union").append('<option '+'value="">'+ '-------------' +'</option>');
                   for (var i = response.district.length - 1; i >= 0; i--) {
                                 $("#id_union").append('<option '+'value="'+response.district[i].id+'">'+ response.district[i].name + '('+response.district[i].name_en + ')' +'</option>');
                             }

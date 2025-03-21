@@ -7,8 +7,8 @@ from import_export.admin import ExportActionMixin,ImportExportMixin
 @admin.register(License)
 class LicenseAdmin(ImportExportMixin,admin.ModelAdmin):
     search_fields=[  'email','phone',]
-    list_display=[ 'tracking_no','license_owner_name','licensed_name','email','phone','transaction_detaills','paid_at','is_verified']
-    list_display_links = ['license_owner_name','email','phone',]
+    list_display=[ 'tracking_no','memorial_no','license_owner_name','licensed_name','email','phone','transaction_detaills','paid_at','is_verified']
+    list_display_links = ['tracking_no','memorial_no','license_owner_name','email','phone',]
     list_filter=['is_verified']
 
 # @admin.register(WarishanLicense)

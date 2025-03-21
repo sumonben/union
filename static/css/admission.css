@@ -31,7 +31,7 @@ body {
 	border:1px solid #adaaad;
 	display:inline-block;
 	color:#5e5c5e;
-	font-family:Arial;
+	font-family:kalpurush;
 	font-size:12px;
 	font-weight:bold;
 	font-style:normal;
@@ -69,7 +69,7 @@ body {
 	border:1px solid #adaaad;
 	display:inline-block;
 	color:#5e5c5e;
-	font-family:Arial;
+	font-family:kalpurush;
 	font-size:12px;
 	font-weight:bold;
 	font-style:normal;
@@ -107,7 +107,7 @@ body {
 	border:1px solid #adaaad;
 	display:inline-block;
 	color:#5e5c5e;
-	font-family:Arial;
+	font-family:kalpurush;
 	font-size:12px;
 	font-weight:bold;
 	font-style:normal;
@@ -134,7 +134,7 @@ fieldset {
 }
 
 .main-top {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-family: kalpurush;
 	font-size: 11px;
 	color: #000000;
 	text-decoration: none;
@@ -146,7 +146,7 @@ fieldset {
 	border-left-style: none;
 }
 .main-button {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #000000;
 	text-decoration: none;
@@ -158,7 +158,7 @@ fieldset {
 	border-left-style: none;
 }
 .main-left {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #000000;
 	text-decoration: none;
@@ -170,7 +170,7 @@ fieldset {
 	border-left-style: none;
 }
 .main-right {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #000000;
 	text-decoration: none;
@@ -182,7 +182,7 @@ fieldset {
 	border-left-style: none;
 }
 .bdr01 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -201,7 +201,7 @@ fieldset {
 	font-weight: bold;
 }
 .bdr01-A {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -220,7 +220,7 @@ fieldset {
 	font-weight: normal;
 }
 .bdr01-B {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #000;
 	text-decoration: none;
@@ -240,7 +240,7 @@ fieldset {
 }
 
 .bdr-toplink {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #39F;
 	text-decoration: none;
@@ -250,7 +250,7 @@ fieldset {
 }
 
 .bdr-body {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -259,27 +259,27 @@ fieldset {
 	border-radius: 4px;
 }
 .gap01 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 6px;
 	color: #000000;
 	text-decoration: none;
 }
 .black10 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 10px;
 	color: #000000;
 	text-decoration: none;
 	font-weight: normal;
 }
 .black10bold {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 10px;
 	color: #000000;
 	text-decoration: none;
 	font-weight: bold;
 }
 .black10i {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 10px;
 	color: #000000;
 	text-decoration: none;
@@ -288,14 +288,14 @@ fieldset {
 }
 
 .black11 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #000000;
 	text-decoration: none;
 	font-weight: normal;
 }
 .black11bold {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #000000;
 	text-decoration: none;
@@ -304,7 +304,7 @@ fieldset {
 
 
 .black11i {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #000000;
 	text-decoration: none;
@@ -313,48 +313,48 @@ fieldset {
 }
 
 .black12 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #000000;
 	text-decoration: none;
 	font-weight: normal;
 }
 .GrayBlue12 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
 	font-weight: bold;
 }
 .OffWhite12b {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #E7E7E7;
 	text-decoration: none;
 	font-weight: bold;
 }
 .cyan11 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #39F;
 	text-decoration: none;
 }
 .gray11 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #5A6572;
 	text-decoration: none;
 }
 
 .GrayBlue14b {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 14px;
 	color: #024D75;
 	text-decoration: none;
 	font-weight: bold;
 }
 .GrayBlue20bold {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 22px;
 	color: #024D75;
 	text-decoration: none;
@@ -362,7 +362,7 @@ fieldset {
 }
 
 .add-disable {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #333;
 	text-decoration: none;
@@ -372,40 +372,40 @@ fieldset {
 
 
 .black12bold {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #000000;
 	text-decoration: none;
 	font-weight: bold;
 }
 .black14 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 14px;
 	color: #000000;
 	text-decoration: none;
 }
 .black14bold {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 14px;
 	color: #000000;
 	text-decoration: none;
 	font-weight: bold;
 }
 .black20b {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 20px;
 	color: #000000;
 	text-decoration: none;
 	font-weight: bold;
 }
 .red12 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #F00;
 	text-decoration: none;
 }
 .red11 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #F00;
 	text-decoration: none;
@@ -413,33 +413,33 @@ fieldset {
 }
 
 .red12bold {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #F00;
 	text-decoration: none;
 	font-weight: bold;
 }
 .Field_Titel {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 16px;
 	color: #000000;
 	text-decoration: none;
 }
 .subField_Name {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 14px;
 	color: #000000;
 	text-decoration: none;
 	font-weight: bold;
 }
 .Field_Name {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 14px;
 	color: #000000;
 	text-decoration: none;
 }
 .mainlink {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #0000FF;
 	text-decoration: none;
@@ -447,14 +447,14 @@ fieldset {
 
 }
 .mainlink:hover {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #FF0000;
 	text-decoration: none;
 	font-weight: bold;
 }
 .link-home {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #3CF;
 	text-decoration: none;
@@ -462,14 +462,14 @@ fieldset {
 
 }
 .link-home:hover {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #09F;
 	text-decoration: none;
 	font-weight: bold;
 }
 .link01 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 14px;
 	color: #0000FF;
 	text-decoration: none;
@@ -477,14 +477,14 @@ fieldset {
 
 }
 .link01:hover {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 14px;
 	color: #FF0000;
 	text-decoration: none;
 	font-weight: bold;
 }
 .link02 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #3CF;
 	text-decoration: none;
@@ -492,14 +492,14 @@ fieldset {
 
 }
 .link02:hover {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #09F;
 	text-decoration: none;
 	font-weight: normal;
 }
 .link03 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #0000FF;
 	text-decoration: none;
@@ -507,28 +507,28 @@ fieldset {
 
 }
 .link03:hover {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #FF0000;
 	text-decoration: none;
 	font-weight: normal;
 }
 .optip {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #000000;
 	text-decoration: none;
 	font-weight: normal;
 }
 .optip:hover {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #000000;
 	text-decoration: none;
 	font-weight: normal;
 }
 .field-100 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -543,7 +543,7 @@ fieldset {
 	border-radius: 4px;
 }
 .field-flex {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -558,7 +558,7 @@ fieldset {
 	border-radius: 4px;
 }
 .field-sl {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -571,7 +571,7 @@ fieldset {
 
 
 .field-E {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -586,7 +586,7 @@ fieldset {
 	border-radius: 4px;
 }
 .field-Em {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -601,7 +601,7 @@ fieldset {
 	border-radius: 4px;
 }
 .field-G {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -618,7 +618,7 @@ fieldset {
 
 
 #s_name {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -633,7 +633,7 @@ fieldset {
 	border-radius: 4px;
 }
 #nid_no {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -648,7 +648,7 @@ fieldset {
 	border-radius: 4px;
 }
 .field-dropdown-L {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -664,7 +664,7 @@ fieldset {
 }
 
 .field-dropdown-M {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -679,7 +679,7 @@ fieldset {
 	border-radius: 4px;
 }
 .field-dropdown-E {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #323A89;
 	text-decoration: none;
@@ -695,7 +695,7 @@ fieldset {
 }
 
 .field-vcode {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 22px;
 	color: #36F;
 	text-decoration: none;
@@ -710,14 +710,14 @@ fieldset {
 	border-radius: 4px;
 }
 .topbg {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #000000;
 	text-decoration: none;
 	background-image: url(../images/topbgimg.jpg);
 }
 .errmsg {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 14px;
 	color: #FFF;
 	text-decoration: none;
@@ -738,14 +738,14 @@ fieldset {
 	border-left-color: #FFF;
 }
 .cutterbg {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 11px;
 	color: #000000;
 	text-decoration: none;
 	background-image: url(../images/cutter_line.jpg);
 }
 .pbreak {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: kalpurush;
 	font-size: 12px;
 	color: #000000;
 	text-decoration: none;

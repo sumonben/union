@@ -80,7 +80,14 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
 
 
 
-@media print and (min-width: 480px) {
+@media print and (min-width: 300px) {
+  @font-face {
+    font-family: "kalpurush";
+    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff");
+   
+    font-weight: normal;
+    font-style: normal;
+  }
   #second{
     margin-top:-50px;
 }
@@ -211,7 +218,107 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
         <div >
                         <div class="step d-block">
                           {% if tran_purpose.payment_type.id == 1 %}
-                            <div>
+
+                          
+                          {% if certificate.language == '2' %}
+                          <div>
+                              
+                            
+                            <h1 style="text-align: center;"><u>Application for {{certificate.certificate_type.name_en}}</u></h1>
+                          
+                          </div>
+
+                  <div id="heading"><h3 style="text-align: center; margin-left:2%">Tracking No.  <b>&nbsp{{certificate.tracking_no}}</b></h3></div>
+
+
+                        <table  width="900"  align="center" valign="middle" cellspacing="0" cellpadding="4">
+
+                          <tbody>
+                          <tr>
+                            <td align="left">
+                              <fieldset>
+                              <table class="result" width="100%"  cellspacing="0" cellpadding="5">
+                                <tbody>
+                                
+
+
+                                    <tr>
+                                      <td width="15%" align="right" valign="middle" class="sprytextfield1"><b>Name:  </b></td>
+                                      <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{certificate.name}}                                        
+                                        </label>
+
+                                    </tr>
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Father's Name: </b></td>
+                                      <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{certificate.father_name}}                                        
+                                        </label>
+
+                                    </tr>
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Mother's Name:</b> </td>
+                                      <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{certificate.mother_name}}                                        
+                                        </label>
+
+                                    </tr>
+                                    
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Village:  </b></td>
+                                      <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{certificate.adress.village.name_en}}                                        
+                                        </label>
+
+                                    </tr>
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Ward: </b>  </td>
+                                      <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{certificate.adress.village.ward.name_en}}                                        
+                                        </label>
+
+                                    </tr>
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Date:</b>  </td>
+                                      <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label id="date">
+                                          {{transaction.tran_date}}                                          
+                                      </label>
+
+                                    </tr>
+
+                                    <tr>
+                                      <td colspan="2" align="center" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                        Union: Tilakpur ,Upazilla: Akkelpur, District: Jaypurhat, Bangladesh.      
+                                                                         </label>
+
+                                    </tr>
+                                   
+  
+                              </tbody></table>
+                            </fieldset>
+                          </td>
+                          
+                        </tr>
+                            
+                        </tbody>
+                      </table>
+                        
+                            
+
+                      </div>
+                    
+                                
+                            
+                          {% else %}
+                            
+                      <div>
                               
                             
                               <h1 style="text-align: center;"><u>{{certificate.certificate_type.name}}-এর জন্য আবেদন</u></h1>
@@ -303,6 +410,10 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                               
 
                         </div>
+                        {% endif %}
+                       
+                       
+                       
                        
                         {% else %}
 
@@ -402,7 +513,14 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                 </div>
                     <div id="q-box__buttons" >
                       
-                        <button id="submit-btn" class="btn-default" onclick="window.print()" >প্রিন্ট অথবা ডাউনলোড</button>
+                      {% if certificate.language == '2' %}
+                      <button id="submit-btn" class="btn-default" onclick="window.print()" >Print or Download</button>
+
+                      {% else %}
+                      <button id="submit-btn" class="btn-default" onclick="window.print()" >প্রিন্ট অথবা ডাউনলোড</button>
+
+                      {% endif %}
+                        
                     </div>   
                    
          
@@ -459,21 +577,22 @@ function googleTranslateElementInit() {
             }
             return output.join('');
           }
-        input =document.getElementById("date").textContent.toString();
-        document.getElementById('date').textContent = replaceNumbers(input);
-        input =document.getElementById("para1").textContent.toString();
-        document.getElementById('para1').textContent = replaceNumbers(input);
-        input =document.getElementById("para2").textContent.toString();
-        document.getElementById('para2').textContent = replaceNumbers(input);
-        input =document.getElementById("para3").textContent.toString();
-        document.getElementById('para3').textContent = replaceNumbers(input);
-        input =document.getElementById("para4").textContent.toString();
-        document.getElementById('para4').textContent = replaceNumbers(input);
-        input =document.getElementById("para5").textContent.toString();
-        document.getElementById('para5').textContent = replaceNumbers(input);
-        input =document.getElementById("date").textContent.toString();
-        document.getElementById('date').textContent = replaceNumbers(input);
-        
+          if('{{certificate.language}}' != '2'){
+            input =document.getElementById("date").textContent.toString();
+            document.getElementById('date').textContent = replaceNumbers(input);
+            input =document.getElementById("para1").textContent.toString();
+            document.getElementById('para1').textContent = replaceNumbers(input);
+            input =document.getElementById("para2").textContent.toString();
+            document.getElementById('para2').textContent = replaceNumbers(input);
+            input =document.getElementById("para3").textContent.toString();
+            document.getElementById('para3').textContent = replaceNumbers(input);
+            input =document.getElementById("para4").textContent.toString();
+            document.getElementById('para4').textContent = replaceNumbers(input);
+            input =document.getElementById("para5").textContent.toString();
+            document.getElementById('para5').textContent = replaceNumbers(input);
+            input =document.getElementById("date").textContent.toString();
+            document.getElementById('date').textContent = replaceNumbers(input);
+            }
         }
 
         function goToPrint(){

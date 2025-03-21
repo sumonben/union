@@ -51,3 +51,22 @@ def SubOrdinationView(request):
                     
         return JsonResponse({'status': 'Failed','meaasge':'Account created Successfully'},safe=False)
 
+def SubOrdinatsView(request):
+     if request.GET.get('id') == 'id_form-0-division':
+            division=Division.objects.filter(id=request.GET.get('value')).first()
+            district=District.objects.filter(division=division)
+            district=list(district.values())
+            return JsonResponse({'status': 'success','meaasge':'Account created Successfully','district':district},safe=False)
+     elif request.GET.get('id') == 'id_form-0-district':
+            district=District.objects.filter(id=request.GET.get('value')).first()
+            upazilla=Upazilla.objects.filter(district=district)
+            upazilla=list(upazilla.values())
+            return JsonResponse({'status': 'success','meaasge':'Account created Successfully','upazilla':upazilla},safe=False)
+     elif request.GET.get('id') == 'id_form-0-upazilla':
+            upazilla=Upazilla.objects.filter(id=request.GET.get('value')).first()
+            union=Union.objects.filter(upazilla=upazilla)
+            union=list(union.values())
+            return JsonResponse({'status': 'success','meaasge':'Account created Successfully','union':union},safe=False)
+        
+     else:
+        return JsonResponse({'status': 'Failed','meaasge':'Account created Successfully'},safe=False)

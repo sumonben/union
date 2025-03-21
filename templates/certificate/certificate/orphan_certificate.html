@@ -79,10 +79,9 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
 }
 
 
-
 @media print and (min-width: 480px) {
     
-    *{
+  table{
       -webkit-print-color-adjust: exact; 
 
 }
@@ -90,6 +89,7 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
   display: none !important;;
 }        
 }
+
     
     
 
@@ -157,8 +157,8 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
         <!-- FORMS -->
                   <div >
                         <div class="step d-block" style="margin-top:20px;height:100%">
-                          <div><h1 style="text-align: center;">                            <button  style="background-color:rgb(56, 73, 70); color: white;text-shadow: 3px 3px 3px rgb(73, 25, 11);border-radius:100%;padding:20px;">{{certificate_type.name}}</button></h1></div>
-                          <table width="100%" valign="middle">
+                            <div><h2 style="text-align: center;">                            <button class="rounded-50 ml-2" style="background-color:transparent; color:  rgb(73, 25, 11);;padding:10px;"><b>{% if certificate.language == '2' %} {{certificate_type.name_en}} {% else %} {{certificate_type.name}} {% endif %}</b></button></h2></div>
+                            <table width="100%" valign="middle">
                               <tr>
                               <td>
                                 <div  align="left"><h4 style="text-align: left; margin-left:2%">
@@ -184,10 +184,10 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                   
 
                                     <tr>
-                                        <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify"><h5 style="font-weight:500; line-height:2"> এই মর্মে প্রত্যয়ন করিতেছি যে, নামঃ <span ><b>&nbsp&nbsp{{certificate.name}}&nbsp&nbsp</b></span> পিতাঃ {{certificate.father_name}}, মাতাঃ {{certificate.mother_name}},  গ্রামঃ {{certificate.adress.village.name}}, ডাকঘরঃ {{certificate.adress.village.post_office.name}}, ওয়ার্ড নং-{{certificate.adress.ward.ward_no}}, উপজেলাঃ আক্কেলপুর,  জেলাঃ জয়পুরহাট।
-                                            সে আমার পরিচিত। আমার জানামতে সে অত্র ০৪ নং তিলকপুর ইউনিয়নের {{certificate.adress.ward.name}} এর একজন স্থায়ী বাসিন্দা ও জন্মসুত্রে বাংলাদেশের নাগরিক। তার ব্যবহার ও স্বভাব চরিত্র ভাল। সে কোন প্রকার রাষ্ট্র বা সমাজ বিরোধী কাজে লিপ্ত নয়।
+                                        <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify"><h5 style="font-weight:500; line-height:2"> এই মর্মে প্রত্যয়ন করিতেছি যে, নামঃ <span ><b>&nbsp&nbsp{{certificate.name}}&nbsp&nbsp</b></span> পিতাঃ {{certificate.father_name}}, মাতাঃ {{certificate.mother_name}} গ্রামঃ {{certificate.adress.village.name}}, ডাকঘরঃ {{certificate.adress.village.post_office.name}}, ওয়ার্ড নং-{{certificate.adress.ward.ward_no}}, উপজেলাঃ আক্কেলপুর,  জেলাঃ জয়পুরহাট।
+                                            তিনি আমার পরিচিত। আমার জানামতে তিনি অত্র ০৪ নং তিলকপুর ইউনিয়নের {{certificate.adress.ward.name}} এর একজন স্থায়ী বাসিন্দা ও জন্মসুত্রে বাংলাদেশের নাগরিক। তাহার {{certificate.title}} মর্মে তাহাকে এতিম সনদ প্রদান করা হইলো।
                                             <br><br><br>
-                                            আমি তার সার্বিক উন্নতি ও মঙ্গল কামনা করি।                             
+                                            আমি তাহার সার্বিক উন্নতি ও মঙ্গল কামনা করিতেছি।                             
                                         </tr>
                                     
                                     <tr valign="bottom">

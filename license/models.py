@@ -43,6 +43,8 @@ class License(models.Model):
     adress=models.ForeignKey(OthersAdress,null=True, blank=True,on_delete=models.SET_NULL,verbose_name="ঠিকানা")
     adress_of_license=models.ForeignKey(Adress,related_name='adress_of_linsence',null=True, blank=True,on_delete=models.SET_NULL,verbose_name="প্রতিষ্ঠানের ঠিকানা")
     license_type=models.ForeignKey(LicenseType,on_delete=models.SET_NULL,null=True, blank=True,verbose_name="লাইসেন্সের ধরণ")
+    license_no=models.CharField(max_length=500,blank=True, null=True,verbose_name="স্মারক নং")
+    memorial_no=models.CharField(max_length=500,blank=True, null=True,verbose_name="স্মারক নং")
     person=models.ManyToManyField(Person,blank=True,verbose_name="সংশিষ্ট ব্যক্তিবর্গ")
     description=RichTextField(max_length=1000,null=True,blank=True,verbose_name="কারণ বর্ণনাঃ")
     caste=models.CharField(max_length=500,blank=True, null=True,verbose_name="সম্প্রদায়")

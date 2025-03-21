@@ -4,6 +4,8 @@
 {% load static %}
 
 <style>
+  CKEDITOR.replace('editor1'); 
+  CKEDITOR.addCss('.cke_editable p { margin: 0 !important; }');
     .main_body{
         width:100%;
         height:100%;
@@ -43,8 +45,9 @@
             <div class="col-sm-12 form-group" >
 
             <table width="100%" border="1" cellspacing="0" cellpadding="10">
-              <thead><th colspan="5" style="height: 30px; background-color: #035a4c; color: #fff;text-shadow: 10px 10px 10px rgb(73, 25, 11);padding: 15px;font-size:23px;text-align:center;">  ব্যক্তিগত তথ্য                                   
-                {% if certificate_type.id == 2 or  certificate_type.id == 4 %}
+              <thead><th colspan="5" style="height: 30px; background-color: #035a4c; color: #fff;text-shadow: 10px 10px 10px rgb(73, 25, 11);padding: 15px;font-size:23px;text-align:center;"> {% if certificate_type.id == 7 %}অভিভাবকের  তথ্য {% else %}  ব্যক্তিগত তথ্য  {% endif %}                                  
+                
+                {% if certificate_type.id == 2 or  certificate_type.id == 12 or  certificate_type.id == 4 or  certificate_type.id == 16 or  certificate_type.id == 22 %}
                &nbsp<h5>(সনদটি ইংরেজিতে চাইলে নাম, বাবার নাম ও মায়ের নাম ইংরেজিতে পুরণ করুন ও ভাষা ইংরেজি সিলেক্ট করুন)  </h5>                                
                {% endif %}</th></thead>
               <tbody>
@@ -90,7 +93,7 @@
             <form  id="form" class="form-row px-3" method="post" action="{% url 'certificate_form' %}" enctype="multipart/form-data">
               {% csrf_token %}
               {{form.media}}
-              {% if certificate_type.id == 2 or certificate_type.id == 4 %}
+              {% if certificate_type.id == 2 or  certificate_type.id == 12 or  certificate_type.id == 16 or certificate_type.id == 22 %}
 
               <div class="col-sm-12 form-group" >
                 
@@ -173,7 +176,29 @@
               
               <div class="col-sm-12 form-group">
                 <div class="row">
+                  {% if form.gender %}
+
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.gender.label_tag}}</label> <div class="loginBox">
+                      {{form.gender}}                      
+                      <span class="fa fa-mercury"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+
+                  {% endif %}
                   
+                  {% if form.passport %}
+
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.passport.label_tag}}</label> <div class="loginBox">
+                      {{form.passport}}                      
+                      <span class="fas fa-skating"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+
+                  {% endif %}
+                  
+
                   {% if form.profession %}
 
                   <div class="col-sm-6">
@@ -205,15 +230,7 @@
                   </div>
                   {% endif %}
 
-                  {% if form.cause %}
-                  <div class="col-sm-6">
-                    <label for="" class="col-form-label-sm m-0">{{form.cause.label_tag}}</label> 
-                    <div class="loginBox">
-                      {{form.cause}}
-                      <span class="fa fa-default"></span>
-                    </div> <!--  --> <div class="invalid-feedback"></div>
-                  </div>
-                  {% endif %}
+                 
                   
                   {% if form.date %}
 
@@ -248,7 +265,44 @@
                       <span class="fa fa-certificate"></span>
                     </div> <!--  --> <div class="invalid-feedback"></div>
                   </div>
+                  {% if certificate_type.id == 17 %}
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.caste.label_tag}}</label> 
+                    <div class="loginBox">
+                      {{form.caste}}
+                      <span class="fa fa-list-alt"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.language.label_tag}}</label> 
+                    <div class="loginBox">
+                      {{form.language}}
+                      <span class="fa fa-list-alt"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
                   {% endif %}
+                  {% if form.cause %}
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.cause.label_tag}}</label> 
+                    <div class="loginBox">
+                      {{form.cause}}
+                      <span class="fa fa-list-alt"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  {% endif %}
+                
+                    {% if form.title %}
+                    <div class="col-sm-6">
+                      <label for="" class="col-form-label-sm m-0">{{form.title.label_tag}}</label> 
+                      <div class="loginBox">
+                        {{form.title}}                      
+                        <span class="fa fa-id-card"></span>
+                      </div> <!--  --> <div class="invalid-feedback"></div>
+                    </div>
+                    
+                    {% endif %}
+                      
+                    {% endif %}
 
 
 
@@ -258,12 +312,13 @@
                  
                   
                   {% if form.description %}
-                  <label for="" class="col-form-label-sm m-0">{{form.description.label_tag}}</label> 
-                  <br>
-
-                  {{form.description}}                      
-                     
-
+                 
+                        <div class="col-sm-12">
+                          <label for="" class="col-form-label-sm m-0">{{form.description.label_tag}}</label> 
+                          
+                        </div>
+                        {{form.description}}                      
+                
                   {% endif %}
                   
 
@@ -303,13 +358,83 @@
                   </div> {% endcomment %}
                 </div>
               </div>
+{% comment %}               
+              {% if other_adress_formset %}
+                
+              {{other_adress_formset.management_form}}
               
+              {% for other_adress in other_adress_formset %}
+                
+                
+              <table width="100%" border="1" cellspacing="0" cellpadding="10">
+                <thead><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 5px 5px 5px rgb(73, 25, 11);padding: 15px;font-size:20px;text-align:center;"> স্বত্তাধিকারীর ঠিকানা                                 
+                  </th></thead>
+                <tbody>
+                </tbody>
+              </table>
+
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label for="" class="col-form-label-sm m-0">{{other_adress.division.label_tag}}</label> <div class="loginBox">
+                          {{other_adress.division}}                      
+                          <span class="fa fa-map-marker"></span>
+                        </div> <!--  --> <div class="invalid-feedback"></div>
+                      </div>
+
+                  <div class="col-sm-4">
+                    <label for="" class="col-form-label-sm m-0">{{other_adress.district.label_tag}}</label>
+                     <div class="loginBox">
+                      {{other_adress.district}}
+                      <span class="fa fa-home"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="" class="col-form-label-sm m-0">{{other_adress.upazilla.label_tag}}</label>
+                     <div class="loginBox">
+                      {{other_adress.upazilla}}
+                      <span class="fa fa-home"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <label for="" class="col-form-label-sm m-0">{{other_adress.union.label_tag}}</label>
+                     <div class="loginBox">
+                      {{other_adress.union}}
+                      <span class="fa fa-home"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="" class="col-form-label-sm m-0">{{other_adress.village.label_tag}}</label>
+                     <div class="loginBox">
+                      {{other_adress.village}}
+                      <span class="fa fa-home"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="" class="col-form-label-sm m-0">{{other_adress.post_office.label_tag}}</label>
+                     <div class="loginBox">
+                      {{other_adress.post_office}}
+                      <span class="fa fa-home"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %} 
+
+              {% endif %}{% endcomment %}
+
               {% if formset %}
               <fieldset class="formset">
               <table width="100%" border="1" cellspacing="0" cellpadding="3">
                 <tr style="height: 25px; background-color: #035a4c; color: #fff;">
                   {% if certificate_type.id == 9 %}
                   <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">অন্য নামসমূহ</td>
+                  {% elif certificate_type.id == 7 %}
+                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">সন্তান বা নির্ভরশীল ব্যক্তির নাম ও সম্পর্ক</td>
                   {% elif certificate_type.id == 15 %}
                   <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">স্বামীর নাম</td>
                   {% else %}
@@ -342,7 +467,23 @@
                           <tr>
                           <td>{{form.name}}</td>
                         </tr>
-                            {% else %}
+                        {% elif certificate_type.id == 7  %}
+                        <tr>
+                          <td colspan="10">{{form.name.label_tag}} </td>
+                          </tr>
+                         <tr>
+                          <td colspan="10">{{form.name}}</td>
+                         </tr>
+                        <tr>
+                          <td colspan="5">{{form.relation.label_tag}}: </td>
+                          <td colspan="5">{{form.comment.label_tag}}: </td>
+                        </tr>
+                        <tr>
+                          <td colspan="5">{{form.relation}}</td>
+                          <td colspan="5">{{form.comment}}</td>
+                        </tr>
+
+                          {% else %}
                             <tr>
                             <td colspan="10">{{form.name.label_tag}} </td><td  rowspan="4"><button id="{{ form.prefix }}-row" style="font-size:18px;background-color:rgb(177, 41, 8); color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);float:right" type="button" onclick="removeForm( this.id )" > <i class="fa fa-trash-o" ></i></button></td>
                             </tr>
@@ -366,7 +507,8 @@
                       </div>
                       
                         {% endfor %}
-                        {% if certificate_type.id != 15  %}
+
+                        {% if certificate_type.id == 1 or certificate_type.id == 9   %}
                                                 <button id="add-form" style="font-size:18px;background-color: #035a4c; color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);"  type="button">আরও যুক্ত করুন<i class="fa fa-plus" ></i></button>
                         {% endif %}
 
@@ -377,6 +519,8 @@
               </tbody>
             </table>
           </fieldset>
+
+          
                 {% comment %} <table width="100%" border="1" cellspacing="0" cellpadding="3">
                   <tr style="height: 25px; background-color: #035a4c; color: #fff;">
                     {% if certificate_type.id == 9 %}
@@ -516,7 +660,7 @@
           if (response.status === 'success') {
             if(id=='id_ward'){
             $("#id_village option").remove();
-            $("#id_village").append('<option '+'value="0">'+ '-----------' +'</option>');
+            $("#id_village").append('<option '+'value="">'+ '-----------' +'</option>');
                   for (var i = response.village.length - 1; i >= 0; i--) {
                                 $("#id_village").append('<option '+'value="'+response.village[i].id+'">'+response.village[i].name +'('+response.village[i].name_en+ ')' +'</option>');
                             }
@@ -537,7 +681,63 @@
   });
 
     
+  }
+  
+  function myFunctionTeacher(id){
+    var division_set=document.getElementById(id).value;
+    url="{% url 'get_subordinations'%}";
+    var $j = jQuery.noConflict();
+    
+      $.ajax({
+      type: 'GET',
+      url: "{% url 'get_subordinats' %}",
+      cache:'false',  // Adjust the URL as per your project structure
+      data: {id:id,'value':division_set},
+     
+     
+      success: function (response) {
+          if (response.status === 'success') {
+            if(id=='id_form-0-division'){
+            $("#id_form-0-district option").remove();
+            $("#id_form-0-district").append('<option '+'value="">'+ '-----------' +'</option>');
+                  for (var i = response.district.length - 1; i >= 0; i--) {
+                                $("#id_form-0-district").append('<option '+'value="'+response.district[i].id+'">'+response.district[i].name +'('+response.district[i].name_en+ ')' +'</option>');
+                            }
+              }
+
+            if(id=='id_form-0-district'){
+                $("#id_form-0-upazilla option").remove();
+                $("#id_form-0-upazilla").append('<option '+'value="">'+ '-----------' +'</option>');
+                      for (var i = response.upazilla.length - 1; i >= 0; i--) {
+                                    $("#id_form-0-upazilla").append('<option '+'value="'+response.upazilla[i].id+'">'+response.upazilla[i].name +'('+response.upazilla[i].name_en+ ')' +'</option>');
+                                }
+                  }
+
+            if(id=='id_form-0-upazilla'){
+                    $("#id_form-0-union option").remove();
+                    $("#id_form-0-union").append('<option '+'value="">'+ '-----------' +'</option>');
+                          for (var i = response.union.length - 1; i >= 0; i--) {
+                                        $("#id_form-0-union").append('<option '+'value="'+response.union[i].id+'">'+response.union[i].name +'('+response.union[i].name_en+ ')' +'</option>');
+                                    }
+                      }
+            
+
+          } else {
+           ///alert("Success message not found");
+                  
+              }
+              
+      },
+      error: function (xhr, status, error) {
+         
+          var err = eval("(" + xhr.responseText + ")");
+          alert(err.Message);
+      }
+  });
+
+    
   } 
+
 
 </script>
 
@@ -593,235 +793,7 @@
       
   }          {% endcomment %}
           
-    window.onload = (event) => {
-let compulsory_subject_initialized=document.getElementsByClassName('selector-available');
-let filter_compusory=document.getElementById('id_compulsory_subject_filter_selected');
-let remove_compusory=document.getElementById('id_compulsory_subject_remove_all_link');
-
-let selector_chooser=document.getElementsByClassName('selector-chooser');
-
-
-compulsory_subject_initialized[0].style.display='none';
-selector_chooser[0].style.display='none';
-
-filter_compusory.style.display='none';
-remove_compusory.style.display='none';
-
-z= compulsory_subject_initialized.getElementsByTagName("option");
-for (i = 0; i < z.length; i++) {
-
-z[i].setAttribute('disabled','true','readonly','true');
-
-}
-
-alert(compulsory_subject_initialized.length);
-};
-
-
-
-
-const progress = (value) => {
-document.getElementsByClassName('progress-bar')[0].style.width = `${value}%`;
-}
-
-let step = document.getElementsByClassName('step');
-let prevBtn = document.getElementById('prev-btn');
-let nextBtn = document.getElementById('next-btn');
-let submitBtn = document.getElementById('submit-btn');
-let form = document.getElementsByTagName('form')[0];
-let preloader = document.getElementById('preloader-wrapper');
-let bodyElement = document.querySelector('body');
-let succcessDiv = document.getElementById('success');
-let downloadDiv = document.getElementById('downlod_form_id');
-
-let addChoiceBtn=document.getElementsByName('id_fourth_subject');
-
-form.onsubmit = () => { return false }
-
-let current_step = 0;
-let stepCount = 4
-step[current_step].classList.add('d-block');
-if(current_step == 0){
-prevBtn.classList.add('d-none');
-submitBtn.classList.add('d-none');
-nextBtn.classList.add('d-inline-block');
-}
-
-
-nextBtn.addEventListener('click', () => {
-var x, y, i, valid = true;
-var options=document.getElementById('id_compulsory_subject_to').getElementsByTagName('option');
-for(i=0;i<options.length ;i++){
-options[i].selected = 'selected';
-}
-document.getElementById('id_compulsory_subject_to').disabled='disabled';
-
-
-//document.getElementById('toast-container').style.visibility ='hidden';
-current_step++;
-let previous_step = current_step - 1;
-let flag=validateForm();
-if(( current_step > 0) && (current_step <= stepCount) && flag){
-prevBtn.classList.remove('d-none');
-prevBtn.classList.add('d-inline-block');
-step[current_step].classList.remove('d-none');
-step[current_step].classList.add('d-block');
-step[previous_step].classList.remove('d-block');
-step[previous_step].classList.add('d-none');
-if (current_step == stepCount){
-submitBtn.classList.remove('d-none');
-submitBtn.classList.add('d-inline-block');
-nextBtn.classList.remove('d-inline-block');
-nextBtn.classList.add('d-none');
-}
-} else {
-if(current_step > stepCount){
-  form.onsubmit = () => { return true }
-}
-}
-progress((100 / stepCount) * current_step);
-function validateForm() {
-// This function deals with validation of the form fields
-if(current_step==4 ){
-
-
-if(document.getElementById('id_fourth_subject').value==''){
-valid= false;
-}
-/* var select=document.getElementsByName('compulsory_subject');
-var compulsory_subject=select[1];
-if(compulsory_subject.length<6){
-  valid= false;
-}*/
-
-
-
-
-}
-
-x = document.getElementsByClassName("step d-block");
-//alert(current_step);
-
-y = x[0].getElementsByTagName("input");
-z= x[0].getElementsByTagName("select");
-
-for (i = 0; i < y.length; i++) {
-// If a field is empty...
-//alert(y[i]+y[i].required);
-//alert(y[i].getAttribute('id')+": "+y[i].hasAttribute('required'));
-
-if (y[i].value == '' && y[i].hasAttribute('required') ) {
-
-
-  y[i].className='textfieldUSERinfoInvalid';
-
-valid = false;
-
-}
-}
-
-for (i = 0; i < z.length; i++) {
-// If a field is empty...
-
-if (z[i].value == '' && z[i].hasAttribute('required') ) {
-  //alert(z[i].getAttribute('id')+": "+z[i].hasAttribute('required'));
-
- if(z[i].className=='textfieldUSER')
-   z[i].className='textfieldUSERInvalid';
-else
-  z[i].className='textfieldUSERinfoInvalid';
-  
- valid = false;
-
-}
-}
-//alert("valid:"+valid);
-if(!valid){
-current_step--;
-var x = document.getElementById("toast-container");
-
-// Add the "show" class to DIV
-x.className = "show";
-
-// After 3 seconds, remove the show class from DIV
-setTimeout(function(){ x.className = x.className.replace("show", ""); }, 11000);
-/*var x = document.getElementById("toast-container");
-         x.className = "toast-top-center";
-         x.style.visibility="vissible"
-
-         setTimeout(function(){ 
-             x.className = x.className.replace("toast-top-center","");
-            
-             
-          }, 8000);*/
-          
-
-}
-return valid; // return the valid status
-}
-
-
-
-});
-
-
-
-prevBtn.addEventListener('click', () => {
-if(current_step > 0){
-current_step--;
-let previous_step = current_step + 1; 
-prevBtn.classList.add('d-none');
-prevBtn.classList.add('d-inline-block');
-step[current_step].classList.remove('d-none');
-step[current_step].classList.add('d-block')
-step[previous_step].classList.remove('d-block');
-step[previous_step].classList.add('d-none');
-if(current_step < stepCount){
- submitBtn.classList.remove('d-inline-block');
- submitBtn.classList.add('d-none');
- nextBtn.classList.remove('d-none');
- nextBtn.classList.add('d-inline-block');
- prevBtn.classList.remove('d-none');
- prevBtn.classList.add('d-inline-block');
-} 
-}
-
-if(current_step == 0){
-prevBtn.classList.remove('d-inline-block');
-prevBtn.classList.add('d-none');
-}
-progress((100 / stepCount) * current_step);
-});
-
-
-
-function fourthSubject(id){
-
-if(current_step==3){
-var compulsory_subject=document.getElementById('id_optional_subject_from');
-var selected_item = document.getElementById('id_fourth_subject');
-if(compulsory_subject.length==1){
-selected_item.value=compulsory_subject[0].value;
-alert(selected_item.value);
-
-return false;
-}
-
-
-
-
-
-
-}
-
-}
-function subjectChoice(id){
-alert("subjectChoice");
-
-}
-addChoiceBtn.addEventListener('change', () => {
-alert("subjectChoice");
-});
+    
 
 </script>
 <script>

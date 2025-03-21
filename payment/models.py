@@ -68,6 +68,15 @@ class Transaction(models.Model):
         return self.tran_id
 
 
+class PaymentURL(models.Model):
+
+    url = models.CharField(max_length=500, blank=True, null=True)
+    
+    class Meta:
+        verbose_name = "Payment Url"
+        verbose_name_plural = "Payment Url"
+    def __str__(self):
+        return self.url
         
 class PaymentGateway(models.Model):
 
@@ -77,3 +86,5 @@ class PaymentGateway(models.Model):
     class Meta:
         verbose_name = "Payment Gateway"
         verbose_name_plural = "Payment Gateway"
+    def __str__(self):
+        return self.store_id
