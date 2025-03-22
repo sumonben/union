@@ -19,7 +19,7 @@
 </style>
 
 <!-- CONTAINER -->
-<div class="services">
+<div class="services" id="service_body">
   
   <div data-v-6f04a53f="" class="memberRegistration py-5">
     <div class="container-wrapper">
@@ -281,7 +281,21 @@
                               </div>
                           
                       </div>
-
+                      <div class="col-sm-12 form-group">
+                        <div class="row">
+                          <div class="custom-control custom-checkbox">
+                            <div class="col-form-label-sm font-weight-bold mb-0 custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" value="true" id="__BVID__164" required /><label class="custom-control-label" for="__BVID__164">
+                                {% if certificate.language == '2' %}
+                                I agreed with terms and conditions and to pay charges
+                                {% else %}
+                                উপরের সকল তথ্য সঠিক এবং অনলাইন চার্জ প্রদান করতে সম্মত আছি
+                                {% endif %}
+                              </label>
+                            </div> <div class="invalid-feedback"></div>
+                          </div>
+                        </div>
+                      </div> 
                       <div class="col-sm-9 form-group">
                         <p class="text-right">
                           <br>

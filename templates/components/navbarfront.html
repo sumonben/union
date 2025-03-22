@@ -154,8 +154,8 @@
             
             <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler mMenu collapsed" style="margin-top:20px;"><span class="fa fa-close"></span></button>
             <ul class="navbar-nav ml-auto" style="float:right; margin-left:20%;">
-                <li class="nav-item"><a href="/" class="{% if request.resolver_match.url_name in 'home' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}" aria-current="page">হোম</a></li>
-                <li class="nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">সেবাসমুহ</a>
+                <li class="nav-item" ><a href="/" class="{% if request.resolver_match.url_name in 'home' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}" aria-current="page">হোম</a></li>
+                <li class="nav-item dropdown" ><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">সেবাসমুহ</a>
                     <div aria-labelledby="navbarDropdown" class="dropDown dropdown-menu megamenu megamenu-lg">
                         <div class="row m-0">
                             <div class="col-lg-4 pr-0">
@@ -166,8 +166,8 @@
                                     {% for certificate in certificate_types|slice:'0:10'  %}
                                         
                                         
-                                    <li class="subMenu"><span class="fa fa-hand-o-up"></span>
-                                        <a href="{% url 'apply_for_certificate' certificate.id %}" target="_blank" class="">
+                                    <li class="subMenu" ><span class="fa fa-hand-o-up"></span>
+                                        <a href="{% url 'apply_for_certificate' certificate.id %}" target="_blank" style="padding-left:2px;padding-right:0px;">
                                        {{certificate.name}}
                                         </a>
                                     </li>
@@ -194,6 +194,22 @@
                             <div class="col-lg-4 pr-0">
                                 <h4 class="menu-head" ><span style="color:rgb(180, 9, 9)">
                                         তৃতীয় ভাগ
+                                    </span></h4>
+                                    <ul>
+                                        {% for certificate in certificate_types|slice:'20:30'  %}
+                                            
+                                            
+                                        <li class="subMenu" ><span class="fa fa-hand-o-up"></span>
+                                            <a href="{% url 'apply_for_certificate' certificate.id %}" target="_blank" class="">
+                                           {{certificate.name}}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                        
+                                    </ul>
+                                    <h4 class="menu-head" ><span style="color:rgb(180, 9, 9)">
+                                        <br>
+                                        লাইসেন্সসমূহ 
                                     </span></h4>
                                 <ul>
                                     {% for license in license_types  %}
@@ -263,13 +279,13 @@
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <div class="row m-0">
                             <div class="col-lg-6 pr-0">
-                                <h4 class="menu-head"><a href="{% url 'select_certificate' %}" class="">আবেদন করুন</a></h4>
+                                <h4 class="menu-head"><a href="{% url 'download_certificate_form' %}" class="">সনদ যাচাই</a></h4>
                                           <ul>
                                              
                                             </ul>
                             </div>
                             <div class="col-lg-6 pr-0">
-                                <h4 class="menu-head"><a href="/secretariat" class="">Our Team</a></h4>
+                                <h4 class="menu-head"><a href="{% url 'download_license_form' %}" class="">লাইসেন্স যাচাই</a></h4>
                                         <ul>
                                             {% comment %} <li class="subMenu"><span class="fa fa-angle-double-right"></span>
                                             <a href="https://israbentech.com/frontend/about/excutive-council" class="nav-link" onclick="myFunctionNavbar(this.id)">Excutive Council</a></li>

@@ -152,16 +152,16 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                   <div >
                         <div class="step d-block" >
                             <div><h3 style="text-align: center; color:rgb(2, 71, 8);text-shadow: 2px 2px 2px rgb(231, 12, 12);">{{license_type.name}}</h3></div>
-                            <table align="center" width="95%">
+                            <table align="center" width="90%">
                               <tr style="padding:0px;">
                               <td>
                                 <div  align="left"><h5 style="text-align: left; margin-left:6%">
-                                  লাইসেন্স নম্বর: &nbsp<u>{{license.tracking_no}}</u></h5>
+                                  লাইসেন্স নম্বর: &nbsp<div style="display:inline;" id="memorial">{{license.license_no}}</div></h5>
                               </div>
                               </td>
                               <td>                            
                                 <div   align="right"><h5 style="text-align: right;">
-                                  তারিখঃ &nbsp<div id="date" style="display:inline">{{license.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h5>
+                                  তারিখঃ &nbsp<div id="date" style="display:inline">{{license.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp&nbsp</h5>
                                 </div>
                               </td>
                             </tr></table>
@@ -343,15 +343,15 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                             </div>
                                             <div style="display:inline-block;margin-left: 20px;">
                                               {% if license.duration_to %}
-                                              ১ জুলাই, {{license.duration_form|date:"Y"}}  হতে ৩০ জুন, {{license.duration_to|date:"Y"}}
+                                              ১ জুলাই, <div style="display:inline;" id="from_year">{{license.duration_form|date:"Y"}}</div>  হতে ৩০ জুন, <div style="display:inline;" id="to_year"> {{license.duration_to|date:"Y"}}</div>
                                               {% else %}
                                               ----------
                                               {% endif %}
-                                            </div>
+                                            </>
                                         </td> 
                                     </tr>
                                     <tr>
-                                        <td  colspan="6" align="left" valign="middle" >
+                                        <td  colspan="6" align="left"  cellpadding="2" valign="middle" >
                                             <div style="display:inline-block;">
                                               
                                                <b> ফি ও করের পরিমাণঃ </b>                                         
@@ -368,7 +368,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                                     <td>ভ্যাট ও অন্যান্য</td>
                                                     <td>মোট</td>
                                                 </tr>
-                                                <tr>
+                                                <tr id="payment">
                                                     <td>
                                                       {% if license.tax %}
                                                       {{license.tax}}
@@ -432,10 +432,10 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                     </tr>
                                   
                                   
-                                    <tr valign="bottom">
+                                    <tr valign="top">
                                       <td  colspan="2" align="center"></div><div style="float:left;text-align:center"><img id='barcode' loading="lazy" src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{license.license_type.name_en}}%0DTracking No: {{license.tracking_no}}%0DName:{{license.name}}&amp;size=200x200" width="120px" height="120px" alt="{{license.name}}" title="{{license.license_type.name_en}}:{{license.name}}" width="50" height="50" /></div></td>
 
-                                        <td  colspan="2" align="right"><br><br><br></div></td>
+                                        <td  colspan="2" align="right"><br></div></td>
                                         <td  colspan="2" align="right"><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if license.chairman.signature %}{{license.chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{license.chairman.name}}<br>{{license.chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
 
                                        
@@ -531,10 +531,15 @@ function googleTranslateElementInit() {
             }
             return output.join('');
           }
+          input =document.getElementById("memorial").textContent.toString();
+          document.getElementById('memorial').textContent = replaceNumbers(input);
+   
         input =document.getElementById("date").textContent.toString();
         document.getElementById('date').textContent = replaceNumbers(input);
-        input =document.getElementById("para1").textContent.toString();
-        document.getElementById('para1').textContent = replaceNumbers(input);
+        input =document.getElementById("from_year").textContent.toString();
+        document.getElementById('from_year').textContent = replaceNumbers(input);
+        input =document.getElementById("to_year").textContent.toString();
+        document.getElementById('to_year').textContent = replaceNumbers(input);
         input =document.getElementById("para2").textContent.toString();
         document.getElementById('para2').textContent = replaceNumbers(input);
         input =document.getElementById("para3").textContent.toString();

@@ -91,7 +91,7 @@ SamePersonFormSet = modelformset_factory(
 )
 
 class CertificateTypeForm(forms.ModelForm):
-    name= forms.ModelChoiceField(label="সার্টিফিকেটসমূহঃ ",required=True,queryset=CertificateType.objects.all(),widget=forms.Select(attrs={'class': 'form-control form-control-sm',}))
+    name= forms.ModelChoiceField(label="সনদসমূহঃ  ",required=True,queryset=CertificateType.objects.all(),widget=forms.Select(attrs={'class': 'form-control form-control-sm',}))
     class Meta:
         model = CertificateType
         fields = []
@@ -120,7 +120,7 @@ class CertificateForm(forms.ModelForm):
         
         if self.certificate_type:
             self.fields['certificate_type']=forms.ModelChoiceField(label='সনদের ধরণ',queryset=CertificateType.objects.filter(id__in=[self.certificate_type.id,]),initial=CertificateType.objects.filter(id__in=[ self.certificate_type.id,]), widget=forms.Select( attrs={'class':'form-control form-control-sm',}))
-            if self.certificate_type.id==2:
+            if self.certificate_type.id==2 or self.certificate_type.id==24:
                 self.fields['language']=forms.ChoiceField(label='ভাষা', choices=LANGUAGE_CHOICE, widget=forms.Select( attrs={}))
             if self.certificate_type.id==3:
                 self.fields['cause']=forms.ModelChoiceField(label='কারণ',queryset=Cause.objects.all(),initial=Cause.objects.filter(serial__in=[ 1,]), widget=forms.Select( attrs={'class':'form-control form-control-sm',}))
@@ -133,8 +133,8 @@ class CertificateForm(forms.ModelForm):
             if self.certificate_type.id==7:
                 self.fields['income']=forms.CharField( label='অভিভাবকের মাসিক আয়',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'১০****/= (একহাজার টাকা) এভাবে লিখতে হবে'}))
                 self.fields['profession']=forms.CharField( label='অভিভাবকের পেশা',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'অভিভাবকের পেশা-বৃত্তি'}))
-            if self.certificate_type.id==8:
-                self.fields['description']=forms.CharField( label='পরিবর্তন গুলো লিখুন',widget=CKEditorWidget(config_name='default'))
+            if self.certificate_type.id==8 or self.certificate_type.id==21 :
+                self.fields['description']=forms.CharField( label='সংশোধন এর পরিবর্তন গুলো লিখুন',widget=CKEditorWidget(config_name='default'))
             if self.certificate_type.id==11:
                 self.fields['amount']=forms.ChoiceField( choices=AMOUNT_CHOICE,label='জমির পরিমাণ(শতাংশে)',widget=forms.Select( attrs={'class':'form-control form-control-sm','placeholder':'জমির পরিমাণ উল্লেখ করুন (শতাংশে ) '}))
             if self.certificate_type.id==12:
@@ -143,9 +143,9 @@ class CertificateForm(forms.ModelForm):
                 self.fields['date']=forms.DateField(label='মৃত্যু তারিখ',widget=forms.DateInput(attrs=dict(type='date')))
                 self.fields['description']=forms.CharField( label='মৃত্যুর কারণ',widget=CKEditorWidget(config_name='default'))
                 self.fields['passport']=forms.CharField( label='পাসপোর্ট নং (যদি থাকে)',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'প্রযোজ্য ক্ষেত্রে(বিদেশ বিষয়ে কোন সংশ্লিষ্টতা থাকলে)'}))
-            if self.certificate_type.id==15:
+            if self.certificate_type.id== 15:
                 self.fields['date']=forms.DateField(label='স্বামীর মৃত্যু তারিখ',widget=forms.DateInput(attrs=dict(type='date')))
-            if self.certificate_type.id==16:
+            if self.certificate_type.id== 16:
                 self.fields['title']=forms.CharField(label='সনদের শিরোনামঃ', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'সনদের শিরোনামে যা দেখতে চান'}))
                 self.fields['language']=forms.ChoiceField(label='ভাষা', choices=LANGUAGE_CHOICE, widget=forms.Select( attrs={}))
                 self.fields['description']=forms.CharField( label='সনদের বডি অংশ',widget=CKEditorWidget(config_name='default'))
@@ -154,6 +154,8 @@ class CertificateForm(forms.ModelForm):
                 self.fields['caste']=forms.ChoiceField(label='আদিবাসীর গোত্রের নাম', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'গোত্রের নাম লিখুন'}))
             if self.certificate_type.id==19:
                 self.fields['title']=forms.ChoiceField(label='যে মৃত(বাছাই করুন)',choices=ORPHAN_CHOICE, widget=forms.Select( attrs={'class':'form-control form-control-sm','placeholder':'বিদেশ গেলে দেশের নাম বা যা করতে ছারপ্ত্র তা লিখুন','required':'required'}))
+            if self.certificate_type.id==20:
+                self.fields['title']=forms.ChoiceField(label='সেক্টর নং', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'বাংলায় লিখুন, যেমন- ০১/০২/০৩ ','required':'required'}))
 
             if self.certificate_type.id==22:
                 self.fields['title']=forms.CharField(label='যেখানে যেতে বা যা করতে', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'বিদেশ গেলে দেশের নাম বা যা করতে ছারপ্ত্র তা লিখুন'}))
@@ -162,6 +164,8 @@ class CertificateForm(forms.ModelForm):
             if self.certificate_type.id== 23:
                 self.fields['title']=forms.CharField( label='বর্তমান ভোটার ঠিকানা',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'এভাবে লিখুনঃ গ্রাম/মহল্লাঃ ***, ডাকঘরঃ ***, উপজেলাঃ**, জেলাঃ ***'}))
                 self.fields['cause']=forms.ModelChoiceField(label='কারণ',queryset=Cause.objects.all(),initial=Cause.objects.filter(serial__in=[ 1,]), widget=forms.Select( attrs={'class':'form-control form-control-sm',}))
+            if self.certificate_type.id==25 :
+                self.fields['date']=forms.DateField(label='স্বামী/স্ত্রীর মৃত্যু তারিখ',widget=forms.DateInput(attrs=dict(type='date')))
 
 
 # class WarishanCertificateForm(forms.ModelForm):
@@ -200,7 +204,7 @@ class WarishForm(forms.ModelForm):
 
 class CertificateDownloadForm(forms.ModelForm):
     tracking_no= forms.CharField(label="ট্র্যাকিং নং-ঃ ",required=True, widget=forms.TextInput(attrs={'class': 'form-control form-control-sm',}))
-    certificate_type= forms.ModelChoiceField(label="সার্টিফিকেটসমূহঃ ",required=True, queryset=CertificateType.objects.all().order_by('name'), widget=forms.Select(attrs={'class': 'form-control form-control-sm',}))
+    certificate_type= forms.ModelChoiceField(label="সনদসমূহঃ ",required=True, queryset=CertificateType.objects.all().order_by('name'), widget=forms.Select(attrs={'class': 'form-control form-control-sm',}))
     class Meta:
         model = Certificate
         fields = ['tracking_no','certificate_type']

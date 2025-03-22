@@ -50,8 +50,105 @@ class CheckoutSuccessView(View):
         print(data)
         id=int(data['value_d'])
         tran_purpose=PaymentPurpose.objects.filter(id=id).first()
-        transaction=None
-        try:
+        transaction=Transaction.objects.filter(tracking_no=data['value_a']).first()
+        if transaction is None:
+            try:
+                transaction=Transaction.objects.create(
+                    tracking_no=data['value_a'],
+                    name = data['value_b'],
+                    phone=data['value_c'],
+                    email=data['value_d'],
+                    tran_id=data['tran_id'],
+                    tran_purpose=tran_purpose,
+                    val_id=data['val_id'],
+                    amount=data['amount'],
+                    card_type=data['card_type'],
+                    card_no=data['card_no'],
+                    store_amount=data['store_amount'],
+                    bank_tran_id=data['bank_tran_id'],
+                    status=data['status'],
+                    tran_date=data['tran_date'],
+                    currency=data['currency'],
+                    card_issuer=data['card_issuer'],
+                    card_brand=data['card_brand'],
+                    card_issuer_country=data['card_issuer_country'],
+                    card_issuer_country_code=data['card_issuer_country_code'],
+                    verify_sign=data['verify_sign'],
+                    verify_sign_sha2=data['verify_sign_sha2'],
+                    currency_rate=data['currency_rate'],
+                    risk_title=data['risk_title'],
+                    risk_level=data['risk_level'],
+
+                )
+                #print("data['value_d']:",tran_purpose.payment_type)
+                # if tran_purpose.payment_type.id == 2:
+                #     #print("data['value_d']:",tran_purpose.payment_type)
+                #     student=Certificate.objects.filter(class_roll=data['value_a']).first()
+                #     #print(student)
+                #     context['transaction']=transaction
+                #     context['purpose']=tran_purpose
+                #     context['certificate']=certificate
+                #     return render(request,self.template_name,context)
+
+                
+                messages.success(request,'Payment Successful!!')
+                
+            except:
+                messages.success(request,'Something Went Wrong')
+                context['messages']=messages    
+            
+        if tran_purpose.payment_type.id == 1:
+                    certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
+                    year=transaction.created_at.year
+                    if certificate.memorial_no is None:
+                        count=Transaction.objects.filter(tran_purpose__certificate_type_id=tran_purpose.certificate_type_id,tran_purpose__payment_type=tran_purpose.payment_type).filter(created_at__year=year).count()
+                        memorial_no='3813.04.'+str(tran_purpose.payment_type.id).zfill(2)+str(tran_purpose.certificate_type_id).zfill(2)+'/'+str(year)+'('+str(count)+')'
+                        certificate.memorial_no=memorial_no
+                    context['certificate']=certificate
+                    context['certificate_type']=certificate.certificate_type
+                   
+                    certificate.transaction=transaction
+                    certificate.save()
+        else:
+                    license=License.objects.filter(tracking_no=data['value_a']).first()
+                    if license.memorial_no is None:
+                        year=transaction.created_at.year
+                        count=Transaction.objects.filter(tran_purpose__certificate_type_id=tran_purpose.certificate_type_id,tran_purpose__payment_type=tran_purpose.payment_type).filter(created_at__year=year).count()
+                        memorial_no='3813.04.'+str(tran_purpose.payment_type.id).zfill(2)+str(tran_purpose.certificate_type_id).zfill(2)+'/'+str(year)+'('+str(count)+')'
+                        license_no=str(tran_purpose.payment_type.id).zfill(2)+'-'+str(tran_purpose.certificate_type_id).zfill(2)+'-'+str(year).zfill(2)+'-'+str(count)
+                        license.license_no=license_no
+                        license.memorial_no=memorial_no
+                    context['license']=license
+                    context['license_type']=license.license_type
+                    
+                    license.transaction=transaction
+                    license.save()
+                
+               
+        context['transaction']=transaction
+        context['tran_purpose']=tran_purpose
+                
+        return render(request,self.template_name,context)
+        
+
+@method_decorator(csrf_exempt, name='dispatch')
+class CheckoutIPNView(View):
+    model = Transaction
+    template_name = 'payment/payment_receipt.html'
+    
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('nothing to see')
+
+    def post(self, request, *args, **kwargs):
+        
+        context={}
+        data = self.request.POST
+        post_body={}
+        # print(data)
+        tran_purpose=PaymentPurpose.objects.filter(id=data['value_d']).first()
+        if data['status'] == 'VALID':
+            post_body['val_id'] = data['val_id']
+            response = sslcommez.validationTransactionOrder(post_body['val_id'])
             transaction=Transaction.objects.create(
                 tracking_no=data['value_a'],
                 name = data['value_b'],
@@ -79,58 +176,40 @@ class CheckoutSuccessView(View):
                 risk_level=data['risk_level'],
 
             )
-            #print("data['value_d']:",tran_purpose.payment_type)
-            if transaction:
-                if tran_purpose.payment_type.id == 1:
-                    certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
-                    year=transaction.created_at.year
-                    if certificate.memorial_no is None:
-                        count=Transaction.objects.filter(tran_purpose__certificate_type_id=tran_purpose.certificate_type_id,tran_purpose__payment_type=tran_purpose.payment_type).filter(created_at__year=year).count()
-                        memorial_no=str(tran_purpose.payment_type.id).zfill(2)+'.'+str(tran_purpose.certificate_type_id).zfill(2)+'-'+str(year)+'-('+str(count)+')'
-                        certificate.memorial_no=memorial_no
-                    context['certificate']=certificate
-                    context['certificate_type']=certificate.certificate_type
-                   
-                    certificate.transaction=transaction
-                    certificate.save()
-                else:
-                    license=License.objects.filter(tracking_no=data['value_a']).first()
-                    if license.memorial_no is None:
-                        year=transaction.created_at.year
-                        count=Transaction.objects.filter(tran_purpose__certificate_type_id=tran_purpose.certificate_type_id,tran_purpose__payment_type=tran_purpose.payment_type).filter(created_at__year=year).count()
-                        memorial_no=str(tran_purpose.payment_type.id).zfill(2)+'.'+str(tran_purpose.certificate_type_id).zfill(2)+'-'+str(year)+'-('+str(count)+')'
-                        license_no=str(tran_purpose.payment_type.id).zfill(2)+'-'+str(tran_purpose.certificate_type_id).zfill(2)+'-'+str(year).zfill(2)+'-'+str(count)
-                        license.license_no=license_no
-                        license.memorial_no=memorial_no
-                    context['license']=license
-                    context['license_type']=license.license_type
-                    
-                    license.transaction=transaction
-                    license.save()
-                
-               
-                context['transaction']=transaction
-                context['tran_purpose']=tran_purpose
-                
-                return render(request,self.template_name,context)
-            # if tran_purpose.payment_type.id == 2:
-            #     #print("data['value_d']:",tran_purpose.payment_type)
-            #     student=Certificate.objects.filter(class_roll=data['value_a']).first()
-            #     #print(student)
-            #     context['transaction']=transaction
-            #     context['purpose']=tran_purpose
-            #     context['certificate']=certificate
-            #     return render(request,self.template_name,context)
-
             
-            messages.success(request,'Payment Successful!!')
+        else:
+            transaction=Transaction.objects.create(
+                            tracking_no=data['value_a'],
+                            name = data['value_b'],
+                            phone=data['value_c'],
+                            email=data['value_d'],
+                            tran_id=data['tran_id'],
+                            tran_purpose=tran_purpose,
+                            val_id="None",
+                            amount=data['amount'],
+                            card_type=data['card_type'],
+                            card_no=data['card_no'],
+                            store_amount=0,
+                            bank_tran_id=data['bank_tran_id'],
+                            status=data['status'],
+                            tran_date=data['tran_date'],
+                            currency=data['currency'],
+                            card_issuer=data['card_issuer'],
+                            card_brand=data['card_brand'],
+                            card_issuer_country=data['card_issuer_country'],
+                            card_issuer_country_code=data['card_issuer_country_code'],
+                            verify_sign=data['verify_sign'],
+                            verify_sign_sha2=data['verify_sign_sha2'],
+                            currency_rate=data['currency_rate'],
+                            risk_title='None',
+                            risk_level='0',
             
-        except:
-            messages.success(request,'Something Went Wrong')
-            context['messages']=messages
-        return render(request,self.template_name,context)
-
-
+                        )            # if response['status']== 'VALID' or response['status']== 'VALIDATED' or response['status'] == 'INVALID_TRANSACTION':
+        
+        messages.success(request,'Something Went Wrong')
+        context['messages']=messages
+        # print('IPN Hit Exeption: ',data)
+        return redirect('/')
 
 
 @method_decorator(csrf_exempt, name='dispatch')

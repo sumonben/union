@@ -158,19 +158,20 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                   <div >
                         <div class="step d-block" style="margin-top:20px;height:100%">
                             <div><h1 style="text-align: center; color:#000"><u>{{certificate_type.name}}</u></h1></div>
-                            <table width="100%" valign="middle">
+                            <table width="100%" valign="middle" style="margin-top:60px;">
                               <tr>
-                              <td>
-                                <div  align="left"><h4 style="text-align: left; margin-left:2%">
-                                  ট্র্যাকিং নম্বর: &nbsp<u>{{certificate.tracking_no}}</u></h4>
-                              </div>
-                              </td>
-                              <td>                            
-                                <div   align="right"><h4 style="text-align: right; margin-left:2%">
-                                  তারিখঃ &nbsp<div id="date" style="display:inline;">{{certificate.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
+                                <td>
+                                  <div  align="left"><h4 style="text-align: left; margin-left:2%">
+                                    স্মারক নং- &nbsp<div style="display:inline;" id="memorial">{{certificate.memorial_no}}</div></h4>
                                 </div>
-                              </td>
-                            </tr></table>
+                                </td>
+                                <td>                            
+                                  <div   align="right"><h4 style="text-align: right; margin-left:2%">
+                                    তারিখঃ &nbsp<div id="date" style="display:inline;">{{certificate.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
+                                  </div>
+                                </td>
+                              </tr>
+                            </table>
 
 
                          
@@ -291,6 +292,9 @@ function googleTranslateElementInit() {
             }
             return output.join('');
           }
+          input =document.getElementById("memorial").textContent.toString();
+          document.getElementById('memorial').textContent = replaceNumbers(input);
+       
         input =document.getElementById("date").textContent.toString();
         document.getElementById('date').textContent = replaceNumbers(input);
         input =document.getElementById("para1").textContent.toString();

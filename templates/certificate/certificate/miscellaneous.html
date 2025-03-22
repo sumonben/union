@@ -77,7 +77,11 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
   transform: translateY(-80%);
   transition: transform .3s;
 }
-
+p{
+  line-height:1.2;
+  font-weight: 550;
+  font-size:25px;
+}
 
 
 @media print and (min-width: 480px) {
@@ -171,21 +175,21 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                             <tr>
                                 <td>
                                   <div  align="left"><h4 style="text-align: left; margin-left:2%">
-                                    Tracking No.: &nbsp<u>{{certificate.tracking_no}}</u></h4>
+                                    Memorial No. &nbsp<div style="display:inline;">{{certificate.memorial_no}}</div></h4>
                                 </div>
                                 </td>
                                 <td>                            
                                   <div   align="right"><h4 style="text-align: right; margin-left:2%">
-                                    Date &nbsp<div id="date" style="display:inline;">{{certificate.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
+                                    Date: &nbsp<div id="date" style="display:inline;">{{certificate.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
                                   </div>
                                 </td>
                               </tr>
                             {% else %}
-                                
+                            
                               <tr>
                               <td>
                                 <div  align="left"><h4 style="text-align: left; margin-left:2%">
-                                  ট্র্যাকিং নম্বর: &nbsp<u>{{certificate.tracking_no}}</u></h4>
+                                  স্মারক নং- &nbsp<div style="display:inline;" id="memorial">{{certificate.memorial_no}}</div></h4>
                               </div>
                               </td>
                               <td>                            
@@ -194,8 +198,8 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                 </div>
                               </td>
                             </tr>
-                            {% endif %}
-                        </table>
+                          {% endif %}
+                          </table>
 
 
                          
@@ -321,6 +325,9 @@ function googleTranslateElementInit() {
             return output.join('');
           }
         if('{{certificate.language}}' != '2'){
+          input =document.getElementById("memorial").textContent.toString();
+          document.getElementById('memorial').textContent = replaceNumbers(input);
+         
         input =document.getElementById("date").textContent.toString();
         document.getElementById('date').textContent = replaceNumbers(input);
         input =document.getElementById("para1").textContent.toString();

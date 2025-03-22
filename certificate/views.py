@@ -74,7 +74,7 @@ class ApplyForCertificate(View):
         if certificate_type.id== 1 or certificate_type.id== 7 :
             formset = WarishFormSet(queryset=Person.objects.none())
             context['formset']=formset
-        if certificate_type.id== 9 or certificate_type.id == 15 :
+        if certificate_type.id== 9 or certificate_type.id == 15 or certificate_type.id == 25 or certificate_type.id == 10 :
             formset = SamePersonFormSet(queryset=Person.objects.none())
             context['formset']=formset
         
@@ -122,7 +122,7 @@ class SelectCertificate(View):
         if certificate_type.id== 1:
             formset = WarishFormSet(queryset=Person.objects.none())
             context['formset']=formset
-        if certificate_type.id== 9 or certificate_type.id == 15 :
+        if certificate_type.id== 9 or certificate_type.id == 15 or certificate_type.id == 25 :
             formset = SamePersonFormSet(queryset=Person.objects.none())
             context['formset']=formset
                 
@@ -297,8 +297,8 @@ class DownloadCertificateView(View):
         context['certificate_types']=certificate_types
         license_types=LicenseType.objects.all().order_by('serial')
         context['license_types']=license_types
-        certificate=Certificate.objects.filter(tracking_no=request.POST.get('tracking_no'),certificate_type=request.POST.get('certificate_type')).first()
-        transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
+        certificate=Certificate.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),certificate_type=request.POST.get('certificate_type')).first()
+        transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no').strip()).first()
         if certificate:
             if transaction:
                 if certificate.is_verified==False:

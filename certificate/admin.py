@@ -35,4 +35,5 @@ class AdressAdmin(ExportActionMixin,admin.ModelAdmin):
     pass
 @admin.register(CertificateType)
 class CertificateTypeAdmin(ExportActionMixin,admin.ModelAdmin):
-    list_display=['id','name','template']
+    list_display=['id','serial','name','template']
+    list_display_links=['id','serial','name','template']

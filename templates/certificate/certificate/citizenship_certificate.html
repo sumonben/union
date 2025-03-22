@@ -157,13 +157,13 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
         <!-- FORMS -->
                   <div >
                         <div class="step d-block" style="margin-top:20px;height:100%">
-                          <div><h1 style="text-align: center;">                            <button  style="background-color:rgb(56, 73, 70); color: white;text-shadow: 3px 3px 3px rgb(73, 25, 11);border-radius:100%;padding:20px;">{% if certificate.language == '2' %} {{certificate_type.name_en}} {% else %} {{certificate_type.name}} {% endif %}</button></h1></div>
-                          <table width="100%" valign="middle">
+                          <div><h3 style="text-align: center;">                            <button class="rounded-50 ml-2" style="background-color:transparent; color:  rgb(73, 25, 11);;padding:10px;"><b>{% if certificate.language == '2' %} {{certificate_type.name_en}} {% else %} {{certificate_type.name}} {% endif %}</b></button></h3></div>
+                          <table width="100%" valign="middle" style="margin-top:60px;">
                             {% if certificate.language == '2' %}
                             <tr>
                                 <td>
                                   <div  align="left"><h4 style="text-align: left; margin-left:2%">
-                                    Tracking No.: &nbsp<u>{{certificate.tracking_no}}</u></h4>
+                                    Memorial No. &nbsp<div style="display:inline;">{{certificate.memorial_no}}</div></h4>
                                 </div>
                                 </td>
                                 <td>                            
@@ -177,7 +177,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                               <tr>
                               <td>
                                 <div  align="left"><h4 style="text-align: left; margin-left:2%">
-                                  ট্র্যাকিং নম্বর: &nbsp<u>{{certificate.tracking_no}}</u></h4>
+                                  স্মারক নং- &nbsp<div style="display:inline;" id="memorial">{{certificate.memorial_no}}</div></h4>
                               </div>
                               </td>
                               <td>                            
@@ -203,7 +203,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                     {% if certificate.language == '2' %}
                                     <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify"><h5 style="font-weight:500; line-height:2"> This is to certify that , Name:  <span ><b>&nbsp&nbsp{{certificate.name}}&nbsp&nbsp</b></span> Father's Name:  {{certificate.father_name}}, Mother's Name: {{certificate.mother_name}},  Village:  {{certificate.adress.village.name_en}}, Post-Office:  {{certificate.adress.village.post_office.name_en}}, Ward No. -{{certificate.adress.ward.ward_no_en}}, Upazilla: Akkkelpur, District: Jaypurhat.
                                      
-                                     {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is known to me. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is Bangladeshi by Birth. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is permanent inhabitant in this locality. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} character is good as far I know. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is not involved in any offence against the State.
+                                     {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is known to me. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is Bangladeshi Citizen by birth. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is permanent inhabitant in this locality. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} character is good as far I know. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is not involved in any offence against the State.
                                       <br><br><br>
                                       I wish{% if certificate.gender.id == 1 %} him {% else %} her {% endif %} every success in life.
                                     </td>  
@@ -329,6 +329,8 @@ function googleTranslateElementInit() {
           if('{{certificate.language}}' != '2'){
             input =document.getElementById("date").textContent.toString();
             document.getElementById('date').textContent = replaceNumbers(input);
+            input =document.getElementById("memorial").textContent.toString();
+            document.getElementById('memorial').textContent = replaceNumbers(input);
             input =document.getElementById("para1").textContent.toString();
             document.getElementById('para1').textContent = replaceNumbers(input);
             input =document.getElementById("para2").textContent.toString();

@@ -160,19 +160,20 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                         <div class="step d-block" style="margin-top:20px;height:100%">
 
                             <div><h1 style="text-align: center;">                            <button  style="background-color:rgb(56, 73, 70); color: white;text-shadow: 3px 3px 3px rgb(73, 25, 11);border-radius:100%;padding:20px;">{{certificate_type.name}}</button></h1></div>
-                            <table width="100%" valign="middle">
+                            <table width="100%" valign="middle" style="margin-top:60px;">
                               <tr>
-                              <td>
-                                <div  align="left"><h4 style="text-align: left; margin-left:2%">
-                                  ট্র্যাকিং নম্বর: &nbsp<u>{{certificate.tracking_no}}</u></h4>
-                              </div>
-                              </td>
-                              <td>                            
-                                <div   align="right"><h4 style="text-align: right; margin-left:2%">
-                                  তারিখঃ &nbsp<div id="date" style="display:inline;">{{certificate.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
+                                <td>
+                                  <div  align="left"><h4 style="text-align: left; margin-left:2%">
+                                    স্মারক নং- &nbsp<div style="display:inline;" id="memorial">{{certificate.memorial_no}}</div></h4>
                                 </div>
-                              </td>
-                            </tr></table>
+                                </td>
+                                <td>                            
+                                  <div   align="right"><h4 style="text-align: right; margin-left:2%">
+                                    তারিখঃ &nbsp<div id="date" style="display:inline;">{{certificate.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
+                                  </div>
+                                </td>
+                              </tr>
+                            </table>
 
 
                          
@@ -190,7 +191,11 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                             তিনি আমার পরিচিত। আমার জানামতে তিনি অত্র ০৪ নং তিলকপুর ইউনিয়নের {{certificate.adress.ward.name}} এর একজন স্থায়ী বাসিন্দা ও জন্মসুত্রে বাংলাদেশের নাগরিক ছিলো। 
                                     বিগত <div id="para1" style="display:inline-block;">{{certificate.date}} </diV> ইং তারিখে তার স্বামী                                         {% for person in certificate.person.all %}
                                         {{person.name}} {% endfor %} মৃত্যু হয়েছে ।  তাই তাকে বিধবা প্রত্যয়ন প্রদান করা হলো।                       
-                                        </tr>
+                                        <br><br>
+                                        আমি তাহার সার্বিক উন্নতি ও মঙ্গল কামনা করি। 
+                                 
+                                      </td>
+                                      </tr>
                                     
                                     <tr valign="bottom">
                         
@@ -315,6 +320,10 @@ function googleTranslateElementInit() {
                  output.push(myArray[i]);
             return output.join('');
           }
+
+          input =document.getElementById("memorial").textContent.toString();
+          document.getElementById('memorial').textContent = replaceNumbers(input);
+       
         input =document.getElementById("date").textContent.toString();
         document.getElementById('date').textContent = replaceNumbers(input);
         input =document.getElementById("para1").textContent.toString();

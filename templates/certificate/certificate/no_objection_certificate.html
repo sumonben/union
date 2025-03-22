@@ -158,12 +158,12 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                   <div >
                         <div class="step d-block" style="margin-top:20px;height:100%">
                           <div><h1 style="text-align: center;">                            <button class="rounded-50 ml-2" style="background-color:transparent; color:  rgb(73, 25, 11);;padding:20px;"><b>{% if certificate.language == '2' %} {{certificate_type.name_en}} {% else %} {{certificate_type.name}} {% endif %}</b></button></h1></div>
-                          <table width="100%" valign="middle">
+                          <table width="100%" valign="middle" style="margin-top:60px;">
                             {% if certificate.language == '2' %}
                             <tr>
                                 <td>
                                   <div  align="left"><h4 style="text-align: left; margin-left:2%">
-                                    Tracking No.: &nbsp<u>{{certificate.tracking_no}}</u></h4>
+                                    Memorial No. &nbsp<div style="display:inline;">{{certificate.memorial_no}}</div></h4>
                                 </div>
                                 </td>
                                 <td>                            
@@ -177,7 +177,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                               <tr>
                               <td>
                                 <div  align="left"><h4 style="text-align: left; margin-left:2%">
-                                  ট্র্যাকিং নম্বর: &nbsp<u>{{certificate.tracking_no}}</u></h4>
+                                  স্মারক নং- &nbsp<div style="display:inline;" id="memorial">{{certificate.memorial_no}}</div></h4>
                               </div>
                               </td>
                               <td>                            
@@ -187,7 +187,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                               </td>
                             </tr>
                           {% endif %}
-                          </table>
+                         </table>
 
 
                          
@@ -330,6 +330,9 @@ function googleTranslateElementInit() {
           }
 
           if('{{certificate.language}}' != '2'){
+            input =document.getElementById("memorial").textContent.toString();
+            document.getElementById('memorial').textContent = replaceNumbers(input);
+         
             input =document.getElementById("date").textContent.toString();
             document.getElementById('date').textContent = replaceNumbers(input);
             input =document.getElementById("para1").textContent.toString();

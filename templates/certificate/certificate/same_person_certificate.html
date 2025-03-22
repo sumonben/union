@@ -151,19 +151,20 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                             <div ><h1 class="certificate_title" style="text-align: center;color:#035a4c;text-shadow: 2px 2px 2px rgb(65, 7, 7);"><u><b>{{certificate_type.name}}</b></u></h1></div>
                             <div ><h3 class="certificate_title" style="text-align: center;color:rgb(172, 34, 34);text-shadow: 2px 2px 2px #035a4c"><u><b>({% if certificate.person.all == 1 %}দুই {% else %}তিন {% endif %} নামে একই ব্যক্তি)</b></u></h3></div>
                             
-                            <table width="100%" valign="middle">
+                            <table width="100%" valign="middle" style="margin-top:60px;">
                               <tr>
-                              <td>
-                                <div  align="left"><h4 style="text-align: left; margin-left:2%">
-                                  ট্র্যাকিং নম্বর: &nbsp<u>{{certificate.tracking_no}}</u></h4>
-                              </div>
-                              </td>
-                              <td>                            
-                                <div   align="right"><h4 style="text-align: right; margin-left:2%">
-                                  তারিখঃ &nbsp<div id="date" style="display:inline;">{{certificate.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
+                                <td>
+                                  <div  align="left"><h4 style="text-align: left; margin-left:2%">
+                                    স্মারক নং- &nbsp<div style="display:inline;" id="memorial">{{certificate.memorial_no}}</div></h4>
                                 </div>
-                              </td>
-                            </tr></table>
+                                </td>
+                                <td>                            
+                                  <div   align="right"><h4 style="text-align: right; margin-left:2%">
+                                    তারিখঃ &nbsp<div id="date" style="display:inline;">{{certificate.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
+                                  </div>
+                                </td>
+                              </tr>
+                            </table>
 
 
                          
@@ -182,7 +183,8 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                             আমার জানামতে <b>{{certificate.name}}</b> {% for person in certificate.person.all %} &nbsp ওরফে <b> &nbsp {{person.name}}</b> {% endfor %}  একই ব্যক্তি {% if certificate.person.all == 1 %}দুই {% else %} তিন {% endif %} নামে পরিচিত।
                                             <br>প্রযোজ্য সকলক্ষেত্রে তাহার <b>{{certificate.name}}</b> নামটি ব্যবহারের জন্য প্রত্যয়ন প্রদান করা হলো।
                                             <br><br><br>
-                                            আমি তার সার্বিক উন্নতি ও মঙ্গল কামনা করি।                             
+                                            আমি তার সার্বিক উন্নতি ও মঙ্গল কামনা করি।   
+                                        </td>                          
                                         </tr>
                                     
                                     <tr valign="bottom">
@@ -285,6 +287,10 @@ function googleTranslateElementInit() {
             }
             return output.join('');
           }
+
+          input =document.getElementById("memorial").textContent.toString();
+          document.getElementById('memorial').textContent = replaceNumbers(input);
+       
         input =document.getElementById("date").textContent.toString();
         document.getElementById('date').textContent = replaceNumbers(input);
         input =document.getElementById("para1").textContent.toString();
