@@ -80,7 +80,7 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
 
 
 
-@media print and (min-width: 480px) {
+@media print and (min-width: 300px) {
     
   table{
       -webkit-print-color-adjust: exact; 
@@ -158,7 +158,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                   <div >
                         <div class="step d-block" style="margin-top:20px;height:100%">
                           <div><h3 style="text-align: center;">                            <button class="rounded-50 ml-2" style="background-color:transparent; color:  rgb(73, 25, 11);;padding:10px;"><b>{% if certificate.language == '2' %} {{certificate_type.name_en}} {% else %} {{certificate_type.name}} {% endif %}</b></button></h3></div>
-                          <table width="100%" valign="middle" style="margin-top:60px;">
+                          <table width="97%" align="center" valign="middle" style="margin-top:60px;">
                             {% if certificate.language == '2' %}
                             <tr>
                                 <td>
@@ -210,7 +210,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                     {% else %}
                                         <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify"><h5 style="font-weight:500; line-height:2"> এই মর্মে প্রত্যয়ন করিতেছি যে, নামঃ <span ><b>&nbsp&nbsp{{certificate.name}}&nbsp&nbsp</b></span> পিতাঃ {{certificate.father_name}}, মাতাঃ {{certificate.mother_name}},  গ্রামঃ {{certificate.adress.village.name}}, ডাকঘরঃ {{certificate.adress.village.post_office.name}}, ওয়ার্ড নং-{{certificate.adress.ward.ward_no}}, উপজেলাঃ আক্কেলপুর,  জেলাঃ জয়পুরহাট।
                                             তিনি আমার পরিচিত। আমার জানামতে তিনি অত্র ০৪ নং তিলকপুর ইউনিয়নের {{certificate.adress.ward.name}} এর একজন স্থায়ী বাসিন্দা ও জন্মসুত্রে বাংলাদেশের নাগরিক। তাহার জাতীয়তা বাংলাদেশি। তাহার ব্যবহার ও স্বভাব চরিত্র ভাল। তিনি কোন প্রকার রাষ্ট্র বা সমাজ বিরোধী কাজে লিপ্ত নয়।
-                                            <br><br><br>
+                                            <br><br>
                                             আমি তাহার সার্বিক উন্নতি ও মঙ্গল কামনা করি। 
                                           </td>                            
                                     {% endif %}

@@ -80,7 +80,7 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
 
 
 
-@media print and (min-width: 480px) {
+@media print and (min-width: 300px) {
     
   table{
       -webkit-print-color-adjust: exact; 
@@ -158,7 +158,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                   <div >
                         <div class="step d-block" style="margin-top:20px;height:100%">
                           <div><h3 style="text-align: center;">                            <button class="rounded-50 ml-2" style="background-color:transparent; color:  rgb(73, 25, 11);;padding:10px;"><b>{% if certificate.language == '2' %} {{certificate_type.name_en}} {% else %} {{certificate_type.name}} {% endif %}</b></button></h3></div>
-                          <table width="100%" valign="middle" style="margin-top:60px;">
+                          <table width="97%" align="center" valign="middle" style="margin-top:60px;">
                             {% if certificate.language == '2' %}
                             <tr>
                                 <td>

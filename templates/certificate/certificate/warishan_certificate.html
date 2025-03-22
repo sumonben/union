@@ -80,9 +80,9 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
 
 
 
-@media print and (min-width: 480px) {
+@media print and (min-width: 300px) {
     
-  *{
+  table{
       -webkit-print-color-adjust: exact; 
 
 }
@@ -157,8 +157,8 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
         <!-- FORMS -->
                   <div >
                         <div class="step d-block" style="margin-top:20px;height:100%">
-                            <div><h1 style="text-align: center; color:#000"><u>{{certificate_type.name}}</u></h1></div>
-                            <table width="100%" style="margin-top:40px;" >
+                          <div><h2 style="text-align: center;">                            <button class="rounded-50 ml-2" style="background-color:transparent; color: rgb(65, 7, 7);padding-left:10px;padding-right:10px;"><b>  {{certificate_type.name}}</b></button></h2></div>
+                          <table width="97%" align="center" style="margin-top:30px;" >
                               <tr>
                                 <td>
                                   <div  align="left"><h4 style="text-align: left; margin-left:2%">
@@ -180,7 +180,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                             <tbody>
                             <tr>
                               <td align="left">
-                                <table  width="100%"   cellspacing="0" cellpadding="5">
+                                <table  width="100%"   cellspacing="0" cellpadding="2">
                                   <tbody>
                                   
 
@@ -190,27 +190,27 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
 
                                     </tr>
                                     <tr>
-                                        <td  colspan="4" width="15%" align="center" valign="middle" class="sprytextfield1"><h4><u>
+                                        <td  colspan="4" width="15%" align="center" valign="middle" style="padding:0px;"><h4><u>
                                             ওয়ারিশগণ </u></h4>
                                         </td>
 
                                     </tr>
-                                    <td colspan="4" align="center">
-                                        <table class="result" >
+                                    <td colspan="4" align="center" cellpadding="0" >
+                                        <table class="result"  >
                                             <tr>
-                                                <td width="15%" align="center" valign="middle" class="sprytextfield1"><b>ক্রমিক</b></td>
-                                                <td width="15%" align="center" valign="middle" class="sprytextfield1"><b>নাম </b></td>
-                                                <td width="75%" align="center" valign="middle"><span id="sprytextfield1"><b>সম্পর্ক</b></td>
-                                                <td width="15%" align="center" valign="middle" class="sprytextfield1"><b> মন্তব্য </b></td>
+                                                <td width="10%" align="center" valign="middle" ><b>ক্রমিক</b></td>
+                                                <td width="60%" align="center" valign="middle" ><b>নাম </b></td>
+                                                <td width="15%" align="center" valign="middle"><b>সম্পর্ক</b></td>
+                                                <td width="15%" align="center" valign="middle"><b>মন্তব্য</b></td>
                                             </tr>
                                         {% for warish in certificate.person.all %}
                                             <tr>
                                                 
-                                                <td  width="15%" align="center" valign="middle" class="sprytextfield1"><h5>{{forloop.counter}} </h5></td>
-                                                <td width="75%" align="center" valign="middle"><span id="sprytextfield1">
-                                                  <h5>{{warish.name}}</h5>                                        
-                                                <td width="15%" align="center" valign="middle" class="sprytextfield1"><h5> {{warish.relation.name}} </h5></td>
-                                                <td width="15%" align="center" valign="middle" class="sprytextfield1"><h5>{% if warish.comment %}{{warish.comment}} {% endif %}</h5></td>
+                                                <td  width="10%" align="center" valign="middle" >{{forloop.counter}} </td>
+                                                <td width="60%" align="center" valign="middle">
+                                                  {{warish.name}}                                       
+                                                <td width="15%" align="center" valign="middle" >{{warish.relation.name}} </td>
+                                                <td width="15%" align="center" valign="middle" >{% if warish.comment %}{{warish.comment}} {% else %}  {% endif %}</td>
 
                                             </tr>
                                       {% endfor %}

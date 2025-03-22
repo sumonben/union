@@ -9,8 +9,8 @@ from region.models import OthersAdress,Division
 from ckeditor.widgets import CKEditorWidget
 
 COMMENT_CHOICE={
-    '0':'------',
-    '1':'বর্তমানে মৃত',
+    '':'------',
+    'বর্তমানে মৃত':'বর্তমানে মৃত',
 
 }
 ORPHAN_CHOICE={

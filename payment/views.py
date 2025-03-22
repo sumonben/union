@@ -80,16 +80,7 @@ class CheckoutSuccessView(View):
                     risk_level=data['risk_level'],
 
                 )
-                #print("data['value_d']:",tran_purpose.payment_type)
-                # if tran_purpose.payment_type.id == 2:
-                #     #print("data['value_d']:",tran_purpose.payment_type)
-                #     student=Certificate.objects.filter(class_roll=data['value_a']).first()
-                #     #print(student)
-                #     context['transaction']=transaction
-                #     context['purpose']=tran_purpose
-                #     context['certificate']=certificate
-                #     return render(request,self.template_name,context)
-
+                
                 
                 messages.success(request,'Payment Successful!!')
                 
@@ -204,11 +195,10 @@ class CheckoutIPNView(View):
                             risk_title='None',
                             risk_level='0',
             
-                        )            # if response['status']== 'VALID' or response['status']== 'VALIDATED' or response['status'] == 'INVALID_TRANSACTION':
+                        )            
         
         messages.success(request,'Something Went Wrong')
         context['messages']=messages
-        # print('IPN Hit Exeption: ',data)
         return redirect('/')
 
 
