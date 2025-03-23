@@ -157,24 +157,8 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
         <!-- FORMS -->
                   <div >
                         <div class="step d-block" style="margin-top:20px;height:100%">
-                            <div><h1 style="text-align: center; color:#000"><u>{{certificate_type.name}}</u></h1></div>
-                            <table width="97%" align="center" valign="middle" style="margin-top:60px;">
-                              <tr>
-                                <td>
-                                  <div  align="left"><h4 style="text-align: left; margin-left:2%">
-                                    স্মারক নং- &nbsp<div style="display:inline;" id="memorial">{{certificate.memorial_no}}</div></h4>
-                                </div>
-                                </td>
-                                <td>                            
-                                  <div   align="right"><h4 style="text-align: right; margin-left:2%">
-                                    তারিখঃ &nbsp<div id="date" style="display:inline;">{{certificate.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp</h4>
-                                  </div>
-                                </td>
-                              </tr>
-                            </table>
+                          {% include 'components/certificate_title.html' %} 
 
-
-                         
                           <table  width="900"  align="center" valign="middle" cellspacing="0" cellpadding="4">
 
                             <tbody>
