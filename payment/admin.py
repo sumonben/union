@@ -5,7 +5,7 @@ from .models import Transaction,PaymentPurpose,PaymentType,PaymentGateway,Paymen
 class TransactionAdmin(admin.ModelAdmin):
     list_display = ('name','tracking_no','email','phone', 'card_no', 'amount', 'tran_id','tran_purpose','status', 'created_at',)
     list_filter = ('status', 'created_at')
-    search_fields = ('currency', 'status')
+    search_fields = ('tracking_no','phone', 'status')
 
 admin.site.register(PaymentGateway)
 admin.site.register(PaymentURL)

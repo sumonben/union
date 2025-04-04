@@ -27,7 +27,7 @@ class Upazilla(models.Model):
     name=models.CharField(max_length=25)
     name_en=models.CharField(max_length=25)
     district=models.ForeignKey(District, on_delete=models.CASCADE,blank=True,null=True)
-    link=models.CharField(max_length=15,null=True,blank=True)
+    link=models.CharField(max_length=50,null=True,blank=True)
     class Meta:
         ordering = ['name_en']
     def __str__(self):
@@ -37,7 +37,7 @@ class Union(models.Model):
     name=models.CharField(max_length=25)
     name_en=models.CharField(max_length=25)
     upazilla=models.ForeignKey(Upazilla, on_delete=models.CASCADE,blank=True,null=True)
-    link=models.CharField(max_length=15,null=True,blank=True)
+    link=models.CharField(max_length=50,null=True,blank=True)
 
     class Meta:
         ordering = ['name_en']
@@ -49,7 +49,6 @@ class Ward(models.Model):
     name_en=models.CharField(max_length=25)
     ward_no=models.CharField(max_length=10)
     ward_no_en=models.CharField(max_length=10,default='02')
-    union=models.ForeignKey(Union, on_delete=models.CASCADE,blank=True,null=True)
     link=models.CharField(max_length=15,null=True,blank=True)
 
     class Meta:
@@ -72,8 +71,8 @@ class PostOffice(models.Model):
 class Village(models.Model):
     name=models.CharField(max_length=25)
     name_en=models.CharField(max_length=25)
-    ward=models.ForeignKey(Ward, on_delete=models.CASCADE,blank=True,null=True)
-    post_office=models.ForeignKey(PostOffice, on_delete=models.CASCADE,blank=True,null=True)
+    ward=models.ForeignKey(Ward, on_delete=models.SET_NULL,blank=True,null=True)
+    post_office=models.ForeignKey(PostOffice, on_delete=models.SET_NULL,blank=True,null=True)
     link=models.CharField(max_length=15,null=True,blank=True)
 
     class Meta:
@@ -84,9 +83,9 @@ class Village(models.Model):
 class Mouja(models.Model):
     name=models.CharField(max_length=25)
     name_en=models.CharField(max_length=25)
-    village=models.ForeignKey(Village, on_delete=models.CASCADE,blank=True,null=True)
-    ward=models.ForeignKey(Ward, on_delete=models.CASCADE,blank=True,null=True)
-    post_office=models.ForeignKey(PostOffice, on_delete=models.CASCADE,blank=True,null=True)
+    village=models.ForeignKey(Village, on_delete=models.SET_NULL,blank=True,null=True)
+    ward=models.ForeignKey(Ward, on_delete=models.SET_NULL,blank=True,null=True)
+    post_office=models.ForeignKey(PostOffice, on_delete=models.SET_NULL,blank=True,null=True)
     link=models.CharField(max_length=15,null=True,blank=True)
 
     class Meta:

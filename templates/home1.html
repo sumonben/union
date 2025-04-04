@@ -4,14 +4,22 @@
 
 <style>
    
+    .person{
+        width:120px;
+    }
     .card-text{
         margin-top:30px;
         color:#035a4c;
-        text-shadow: 2px 1px 2px rgb(65, 7, 7);
+        text-shadow: 2px 2px 2px rgb(65, 7, 7);
         font-size:25px;
         text align:center;
+        font-weight:bold;
     }
-      
+      .number_of_certificate{
+        color:#035a4c;
+        font-size:18px;
+        font-weight:bold;
+      }
       .circle1{
         position:absolute;
         height:100px;
@@ -22,7 +30,23 @@
         top: -40px;
         background: #green;
       }
+      .chairman{
+        display:none;
+      }
+      #chairman_heading{
+        display:none;
+
+      }
+      #indication_heading{
+        display:block;
+
+      }
+      .title{
+        font-size:30px;
+      }
+      
       @media(max-width:767px){
+       
         .base{
             height:100px;
             width:150px;
@@ -31,6 +55,21 @@
             padding:20px;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
+          }
+          .title{
+            font-size:20px;
+          }
+          .chairman{
+            display:block;
+            margin:auto;
+          }
+          #chairman_heading{
+            display:block;
+    
+          }
+          #indication_heading{
+            display:none;
+    
           }
           .card-text{
             margin-top:35px;
@@ -56,7 +95,7 @@
      
 </style>
                              
-               
+{% comment %}                
 
   <div class="slider">
                            <div id="carouselExampleCaptions" data-pause="false" data-ride="carousel" data-interval="5000" class="carousel vert slide">
@@ -79,15 +118,15 @@
                                </div>
                            </div>
                            <div class="banner-anime-button"><a href="#"><span><i class="fas fa-arrow-circle-down"></i></span></a></div>
-                       </div>
+                       </div> {% endcomment %}
                                            
                        
-                       <div class="parent" >
+                    <div class="parent" >
                            
-                           {% comment %} <div id="rightpan" data-aos="fade-left" data-aos-offset="100" data-aos-duration="1000" class="col-lg-4 tab-pane active aos-init aos-animate">
+                            <div id="rightpan" data-aos="fade-left" data-aos-offset="100" data-aos-duration="1000" class="col-lg-4 tab-pane active aos-init aos-animate">
                                 
                        
-                               <div style="background-color: transparent; position: relative" class="card border border-dark">
+                               <div style=" position: relative" class="card border">
                                    
                                    <!------
                                    <span class="bubble1"> <img  src="/images/ictadvisor.jpg"class="rounded-circle img-fluid" style="width: 150px"></span> <span class="bubble2"> <img   data-aos="fade-right"
@@ -110,89 +149,105 @@
                                           </div>
  
  
-                                       <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-animate">
-                                           <p style="text-align:center"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px"> প্রধান প্রশিক্ষক ও ডেভেলপার</span></span> </strong></p>
+                                       <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-init">
+                                           <p style="text-align:center;width:100%;background-color:#035a4c;color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px" >{{chairman.post.name}}</span></span> </strong></p>
                                            <h1 class="bk-org title">
                                                      </h1>
                                          
                                          <p style="text-align:center"><img alt="
-                                            প্রধান প্রশিক্ষক 	" src="{% static 'images/sumon.jpg'%}" style="height:190px; width:150px"></p>
+                                            প্রধান প্রশিক্ষক " loading="lazy" src="{{chairman.image.url}}"  style="height:190px; width:150px"></p>
                                        
-                                       <p style="text-align:center"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px">ত্বরিক সুমন</span></span> </strong></p>
+                                       <p style="text-align:center" ><strong><span>&nbsp;<span style="font-size:20px">{{chairman.name}}</span></span> </strong></p>
+                                       <p style="text-align:center"><strong><span >&nbsp;<span style="font-size:15px">{{chairman.phone}}</span></span> </strong></p>
+                                       <p style="text-align:center"><strong><span >&nbsp;<span style="font-size:15px">{{chairman.email}}</span></span> </strong></p>
+
                                        <p>
-                                               <a href="https://moedu.portal.gov.bd/site/page/5521b4ae-db5f-4410-b24e-3e34f460a926" class="btn" style="display:block;text-align:center;width:100%;" title="বিস্তারিত">বিস্তারিত</a>
+                                               {% comment %} <a href="https://moedu.portal.gov.bd/site/page/5521b4ae-db5f-4410-b24e-3e34f460a926" class="btn" style="display:block;text-align:center;width:100%;" title="বিস্তারিত">বিস্তারিত</a> {% endcomment %}
                                              </p>
                                        </div>
-                                           
+                                       <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-init">
+                                        <p style="text-align:center;width:100%;background-color:#035a4c;color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;" ><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px">{{secretary.post.name}}</span></span> </strong></p>
+                                        <h1 class="bk-org title">
+                                                  </h1>
+                                      
+                                      <p style="text-align:center"><img alt="প্রধান প্রশিক্ষক " loading="lazy" src="{{secretary.image.url}}" style="height:190px; width:150px"></p>
+                                    
+                                    <p style="text-align:center"><strong><span>&nbsp;<span style="font-size:20px">{{secretary.name}}</span></span> </strong></p>
+                                    <p style="text-align:center"><strong><span >&nbsp;<span style="font-size:15px">{{secretary.phone}}</span></span> </strong></p>
+                                    <p style="text-align:center"><strong><span >&nbsp;<span style="font-size:15px">{{secretary.email}}</span></span> </strong></p>
+
+                                    <p>
+                                            {% comment %} <a href="https://moedu.portal.gov.bd/site/page/5521b4ae-db5f-4410-b24e-3e34f460a926" class="btn" style="display:block;text-align:center;width:100%;" title="বিস্তারিত">বিস্তারিত</a> {% endcomment %}
+                                          </p>
+                                    </div>
                                            
  
  
-                                       <ul>
+                                       {% comment %} <ul>
                                         <li><a href="https://www.gmrwc.edu.bd/" class="btn btn-primary">সরকারি মুজিবুর রহমান মহিলা কলেজ</a></li>
                                         <li><a href="http://nbr.gov.bd/nbr-enlisted/eng"
                                                 target="_blank" class="btn btn-primary">সরকারি আজিজুল হক কলেজ</a></li>
-                                        <li><a href="https://basisegovhub.info"
+                                        <li><a href="https://tilokpurupegovhub.info"
                                                 target="_blank" class="btn btn-primary">সরকারি শাহ-সুলতান কলেজ</a></li>
-                                        <li><span ><a href="https://basisegovhub.info"
+                                        <li><span ><a href="https://tilokpurupegovhub.info"
                                             target="_blank" class="btn btn-primary">আইসিটি বিষয়ক ট্রেনিং</a></span></li>
-                                        <li><span><a href="https://basisegovhub.info"
+                                        <li><span><a href="https://tilokpurupegovhub.info"
                                             target="_blank" class="btn btn-primary">নেকটার এর প্রশিক্ষণসমুহ</a></span></li>
-                                        <li><a href="https://basis.org.bd/public/files/publication/5e125f5ee61760449abd28a25178d046facfec994d97e.pdf"
+                                        <li><a href="https://tilokpurup.org.bd/public/files/publication/5e125f5ee61760449abd28a25178d046facfec994d97e.pdf"
                                                 target="_blank" class="btn btn-primary">মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর </a></li>
                                                 <li><a href="/market-details/1" class="btn btn-primary">জাতীয় বিশ্ববিদ্যালয়
                                     </a></li>
                                             <li><a href="http://nbr.gov.bd/nbr-enlisted/eng"
                                                     target="_blank" class="btn btn-primary">তথ্য ও যোগাযোগ প্রযুক্তি অধিদপ্তর</a></li>
-                                            <li><a href="https://basisegovhub.info"
+                                            <li><a href="https://tilokpurupegovhub.info"
                                                     target="_blank" class="btn btn-primary">মাধ্যমিক ও উচ্চশিক্ষা বিভাগ</a></li>
                                             
-                                            <li><a href="https://basis.org.bd/public/files/publication/5e125f5ee61760449abd28a25178d046facfec994d97e.pdf"
+                                            <li><a href="https://tilokpurup.org.bd/public/files/publication/5e125f5ee61760449abd28a25178d046facfec994d97e.pdf"
                                                     target="_blank" class="btn btn-primary">বাংলাদেশ সরকারি কর্ম কমিশন</a></li>
                                                     <li><a href="/market-details/1" class="btn btn-primary">তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ
                                                         </a></li>
                                                 <li><a href="http://nbr.gov.bd/nbr-enlisted/eng"
                                                         target="_blank" class="btn btn-primary">বাংলাদেশ সরকারি কর্ম কমিশন</a></li>
-                                                <li><a href="https://basisegovhub.info"
+                                                <li><a href="https://tilokpurupegovhub.info"
                                                         target="_blank"class="btn btn-primary">বেসরকারি শিক্ষক নিবন্ধন</a></li>
                                                 
-                                                <li><a href="https://basis.org.bd/public/files/publication/5e125f5ee61760449abd28a25178d046facfec994d97e.pdf"
+                                                <li><a href="https://tilokpurup.org.bd/public/files/publication/5e125f5ee61760449abd28a25178d046facfec994d97e.pdf"
                                                         target="_blank" class="btn btn-primary">প্রাথমিক শিক্ষা অধিদপ্তর</a></li>
                                                         <li><a href="/market-details/1" class="">
                                                             </a></li>
                                         
-                                       </ul> <a href="/market/LocalMarket" class="btn btn-outline-primary">View All</a>
+                                       </ul>  {% endcomment %}
                                          <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-animate">
-                                           <p style="text-align:center"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px"> মনোগ্রাম</span></span> </strong></p>
+                                            <p style="text-align:center;width:100%;background-color:#035a4c;color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px" >মনোগ্রাম</span></span> </strong></p>
+
                                            <h1 class="bk-org title">
                                                      </h1>
                                          
                                          <p style="text-align:center"><img alt="
-                                            প্রধান প্রশিক্ষক 	" src="{% static 'images/ictpark_monogram.png'%}" style="height:150px; width:150px"></p>
+                                            প্রধান প্রশিক্ষক 	" loading="lazy" src="{% static 'images/tilokpur_logo.png'%}" style="height:150px; width:150px"></p>
                                        
                                       
                                        <p>
-                                               <a href="https://moedu.portal.gov.bd/site/page/5521b4ae-db5f-4410-b24e-3e34f460a926" class="btn" style="display:block;text-align:center;width:100%;" title="বিস্তারিত">বিস্তারিত</a>
+                                               <a href="https://moedu.portal.gov.bd/site/page/5521b4ae-db5f-4410-b24e-3e34f460a926" class="btn" style="display:block;text-align:center;width:100%;" title="বিস্তারিত"></a>
                                              </p>
                                        </div>
+                                       <ul>
+                                        <a href="https://tilakpurup.joypurhat.gov.bd/" class="btn btn-primary" style="width:100%;margin-bottm:50px;text-shadow: 4px 4px 4px rgb(73, 25, 11);">তিলকপুর ইউনিয়ন</a>
+                                        <a href="https://akkelpur.joypurhat.gov.bd/"
+                                                target="_blank" class="btn btn-primary" style="width:100%;margin-bottm:50px;text-shadow: 4px 4px 4px rgb(73, 25, 11);">আক্কেলপুর উপজেলা </a>
+                                        <a href="https://www.joypurhat.gov.bd/"
+                                                target="_blank" class="btn btn-primary" style="width:100%;text-shadow: 4px 4px 4px rgb(73, 25, 11);">জয়পুরহাট জেলা </a>
+                                        </ul>
                                    </div>
                                </div>
-                           </div> {% endcomment %}
+                           </div> 
                    
                        </div>
                    
                        
                        <!---->
-                       <div class="services">
-                        {% comment %} <span class="shape1"></span> <span class="shape2"></span>
+                    <div class="services" id="service_body">
                         
-                       <marquee  width="100%" direction="left" height="25px" style="font-size: 20px;margin-top: 5px">
-                                              {% for news in news %}
-                                             <a href="" > {{news.title}}***</a>
-                                              {% endfor %}
-                           
-                                        
-                       </marquee>
-                        {% endcomment %}
                        
                        <div class="container-wrapper">
 
@@ -202,21 +257,11 @@
                            
                         <div class="box_container" style="width: 100%; margin: 0px;">
                             <div class="" style="margin: auto;width: 100%;">
-                                <!-- TITLE 
-                                <div class="col-lg-4 offset-lg-1 mx-0 px-0">
-                                    <div id="title-container">
-                                        <img class="covid-image" src="./img/covid-check.png">
-                                        <h2>COVID-19</h2>
-                                        <h3>Self Checker Form</h3>
-                                        <p>A clinical assessment multi-step form that will assist individuals on deciding when to seek testing or medical care if they suspect they or someone they know has contracted COVID-19 or has come into close contact with someone who has COVID-19</p>
-                                    </div>
-                                </div>-->
-                                <!-- FORMS -->
+                                
                                 <div >
                                     <div id="qbox-container">
                                             <div id="steps-container">
                                                 <div class="step d-block">
-                                                  {% comment %} <div><h1 style="text-align: center;"><u>আপনার প্রয়োজনীয় সনদ বাছাই করুন</u></h1></div> {% endcomment %}
                         
                                                   <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
                         
@@ -225,7 +270,7 @@
                                                       <td align="left">
                                                         <fieldset>
                                                         <table width="100%" border="1" cellspacing="0" cellpadding="10">
-                                                          <thead><th colspan="5" style="height: 40px; background-color: #035a4c; color: #fff;padding: 15px;font-size:18px"> অনলাইন সনদসমূহ </th></thead>
+                                                          <thead><th class="title" colspan="5" style=" text-align:center; background-color: #035a4c; color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"> অনলাইন সনদ ও লাইসেন্সসমূহ </th></thead>
                                                           <tbody>
                                                           
                             
@@ -265,34 +310,60 @@
                         {% comment %} <span class="shape1"></span> <span class="shape2"></span> {% endcomment %}
                         <div class="container-wrapper">
                             <div class="service-tab">
-                                <div class="content-header mb-5">
+                                <div class="content-header mb-5 ">
                                       
-                                        <div class="filters filter-menu">
+                                    <div class="filters filter-menu ">
 
-                                    <ul id="myTab" role="tablist" class="nav nav-tabs justify-content-center">
-                                        <li class="nav-item"><a id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true" class="nav-link active">সনদসমূহ</a></li>
-                                        <li class="nav-item"><a id="nonmembers-tab" data-toggle="tab" href="#nonmembers" role="tab" aria-controls="nonmembers" aria-selected="false" class="nav-link">লাইসেন্সসমূহ</a></li>
-                                        </div>
-                                    </ul>
+                                        <ul id="myTab" role="tablist" class="nav nav-tabs justify-content-center " style="font-family:kalpurush;">
+                                            <li class="nav-item rounded-50" ><a id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true" class="nav-link active">সনদসমূহ</a></li>
+                                            <li class="nav-item rounded-50"><a id="nonmembers-tab" data-toggle="tab" href="#nonmembers" role="tab" aria-controls="nonmembers" aria-selected="false" class="nav-link">লাইসেন্সসমূহ</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                                                                     
                                 <div id="myTabContent" class="service-item tab-content">
+                                    
                                     <div id="members" role="tabpanel" aria-labelledby="members-tab" class="members tab-pane fade show active">
                                         <div  class="row" style="margin-top: 70px;">
 
                                             
                                             
+                                            {% comment %} {% for certificate_first in certificate_types_first  %}
                                             
+                                            
+                                            
+                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init aos-animate" style="margin-bottom:25px;">
+                                                <a href="{% url 'apply_for_certificate' certificate_first.id %}" >
+
+                                                <div class="card card-body shadow-sm mb-4" style="overflow:visible;">
+                                                    <div class="circle1">                                                        
+                                                        <img loading="lazy" src="{{certificate_first.image.url}}" alt="Citizenship" height="80">
+                                                    </div>
+                                                    <div >
+                                
+                                                        <div class="card-text">{{certificate_first.name}}</div>
+                                                        
+                                                     </div>
+                                                    
+                                                </div>
+                                            </a>
+                                            
+                                            </div>
+
+                                            {% endfor %} {% endcomment %}
+
+                                        
                                         
                                         {% for certificate in certificate_types  %}
                                             
                                             
                                             
-                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init" style="margin-bottom:25px;">
+                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init aos-animate" style="margin-bottom:25px;">
                                                 <a href="{% url 'apply_for_certificate' certificate.id %}" >
 
                                                 <div class="card card-body shadow-sm mb-4" style="overflow:visible;">
-                                                    <div class="circle1">                                                        <img src="{{certificate.image.url}}" alt="Citizenship" height="80">
+                                                    <div class="circle1">                                                        
+                                                        <img loading="lazy" src="{{certificate.image.url}}" alt="Citizenship" height="80">
                                                     </div>
                                                     <div >
                                 
@@ -310,25 +381,21 @@
                                             
                                              
                                         </div>
-                                        <div class="row pt-5">
-                                            <div class="col-lg-12 text-center"><a href="/service/member" class="btn btn-lg btn-primary rounded-50">
-                                                    View All
-                                                    <i class="fas fa-long-arrow-alt-right pl-1"></i></a></div>
-                                        </div>
+                                        
                                     </div>
                                     
-                                    <div id="nonmembers" role="tabpanel" aria-labelledby="nonmembers-tab" class="nonmembers tab-pane fade">
-                                        <div class="row">
+                                <div id="nonmembers" role="tabpanel" aria-labelledby="nonmembers-tab" class="nonmembers tab-pane fade show">
+                                        <div class="row" style="margin-top: 70px;">
                                                 
                                             {% for license in license_types  %}
                                             
                                             
                                             
-                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init" style="margin-bottom:25px;">
+                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init aos-animate" style="margin-bottom:25px;">
                                                 <a href="{% url 'apply_for_license' license.id %}" >
 
                                                 <div class="card card-body shadow-sm mb-4" style="overflow:visible;">
-                                                    <div class="circle1">                                                        <img src="{{license.image.url}}" alt="Citizenship" height="80">
+                                                    <div class="circle1">                                                        <img loading="lazy" src="{{license.image.url}}" alt="Citizenship" height="80">
                                                     </div>
                                                     <div >
                                 
@@ -348,27 +415,34 @@
                                                 
                                     
                                         </div>
-                                        <div class="row pt-5">
-                                            <div class="col-lg-12 text-center"><a href="/service/non_member" class="btn btn-lg btn-primary rounded-50">
-                                                    View All
-                                                    <i class="fas fa-long-arrow-alt-right pl-1"></i></a></div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                        
-                       <div data-v-2fe1039c="" id="counter" class="num-counter">
+                    <a href="#" class="scroll-top active"><i class="fa fa-arrow-up"></i></a>
+               
+               
+ 
+ 
+              
+                </div>
+            </div>
+                       
+            <div class="services">
+                {% comment %} <span class="shape1"></span> <span class="shape2"></span> {% endcomment %}
+                <div class="container-wrapper">
+            <div data-v-2fe1039c="" id="counter" class="num-counter">
                         <div data-v-2fe1039c="" class="container-wrapper">
                             <div data-v-2fe1039c="" class="row justify-content-center">
                                 <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="500" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate"><a data-v-2fe1039c="" href="https://israbentech.com/home/memberlist" class="text-black">
                                         <div data-v-2fe1039c="" class="box"><svg data-v-2fe1039c="" version="1.1" id="counterIcon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="278.5 0 443 560" enable-background="new 278.5 0 443 560" xml:space="preserve">
-                                                <path data-v-2fe1039c="" fill="none" stroke="#007F3D" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M664.26,150.2
+                                                <path data-v-2fe1039c="" fill="#035a4c" stroke="#035a4c" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M664.26,150.2
                             c0-8.477-6.869-15.346-15.345-15.346H352.913c-8.476,0-15.346,6.869-15.346,15.346c0,8.477,6.87,15.345,15.346,15.345h296.002
                             C657.391,165.545,664.26,158.677,664.26,150.2z">
                                                 </path>
-                                                <path data-v-2fe1039c="" fill="none" stroke="#007F3D" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M623.747,93.59
+                                                <path data-v-2fe1039c="" fill="#035a4c" stroke="#007F3D" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M623.747,93.59
                             c0-8.477-6.87-15.346-15.348-15.346H393.425c-8.475,0-15.346,6.869-15.346,15.346c0,8.478,6.871,15.345,15.346,15.345h214.977
                             C616.877,108.936,623.747,102.068,623.747,93.59z">
                                                 </path>
@@ -377,14 +451,14 @@
                             c0.533-5.731-1.371-11.423-5.249-15.677c-3.877-4.253-9.366-6.68-15.123-6.68h-364.5c-5.756,0-11.247,2.427-15.125,6.68
                             C299.661,199.226,297.756,204.918,298.29,210.649z">
                                                 </path>
-                                                <path data-v-2fe1039c="" fill="none" stroke="#007F3D" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M412.249,374.81
+                                                <path data-v-2fe1039c="" fill="#035a4c" stroke="#ff0000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M412.249,374.81
                             c0,11.299,9.161,20.461,20.461,20.461h136.407c0.015-0.002,0.026-0.002,0.04,0c11.301,0,20.462-9.16,20.464-20.461
                             c0-0.569-0.024-1.134-0.07-1.689c-0.896-27.007-23.143-48.701-50.362-48.701h-14.684c15.102-8.346,25.356-24.431,25.356-42.87
                             c0-26.99-21.956-48.947-48.947-48.947c-26.989,0-48.946,21.959-48.946,48.947c0,18.438,10.255,34.524,25.356,42.87H462.64
                             C434.854,324.419,412.249,347.023,412.249,374.81z">
                                                 </path>
                                             </svg> <span data-v-2fe1039c="" data-to="2363" data-speed="1500" class="count count-num timer count-title count-number">143</span>
-                                            <h6 data-v-2fe1039c=""><b>Current Students</b></h6>
+                                            <h6 data-v-2fe1039c=""><b class="number_of_certificate">মোট সনদের সংখ্যা</b></h6>
                                         </div>
                                     </a></div>
                                 <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate"><a data-v-2fe1039c="" href="https://israbentech.com/memberlist" class="text-black">
@@ -451,7 +525,7 @@
                             c6.928,5.012,13.728,9.725,20.248,14.797c1.674,1.303,3.029,3.609,3.556,5.701c6.19,24.508,12.191,49.066,18.243,73.613
                             C651.798,542.813,651.259,543.23,650.715,543.648z">
                                                 </path>
-                                                <path data-v-2fe1039c="" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M505.369,18.121c33.167,1.205,59.164,20.058,73.104,54.254
+                                                <path data-v-2fe1039c="" fill-rule="evenodd" clip-rule="evenodd" fill="#fffff" d="M505.369,18.121c33.167,1.205,59.164,20.058,73.104,54.254
                             c3.608,8.855,5.646,17.62,4.743,27.52c-0.753,8.276,1.206,16.844,2.311,25.236c1.42,10.68,2.867,21.159,7.043,31.494
                             c6.081,15.06,0.932,28.667-9.822,40.443c-2.595,2.847-4.714,6.429-6.093,10.037c-8.2,21.503-19.696,40.794-39.555,53.255
                             c-34.129,21.419-79.577,20.036-104.705-32.493c-0.611-1.283-1.28-2.552-1.723-3.892c-4.352-13.236-10.468-25.027-20.084-35.753
@@ -469,7 +543,7 @@
                                                 <path data-v-2fe1039c="" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M473.154,428.727c8.791-26.404,17.409-52.277,26.025-78.152
                             c0.486-0.047,0.976-0.1,1.463-0.146c8.612,25.85,17.225,51.697,26.09,78.299C508.404,428.727,491.202,428.727,473.154,428.727z">
                                                 </path>
-                                                <path data-v-2fe1039c="" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M481.334,304.652c12.301,0,23.381,0,35.646,0
+                                                <path data-v-2fe1039c="" fill-rule="evenodd" clip-rule="evenodd" fill="#035a4c" d="M481.334,304.652c12.301,0,23.381,0,35.646,0
                             c-3.631,9.219-7.024,17.855-10.217,25.947c-4.581,0-8.614,0-13.843,0C489.546,323.047,485.655,314.33,481.334,304.652z">
                                                 </path>
                                                 <path data-v-2fe1039c="" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M631.771,408.305c0,5.789,0.104,11.168-0.075,16.537
@@ -480,7 +554,7 @@
                             C618.885,408.305,624.896,408.305,631.771,408.305z">
                                                 </path>
                                             </svg> <span data-v-2fe1039c="" data-to="1426" data-speed="1500" class="count count-num timer count-title count-number">255</span>
-                                            <h6 data-v-2fe1039c=""><b>1<sup>st</sup> Year Students</b></h6>
+                                            <h6 data-v-2fe1039c=""><b class="number_of_certificate"> মোট  প্রত্যয়নের সংখ্যা</b></h6>
                                         </div>
                                     </a></div>
                                 <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1500" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate"><a data-v-2fe1039c="" href="/member-list?type=Associate" class="text-black">
@@ -581,7 +655,7 @@
                             c1.068,9.797,1.6,19.674,3.226,29.367c1.099,6.563-0.252,11.049-7.056,13.709c-5.818-2.227-8.211-6.02-7.208-13.279
                             c2.67-19.287,4.423-38.701,6.543-58.068C500.677,354.18,501.085,354.111,501.498,354.047z">
                                                 </path>
-                                                <path data-v-2fe1039c="" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M600.927,421.881c5.259-12.506,10.124-24.641,15.483-36.551
+                                                <path data-v-2fe1039c="" fill-rule="evenodd" clip-rule="evenodd" fill="#035a4c" d="M600.927,421.881c5.259-12.506,10.124-24.641,15.483-36.551
                             c1.83-4.068,10.605-3.391,12.468,0.863c5.082,11.588,9.882,23.295,15.048,35.553c-5.569,0.73-10.573,3.059-13.182-4.318
                             c-1.175-3.314-15.735-3.357-16.85-0.037C611.496,424.51,606.569,422.52,600.927,421.881z M622.327,395.195
                             c-1.872,4.996-3.021,8.08-4.277,11.434c3.28,0,5.679,0,8.746,0C625.385,403.023,624.242,400.105,622.327,395.195z">
@@ -590,547 +664,227 @@
                             C619.306,403.275,620.455,400.191,622.327,395.195z">
                                                 </path>
                                             </svg> <span data-v-2fe1039c="" data-to="719" data-speed="1500" class="count count-num timer count-title count-number">112</span>
-                                            <h6 data-v-2fe1039c=""><b>2<sup>nd</sup> Year Students</b></h6>
+                                            <h6 data-v-2fe1039c=""><b class="number_of_certificate">লাইসেন্সের সংখ্যা</b></h6>
                                         </div>
                                     </a></div>
                                 <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1500" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate"><a data-v-2fe1039c="" href="/member-list?type=Affiliate" class="text-black">
-                                        <div data-v-2fe1039c="" class="box"><img data-v-2fe1039c="" height="60" src="https://basis.org.bd/public/images/icon/affiliate-members-counter.svg" alt=""> <span data-v-2fe1039c="" data-to="206" data-speed="1500" class="count count-num timer count-title count-number">425</span>
-                                            <h6 data-v-2fe1039c=""><b>Previous Students</b></h6>
+                                        <div data-v-2fe1039c="" class="box"><img data-v-2fe1039c="" height="60" src="{% static 'images/affiliate-members-counter.svg'%}" alt=""> <span data-v-2fe1039c="" data-to="206" data-speed="1500" class="count count-num timer count-title count-number">425</span>
+                                            <h6 data-v-2fe1039c=""><b class="number_of_certificate">অনুমোদিত আবেদনের সংখ্যা</b></h6>
                                         </div>
                                     </a></div>
                                 <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1500" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate"><a data-v-2fe1039c="" href="/member-list?type=International" class="text-black">
-                                        <div data-v-2fe1039c="" class="box"><img data-v-2fe1039c="" height="60" src="https://basis.org.bd/public/images/icon/international-member-counter.svg" alt=""> <span data-v-2fe1039c="" data-to="12" data-speed="1500" class="count count-num timer count-title count-number">688</span>
-                                            <h6 data-v-2fe1039c=""><b>All Students</b></h6>
+                                        <div data-v-2fe1039c="" class="box"><img data-v-2fe1039c="" height="60" src="{% static 'images/international-member-counter.svg' %}" alt=""> <span data-v-2fe1039c="" data-to="12" data-speed="1500" class="count count-num timer count-title count-number">688</span>
+                                            <h6 data-v-2fe1039c=""><b class="number_of_certificate" >মোট অনুমোদিত সনদ সংখ্যা</b></h6>
                                         </div>
                                     </a>
                                 </div>
                                 
-                    <div class="missionVission">
-                        <div class="container-wrapper">
-                            <div class="content-header text-center">
-                                <h1 class="title">Mission &amp; Vision</h1>
-                            </div>
-                            <div class="row py-4">
-                                <div data-aos="fade-right" data-aos-offset="100" data-aos-duration="1000" class="col-lg-6 aos-init aos-animate">
-                                    <div class="box border-right-green">
-                                        <div class="box-body">
-                                            <h3>Mission</h3>
-                                            <p>To develop powerful mind and soul, capacity and sustainable growth of the students, and to lead for the building nation for the
-                                                future Bangladesh.</p>
+                                <div class="missionVission">
+                                    <div class="container-wrapper">
+                                        <div class="content-header text-center">
+                                            <div class="row pt-5" id="chairman_heading" >
+                                                <div class="col-lg-12 text-center"><a href="/service/member" class="btn btn-lg btn-primary rounded-50" style="background-color:#035a4c;text-shadow:4px 4px 4px rgb(67, 7 ,7)">
+                                                    <h2   >{{chairman.post.name}} ও সচিব</h2>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        
+                                </div>
+                                        <div class="row py-4">
+                                            <div class="chairman">
+                                            <div data-aos="fade-left" data-aos-offset="100" data-aos-duration="1500" class="col-lg-6 aos-init aos-init aos-animate">
+                                                    <div class="box-body " style="text-align:center" >
+                                                        <img loading="lazy" src="{{chairman.image.url}}"  class="person" >
+            
+                                                        <h4>{{chairman.name}}</h4>
+                                                        <h4>{{chairman.post.name}}</h4>
+
+                                                        <h5>{{chairman.phone}}</h5>
+                                                        <h5>{{chairman.email}}</h5>
+                                                        <p>ইউনিয়নঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট। </p>
+            
+                                                        
+                                                </div>
+                                            </div>
+                                            <div data-aos="fade-right" data-aos-offset="100" data-aos-duration="1500" class="col-lg-6 aos-init aos-animate">
+            
+            
+                                                    <div class="box-body" style="text-align:center">
+                                                        <img loading="lazy" src="{{secretary.image.url}}"  class="person" >
+                                                        <h4>{{secretary.name}}</h4>
+                                                        <h4>{{secretary.post.name}}</h4>
+                                                        <h5>{{secretary.phone}}</h5>
+                                                        <h5>{{secretary.email}}</h5>
+                                                        <p>ইউনিয়নঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট। </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                
+                                            
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div data-aos="fade-left" data-aos-offset="100" data-aos-duration="1500" class="col-lg-6 aos-init">
-                                    <div class="box">
-                                        <div class="box-body">
-                                            <h3>Vision</h3>
-                                            <p>To improve skills, make himself knowing to adjust with new comings and coping up with frontier technologies and the future world.</p>
+                                <div class="missionVission">
+                                    <div class="container-wrapper">
+                                        <div class="content-header text-center">
+                                            <div class="row pt-5">
+                                                <div class="col-lg-12 text-center"><a href="/service/member" class="btn btn-lg btn-primary rounded-50" style="background-color:#035a4c;text-shadow:8px 8px 8px rgb(67, 7 ,7)">
+                                                    <h2 >ভিশন ও মিশন</h2>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        
+                                </div>
+                                        <div class="row py-4">
+                                                <div data-aos="fade-right" data-aos-offset="100" data-aos-duration="1500" class="col-lg-6 aos-init aos-init aos-animate">
+                                                    <div class="box border-right-green">
+
+                                                    <div class="box-body " style="text-align:center" >
+                                                        <h3 class="title">মিশন</h3>
+
+                                                        <p>জনগনের দোরগোড়ায় ইউনিয়ন কতৃক প্রদত্তসেবা পৌছানো</p><p>সনদ জালিয়াতি রোধ ও সনদ যাচাই সহজীকরণ</p>
+            
+                                                        
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div data-aos="fade-left" data-aos-offset="100" data-aos-duration="1500" class="col-lg-6 aos-init aos-animate">
+            
+                                                <div class="box">
+
+                                                    <div class="box-body " style="text-align:center">
+                                                        <h3>ভিশন</h3>
+
+                                                        <p>প্রতিটি নাগরিককে প্রযুক্তির মাধ্যমে তাদের সেবা প্রাপ্তি নিশ্চিত করে </p><p> প্রযুক্তির ব্যবহারে দক্ষতা বাড়িয়ে তোলা  </p>
+                                                              </div>
+                                                </div>
+                                            </div>
+                                                
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                                
+                                                        
                 
     <!-------service design finishing line 2 Div below ---->
                </div>
                </div>
-                       <div class="memberCalender">
-                           <div class="container-wrapper">
-                               <div class="row">
-                                   <div data-aos="fade-right" data-aos-offset="100" data-aos-duration="1000" class="col-lg-7 aos-init">
-                                       <div class="becomeMember text-center card card-body border-light shadow-lg h-100">
-                                           <div class="content-header mb-4 mt-3">
-                                               <h1 tooltip="always" tooltip-placement="top,bottom" class="title text-center">Upcoming Batches</h1>
-                                           </div>
-                                           <div class="becomeMember-slider pt-3">
-                                               <div class="carousel-slider">
-                                                   <div><span id="carousel_prev_ryizjkb3d2r" style="display: none;"><span class="prev"><i class="fas fa-chevron-left"></i></span></span>
-                                                       <div id="carousel_4039yknmx85" class="owl-carousel owl-theme owl-loaded owl-drag">
-                                                           <div class="owl-stage-outer">
-                                                               <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 250px;">
-                                                                   <div class="owl-item active" style="width: 235px; margin-right: 15px;">
-                                                                       <div class="items text-left">
-                                                                           <div class="card border-0"><img alt="public event image." class="d-block w-100" data-src="/images/ictbatch2.jpg" src="{%static 'images/private.jpg'%}" lazy="loading">
-                                                                               <div class="ml-3" style="height: 0px;">
-                                                                                   <!---->
-                                                                               </div>
-                                                                               <div class="card-body">
-                                                                                   <h3>New Batch from 2024</h3>
-                                                                                   <p>New batch will be started from January 2024
-                                                                                   Eagered Students are being cordially invited to sign infor new batches...</p>
-                                                                               </div>
-                                                                               <div class="card-footer bg-transparent border-0">
-                                                                                   <a href="" class="btn btn-sm btn-outline-primary">Join Now</a></div>
-                                                                           </div>
-                                                                       </div>
-                                                                   </div>
-                                                               </div>
-                                                           </div>
-                                                           <div class="owl-nav disabled">
-                                                               <div class="owl-prev">next</div>
-                                                               <div class="owl-next">prev</div>
-                                                           </div>
-                                                           <div class="owl-dots disabled"></div>
-                                                       </div> <span id="carousel_next_0qvr2hkbbshq"><span class="next"><i class="fas fa-chevron-right"></i></span></span>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div data-aos="fade-left" data-aos-offset="100" data-aos-duration="1500" class="col-lg-5 aos-init">
-                                       <div data-v-d39d85a0="" class="eventCalendar">
-                                           <link data-v-d39d85a0="" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-                                           <link data-v-d39d85a0="" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
-                                           <link data-v-d39d85a0="" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-                                           <div data-v-d39d85a0="" class="card calender-card shadow-lg">
-                                               <div data-v-d39d85a0="" class="__vev_calendar-wrapper">
-                                                   <div class="cal-wrapper">
-                                                       <div class="calendar-container">
-                                                           <header><span class="shape"></span>
-                                                               <div class="content-header mb-4 mt-3">
-                                                                   <h1 class="title text-light text-center">Event
-                                                                       Calendar</h1>
-                                                               </div>
-                                                               <div class="d-flex align-items-center justify-content-between">
-                                                                   <div>
-                                                                       <div class="day">01</div>
-                                                                       <div class="month">February</div>
-                                                                   </div>
-                                                                   <div class="year">2024</div>
-                                                               </div>
-                                                           </header>
-                                                       </div>
-                                                       <div class="cal-header">
-                                                           <div class="l">
-                                                               <div class="arrow-left icon">&nbsp;</div>
-                                                           </div>
-                                                           <div class="title" style="display: none;">07/2023</div>
-                                                           <div class="r">
-                                                               <div class="arrow-right icon">&nbsp;</div>
-                                                           </div>
-                                                       </div>
-                                                       <div class="cal-body calendar-body">
-                                                           <div class="weeks"><span class="item">
-                                                                   Sun
-                                                               </span><span class="item">
-                                                                   Mon
-                                                               </span><span class="item">
-                                                                   Tue
-                                                               </span><span class="item">
-                                                                   Wed
-                                                               </span><span class="item">
-                                                                   Thu
-                                                               </span><span class="item">
-                                                                   Fri
-                                                               </span><span class="item">
-                                                                   Sat
-                                                               </span></div>
-                                                           <div class="dates">
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       &nbsp;</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       &nbsp;</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       &nbsp;</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       &nbsp;</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       &nbsp;</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       &nbsp;</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: red;">
-                                                                       1</p><span class="is-today" style="background-color: rgb(242, 149, 67);"></span>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       2</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       3</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       4</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       5</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       6</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       7</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       8</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       9</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       10</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       11</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       12</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       13</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       14</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       15</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       16</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       17</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       18</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       19</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       20</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       21</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       22</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       23</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       24</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       25</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item today">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       26</p> 
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       27</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       28</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       29</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       30</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       31</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       &nbsp;</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       &nbsp;</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       &nbsp;</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       &nbsp;</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                               <div class="item">
-                                                                   <p class="date-num" style="color: inherit;">
-                                                                       &nbsp;</p>
-                                                                   <!---->
-                                                                   <!---->
-                                                               </div>
-                                                           </div>
-                                                           <div class="ring-left"></div>
-                                                           <div class="ring-right"></div>
-                                                       </div>
-                                                   </div>
-                                                   <div class="events-wrapper" style="background-color: rgb(242, 149, 67);">
-                                                       <h2 class="date">
-                                                           Event Calendar
-                                                       </h2>
-                                                       <div class="cal-events">
-                                                           <div class="event-item">
-                                                               <div class="wrapper">
-                                                                   <h3 class="title">1. Foo</h3>
-                                                                   <p class="time">30/12/2060</p>
-                                                                   <p class="desc"></p>
-                                                               </div>
-                                                           </div>
-                                                           <div class="event-item">
-                                                               <div class="wrapper">
-                                                                   <h3 class="title">2. Bar</h3>
-                                                                   <p class="time">30/12/2060</p>
-                                                                   <p class="desc"></p>
-                                                               </div>
-                                                           </div>
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                               <div data-v-d39d85a0="" class="calander-button"><a data-v-d39d85a0="" href="/event-calender" class="btn btn-sm btn-outline-primary">All Events</a></div>
-                                               <div data-v-d39d85a0="" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade">
-                                                   <div role="document" class="modal-dialog">
-                                                       <div class="modal-content">
-                                                           <div class="modal-header">
-                                                               <h5 id="exampleModalLabel" class="modal-title">
-                                                                   Events Information</h5> <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                                                           </div>
-                                                           <div class="modal-body"></div>
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                               <!---->
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
                        
                        
                        
                        
-                       <div class="marketing">
-                           <div class="container-wrapper">
-                               <div class="content-header mb-5">
-                                   <h1 class="title text-center">Our All Service</h1>
-                               </div>
-                               <ul class="nav nav-tabs visible-phone">
-                                   <li><a href="#local" data-toggle="tab" class="active">HSC ICT</a></li>
-                                   <li><a href="#inter" data-toggle="tab">IT Training </a></li>
-                                   <li><a href="#policy" data-toggle="tab">Software, App & Web </a></li>
-                               </ul>
-                               <div class="row tab-content">
-                                   <div id="local" data-aos="fade-right" data-aos-offset="100" data-aos-duration="1000" class="col-lg-4 tab-pane active aos-init">
-                                       <div class="card border border-dark">
-                                           <div class="card-body">
-                                               <h4>ICT Private Programme</h4><img alt="ICT Private Programme" data-src="https://basis.org.bd/public/images/international-market.svg" src="{%static 'images/student.jpg' %}" lazy="loading">
-                                               <ul>
-                                                   <li><a href="/market-details/1" class="">HSC ICT 
-                                                           </a></li>
-                                                   <li><a href="http://nbr.gov.bd/nbr-enlisted/eng" target="_blank">Exam Preparation</a></li>
-                                                   <li><a href="https://basisegovhub.info" target="_blank">Helpful Notes</a></li>
-                                                   <li><span>Lab Preparation</span></li>
-                                                   <li><span>Special care in HTML & C</span></li>
-                                                   <li><a href="" target="_blank">Understanding Frontier Technology</a></li>
-                                                   
-                                               </ul> 
-                                               <a href="/market/LocalMarket" class="btn btn-outline-primary">View All</a>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div id="inter" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1500" class="col-lg-4 tab-pane aos-init aos-animate">
-                                       <div class="card border border-dark">
-                                           <div class="card-body">
-                                               <h4>IT Training</h4> <img alt="international_Marketimage" data-src="https://basis.org.bd/public/images/international-market.svg" src="{%static 'images/ittraining.jpg' %}" lazy="loading">
-                                               <ul>
-                                                   <li><a href="/market-details/5" class="">Basic Computer Training
-                                                    </a></li>
-                                                   <li><a href="/b2b" class="">Microsoft Office,Excell and Internet</a></li>
-                                                   <li><a href="/ea/international/events" class="">Graphics Design</a>
-                                                   </li>
-                                                   <li><a href="/ea/international/events" class="">C,JAVA, Python Android Learning</a>
-                                                   </li>
-                                                   <li><a href="/ea/international/awards" class="">Software, App,Web Design Learning</a>
-                                                   </li>
-                                               </ul> <a href="/market/InternationalMarket" class="btn btn-outline-primary">View All</a>
-                                           </div>
-                                       </div>
-                                   </div>
-                                   <div id="policy" data-aos="fade-left" data-aos-offset="100" data-aos-duration="2000" class="col-lg-4 tab-pane aos-init aos-animate">
-                                       <div class="card border border-dark">
-                                           <div class="card-body">
-                                               <h4>Sotware ,App & Web Development</h4> <img alt="policyimage" data-src="https://basis.org.bd/public/images/policy.svg" src="{%static 'images/engineering.jpg' %}" lazy="loading">
-                                               <ul>
-                                                   <li><a href="https://basis.org.bd/public/files/policy/5e164eef132ff1. BNDA.pdf" target="_blank">Software Development</a></li>
-                                                   <li><a href="https://basis.org.bd/public/files/policy/5e16502b8ae85Export Policy.pdf" target="_blank">Website Creation</a></li>
-                                                   <li><a href="https://basis.org.bd/public/files/policy/5e165080e9f18EPB_Ordinance_(Bangla) (1).pdf" target="_blank">Domain and Hosting</a></li>
-                                                   <li><a href="https://basis.org.bd/public/files/policy/5e16509e92820Import Policy order.pdf" target="_blank">ICT Equipments</a></li>
-                                                   <li><a href="https://basis.org.bd/public/files/policy/5e1651f4abac2ICT in Education Master Plan Review Report-2019.pdf" target="_blank">Facebook Promotion</a></li>
-                                                   <li><a href="https://basis.org.bd/public/files/policy/5e1653db166e8Digital-Security-Act-2018-English-version.pdf" target="_blank">Building Network</a></li>
-                                               </ul> <a href="/policy/Policies" class="btn btn-outline-primary">View All</a>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
- 
- 
-                    <div class="gallery-tab">
-                        <div class="container-wrapper">
-                            <div class="title-container">
-                                <div>
-                                    <h3 class="title">Our Gallery</h3>
-                                </div> 
-                                <div class="filters filter-menu">
-                                    <span class="filter">All</span>
-                                     <span class="filter active">Photo Gallery</span> 
-                                     <span class="filter">Video Gallery</span>
-                                </div>
-                            </div>
-
-
-
-
-
-                        </div>
-                    </div>
- 
- 
+                       
+                       
  
  
  
                    
                 
                 
-                       <a href="#" class="scroll-top active"><i class="fa fa-arrow-up"></i></a>
-               
-               
- 
- 
-              
-           </div>
-       </div>
+             
+
+       <div class="marketing">
+        <div class="container-wrapper">
+            <div class="content-header mb-5">
+                <div class="row pt-5">
+                    <div class="col-lg-12 text-center"><a href="/service/member" class="btn btn-lg btn-primary rounded-50" style="background-color:#035a4c;text-shadow:8px 8px 8px rgb(67, 7 ,7)">
+                <h2 >নির্দেশনাসমূহ</h2>
+                    </a></div>
+                </div>
+
+            </div>
+            <ul class="nav nav-tabs visible-phone" style="margin-left:7%">
+                <li><a href="#local" data-toggle="tab" class="active">সনদ ও প্রত্যয়ন</a></li>
+                <li><a href="#inter" data-toggle="tab">লাইসেন্সসমূহ </a></li>
+                <li><a href="#policy" data-toggle="tab">অন্যান্য সেবা </a></li>
+            </ul>
+            <div class="row tab-content">
+                <div id="local" data-aos="fade-right" data-aos-offset="100" data-aos-duration="1000" class="col-lg-4 tab-pane active aos-init aos-animate">
+                    <div class="card border border-dark">
+                        <div class="card-body" style="font-family:kalpurush;">
+                            <h4>সনদ ও প্রত্যয়ন</h4><img alt="ICT Private Programme" data-src="https://tilokpurup.org.bd/public/images/international-market.svg" loading="lazy" src="{%static 'images/cert_logo.png' %}" lazy="loading">
+                            <ul>
+                                <li><a href="/market-details/1" class="">সঠিক ভাবে ফর্মপূরণ করুন
+                                        </a></li>
+                                <li><a href="http://nbr.gov.bd/nbr-enlisted/eng" target="_blank">প্রয়োজনীয় কাগজপত্র সাথে রাখুন</a></li>
+                                <li><a href="https://tilokpurupegovhub.info" target="_blank">জাতীয় পরিচয়পত্র বা জন্ম-নিবন্ধন সফট কপি আপলোড করুন</a></li>
+                                <li><a>মেম্বারের সাক্ষরসহ অনুমোদনপত্র আপলোড করুন</a></li>
+                                <li><a>সম্পূর্ণ প্রক্রিয়া শেষ করে নিবেদকের কপি সংগ্রহে রাখুন</a></li>
+                                <li><a>নিবেদকের কপিতে উল্লেখিত ট্র্যাকিং নম্বরটি সংগ্রহে রাখুন </a></li>
+                                <li><a>ফর্মপূরণের পর কর্তৃপক্ষ অনুমোদন করলে ট্র্যাকিং নম্বর দিয়ে নির্ধারিত ফর্মে সনদটি ডাউনলোড করা যাবে বা যাচাই করা যাবে</a></li>
+                                
+                            </ul> 
+                            {% comment %} <a href="/market/LocalMarket" class="btn btn-outline-primary">আরও দেখুন</a> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+                <div id="inter" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1500" class="col-lg-4 tab-pane aos-init aos-animate">
+                    <div class="card border border-dark">
+                        <div class="card-body" style="font-family:kalpurush;">
+                            <h4>লাইসেন্সসমূহ</h4> <img alt="international_Marketimage" data-src="https://tilokpurup.org.bd/public/images/international-market.svg" loading="lazy" src="{% static 'images/license.jpeg' %}" lazy="loading">
+                            <ul>
+                                <li><a href="/market-details/1" class="">সঠিক ভাবে ফর্মপূরণ করুন
+                                        </a></li>
+                                <li><a href="http://nbr.gov.bd/nbr-enlisted/eng" target="_blank">প্রয়োজনীয় কাগজপত্র সাথে রাখুন</a></li>
+                                <li><a href="https://tilokpurupegovhub.info" target="_blank">জাতীয় পরিচয়পত্র বা জন্ম-নিবন্ধন সফট কপি আপলোড করুন</a></li>
+                                <li><a>সম্পূর্ণ প্রক্রিয়া শেষ করে নিবেদকের কপি সংগ্রহে রাখুন</a></li>
+                                <li><a>চেয়ারম্যান অফিসে যোগাযোগ করে প্রয়োজনীয় ফি প্রদান করুন</a></li>
+                                <li><a>নিবেদকের কপিতে উল্লেখিত ট্র্যাকিং নম্বরটি সংগ্রহে রাখুন </a></li>
+                                <li><a>ফর্মপূরণের পর কর্তৃপক্ষ অনুমোদন করলে ট্র্যাকিং নম্বর দিয়ে নির্ধারিত ফর্মে লাইসেন্সটি ডাউনলোড করা যাবে বা যাচাই করা যাবে</a></li>
+                                
+                            </ul> 
+                        </div>
+                    </div>
+                </div>
+                <div id="policy" data-aos="fade-left" data-aos-offset="100" data-aos-duration="2000" class="col-lg-4 tab-pane aos-init aos-animate">
+                    <div class="card border border-dark">
+                        <div class="card-body" style="font-family:kalpurush;">
+                            <h4>অন্যান্য</h4> <img alt="policyimage" loading="lazy" data-src="https://tilokpurup.org.bd/public/images/policy.svg" src="{%static 'images/others.png' %}" lazy="loading">
+                            <ul>
+                                <li><a href="/market-details/1" class="">সঠিক ভাবে ফর্মপূরণ করুন
+                                        </a></li>
+                                <li><a href="http://nbr.gov.bd/nbr-enlisted/eng" target="_blank">প্রয়োজনীয় কাগজপত্র সাথে রাখুনস</a></li>
+                                <li><a href="https://tilokpurupegovhub.info" target="_blank">জাতীয় পরিচয়পত্র বা জন্ম-নিবন্ধন সফট কপি আপলোড করুন</a></li>
+                                <li><a>সম্পূর্ণ প্রক্রিয়া শেষ করে নিবেদকের কপি সংগ্রহে রাখুন</a></li>
+                                <li><a>চেয়ারম্যান অফিসে যোগাযোগ করে প্রয়োজনীয় ফি প্রদান করুন</a></li>
+                                <li><a>নিবেদকের কপিতে উল্লেখিত ট্র্যাকিং নম্বরটি সংগ্রহে রাখুন </a></li>
+                                <li><a>ফর্মপূরণের পর কর্তৃপক্ষ অনুমোদন করলে ট্র্যাকিং নম্বর দিয়ে নির্ধারিত ফর্মে লাইসেন্সটি ডাউনলোড করা যাবে বা যাচাই করা যাবে</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+ {% comment %} <div class="gallery-tab">
+     <div class="container-wrapper">
+         <div class="title-container">
+             <div>
+                 <h3 class="title">Our Gallery</h3>
+             </div> 
+             <div class="filters filter-menu">
+                 <span class="filter">All</span>
+                  <span class="filter active">Photo Gallery</span> 
+                  <span class="filter">Video Gallery</span>
+             </div>
+         </div>
+
+
+
+
+
+     </div>
+ </div> {% endcomment %}
+
+
         
    <div>
        <div class="toast-container toast-top-right"></div>

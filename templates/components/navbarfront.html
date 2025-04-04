@@ -14,6 +14,8 @@
         color:#fff;
         text-shadow: 2px 2px 2px rgb(65, 7, 7);
         font-size:17px;
+        font-family:kalpurush;
+
 
     }
     #main-heading{
@@ -143,7 +145,7 @@
            
                                           
                   <span class="heading" id="heading">৪ নং তিলকপুর ইউনিয়ন পরিষদ</span><br>
-                  <span id="sub-heading" class="sub-heading"  >উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
+                  <span id="sub-heading" class="sub-heading"   >উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
 
                
              
@@ -162,7 +164,16 @@
                                 <h4 class="menu-head"><a href="/ea/local/awards" class="">প্রথম ভাগ</a></h4>
                                      
                                 <ul>
-                                    
+                                    {% comment %} {% for certificate in certificate_types_first %}
+                                        
+                                        
+                                    <li class="subMenu" ><span class="fa fa-hand-o-up"></span>
+                                        <a href="{% url 'apply_for_certificate' certificate.id %}" target="_blank" style="padding-left:2px;padding-right:0px;">
+                                       {{certificate.name}}
+                                        </a>
+                                    </li>
+                                    {% endfor %} {% endcomment %}
+
                                     {% for certificate in certificate_types|slice:'0:10'  %}
                                         
                                         

@@ -22430,7 +22430,6 @@ button.close.text-light.search-box-close {
 
 .num-counter .box img,
 .num-counter .box svg {
-    width: 45px;
     display: block;
     margin: 0 auto
 }
@@ -22439,7 +22438,6 @@ button.close.text-light.search-box-close {
 
     .num-counter .box img,
     .num-counter .box svg {
-        width: 35px;
         display: block;
         margin: 0 auto
     }

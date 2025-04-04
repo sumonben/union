@@ -40,7 +40,7 @@
             <div class="col-sm-12 form-group" >
 
             <table width="100%" border="1" cellspacing="0" cellpadding="10">
-              <thead><th colspan="5" style="height: 30px; background-color: #035a4c; color: #fff;text-shadow: 10px 10px 10px rgb(73, 25, 11);padding: 15px;text-align:center;">  ব্যক্তিগত তথ্য                                   
+              <thead><th colspan="5" style="height: 30px; background-color: #035a4c; color: #fff;text-shadow: 10px 10px 10px rgb(73, 25, 11);padding: 15px;text-align:center;">  <h2>ব্যবসা সংক্রান্ত তথ্য  </h2>                                 
                 {% if license_type.id == 2 or  license_type.id == 4 %}
                &nbsp<h5>(সনদটি ইংরেজিতে চাইলে নাম, বাবার নাম ও মায়ের নাম ইংরেজিতে পুরণ করুন ও ভাষা ইংরেজি সিলেক্ট করুন)</h5>                                
                {% endif %}</th></thead>
@@ -514,7 +514,7 @@
                                   $("#id_form-0-village").append('<option '+'value="'+response.village[i].id+'">'+response.village[i].name +'('+response.village[i].name_en+ ')' +'</option>');
                               }
                 }
-                if(id=='id_form-0-village'){
+                if(id=='id_form-0-ward'){
                   $("#id_form-0-mouja option").remove();
                   $("#id_form-0-mouja").append('<option '+'value="">'+ '-----------' +'</option>');
                         for (var i = response.mouja.length - 1; i >= 0; i--) {

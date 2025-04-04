@@ -96,7 +96,6 @@
           width: 100%;
           height: 100%;
           background: #05812a;
-          content: "";
           z-index: -2;
           transition: transform .3s;
         }
@@ -120,11 +119,31 @@
 
         } 
         
-      
-        #certificate_title{
+        #item_title {
+          text-shadow: 3px 3px 3px rgb(65, 7, 7);
+         }
+         #license_title{
           color:#fff;
-          text-shadow: 8px 8px 8px rgb(65, 7, 7);
+          text-shadow: 3px 3px 3px rgb(65, 7, 7);
         }
+        
+        @media print {
+         
+           #item_title {
+            -webkit-filter: drop-shadow(3px 3px 3px rgb(65, 7, 7));
+            text-shadow: 3px 3px 3px rgb(65, 7, 7);
+          }
+          #license_title{
+            -webkit-filter: drop-shadow(2px 2px 2px rgb(65, 7, 7));
+            text-shadow: 2px 2px 2px rgb(65, 7, 7);
+          }
+           
+        }
+        .rounded-50 {
+          border-radius: 50px;
+      
+      }
+        
         #toast-container {
           opacity: 1;
           visibility: hidden;
@@ -181,6 +200,7 @@
 
        }
        #first{
+        width:100%;
         background-image:url('/static/images/tilokpur_logo_opacity.png'); 
         background-repeat: no-repeat;
         background-position: center;
@@ -196,10 +216,14 @@
     </head>
     
     <body>
+      <div id="q-box__buttons" >
+                        
+        <button id="submit-btn" class="btn-default" onclick="window.print()" >প্রিন্ট অথবা ডাউনলোড</button>
+      </div> 
     <table     border="0" align="center" cellpadding="0" cellspacing="0">
       <tbody><tr>
-        <td>
-          <table id="second"  align="center"   border="0" cellspacing="0" cellpadding="0">
+        <td id="second">
+          <table   align="center"   border="0" cellspacing="0" cellpadding="0">
             <tbody><tr>
               <td width="19"><img id="img1" src="{% static 'images/main_01.png'%}" width="19" height="22"></td>
               <td width="61" class="main-top">&nbsp;</td>
@@ -214,31 +238,24 @@
                   <td align="center" valign="middle"  >
                     <table width="100%" align="center"  cellspacing="0" cellpadding="0">
                     <tbody><tr>
-                      <td width="20%" height="95" rowspan="4" align="right" valign="middle" style="text-align:right"><img src="{% static 'images/tilokpur_logo.png'%}" width="80" height="80"></td>
+                      <td width="20%" height="95" rowspan="4"  valign="middle" style="text-align:center;"><img style="margin-top:20px;" src="{% static 'images/tilokpur_logo.png'%}" width="80" height="80"></td>
                     </tr>
                     <tr>
-                      <td width="70%" height="100" align="center" valign="middle" style="text-align:center">
-                        <span class="GrayBlue10bold" style="color:#000;text-shadow: 3px 3px 3px rgb(65, 7, 7);line-height:1.7;">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</span><br>
+                      <td width="70%" height="100" id="item_title" align="center" valign="middle" style="text-align:center">
+                        <span class="GrayBlue10bold" style="color:#000;text-shadow: none;line-height:1.7;margin-left:-30px;">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</span><br>
 
-                      <span class="GrayBlue20bold"  style="text-align: center;color:#922b21;text-shadow: 3px 3px 3px rgb(65, 7, 7);line-height:1.2;font-size:33px">৪ নং তিলকপুর ইউনিয়ন পরিষদ কার্যালয়</span><br>
-                      <span style="color:#000;margin-top:0px;text-shadow: 2px 2px 2px rgb(65, 7, 7);font-size:18px">ডাকঘরঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
+                      <span class="GrayBlue20bold"  style="text-align: center;color:#922b21;text-shadow: 3px 3px 3px rgb(65, 7, 7);line-height:1.2;font-size:33px;margin-left:-30px;">৪ নং তিলকপুর ইউনিয়ন পরিষদ কার্যালয়</span><br>
+                      <span style="color:#000;margin-top:0px;text-shadow: none;font-size:18px;margin-left:-30px;">ডাকঘরঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
                       </td>
                       <td width="10%" height="95" align="center" valign="middle" style="text-align:center"></td>
                       </tr>
-                  </tbody></table></td>
+                  </tbody></table>
+                </td>
                 </tr>
                 <tr>
                   <td align="left" valign="top">&nbsp;</td>
                 </tr>
-                <tr>
-                  <td align="left" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0" ><tbody><tr><td >
-        <table border="0" cellpadding="5" cellspacing="0" class="cyan11">
-            <tbody>
-            
-        </tbody></table>
-    </td></tr></tbody></table>
-  </td>
-                </tr>
+               
                
                 <tr>
                   <td id="first"   valign="middle" >
@@ -290,5 +307,5 @@
 </tr>
 </tbody>
 </table>
-  
+
 </body></html>

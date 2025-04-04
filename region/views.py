@@ -35,18 +35,21 @@ def SubOrdinationView(request):
             village=list(village.values())
             return JsonResponse({'status': 'success','meaasge':'Account created Successfully','village':village},safe=False)
         if request.GET.get('id')=='id_form-0-ward':
+            print(request.GET.get('value'))
             ward=Ward.objects.filter(id=request.GET.get('value')).first()
-
             village=Village.objects.filter(ward=ward)
             village=list(village.values())
-            return JsonResponse({'status': 'success','meaasge':'Account created Successfully','village':village},safe=False)
-        
-        if request.GET.get('id')=='id_form-0-village':
-            village=Village.objects.filter(id=request.GET.get('value')).first()
-
-            mouja=Mouja.objects.filter(village=village)
+            mouja=Mouja.objects.filter(ward=ward)
             mouja=list(mouja.values())
-            return JsonResponse({'status': 'success','meaasge':'Account created Successfully','mouja':mouja},safe=False)
+
+            return JsonResponse({'status': 'success','meaasge':'Account created Successfully','village':village,'mouja':mouja},safe=False)
+        
+        # if request.GET.get('id')=='id_form-0-village':
+        #     village=Village.objects.filter(id=request.GET.get('value')).first()
+
+        #     mouja=Mouja.objects.filter(village=village)
+        #     mouja=list(mouja.values())
+        #     return JsonResponse({'status': 'success','meaasge':'Account created Successfully','mouja':mouja},safe=False)
            
                     
         return JsonResponse({'status': 'Failed','meaasge':'Account created Successfully'},safe=False)

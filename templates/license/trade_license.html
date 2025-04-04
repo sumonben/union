@@ -80,12 +80,15 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
 
 
 
-@media print and (min-width: 480px) {
+@media print and (min-width: 300px) {
     
   table{
       -webkit-print-color-adjust: exact; 
 
 }
+table.result {
+  width:80%;
+   }
 #submit-btn {
   display: none !important;;
 }        
@@ -104,7 +107,7 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
   
   
   table.result {
-    width:70%;
+    width:80%;
      } 
               
 table.result th, table.result td {
@@ -151,7 +154,13 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
         
                   <div >
                         <div class="step d-block" >
-                            <div><h3 style="text-align: center; color:rgb(2, 71, 8);text-shadow: 2px 2px 2px rgb(231, 12, 12);">{{license_type.name}}</h3></div>
+                          <div >
+                            <h3 style="text-align: center;">                            
+                              <button class="rounded-50 ml-2" id="license_title" style=" background-color:#035a4c; padding-left:5px;padding-right:10px"> 
+                                {{license_type.name}}
+                              </button>
+                          </h3>
+                          </div>
                             <table align="center" width="90%">
                               <tr style="padding:0px;">
                               <td>
@@ -168,12 +177,12 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
 
 
                          
-                          <table  width="690"  align="center" valign="middle" cellspacing="0" cellpadding="0">
+                          <table  width="690"  align="center" valign="top" cellspacing="0" cellpadding="0">
 
                             <tbody>
                             <tr>
                               <td  align="center">
-                                <table class="result"  width="80%" align="center" style="font-size:18px;"  cellspacing="0" cellpadding="0">
+                                <table   width="80%" align="center" style="font-size:15px;"  cellspacing="0" cellpadding="0">
                                   <tbody>
                                     <tr>
                                       <td colspan="6"  align="left"  >
@@ -468,10 +477,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                 
                 </div>
 
-                    <div id="q-box__buttons" >
-                        
-                        <button id="submit-btn" class="btn-default" onclick="window.print()" >প্রিন্ট অথবা ডাউনলোড</button>
-                    </div>   
+                     
                    
          
 

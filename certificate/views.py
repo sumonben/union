@@ -11,6 +11,8 @@ from django.forms import formset_factory
 from region.forms import OthersAdressForm
 from payment.sslcommerz import sslcommerz_payment_gateway
 from django.contrib import messages
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
 
 
 import string
@@ -35,21 +37,62 @@ class FrontView(View):
         context={}
         return render(request,'front.html',context)
 
+class ContactView(View):
+    model = Certificate()
+    template_name = 'contact.html'
+    def get(self, request, *args, **kwargs):
+        context={}
+        # certificate_types_first=CertificateType.objects.all().order_by('serial')[:4]
+        certificate_types=CertificateType.objects.all().order_by('serial')
+        license_types=LicenseType.objects.all().order_by('serial')
+        chairman=Chairman.objects.all().order_by('-id').first()
+        secretary=Secretary.objects.all().order_by('-id').first()
+        member=Member.objects.all().order_by('-id').first() 
+        context={}
+        context['certificate_types']=certificate_types
+        # context['certificate_types_first']=certificate_types_first
+        context['license_types']=license_types
+        context['chairman']=chairman
+        context['secretary']=secretary
+        context['member']=member
+        context['member']=member
+        cache.clear()
+        return render(request,'contact.html',context)
+    def post(self, request, *args, **kwargs):
+        context={}
+        return render(request,'home.html',context)
+
+
 class HomeView(View):
     model = Certificate()
     template_name = 'home.html'
     def get(self, request, *args, **kwargs):
         context={}
+        # certificate_types_first=CertificateType.objects.all().order_by('serial')[:4]
         certificate_types=CertificateType.objects.all().order_by('serial')
         license_types=LicenseType.objects.all().order_by('serial')
         chairman=Chairman.objects.all().order_by('-id').first()
         secretary=Secretary.objects.all().order_by('-id').first()
+        certificate_count1=Certificate.objects.filter(is_verified=True).count()
+        certificate_count2=Certificate.objects.filter(is_verified=False).count()
+        license_count1=License.objects.filter(is_verified=True).count()
+        license_count2=License.objects.filter(is_verified=True).count()
+
+        count=certificate_count1+license_count1
+
             
         context={}
         context['certificate_types']=certificate_types
+        # context['certificate_types_first']=certificate_types_first
         context['license_types']=license_types
         context['chairman']=chairman
         context['secretary']=secretary
+        context['certificate_count1']=  certificate_count1      
+        context['certificate_count2']= certificate_count2       
+        context['license_count1']= license_count1       
+        context['license_count2']=license_count2
+        context['count']=count
+        cache.clear()
         return render(request,'home.html',context)
     def post(self, request, *args, **kwargs):
         context={}

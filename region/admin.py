@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Division,District,Union,Upazilla,Ward,Village,PostOffice,Mouja,OthersAdress
 from import_export.admin import ExportActionMixin,ImportExportMixin
+from admin_auto_filters.filters import AutocompleteFilter
 
 # Register your models here.
 @admin.register(Division)
@@ -20,21 +21,21 @@ class UpazillaAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display_links = ['name','name_en']
     list_filter=['district']
     search_fields = ['name','name_en','district']
-    autocomplete_fields = ['district',]
+    #autocomplete_fields = ['district',]
 
 @admin.register(Union)
 class UnionAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display=[ 'name','name_en','upazilla','link']
     list_display_links = ['name','name_en']
     search_fields = ['name','name_en','upazilla']
-    autocomplete_fields = ['upazilla',]
+    #autocomplete_fields = ['upazilla',]
 
 @admin.register(Ward)
 class WordAdmin(ImportExportMixin,admin.ModelAdmin):
-    list_display=[ 'name','name_en','union','link']
+    list_display=[ 'name','name_en','link']
     list_display_links = ['name','name_en']
-    search_fields = ['name','name_en','union']
-    autocomplete_fields = ['union',]
+    search_fields = ['name','name_en']
+    # autocomplete_fields = ['union',]
 
 @admin.register(PostOffice)
 class PostOfficeAdmin(ImportExportMixin,admin.ModelAdmin):
@@ -47,13 +48,13 @@ class VillageAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display=[ 'name','name_en','ward','link']
     list_display_links = ['name','name_en']
     search_fields = ['name','name_en','ward']
-    autocomplete_fields = ['ward',]
+    # autocomplete_fields = ['ward',]
 @admin.register(Mouja)
 class MoujaAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display=[ 'name','name_en','village','ward','link']
     list_display_links = ['name','name_en']
     search_fields = ['name','name_en','ward']
-    autocomplete_fields = ['ward','village',]
+    # autocomplete_fields = ['ward','village',]
 @admin.register(OthersAdress)
 class AdressAdmin(ExportActionMixin,admin.ModelAdmin):
     pass

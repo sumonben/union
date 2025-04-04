@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'admin_auto_filters',
     'ckeditor',
     'import_export',
     'sslcommerz_lib',
@@ -138,6 +139,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'default1': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tilokpur',
+        'USER' : 'postgres',
+        'PASSWORD' : 'Sumon@747934',
+        'HOST' : 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -183,3 +192,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+"""CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:8000/1',  # Use the appropriate Redis server URL
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}"""

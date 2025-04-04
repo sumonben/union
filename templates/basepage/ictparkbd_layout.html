@@ -11,8 +11,6 @@
     <title>তিলকপুর ইউনিয়ন</title>
     
     <link rel="shortcut icon" href="{%  static 'images/tilokpur_logo.png'%}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
-    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
     <link rel="stylesheet" href="{% static 'css/ictparkbd/twitterstyle.css' %}" />
    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
@@ -23,7 +21,6 @@
        <!-- -- -->
     <link rel="stylesheet" href="{% static 'css/ictparkbd/profile.css' %}" />
     <!-- - View--- --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
     <link href="{% static 'css/ictparkbd/frontend.css'%}" rel="stylesheet">
     
     
@@ -198,6 +195,9 @@
           
             <!-- #endregion --> 
             <script>
+              window.addEventListener('load', function () {
+              document.getElementById('rightpan').classList.remove='aos-animate';
+              });
               // When the user scrolls down 50px from the top of the document, resize the header's font size
               window.onscroll = function() {
                   scrollFunction()
@@ -239,8 +239,6 @@
            <!-- -- -->
            <script src="{% static 'js/frontend.js' %}"></script>
 
-           <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>

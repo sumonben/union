@@ -115,7 +115,42 @@
             background-image: url("{% static 'images/main_02.png'%}");
 
         } 
-        
+        #item {
+          text-shadow: 3px 3px 3px rgb(65, 7, 7);
+          color:#fff; 
+         }
+         #item_en {
+          text-shadow: 3px 3px 3px rgb(65, 7, 7);
+          color:#fff;       
+         }
+         #item_adress {
+          text-shadow: 3px 3px 3px rgb(65, 7, 7);
+          color:#fff; 
+         }
+         #item_adress_en{
+          text-shadow: 3px 3px 3px rgb(65, 7, 7);
+          color:#fff;       
+         }
+        @media print {
+          #item {
+            -webkit-filter: drop-shadow(3px 3px 3px rgb(65, 7, 7));
+            text-shadow: 3px 3px 3px rgb(65, 7, 7);
+          }
+           #item_en {
+            -webkit-filter: drop-shadow(3px 3px 3px rgb(65, 7, 7));
+            text-shadow: 3px 3px 3px rgb(65, 7, 7);
+          }
+          #item_adress {
+            -webkit-filter: drop-shadow(3px 3px 3px rgb(65, 7, 7));
+            text-shadow: 3px 3px 3px rgb(65, 7, 7);
+          }
+           #item_adress_en {
+            -webkit-filter: drop-shadow(3px 3px 3px rgb(65, 7, 7));
+            text-shadow: 3px 3px 3px rgb(65, 7, 7);
+          }
+           
+        }
+       
       
       
         #toast-container {
@@ -203,12 +238,12 @@
                       <td width="10%" height="95" align="center" valign="middle"><img src="{% static 'images/tilokpur_logo.png'%}" width="90" height="90"></td>
                       <td width="65%" height="95" align="left" valign="middle">
                         {% if certificate.language == '2'  %}
-                          <span class="GrayBlue20bold"  style="text-align: center;color:#fff;text-shadow: 3px 3px 3px rgb(65, 7, 7);">4 NO. TILALPUR UNION COUNCIL</span><br>
-                          <span style="color:#fff;margin-top:0px;font-weight:600;text-shadow: 3px 3px 3px rgb(65, 7, 7);">Post-Ofice: Tilakpur, Upazilla: Akkelpur, District: Jaypurhat.</span>
+                          <span class="GrayBlue20bold" id="item_en" style="text-align: center;color:#fff;">4 NO. TILALPUR UNION COUNCIL</span><br>
+                          <span id="item_adress_en" style="color:#fff;margin-top:0px;font-weight:600;">Post-Ofice: Tilakpur, Upazilla: Akkelpur, District: Jaypurhat.</span>
                           
                         {% else %}
-                          <span class="GrayBlue20bold"  style="text-align: center;color:#fff;text-shadow: 3px 3px 3px rgb(65, 7, 7);">৪ নং তিলকপুর ইউনিয়ন পরিষদ</span><br>
-                          <span style="color:#fff;margin-top:0px;font-weight:600;text-shadow: 3px 3px 3px rgb(65, 7, 7);">ডাকঘরঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
+                          <span class="GrayBlue20bold" id="item"  style="text-align: center;color:#fff;">৪ নং তিলকপুর ইউনিয়ন পরিষদ</span><br>
+                          <span id="item_adress" style="color:#fff;margin-top:0px;font-weight:600;">ডাকঘরঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
                                             
                           {% endif %}
                                             
