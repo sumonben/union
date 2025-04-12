@@ -341,7 +341,7 @@ class DownloadCertificateView(View):
         license_types=LicenseType.objects.all().order_by('serial')
         context['license_types']=license_types
         certificate=Certificate.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),certificate_type=request.POST.get('certificate_type')).first()
-        transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no').strip()).first()
+        transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),id=certificate.transaction.id).first()
         if certificate:
             if transaction:
                 if certificate.is_verified==False:

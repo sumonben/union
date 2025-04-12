@@ -173,8 +173,8 @@ class DownloadLicenseView(View):
         context={}
         license_type=LicenseType.objects.all().order_by('serial')
         context['license_type']=license_type
-        license=License.objects.filter(tracking_no=request.POST.get('tracking_no'),license_type=request.POST.get('license_type')).first()
-        transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
+        license=License.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),license_type=request.POST.get('license_type')).first()
+        transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),id=license.transaction.id).first()
         if license:
             if transaction:
                 if license.is_verified==False:

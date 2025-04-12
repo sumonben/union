@@ -45,7 +45,7 @@ class License(models.Model):
     license_type=models.ForeignKey(LicenseType,on_delete=models.SET_NULL,null=True, blank=True,verbose_name="লাইসেন্সের ধরণ")
     license_no=models.CharField(max_length=500,blank=True, null=True,verbose_name="স্মারক নং")
     memorial_no=models.CharField(max_length=500,blank=True, null=True,verbose_name="স্মারক নং")
-    person=models.ManyToManyField(Person,blank=True,verbose_name="সংশিষ্ট ব্যক্তিবর্গ")
+    person=models.ManyToManyField(Person,blank=True,verbose_name="অংশীদার গণ")
     description=RichTextField(max_length=1000,null=True,blank=True,verbose_name="কারণ বর্ণনাঃ")
     caste=models.CharField(max_length=500,blank=True, null=True,verbose_name="সম্প্রদায়")
     profession=models.CharField(max_length=500,blank=True, null=True,verbose_name="পেশা")
@@ -58,8 +58,8 @@ class License(models.Model):
     duration_form=models.DateField(blank=True, null=True)
     duration_to=models.DateField(blank=True, null=True)
     income=models.IntegerField(null=True,blank=True,verbose_name="আয়")
-    file=models.FileField(upload_to='media/',blank=True,null=True,verbose_name="মেম্বারের সুপারিশ ফাইল")
-    nid_file=models.FileField(upload_to='media/',blank=True,null=True,verbose_name="এনআইডি-জন্ম নিবন্ধন")
+    file=models.FileField(upload_to='media/member_file/%Y',blank=True,null=True,verbose_name="মেম্বারের সুপারিশ ফাইল")
+    nid_file=models.FileField(upload_to='media/nid_file/%Y',blank=True,null=True,verbose_name="এনআইডি-জন্ম নিবন্ধন")
     transaction=models.ForeignKey(Transaction,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ট্রান্সেকশন")
     tracking_no=models.CharField(max_length=25,null=True, blank=True,verbose_name="ট্র্যাকিং নং")
     is_verified=models.BooleanField(default=False,verbose_name="ভেরিফাইড কিনা?")
@@ -67,6 +67,8 @@ class License(models.Model):
     secretary=models.ForeignKey(Secretary,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="সচিব")
     member=models.ForeignKey(Member,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="সদস্য")
     language=models.CharField(max_length=250,blank=True,null=True,verbose_name="ভাষা")
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
     
     class Meta:
         verbose_name="লাইসেন্সসমূহ"

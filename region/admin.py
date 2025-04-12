@@ -27,8 +27,9 @@ class UpazillaAdmin(ImportExportMixin,admin.ModelAdmin):
 class UnionAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display=[ 'name','name_en','upazilla','link']
     list_display_links = ['name','name_en']
+    list_filter=['upazilla',]
     search_fields = ['name','name_en','upazilla']
-    #autocomplete_fields = ['upazilla',]
+    # autocomplete_fields = ['upazilla',]
 
 @admin.register(Ward)
 class WordAdmin(ImportExportMixin,admin.ModelAdmin):
@@ -47,6 +48,7 @@ class PostOfficeAdmin(ImportExportMixin,admin.ModelAdmin):
 class VillageAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display=[ 'name','name_en','ward','link']
     list_display_links = ['name','name_en']
+    list_filter=['ward','post_office']
     search_fields = ['name','name_en','ward']
     # autocomplete_fields = ['ward',]
 @admin.register(Mouja)

@@ -91,7 +91,9 @@ class Adress(models.Model):
         verbose_name="ঠিকানা"
         verbose_name_plural="ঠিকানা"
     def __str__(self):
-        if self.village:
+        if self.village and self.ward and self.post_office:
+            return self.ward.name+':'+self.village.name+':'+self.post_office.name
+        elif self.village:
             return self.village.name
         else:
             return '1'
@@ -114,23 +116,25 @@ class Certificate(models.Model):
     dob=models.DateField(null=True,blank=True)
     adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL,verbose_name="ঠিকানা")
     others_adress=models.ManyToManyField(OthersAdress, blank=True,verbose_name="অন্যান্য এলাকাভুক্ত ঠিকানা")
-    description=RichTextField(max_length=1000,null=True,blank=True,verbose_name="কারণ বর্ণনাঃ")
+    description=RichTextField(max_length=1000,null=True,blank=True,verbose_name="বর্ণনাঃ")
     cause=models.ForeignKey(Cause,on_delete=models.SET_NULL,blank=True, null=True,verbose_name="কারণঃ")
     caste=models.CharField(max_length=500,blank=True, null=True,verbose_name="সম্প্রদায়")
     profession=models.CharField(max_length=500,blank=True, null=True,verbose_name="পেশা")
     income=models.CharField(max_length=500,null=True,blank=True,verbose_name="আয়")
     amount=models.CharField(max_length=10,null=True,blank=True,verbose_name="পরিমাণ")
     date = models.DateField(null=True,blank=True)
-    file=models.FileField(upload_to='media/',blank=True,null=True,verbose_name="মেম্বারের সুপারিশ ফাইল")
-    nid_file=models.FileField(upload_to='media/',blank=True,null=True,verbose_name="এনআইডি-জন্ম নিবন্ধন")
+    file=models.FileField(upload_to='media/member_file/%Y',blank=True,null=True,verbose_name="মেম্বারের সুপারিশ ফাইল")
+    nid_file=models.FileField(upload_to='media/nid_file/%Y',blank=True,null=True,verbose_name="এনআইডি-জন্ম নিবন্ধন")
     transaction=models.ForeignKey(Transaction,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="ট্রান্সেকশন")
     certificate_type=models.ForeignKey(CertificateType,on_delete=models.SET_NULL,null=True, blank=True,verbose_name="সনদের ধরণ")
-    person=models.ManyToManyField(Person,blank=True,verbose_name="ওয়ারিশগণ")
+    person=models.ManyToManyField(Person,blank=True,verbose_name="ব্যক্তি/ওয়ারিশগণ/অন্যান্য ব্যক্তিবর্গ")
     tracking_no=models.CharField(max_length=25,null=True, blank=True,verbose_name="ট্র্যাকিং নং")
     is_verified=models.BooleanField(default=False,verbose_name="ভেরিফাইড কিনা?")
     chairman=models.ForeignKey(Chairman,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="চেয়ারম্যান")
     member=models.ForeignKey(Member,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="সদস্য")
     language=models.CharField(max_length=250,blank=True,null=True,verbose_name="ভাষা")
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
     
     class Meta:
         verbose_name="সনদসমূহ"

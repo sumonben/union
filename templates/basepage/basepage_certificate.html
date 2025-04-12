@@ -132,7 +132,7 @@
         } 
 
         .radial-gradient{
-          background: radial-gradient(#C9DAED,#C9DAED,#65c791)
+          background: radial-gradient(#C9DAED,#C9DAED,#003300)
         }
         .radial-gradient-body{
           background: radial-gradient(#fff,#fff,#C9DAED)
@@ -141,7 +141,7 @@
           background: radial-gradient(#C9DAED,#C9DAED,#035a4c)
         }
         #item {
-          text-shadow: 2px 2px 2px rgb(178, 180, 179); 
+          text-shadow: 2px 2px 2px rgb(255, 255, 255); 
           color:rgb(184, 4, 4); 
          }
          #item_en {
@@ -229,7 +229,16 @@
 
        }
        #body_div{
+        
+        {% if certificate.language == '2' %}
+        background-image:url('/static/images/tilokpur_logo_opacity_en.png'); 
+
+        {% else %}
+       
         background-image:url('/static/images/tilokpur_logo_opacity.png'); 
+
+        {% endif %}
+          
         background-repeat: no-repeat;
         background-position: center;
        }
@@ -254,11 +263,12 @@
                 <tbody>
                 <tr>
                   <td align="center" valign="middle" bgcolor="#65c791" class="bdr-body">
-                    <table class="radial-gradient" width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
-                    <tbody><tr>
-                      <td width="20%" height="95" rowspan="4" align="left" valign="middle" style="text-align:center"><img src="{% static 'images/tilokpur_logo.png'%}" width="100" height="100"></td>
-                    </tr>
+                    <table  width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
                     {% if certificate.language == '2'  %}
+                    <tr>
+                      <td width="20%" height="95" rowspan="4" align="left" valign="middle" style="text-align:center"><img src="{% static 'images/tilokpur_logo_en.png'%}" width="100" height="100"></td>
+                    </tr>
                     <tr>
                       <td  width="70%" height="100" align="center" valign="middle" style="text-align:center;margin-left:-50%;">
                         <span  style="color:#fff;margin-left:-10%;line-height:1;overflow:vissible;margin-top:-15px;display: inline-block;">Allah is Allmighty</span><br>
@@ -269,6 +279,9 @@
                       <td width="10%" height="95" align="center" valign="middle" style="text-align:center"></td>
                       </tr>
                     {% else %}
+                    <tr>
+                      <td width="20%" height="95" rowspan="4" align="left" valign="middle" style="text-align:center"><img src="{% static 'images/tilokpur_logo.png'%}" width="100" height="100"></td>
+                    </tr>
                     <tr>
                       <td  width="70%" height="100" align="center" valign="middle" style="text-align:center;margin-left:-50%;">
                         <span  style="color:#fff;margin-left:-10%;line-height:1;overflow:vissible;margin-top:-15px;display: inline-block;">বিসমিল্লাহির রাহমানির রাহিম</span><br>
@@ -328,7 +341,7 @@
             <td width="85%" align="left" valign="middle">Helpline: Union office (10:00am - 04:00pm)</td>
           </tr>
           <tr>
-            <td align="left" valign="middle"> Tilakpur Union Council.<br>Check at:  https://tilokpursonod.gov.bd/ </td>
+            <td align="left" valign="middle"> Tilakpur Union Council.<br>Check at:  https://tilokpursonod.gov.bd/download_certificate_form </td>
           </tr>
             {% else %}
             <tr>
@@ -362,8 +375,13 @@
       </tbody>
     </table>
     </td>
+    {% if certificate.language == '2'  %}
+
+      <td width="10%" height="50" align="center" valign="middle"><img src="{% static 'images/tilokpur_logo_en.png'%}"  height="44" alt=""></td>
+      {% else %}
       <td width="10%" height="50" align="center" valign="middle"><img src="{% static 'images/tilokpur_logo.png'%}"  height="44" alt=""></td>
-      </tr>
+      {% endif %}
+    </tr>
       
   </tbody></table></td>
 </tr>

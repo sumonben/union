@@ -193,7 +193,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                       <td  colspan="1" align="center"><br><br><br><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{certificate.certificate_type.name_en}}%0DTracking No: {{certificate.tracking_no}}%0DName:{{certificate.name}}&amp;size=200x200" width="200px" height="200px" alt="{{certificate.name}}" title="{{certificate.name}}:{{certificate.certificate_type.name_en}}" width="50" height="50" /></div></td>
 
                                         <td  colspan="2" align="right"><br><br></div></td>
-                                        <td  colspan="1" align="right"><br><br><br><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if certificate.chairman.signature %}{{certificate.chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{certificate.chairman.name}}<br>{{certificate.chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
+                                        {% include 'components/chairman_signature.html' %} 
 
                                        
                                    </tr>
