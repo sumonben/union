@@ -3,12 +3,9 @@
   
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    {% if certificate.language == '2'  %}
-    <title>Union Certificate</title>
-
-    {% else %}
-    <title>ইউনিয়ন সনদ</title>
-    {% endif %}
+    
+    <title>{{certificate.name}}_{{certificate.tracking_no}}</title>
+    
 
     <link rel="icon" href="{% static 'images/tilokpur_logo.png'%}" type="image/x-icon">
     <meta http-equiv="cache-control" content="no-cache">
@@ -271,7 +268,7 @@
                     </tr>
                     <tr>
                       <td  width="70%" height="100" align="center" valign="middle" style="text-align:center;margin-left:-50%;">
-                        <span  style="color:#fff;margin-left:-10%;line-height:1;overflow:vissible;margin-top:-15px;display: inline-block;">Allah is Allmighty</span><br>
+                        <span  style="color:#fff;margin-left:-10%;line-height:1;overflow:vissible;margin-top:-15px;display: inline-block;">Allah is Almighty</span><br>
                         <span class="GrayBlue10bold" style="color:rgb(65, 7, 7);margin-left:-10%;font-size:20px;line-height:1.5">People's Republic of Bangladesh</span><br>
                       <span class="GrayBlue20bold" id="item_en"  style="text-align: center;;line-height:1;margin-left:-10%;">4 NO. TILAKPUR UNION COUNCIL</span><br>
                       <span style="color:#000;margin-top:0px;font-weight:500;margin-left:-10%;font-size:22px;">Post-Ofice: Tilakpur, Upazilla: Akkelpur, District: Jaypurhat.</span>

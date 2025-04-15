@@ -91,7 +91,7 @@ class Adress(models.Model):
         verbose_name="ঠিকানা"
         verbose_name_plural="ঠিকানা"
     def __str__(self):
-        if self.village and self.ward and self.post_office:
+        if self.village is not None and self.ward is not None and self.post_office is not None :
             return self.ward.name+':'+self.village.name+':'+self.post_office.name
         elif self.village:
             return self.village.name

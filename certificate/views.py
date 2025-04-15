@@ -205,9 +205,10 @@ class CertificateView(View):
         context['certificate_types']=certificate_types
         license_types=LicenseType.objects.all().order_by('serial')
         context['license_types']=license_types
-        certificate=Certificate.objects.filter(phone=request.POST.get('phone')).first()
+        certificate=Certificate.objects.filter(phone=request.POST.get('phone'), name=request.POST.get('name')).last()
+        print(certificate.certificate_type)
         if certificate:
-            if certificate.transaction == None:
+            if certificate.transaction is None:
                 certificate.delete()
         tracking_no=gernerate_tracking_no()
         # Check if submitted forms are valid
@@ -242,10 +243,10 @@ class CertificateView(View):
             certificate.profession=request.POST.get('profession')
             certificate.caste=request.POST.get('caste')
             certificate.description=request.POST.get('description')
+            certificate.nid_file=request.FILES.get('nid_file')
             
             
             certificate.save()
-
             certificate=Certificate.objects.filter(tracking_no=tracking_no).first()
 
             context['certificate']=certificate
@@ -341,7 +342,9 @@ class DownloadCertificateView(View):
         license_types=LicenseType.objects.all().order_by('serial')
         context['license_types']=license_types
         certificate=Certificate.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),certificate_type=request.POST.get('certificate_type')).first()
-        transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),id=certificate.transaction.id).first()
+        if certificate:
+            if certificate.transaction:
+                transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),id=certificate.transaction.id).first()
         if certificate:
             if transaction:
                 if certificate.is_verified==False:

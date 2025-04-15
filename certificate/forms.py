@@ -110,11 +110,12 @@ class CertificateForm(forms.ModelForm):
         super(CertificateForm, self).__init__(*args, **kwargs)
         self.fields['name']=forms.CharField(label='নাম', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'নাম লিখুন'}))
         self.fields['phone']=forms.CharField(label='মোবাইল', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'ie: 01*********'}))
-        self.fields['email']=forms.CharField(label='ই-মেইল', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'ie: *****@***.com'}))
-        self.fields['nid']=forms.CharField(required=True,label='জাতীয় পরিচয়/জন্ম নিবন্ধন', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'না থাকলে প্রয়োজন নেই'}))
+        self.fields['email']=forms.CharField(label='ই-মেইল',required=False, widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'ie: *****@***.com'}))
+        self.fields['nid']=forms.CharField(required=True,label='জাতীয় পরিচয়/জন্ম নিবন্ধন', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'এনআইডি বা জন্মনিবন্ধন'}))
         self.fields['father_name']=forms.CharField(label='বাবার নাম', widget=forms.TextInput( attrs={'class':'form-control form-control-sm',}))
         self.fields['mother_name']=forms.CharField(label='মায়ের নাম', widget=forms.TextInput( attrs={'class':'form-control form-control-sm',}))
         self.fields['gender']=forms.ModelChoiceField(label='লিঙ্গ',queryset=Gender.objects.all(), widget=forms.Select( attrs={'class':'form-control form-control-sm',}))
+        self.fields['nid_file']=forms.FileField(required=True,label='জাতীয় পরিচয়/জন্ম নিবন্ধন', widget=forms.FileInput( attrs={'placeholder':'না থাকলে প্রয়োজন নেই'}))
 
         
         
@@ -146,9 +147,9 @@ class CertificateForm(forms.ModelForm):
             if self.certificate_type.id== 15:
                 self.fields['date']=forms.DateField(label='স্বামীর মৃত্যু তারিখ',widget=forms.DateInput(attrs=dict(type='date')))
             if self.certificate_type.id== 16:
-                self.fields['title']=forms.CharField(label='সনদের শিরোনামঃ', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'সনদের শিরোনামে যা দেখতে চান'}))
+                self.fields['title']=forms.CharField(required=False,label='সনদের শিরোনামঃ', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'সনদের শিরোনামে যা দেখতে চান'}))
                 self.fields['language']=forms.ChoiceField(label='ভাষা', choices=LANGUAGE_CHOICE, widget=forms.Select( attrs={}))
-                self.fields['description']=forms.CharField( label='সনদের বডি অংশ',widget=CKEditorWidget(config_name='default'))
+                self.fields['description']=forms.CharField(required=True, label='সনদের বডি অংশ',widget=CKEditorWidget(config_name='default'))
             if self.certificate_type.id==17:
                 self.fields['language']=forms.ChoiceField(label='আদিবাসীর ভাষা', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'আদিবাসীর ভাষা'}))
                 self.fields['caste']=forms.ChoiceField(label='আদিবাসীর গোত্রের নাম', widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'গোত্রের নাম লিখুন'}))

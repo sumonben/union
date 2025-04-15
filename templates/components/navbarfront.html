@@ -15,7 +15,7 @@
         text-shadow: 2px 2px 2px rgb(65, 7, 7);
         font-size:17px;
         font-family:kalpurush;
-
+        font-weight:bold;
 
     }
     #main-heading{
@@ -41,6 +41,7 @@
             font-size: 23px;
             padding:0px;
             text-align:center;
+            font-family:kalpurush;
             font-weight:bold;
         } 
         .sub-heading{
@@ -48,6 +49,7 @@
             margin-left:10px;
             text-shadow: 2px 2px 2px rgb(65, 7, 7);
             font-size:14px;
+            font-family:kalpurush;
 
     
         }
@@ -118,7 +120,7 @@
         </div>
     </div>
     <div class="container-wrapper" >
-        <div class="top-header">
+        <div class="top-header" style="font-family: kalpurush;">
             <ul class="nav align-items-center justify-content-end" style="position: relative;">
                 {% if user.is_authenticated %}
                 <li class="nav-item"><a href="{% url 'admin:index' %}" class="nav-link"> ড্যাশবোর্ড </a></li>
@@ -129,7 +131,7 @@
                 <li class="nav-item"><a href="" class="nav-link">
                         মন্তব্য
                     </a></li>
-                <li class="nav-item"><a href="/digitalshop" class="nav-link"><b>যোগাযোগ</b></a>
+                <li class="nav-item"><a href="/" class="nav-link"><b>যোগাযোগ</b></a>
                 </li>
             </ul>
         </div>
@@ -145,7 +147,7 @@
            
                                           
                   <span class="heading" id="heading">৪ নং তিলকপুর ইউনিয়ন পরিষদ</span><br>
-                  <span id="sub-heading" class="sub-heading"   >উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
+                  <span id="sub-heading" class="sub-heading" style="font-family: kalpurush;" >উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
 
                
              

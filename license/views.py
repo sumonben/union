@@ -89,9 +89,9 @@ class LicenseView(View):
 
         license_types=LicenseType.objects.all().order_by('serial')
         context['license_types']=license_types
-        license=License.objects.filter(phone=request.POST.get('phone')).first()
+        license=License.objects.filter(phone=request.POST.get('phone'),license_owner_name=request.POST.get('license_owner_name')).last()
         if license:
-            if license.transaction == None:
+            if license.transaction is None:
                 license.delete()
         tracking_no=gernerate_tracking_no()
         # Check if submitted forms are valid
@@ -171,10 +171,13 @@ class DownloadLicenseView(View):
         return render(request,self.template_name, context)
     def post(self, request, *args, **kwargs):
         context={}
+        transaction=None
         license_type=LicenseType.objects.all().order_by('serial')
         context['license_type']=license_type
         license=License.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),license_type=request.POST.get('license_type')).first()
-        transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),id=license.transaction.id).first()
+        if license:
+            if license.transaction:
+                transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),id=license.transaction.id).first()
         if license:
             if transaction:
                 if license.is_verified==False:
