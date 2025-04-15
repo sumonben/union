@@ -206,7 +206,6 @@ class CertificateView(View):
         license_types=LicenseType.objects.all().order_by('serial')
         context['license_types']=license_types
         certificate=Certificate.objects.filter(phone=request.POST.get('phone'), name=request.POST.get('name')).last()
-        print(certificate.certificate_type)
         if certificate:
             if certificate.transaction is None:
                 certificate.delete()
@@ -337,6 +336,7 @@ class DownloadCertificateView(View):
         return render(request,self.template_name, context)
     def post(self, request, *args, **kwargs):
         context={}
+        transaction={}
         certificate_types=CertificateType.objects.all().order_by('serial')
         context['certificate_types']=certificate_types
         license_types=LicenseType.objects.all().order_by('serial')

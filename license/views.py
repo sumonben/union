@@ -171,6 +171,7 @@ class DownloadLicenseView(View):
         return render(request,self.template_name, context)
     def post(self, request, *args, **kwargs):
         context={}
+        transaction={}
         transaction=None
         license_type=LicenseType.objects.all().order_by('serial')
         context['license_type']=license_type

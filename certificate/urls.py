@@ -16,6 +16,7 @@ urlpatterns = [
     path('certificate_form/', views.CertificateView.as_view(), name="certificate_form"),
     path('submit_form/', views.submitFormView.as_view(), name="submit_form"),
     path('download_certificate_form/', views.DownloadCertificateView.as_view(), name="download_certificate_form"),
+    path('check_certificate_form/', views.DownloadCertificateView.as_view(), name="check_certificate_form"),
     path('front/', views.FrontView.as_view(), name="front"),
     path('contact/', views.ContactView.as_view(), name="contact"),
 

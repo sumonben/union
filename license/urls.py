@@ -14,6 +14,7 @@ urlpatterns = [
     path('license_form/', views.LicenseView.as_view(), name="license_form"),
     path('submit__license_form/', views.submitLicenseFormView.as_view(), name="submit__license_form"),
     path('download_license_form/', views.DownloadLicenseView.as_view(), name="download_license_form"),
+    path('check_license_form/', views.DownloadLicenseView.as_view(), name="check_license_form"),
    
 
 
