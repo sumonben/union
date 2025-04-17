@@ -445,7 +445,7 @@
                   <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">সন্তান বা নির্ভরশীল ব্যক্তির নাম ও সম্পর্ক</td>
                   {% elif certificate_type.id == 15 %}
                   <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">স্বামীর নাম</td>
-                  {% elif certificate_type.id == 25 %}
+                  {% elif certificate_type.id == 25 or certificate_type.id == 26 %}
                   <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">স্বামী/স্ত্রীর নাম</td>
                   {% else %}
                   <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">ওয়ারিশগণ</td>
@@ -470,7 +470,7 @@
                             <tr>
                             <td>{{form.name}}</td>
                           </tr>
-                          {% elif certificate_type.id == 15 or certificate_type.id == 25 %}
+                          {% elif certificate_type.id == 15 or certificate_type.id == 25 or certificate_type.id == 26 %}
                           <tr>
                             <td>{{form.name.label_tag}} </td><td style="height: 40px;"></td>
                           </tr>

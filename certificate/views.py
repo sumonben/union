@@ -117,7 +117,7 @@ class ApplyForCertificate(View):
         if certificate_type.id== 1 or certificate_type.id== 7 :
             formset = WarishFormSet(queryset=Person.objects.none())
             context['formset']=formset
-        if certificate_type.id== 9 or certificate_type.id == 15 or certificate_type.id == 25 or certificate_type.id == 10 :
+        if certificate_type.id== 9 or certificate_type.id == 15 or certificate_type.id == 25 or certificate_type.id == 10 or certificate_type.id == 26 :
             formset = SamePersonFormSet(queryset=Person.objects.none())
             context['formset']=formset
         
@@ -165,7 +165,7 @@ class SelectCertificate(View):
         if certificate_type.id== 1:
             formset = WarishFormSet(queryset=Person.objects.none())
             context['formset']=formset
-        if certificate_type.id== 9 or certificate_type.id == 15 or certificate_type.id == 25 :
+        if certificate_type.id== 9 or certificate_type.id == 15 or certificate_type.id == 25 or certificate_type.id == 10 or certificate_type.id == 26  :
             formset = SamePersonFormSet(queryset=Person.objects.none())
             context['formset']=formset
                 

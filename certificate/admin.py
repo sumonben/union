@@ -15,7 +15,7 @@ class CertificateAdmin(ImportExportMixin,admin.ModelAdmin):
     def change_view(self, request, object_id, extra_context=None):
         certificate=Certificate.objects.filter(id=object_id).first()
         self.exclude=('others_adress',)
-        if certificate.certificate_type.id != 1 and certificate.certificate_type.id != 9 and certificate.certificate_type.id != 7 and certificate.certificate_type.id != 10 and certificate.certificate_type.id != 15 :   
+        if certificate.certificate_type.id != 1 and certificate.certificate_type.id != 9 and certificate.certificate_type.id != 7 and certificate.certificate_type.id != 10 and certificate.certificate_type.id != 15 and certificate.certificate_type.id != 25 :   
             self.exclude = self.exclude=self.exclude+ ('person', )
         if certificate.certificate_type.id != 8 and certificate.certificate_type.id != 21 and certificate.certificate_type.id != 4 and certificate.certificate_type.id != 12 and certificate.certificate_type.id != 16 :   
             self.exclude = self.exclude=self.exclude+ ('description', )
