@@ -1,0 +1,21 @@
+server {
+    listen 80;
+    server_name '209.74.88.131' uniondemo.ictparkbd.com www.uniondemo.ictparkbd.com;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        alias /home/sumon/uniondemo/union/static/;
+    }
+    location /media/ {
+	alias /home/sumon/uniondemo/union/media/;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/uniondemo.sock;
+    }
+	
+
+
+}
+

@@ -63,7 +63,7 @@ body{
   border-bottom-left-radius: 5px;
 }
 button#print:after, button#next-btn:after, button#submit-btn:after {
-  result: absolute;
+  position: absolute;
   top: 90%;
   left: 0;
   width: 100%;
@@ -196,7 +196,15 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
 
                                     </tr>
                                     <td colspan="4" align="center" cellpadding="0" >
-                                        <table class="result"  >
+                                      
+                                      {% if certificate.person.all.count < 13 %}
+                                      <table class="result" style="font-size:20px; font-weight:500;" >
+
+                                      {% else %}
+                                      <table class="result"  >
+
+                                      {% endif %}
+                                        
                                             <tr>
                                                 <td width="10%" align="center" valign="middle" ><b>ক্রমিক</b></td>
                                                 <td width="60%" align="center" valign="middle" ><b>নাম </b></td>
@@ -207,7 +215,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                             <tr>
                                                 
                                                 <td  width="10%" align="center" valign="middle" >{{forloop.counter}} </td>
-                                                <td width="60%" align="center" valign="middle">
+                                                <td width="60%" align="center" valign="middle" >
                                                   {{warish.name}}                                       
                                                 <td width="15%" align="center" valign="middle" >{{warish.relation.name}} </td>
                                                 <td width="15%" align="center" valign="middle" >{% if warish.comment %}{{warish.comment}} {% else %}  {% endif %}</td>

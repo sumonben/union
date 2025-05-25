@@ -149,7 +149,7 @@
                                     <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-animate">
                                     </div>
  
- 
+                                {% if chairman %}
                                     <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-animate">
                                            <p style="text-align:center;width:100%;background-color:#035a4c;color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px" >{{chairman.post.name}}</span></span> </strong></p>
                                            <h1 class="bk-org title">
@@ -166,6 +166,11 @@
                                                {% comment %} <a href="https://moedu.portal.gov.bd/site/page/5521b4ae-db5f-4410-b24e-3e34f460a926" class="btn" style="display:block;text-align:center;width:100%;" title="বিস্তারিত">বিস্তারিত</a> {% endcomment %}
                                              </p>
                                        </div>
+                                       {% endif %}
+                                       
+                                       {% if secretary %}
+                                        
+                                        
                                        <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-animate">
                                         <p style="text-align:center;width:100%;background-color:#035a4c;color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;" ><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px">{{secretary.post.name}}</span></span> </strong></p>
                                         <h1 class="bk-org title">
@@ -181,7 +186,8 @@
                                             {% comment %} <a href="https://moedu.portal.gov.bd/site/page/5521b4ae-db5f-4410-b24e-3e34f460a926" class="btn" style="display:block;text-align:center;width:100%;" title="বিস্তারিত">বিস্তারিত</a> {% endcomment %}
                                           </p>
                                     </div>
-                                           
+                                    {% endif %}
+    
  
  
                                        {% comment %} <ul>
@@ -478,7 +484,6 @@
                                         </div>
                                     </a>
                                 </div>
-                                
                                 <div class="missionVission">
                                     <div class="container-wrapper">
                                         <div class="content-header text-center">
@@ -491,6 +496,8 @@
                                     </div>
                                         
                                 </div>
+                                {% if chairman  %}
+
                                         <div class="row py-4">
                                             <div class="chairman">
                                             <div data-aos="fade-left" data-aos-offset="100" data-aos-duration="1500" class="col-lg-6 aos-init aos-init aos-animate">
@@ -507,6 +514,9 @@
                                                         
                                                 </div>
                                             </div>
+                                            {% endif %}
+                                            {% if secretary  %}
+
                                             <div data-aos="fade-right" data-aos-offset="100" data-aos-duration="1500" class="col-lg-6 aos-init aos-animate">
             
             
@@ -520,7 +530,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                                
+                                            {% endif %}
                                             
                                             </div>
                                         </div>

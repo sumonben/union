@@ -76,17 +76,20 @@ WarishFormSet = modelformset_factory(
         }
 )
 PersonFormSet = modelformset_factory(
-    Person, fields=("name", "relation","comment"), extra=1,
+    Person, fields=("name","nid", "relation","comment"), extra=1,
     widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
+            'nid': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
             'relation': forms.Select(attrs={'class': 'form-control form-control-sm',}),            
             'comment': forms.Select(choices=COMMENT_CHOICE,attrs={'class': 'form-control form-control-sm',}),            
         }
 )
 SamePersonFormSet = modelformset_factory(
-    Person, fields=("name",), extra=1,
+    Person, fields=("name","nid"), extra=1,
     widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
+            'nid': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
+
                   }
 )
 
@@ -101,7 +104,7 @@ class CertificateForm(forms.ModelForm):
     class Meta:
         model = Certificate
         fields = "__all__"
-        exclude=['serial','name_en','transaction','is_verified','father_name_en','mother_name_en','title','passport','tracking_no','memorial_no','adress','dob','description','cause','amount','date','person','chairman','member','caste','income','profession','language']
+        exclude=['serial','name_en','transaction','is_verified','father_name_en','mother_name_en','title','passport','tracking_no','memorial_no','adress','dob','description','cause','amount','date','person','chairman','member','caste','income','profession','language','comment']
     
             
         
@@ -121,7 +124,7 @@ class CertificateForm(forms.ModelForm):
         
         if self.certificate_type:
             self.fields['certificate_type']=forms.ModelChoiceField(label='সনদের ধরণ',queryset=CertificateType.objects.filter(id__in=[self.certificate_type.id,]),initial=CertificateType.objects.filter(id__in=[ self.certificate_type.id,]), widget=forms.Select( attrs={'class':'form-control form-control-sm',}))
-            if self.certificate_type.id==2 or self.certificate_type.id==24:
+            if self.certificate_type.id==2 or self.certificate_type.id==24 or self.certificate_type.id==27:
                 self.fields['language']=forms.ChoiceField(label='ভাষা', choices=LANGUAGE_CHOICE, widget=forms.Select( attrs={}))
             if self.certificate_type.id==3:
                 self.fields['cause']=forms.ModelChoiceField(label='কারণ',queryset=Cause.objects.all(),initial=Cause.objects.filter(serial__in=[ 1,]), widget=forms.Select( attrs={'class':'form-control form-control-sm',}))

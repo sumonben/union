@@ -52,6 +52,9 @@
               {% if message %}
               <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 40px; background-color:rgb(168, 8, 8); color: #fff;padding: 15px;"> {{message}} </th></thead>
               {% endif %}
+              {% if certificate.comment %}
+              <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 40px; background-color:rgb(243, 8, 8); color: #fff;padding: 15px;"> {{certificate.comment}} </th></thead>
+              {% endif %}
               <tbody>
               </tbody>
             </table>

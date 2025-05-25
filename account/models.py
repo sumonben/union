@@ -28,7 +28,7 @@ class Chairman(models.Model):
     district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="জেলা")
     image=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="ছবি")
     signature=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="স্বাক্ষর")
-
+    is_active=models.BooleanField(default=False,verbose_name="দায়িত্বরত কিনা?")
 
 
     class Meta:
@@ -49,6 +49,7 @@ class Secretary(models.Model):
     district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="জেলা")
     image=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="ছবি")
     signature=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="স্বাক্ষর")
+    is_active=models.BooleanField(default=False,verbose_name="দায়িত্বরত কিনা?")
 
 
 
@@ -72,10 +73,11 @@ class Member(models.Model):
     district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="জেলা")
     image=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="ছবি")
     signature=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="স্বাক্ষর")
+    is_active=models.BooleanField(default=False,verbose_name="দায়িত্বরত কিনা?")
 
     class Meta:
         ordering = ['serial']
-        verbose_name="মেম্বার"
-        verbose_name_plural="মেম্বার"
+        verbose_name="সদস্য"
+        verbose_name_plural="সদস্য"
     def __str__(self):
         return self.name+'('+self.name_en+')'

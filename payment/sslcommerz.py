@@ -16,8 +16,8 @@ def sslcommerz_payment_gateway(request, certificate,certificate_type, payment_pu
     cradentials = {'store_id': 'israb672a4e32dfea5',
             'store_pass': 'israb672a4e32dfea5@ssl', 'issandbox': True} 
     
-    '''cradentials = {'store_id': 'gmrwcedubdlive',
-            'store_pass': '677CD7B61AB5A81511', 'issandbox': False} '''
+    # cradentials = {'store_id': 'ictparkbd0live ',
+    #         'store_pass': '68045F6E0BDD747715', 'issandbox': False}
     sslcommez = SSLCOMMERZ(cradentials)
     body = {}
     body['certificate'] = certificate
@@ -27,7 +27,7 @@ def sslcommerz_payment_gateway(request, certificate,certificate_type, payment_pu
     body['success_url'] ='http://' +str(request.META['HTTP_HOST'])+'/payment/success/'
     body['fail_url'] = 'http://' +str(request.META['HTTP_HOST'])+'/payment/failed/'
     body['cancel_url'] = 'http://' +str(request.META['HTTP_HOST'])+'/payment/canceled/'
-    body['ipn_url'] = 'http://' +str(request.META['HTTP_HOST'])+'/payment/ipn/'
+    # body['ipn_url'] = 'http://' +str(request.META['HTTP_HOST'])+'/payment/ipn/'
     body['emi_option'] = 0
     if payment_purpose.payment_type.id == 1:
         body['cus_name'] = certificate.name
@@ -48,10 +48,7 @@ def sslcommerz_payment_gateway(request, certificate,certificate_type, payment_pu
     body['product_category'] = "Test Category"
     body['product_profile'] = "general"
     body['value_a'] = certificate.tracking_no
-    if payment_purpose.payment_type.id == 1:
-       body['value_b'] =certificate.name 
-    else:
-        body['value_b'] = certificate.license_owner_name
+    body['value_b'] =certificate
     body['value_c'] = certificate.phone
     body['value_d'] = payment_purpose.id
     

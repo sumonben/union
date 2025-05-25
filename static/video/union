@@ -1,0 +1,66 @@
+server {
+    server_name aihostbd.com;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+	alias /home/sumon/union/static/;
+	}
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/union.sock;
+	}
+
+
+     location /pgadmin4/ {
+       include proxy_params;
+       proxy_pass http://unix:/tmp/pgadmin4.sock;
+       proxy_set_header X-Script-Name /pgadmin4;
+       }
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/aihostbd.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/aihostbd.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
+
+
+}
+server {
+    if ($host = aihostbd.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+    
+    if ($host = www.aihostbd.com) {
+	return 301 https://aihostbd.com$request_uri;
+    }
+    server_name aihostbd.com;
+    return 404; # managed by Certbot
+
+
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/aihostbd.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/aihostbd.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+server {
+    if ($host = aihostbd.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+    if ($host = www.aihostbd.com) {
+	return 301 https://aihostbd.com$request_uri;
+   }
+
+
+
+    listen 80;
+    server_name aihostbd.com;
+    return 404; # managed by Certbot
+
+
+}

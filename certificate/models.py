@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from django.urls import reverse
 from payment.models import Transaction
@@ -6,7 +7,7 @@ from django.template.defaultfilters import escape
 from region.models import District,Division,Upazilla,Union,PostOffice,Village,Ward,Mouja,OthersAdress
 from account.models import Member,Chairman
 from ckeditor.fields import RichTextField
-
+from django.dispatch import receiver
 #from account.models import UserModel
 # Create your models here.
 
@@ -38,13 +39,15 @@ class Person(models.Model):
     serial=models.IntegerField(default=10)
     name=models.CharField(max_length=500,verbose_name=" নাম(বাংলায়)")
     name_en=models.CharField(max_length=500,verbose_name=" নাম(ইংরেজিতে)")
+    nid=models.CharField(max_length=17,null=True,blank=True,verbose_name="জাতীয় পরিচপত্র")
     relation=models.ForeignKey(Relation,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="সম্পর্ক")
     comment=models.CharField(max_length=500,blank=True,null=True,verbose_name="মন্তব্য")
+    tracking_no=models.CharField(max_length=25,null=True, blank=True,verbose_name="ট্র্যাকিং নং")
 
     class Meta:
         ordering = ['serial']
-        verbose_name=" ওয়ারিশ"
-        verbose_name_plural=" ওয়ারিশগণ"
+        verbose_name=" ব্যক্তি/ওয়ারিশগণ/অন্যান্য ব্যক্তিবর্গ "
+        verbose_name_plural=" ব্যক্তি/ওয়ারিশগণ/অন্যান্য ব্যক্তিবর্গ"
     def __str__(self):
         return self.name+'('+self.name_en+')'
 
@@ -67,8 +70,10 @@ class CertificateType(models.Model):
     template=models.CharField(max_length=250,blank=True,null=True)
     image=models.ImageField(upload_to='media/',blank=True,null=True,)
     is_active=models.BooleanField(default=False)
+    is_auto_sign=models.BooleanField(default=False)
+    is_join_sign=models.BooleanField(default=False)
     class Meta:
-        ordering = ['name_en']
+        ordering = ['name']
         verbose_name=" সনদের ধরণ"
         verbose_name_plural=" সনদের ধরণ"
     def __str__(self):
@@ -130,6 +135,7 @@ class Certificate(models.Model):
     person=models.ManyToManyField(Person,blank=True,verbose_name="ব্যক্তি/ওয়ারিশগণ/অন্যান্য ব্যক্তিবর্গ")
     tracking_no=models.CharField(max_length=25,null=True, blank=True,verbose_name="ট্র্যাকিং নং")
     is_verified=models.BooleanField(default=False,verbose_name="ভেরিফাইড কিনা?")
+    comment=models.CharField(max_length=500,blank=True, null=True,verbose_name="মন্তব্য")
     chairman=models.ForeignKey(Chairman,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="চেয়ারম্যান")
     member=models.ForeignKey(Member,on_delete=models.SET_NULL,blank=True,null=True,verbose_name="সদস্য")
     language=models.CharField(max_length=250,blank=True,null=True,verbose_name="ভাষা")
@@ -158,8 +164,37 @@ class Certificate(models.Model):
         tran=self.transaction
         if tran:
             return  tran.created_at
+    def delete(self, *args, **kwargs):
+        if bool(self.nid_file) == True :
+            os.remove(self.nid_file.path)
+        if bool(self.file) == True:
+            os.remove(self.file.path)
+        for person in self.person.all():
+            Person.objects.filter(id=person.id).delete()
+        super(Certificate, self).delete(*args, **kwargs)
 
+@receiver(models.signals.pre_save, sender=Certificate)
+def auto_delete_file_on_change(sender, instance, **kwargs):
+    
+        if not instance.pk:
+            return False
 
+        try:
+            old_file = Certificate.objects.get(pk=instance.pk).file
+            old_nid_file = Certificate.objects.get(pk=instance.pk).nid_file
+
+        except Certificate.DoesNotExist:
+            return False
+
+        new_file = instance.file
+        if not old_file == new_file:
+            if bool(old_file) == True:
+                os.remove(old_file.path)
+
+        new_file = instance.nid_file
+        if not old_nid_file == new_file:
+            if bool(old_nid_file) == True:
+                os.remove(old_nid_file.path)
 
 # class WarishanCertificate(models.Model):
 #     name=models.CharField(max_length=100,verbose_name="নাম(বাংলায়)")

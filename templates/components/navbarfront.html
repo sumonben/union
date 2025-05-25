@@ -40,16 +40,18 @@
             text-shadow: 4px 4px 4px rgb(65, 7, 7);
             font-size: 23px;
             padding:0px;
-            text-align:center;
+            margin-left:10px;
+            text-align:justify;
             font-family:kalpurush;
             font-weight:bold;
         } 
         .sub-heading{
             color:#fff;
-            margin-left:10px;
             text-shadow: 2px 2px 2px rgb(65, 7, 7);
             font-size:14px;
+            margin-left:15px;
             font-family:kalpurush;
+            text-align:center;
 
     
         }
@@ -131,23 +133,23 @@
                 <li class="nav-item"><a href="" class="nav-link">
                         মন্তব্য
                     </a></li>
-                <li class="nav-item"><a href="/" class="nav-link"><b>যোগাযোগ</b></a>
+                <li class="nav-item"><a href="{% url 'tutorial' %}" class="nav-link"><b>টিউটোরিয়াল</b></a>
                 </li>
             </ul>
         </div>
   <div class="main-header">
                   
         <span class="shape2New"> </span><span class="shape3New"> </span><span class="shape1New"> </span>
-    <nav class="navbar navbar-expand-lg p-lg-0" >
+    <nav class="navbar navbar-expand-lg p-lg-0" style="margin-left:-12px;" >
         <a  href="/" class="navbar-brand logo" aria-current="page"  > 
-            <span><img src="{% static 'images/tilokpur_logo.png'%}"></span>
+            <span><img src="{{ union_details.logo.url }}"></span>
 
         </a>
         <a id="main-heading" href="/" class="navbar-brand logo active router-link-active" aria-current="page" > 
            
                                           
-                  <span class="heading" id="heading">৪ নং তিলকপুর ইউনিয়ন পরিষদ</span><br>
-                  <span id="sub-heading" class="sub-heading" style="font-family: kalpurush;" >উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
+                  <span class="heading" id="heading">{{union_details.name}}</span><br>
+                  <span id="sub-heading" class="sub-heading" style="font-family: kalpurush;" >উপজেলাঃ {{union_details.upazilla.name}}, জেলাঃ {{union_details.district.name}}</span>
 
                
              

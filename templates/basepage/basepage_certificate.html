@@ -137,22 +137,20 @@
           background: radial-gradient(#C9DAED,#C9DAED,#035a4c)
         }
         #item {
-          text-shadow: 2px 2px 2px rgb(58, 56, 56); 
           color:rgb(184, 4, 4); 
          }
          #item_en {
-          text-shadow: 2px 2px 2px rgb(58, 56, 56); 
           color:rgb(184, 4, 4);       
          }
         @media print {
-          #item {
+          {% comment %} #item {
             -webkit-filter: drop-shadow(2px 2px 2px rgb(58, 56, 56));
             text-shadow: 2px 2px 2px rgb(58, 56, 56); 
           }
            #item_en {
             -webkit-filter: drop-shadow(2px 2px 2px rgb(58, 56, 56));
             text-shadow: 2px 2px 2px rgb(58, 56, 56); 
-            }
+            } {% endcomment %}
             #certificate_title{
               -webkit-filter: drop-shadow(2px 2px 2px rgb(65, 7, 7));
               text-shadow: 2px 2px 2px rgb(65, 7, 7);

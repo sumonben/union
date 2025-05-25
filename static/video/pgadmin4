@@ -1,0 +1,10 @@
+server {
+    listen 80;
+
+    server_name airobotbd.com, www.airobotbd.com;
+        
+    location /pgadmin/ {
+        proxy_pass http://unix:/tmp/pgadmin4.sock;
+        include proxy_params;
+    }
+}
