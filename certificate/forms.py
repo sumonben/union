@@ -68,19 +68,24 @@ OtherAdressFormSet = modelformset_factory(
 )
 
 WarishFormSet = modelformset_factory(
-    Person, fields=("name", "relation","comment"), extra=1,
+    Person, fields=("name","nid", "dob","relation","phone","comment"), extra=1,
     widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
-            'relation': forms.Select(attrs={'class': 'form-control form-control-sm',}),            
-            'comment': forms.Select(choices=COMMENT_CHOICE,attrs={'class': 'form-control form-control-sm',}),            
+             'name': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
+            'nid': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
+            'dob': forms.DateInput(attrs={'class': 'form-control form-control-sm','type': 'date'}),
+            'relation': forms.Select(attrs={'class': 'form-control form-control-sm',}),
+            'phone': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),            
+            'comment': forms.Select(choices=COMMENT_CHOICE,attrs={'class': 'form-control form-control-sm',}),               
         }
 )
 PersonFormSet = modelformset_factory(
-    Person, fields=("name","nid", "relation","comment"), extra=1,
+    Person, fields=("name","nid", "dob","relation","phone","comment"), extra=1,
     widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
             'nid': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
-            'relation': forms.Select(attrs={'class': 'form-control form-control-sm',}),            
+            'dob': forms.DateInput(attrs={'class': 'form-control form-control-sm','type': 'date'}),           
+            'relation': forms.Select(attrs={'class': 'form-control form-control-sm',}),
+            'phone': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),            
             'comment': forms.Select(choices=COMMENT_CHOICE,attrs={'class': 'form-control form-control-sm',}),            
         }
 )

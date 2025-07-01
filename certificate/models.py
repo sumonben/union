@@ -40,7 +40,9 @@ class Person(models.Model):
     name=models.CharField(max_length=500,verbose_name=" নাম(বাংলায়)")
     name_en=models.CharField(max_length=500,verbose_name=" নাম(ইংরেজিতে)")
     nid=models.CharField(max_length=17,null=True,blank=True,verbose_name="জাতীয় পরিচপত্র")
+    dob=models.DateField(null=True,blank=True,verbose_name="জন্ম তারিখ")
     relation=models.ForeignKey(Relation,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="সম্পর্ক")
+    phone=models.CharField(max_length=11,blank=True,null=True,verbose_name="মোবাইল নং")
     comment=models.CharField(max_length=500,blank=True,null=True,verbose_name="মন্তব্য")
     tracking_no=models.CharField(max_length=25,null=True, blank=True,verbose_name="ট্র্যাকিং নং")
 
