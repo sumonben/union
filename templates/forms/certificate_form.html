@@ -47,7 +47,7 @@
             <table width="100%" border="1" cellspacing="0" cellpadding="10">
               <thead><th colspan="5" style="height: 30px; background-color: #035a4c; color: #fff;text-shadow: 10px 10px 10px rgb(73, 25, 11);padding: 15px;font-size:23px;text-align:center;"> {% if certificate_type.id == 7 %}অভিভাবকের  তথ্য {% else %}  ব্যক্তিগত তথ্য  {% endif %}                                  
                 
-                {% if certificate_type.id == 2 or  certificate_type.id == 12 or  certificate_type.id == 4 or  certificate_type.id == 16 or  certificate_type.id == 22 %}
+                {% if form.language %}
                &nbsp<h5>(সনদটি ইংরেজিতে চাইলে নাম, বাবার নাম ও মায়ের নাম ইংরেজিতে পুরণ করুন ও ভাষা ইংরেজি সিলেক্ট করুন)  </h5>                                
                {% endif %}</th></thead>
               <tbody>
@@ -57,7 +57,7 @@
                 <div class="card-body">
 
 
-            <span class="shape"><img align="center" loading="lazy" src="{% static 'images\ictparkbd_logo.jpg' %}"><img align="center" loading="lazy" style="height:60%;margin-top:10%;rotate: -50deg;" src="{% static 'images\tilokpur_logo.png' %}"></span> 
+            <span class="shape"><img align="center" loading="lazy" src="{% static 'images\ictparkbd_logo.jpg' %}"><img align="center" loading="lazy" style="height:60%;margin-top:10%;rotate: -50deg;" src="{{ union_details.logo.url}}"></span> 
 
              {%if email %}
             
@@ -93,7 +93,7 @@
             <form  id="form" class="form-row px-3" method="post" action="{% url 'certificate_form' %}" enctype="multipart/form-data">
               {% csrf_token %}
               {{form.media}}
-              {% if certificate_type.id == 2 or  certificate_type.id == 12 or  certificate_type.id == 16 or certificate_type.id == 22 %}
+              {% if form.language %}
 
               <div class="col-sm-12 form-group" >
                 
@@ -187,6 +187,26 @@
                   <div class="col-sm-6">
                     <label for="" class="col-form-label-sm m-0">{{form.gender.label_tag}}</label> <div class="loginBox">
                       {{form.gender}}                      
+                      <span class="fa fa-mercury"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+
+                  {% endif %}
+                   {% if form.marital_status %}
+
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.marital_status.label_tag}}</label> <div class="loginBox">
+                      {{form.marital_status}}                      
+                      <span class="fa fa-mercury"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+
+                  {% endif %}
+                  {% if form.other_name %}
+
+                  <div class="col-sm-6" id="other_name_id">
+                    <label for="" class="col-form-label-sm m-0">{{form.other_name.label_tag}}</label> <div class="loginBox">
+                      {{form.other_name}}                      
                       <span class="fa fa-mercury"></span>
                     </div> <!--  --> <div class="invalid-feedback"></div>
                   </div>
@@ -445,8 +465,12 @@
                   <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">সন্তান বা নির্ভরশীল ব্যক্তির নাম ও সম্পর্ক</td>
                   {% elif certificate_type.id == 15 %}
                   <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">স্বামীর নাম</td>
-                  {% elif certificate_type.id == 25 %}
+                  {% elif certificate_type.id == 25 or certificate_type.id == 26 %}
                   <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">স্বামী/স্ত্রীর নাম</td>
+		  {% elif certificate_type.id == 29 %}
+                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">পরিবারের সদস্যগণ</td>
+                  {% elif certificate_type.id == 28 %}
+                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">উত্তরাধিকারগণ</td>
                   {% else %}
                   <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">ওয়ারিশগণ</td>
                   {% endif %}
@@ -470,13 +494,21 @@
                             <tr>
                             <td>{{form.name}}</td>
                           </tr>
-                          {% elif certificate_type.id == 15 or certificate_type.id == 25 %}
+                          {% elif certificate_type.id == 15 or certificate_type.id == 25 or certificate_type.id == 26 %}
                           <tr>
                             <td>{{form.name.label_tag}} </td><td style="height: 40px;"></td>
                           </tr>
                           <tr>
                           <td>{{form.name}}</td>
                         </tr>
+			{% if certificate_type.id == 25 or certificate_type.id == 26 %}
+                        <tr>
+                          <td >{{form.nid.label_tag}} </td><td style="height: 40px;"></td>
+                          </tr>
+                         <tr>
+                          <td >{{form.nid}}</td>
+                         </tr>
+                         {% endif %}
                         {% elif certificate_type.id == 7  %}
                         <tr>
                           <td colspan="10">{{form.name.label_tag}} </td>
@@ -492,7 +524,35 @@
                           <td colspan="5">{{form.relation}}</td>
                           <td colspan="5">{{form.comment}}</td>
                         </tr>
-
+			{% elif certificate_type.id == 28 or certificate_type.id == 29 %}
+                          <tr>
+                            <td colspan="10">{{form.name.label_tag}} </td><td  rowspan="4"><button id="{{ form.prefix }}-row" style="font-size:18px;background-color:rgb(177, 41, 8); color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);float:right" type="button" onclick="removeForm( this.id )" > <i class="fa fa-trash-o" ></i></button></td>
+                            </tr>
+                           <tr>
+                            <td colspan="10">{{form.name}}</td>
+                           </tr>
+                           <tr>
+                            <td colspan="10">{{form.nid.label_tag}}: </td>
+                           </tr>
+                           <tr>
+                            <td colspan="10">{{form.nid}} </td>
+                          </tr>
+			   <tr>
+                            <td colspan="5">{{form.dob.label_tag}}: </td>
+                            <td colspan="5">{{form.phone.label_tag}}: </td>
+                          </tr>
+                          <tr>
+                            <td colspan="5">{{form.dob}}</td>
+                            <td colspan="5">{{form.phone}}</td>
+                          </tr>      
+	                    <tr>
+                            <td colspan="5">{{form.relation.label_tag}}: </td>
+                            <td colspan="5">{{form.comment.label_tag}}: </td>
+                          </tr>
+                          <tr>
+                            <td colspan="5">{{form.relation}}</td>
+                            <td colspan="5">{{form.comment}}</td>
+                          </tr>
                           {% else %}
                             <tr>
                             <td colspan="10">{{form.name.label_tag}} </td><td  rowspan="4"><button id="{{ form.prefix }}-row" style="font-size:18px;background-color:rgb(177, 41, 8); color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);float:right" type="button" onclick="removeForm( this.id )" > <i class="fa fa-trash-o" ></i></button></td>
@@ -518,7 +578,7 @@
                       
                         {% endfor %}
 
-                        {% if certificate_type.id == 1 or certificate_type.id == 9 or certificate_type.id == 10   %}
+                        {% if certificate_type.id == 1 or certificate_type.id == 9 or certificate_type.id == 10 or certificate_type.id == 28 or certificate_type.id == 29 %}
                                                 <button id="add-form" style="font-size:18px;background-color: #035a4c; color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);"  type="button">আরও যুক্ত করুন<i class="fa fa-plus" ></i></button>
                         {% endif %}
 
@@ -591,7 +651,7 @@
                         <td width="25%" align="left" valign="middle" class="black12">{{form.file.label_tag}}</td>
                         <td width="65%" align="left" valign="middle"><span id="sprytextfield1">
                           <label>
-                            {{form.file}}                                        
+                            {{form.file}}(সর্বোচ্চ ১ এমবি )                                        
                           </label>
                           
                         </span>
@@ -603,7 +663,7 @@
                       <td width="25%" align="left" valign="middle" class="black12">{{form.nid_file.label_tag}}</td>
                       <td width="65%" align="left" valign="middle"><span id="sprytextfield1">
                         <label>
-                          {{form.nid_file}}                                        
+                          {{form.nid_file}}(সর্বোচ্চ ১ এমবি)                                        
                         </label>
                         </span></td>
                       <td width="5%" align="left" valign="middle">&nbsp;</td>

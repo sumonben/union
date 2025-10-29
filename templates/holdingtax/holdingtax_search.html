@@ -1,0 +1,420 @@
+{% extends 'basepage/ictparkbd_layout.html' %}
+
+{% block content %}
+{% load static %}
+
+<style>
+  
+    .main_body{
+        width:100%;
+        height:100%;
+        color:red;
+    }
+    .formset{
+      width:70%;
+      margin-left:15%;
+      margin-bottom:30px;
+    }
+    @media(max-width:767px){
+      .formset{
+        width:100%;
+        margin-left:0%;
+        margin-bottom:30px;
+      }
+        .main_body{
+            width:100%;
+            height:700px;
+            color:red;
+            background-color:green;
+        }   
+    }
+    button:hover {
+      background-color: #4e090c;    
+      }
+</style>
+<div class="services" id="service_body">
+  <div><h3 style="text-align: center;text-shadow: 2px 2px 2px rgb(11, 73, 55);color:rgb(238, 103, 103);"><u>হোল্ডিং ট্যাক্স প্রদান ফর্ম</u></h3></div>
+  
+  <div data-v-6f04a53f="" class="memberRegistration py-5">
+
+    <div class="container-wrapper">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-10">
+          <div class="card login-body shadow-lg rounded-10 py-5">
+            <div class="col-sm-12 form-group" >
+
+            <table width="100%" border="1" cellspacing="0" cellpadding="10">
+              <thead><th colspan="5" style="height: 30px; background-color: #035a4c; color: #fff;text-shadow: 10px 10px 10px rgb(73, 25, 11);padding: 15px;font-size:23px;text-align:center;">   হোল্ডিং ট্যাক্স প্রদানের তথ্য ফর্ম                                  
+                
+                {% if form.language %}
+               &nbsp<h5>(সনদটি ইংরেজিতে চাইলে নাম, বাবার নাম ও মায়ের নাম ইংরেজিতে পুরণ করুন ও ভাষা ইংরেজি সিলেক্ট করুন)  </h5>                                
+               {% endif %}</th>
+              </thead>
+              {% if messages %}
+              <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 40px; background-color:rgb(168, 8, 8); color: #fff;padding: 15px;"> 
+              <ul class="messages">
+                {% for message in messages  %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>&nbsp{{ message }}</li>
+              {% endfor %}
+              </ul>
+                  </th>
+                </thead>
+              {% endif %}
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+                <div class="card-body">
+
+
+            <span class="shape"><img align="center" loading="lazy" src="{% static 'images\ictparkbd_logo.jpg' %}"><img align="center" loading="lazy" style="height:60%;margin-top:10%;rotate: -50deg;" src="{{ union_details.logo.url}}"></span> 
+
+             {%if email %}
+            
+            <div class="alert alert-danger" role="alert">
+              <strong>{{email}}</strong> 
+            </div>
+            
+            {% endif %}
+            {%if phone %}
+            
+            <div class="alert alert-danger" role="alert">
+              <strong>{{phone}}</strong> 
+            </div>
+            
+            {% endif %} 
+            
+            {%if password %}
+            
+            <div class="alert alert-danger" role="alert">
+              <strong>{{password}}</strong> 
+            </div>
+            
+            {% endif %}
+            
+            {%if success %}
+            
+            <div class="alert alert-success" role="alert">
+              <strong>{{success}}</strong> 
+            </div>
+            
+            {% endif %}
+            
+            <form  id="form" class="form-row px-3" method="post" action="{% url 'holding_tax' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{form.media}}
+              {% if form.language %}
+
+              <div class="col-sm-12 form-group" >
+                
+                <div class="row" style="float:right;">
+                    <label>
+                      <br>{{form.language.label_tag}}&nbsp{{form.language}} &nbsp&nbsp                                       
+                    </label>
+                  
+                </div>
+              </div>
+              {% endif %}
+              
+              <div class="col-sm-12 form-group">
+                
+                <div class="row">
+                  
+                   <div class="col-sm-6">
+                   
+                    <label for="" class="col-form-label-sm m-0">হোল্ডিং নাম্বার</label> 
+                    
+                    <div class="loginBox">
+                      {{form.holding_no}}
+                      <span class="fa fa-user"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  {% if form.holding_type %}
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.holding_type.label_tag}}</label> 
+                    <div class="loginBox">
+                      {{form.holding_type}}
+                      <i class="fa-solid fa-bangladeshi-taka-sign"></i>
+                      <span class="fa fa-square"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  {% endif %}
+                  
+                  {% if form.fiscal_year %}
+                  <div class="col-sm-6">
+                    <label for="" class="col-form-label-sm m-0">{{form.fiscal_year.label_tag}}</label> 
+                    <div class="loginBox">
+                      {{form.fiscal_year}}
+                      <i class="fa-solid fa-bangladeshi-taka-sign"></i>
+                      <span class="fa fa-square"></span>
+                    </div> <!--  --> <div class="invalid-feedback"></div>
+                  </div>
+                  {% endif %}
+                  
+                  
+                 
+                  
+                  
+
+                </div>  
+              </div>
+
+                 
+                  
+                 
+
+
+                 
+              
+
+
+              
+             
+
+              
+
+          
+                
+
+          
+              <div class="col-sm-12 form-group">
+                <div class="row">
+                  <div class="custom-control custom-checkbox">
+                    <div class="col-form-label-sm font-weight-bold mb-0 custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" value="true" id="__BVID__164" required /><label class="custom-control-label" for="__BVID__164">
+                        উপরের সকল তথ্য সঠিক, কোনরূপ ভুল থাকলে কর্তৃপক্ষ দায়ী নয়
+                      </label>
+                    </div> <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+              </div> 
+              {% comment %} <div class="col-sm-4 form-group mb-0">
+                <button type="submit" class="btn btn-danger text-white"><span>সাবমিট</span></button>
+              </div>  {% endcomment %}
+              <div class="col-sm-9 form-group">
+                <p class="text-right">
+                  <button type="submit" class="rounded-50 ml-2" style="height: 40px; background-color: #035a4c; color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);font-size:20px;padding-left:8px;padding-right:8px;">সাবমিট করুন</button>
+                </p>
+              </div>
+              
+              
+             
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class="bubbleNew"><img loading="lazy" src="{%static 'images/tilokpur_logo.png'%}" class="rounded-circle" style="width: 200px;height: 200px;" /></span>
+
+</div>
+
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
+<script>
+
+  CKEDITOR.addCss('.cke_editable p { margin: 0 !important; }');
+  CKEDITOR.replace('description');        
+
+
+
+  function unionAdress(id){
+    
+    var division=document.getElementById(id).value;
+    url="{% url 'get_subordinations'%}";
+    var $j = jQuery.noConflict();
+    
+      $.ajax({
+      type: 'GET',
+      url: "{% url 'get_subordinations' %}",
+      cache:'false',  // Adjust the URL as per your project structure
+      data: {id:id,'value':division},
+     
+     
+      success: function (response) {
+          //document.getElementById("student_form").reset();
+          if (response.status === 'success') {
+            if(id=='id_ward'){
+            $("#id_village option").remove();
+            $("#id_village").append('<option '+'value="">'+ '-----------' +'</option>');
+                  for (var i = response.village.length - 1; i >= 0; i--) {
+                                $("#id_village").append('<option '+'value="'+response.village[i].id+'">'+response.village[i].name +'('+response.village[i].name_en+ ')' +'</option>');
+                            }
+              }
+           
+            
+          } else {
+           ///alert("Success message not found");
+                  
+              }
+              
+      },
+      error: function (xhr, status, error) {
+         
+          var err = eval("(" + xhr.responseText + ")");
+          alert(err.Message);
+      }
+  });
+
+    
+  }
+  
+  function myFunctionTeacher(id){
+    var division_set=document.getElementById(id).value;
+    url="{% url 'get_subordinations'%}";
+    var $j = jQuery.noConflict();
+    
+      $.ajax({
+      type: 'GET',
+      url: "{% url 'get_subordinats' %}",
+      cache:'false',  // Adjust the URL as per your project structure
+      data: {id:id,'value':division_set},
+     
+     
+      success: function (response) {
+          if (response.status === 'success') {
+            if(id=='id_form-0-division'){
+            $("#id_form-0-district option").remove();
+            $("#id_form-0-district").append('<option '+'value="">'+ '-----------' +'</option>');
+                  for (var i = response.district.length - 1; i >= 0; i--) {
+                                $("#id_form-0-district").append('<option '+'value="'+response.district[i].id+'">'+response.district[i].name +'('+response.district[i].name_en+ ')' +'</option>');
+                            }
+              }
+
+            if(id=='id_form-0-district'){
+                $("#id_form-0-upazilla option").remove();
+                $("#id_form-0-upazilla").append('<option '+'value="">'+ '-----------' +'</option>');
+                      for (var i = response.upazilla.length - 1; i >= 0; i--) {
+                                    $("#id_form-0-upazilla").append('<option '+'value="'+response.upazilla[i].id+'">'+response.upazilla[i].name +'('+response.upazilla[i].name_en+ ')' +'</option>');
+                                }
+                  }
+
+            if(id=='id_form-0-upazilla'){
+                    $("#id_form-0-union option").remove();
+                    $("#id_form-0-union").append('<option '+'value="">'+ '-----------' +'</option>');
+                          for (var i = response.union.length - 1; i >= 0; i--) {
+                                        $("#id_form-0-union").append('<option '+'value="'+response.union[i].id+'">'+response.union[i].name +'('+response.union[i].name_en+ ')' +'</option>');
+                                    }
+                      }
+            
+
+          } else {
+           ///alert("Success message not found");
+                  
+              }
+              
+      },
+      error: function (xhr, status, error) {
+         
+          var err = eval("(" + xhr.responseText + ")");
+          alert(err.Message);
+      }
+  });
+
+    
+  } 
+
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+
+
+
+<script>
+    let birdForm = document.querySelectorAll(".bird-form")
+    let container = document.querySelector("#form-container")
+    let addButton = document.querySelector("#add-form")
+    let removeButton = document.querySelector("#remove-form")
+    let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
+
+    let formNum = birdForm.length-1
+    addButton.addEventListener('click', addForm)
+    removeButton.addEventListener('click', removeForm)
+
+    function addForm(e){
+        e.preventDefault()
+
+        let newForm = birdForm[0].cloneNode(true)
+        let formRegex = RegExp(`form-(\\d){1}-`,'g')
+
+        formNum++
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
+        container.insertBefore(newForm, addButton)
+        
+        
+        totalForms.setAttribute('value', `${formNum+1}`)
+    } 
+    function removeForm(id){
+      let formDel=document.getElementById(id)
+      del=formDel.parentNode
+      del=del.parentNode
+      del=del.parentNode
+      del=del.parentNode
+      del=del.parentNode.remove()
+
+
+      
+      
+    }
+    
+          
+    
+
+</script>
+<script>
+$(document).ready(function () {
+  
+    $('#add_more').click(function() {
+        alert("hello");
+        cloneMore('div.table:last', 'service');
+    });
+  $('#submit-btn').on('click', function () {
+    var subjectCount=0;
+    var compulsory_options;
+    var options;
+    compulsory_options=document.getElementById('id_compulsory_subject_to').getElementsByTagName('option');
+    subjectCount=compulsory_options.length;
+    document.getElementById('id_compulsory_subject_to').disabled='';
+    try{
+    options=document.getElementById('id_optional_subject_to').getElementsByTagName('option');
+    var selected_4rth = document.getElementById('id_fourth_subject');
+    var flag_submit=0;
+    alert(selected_4rth.value);
+    for(i=0;i<options.length ;i++){
+      subjectCount++;
+      if(options[i].value==selected_4rth.value){
+        flag_submit=1;
+        break;
+
+      }
+    options[i].selected = 'selected';
+   }
+    if(subjectCount<6 || flag_submit==1){
+      alert("Choose All 7 Subject and do not repeat twice ");
+      return false;
+    }
+    
+    }catch(err){
+
+    }
+  //preloader.classList.add('d-block');
+  var frm = $('#form-wrapper')[0];
+  var form= new FormData(frm);
+  var form1=document.getElementById('form-wrapper');
+  form1.submit();
+  
+  });
+////////////////////Submit for admission form download/////////////////////
+
+ 
+
+});
+</script>
+ 
+{% endblock  %}

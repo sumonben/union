@@ -3,29 +3,29 @@ from django.db import models
 # Create your models here.
 
 class Division(models.Model):
-    name=models.CharField(max_length=25,unique=True)
-    name_en=models.CharField(max_length=15,unique=True)
-    link=models.CharField(max_length=15,null=True,blank=True)
+    name=models.CharField(max_length=50,unique=True)
+    name_en=models.CharField(max_length=50,unique=True)
+    link=models.CharField(max_length=100,null=True,blank=True)
     class Meta:
         ordering = ['name']
     def __str__(self):
         return self.name+'('+self.name_en+')'
 
 class District(models.Model):
-    name=models.CharField(max_length=25,unique=True)
-    name_en=models.CharField(max_length=25,unique=True)
-    lattitude=models.CharField(max_length=15,blank=True,null=True)
-    longitude=models.CharField(max_length=15, blank=True,null=True)
+    name=models.CharField(max_length=50,unique=True)
+    name_en=models.CharField(max_length=50,unique=True)
+    lattitude=models.CharField(max_length=50,blank=True,null=True)
+    longitude=models.CharField(max_length=50, blank=True,null=True)
     division=models.ForeignKey(Division, on_delete=models.CASCADE,blank=True,null=True)
-    link=models.CharField(max_length=15,null=True,blank=True)
+    link=models.CharField(max_length=100,null=True,blank=True)
     class Meta:
         ordering = ['name_en']
     def __str__(self):
         return self.name+'('+self.name_en+')'
 
 class Upazilla(models.Model):
-    name=models.CharField(max_length=25)
-    name_en=models.CharField(max_length=25)
+    name=models.CharField(max_length=50)
+    name_en=models.CharField(max_length=50)
     district=models.ForeignKey(District, on_delete=models.CASCADE,blank=True,null=True)
     link=models.CharField(max_length=50,null=True,blank=True)
     class Meta:
@@ -34,8 +34,8 @@ class Upazilla(models.Model):
         return self.name+'('+self.name_en+')'
 
 class Union(models.Model):
-    name=models.CharField(max_length=25)
-    name_en=models.CharField(max_length=25)
+    name=models.CharField(max_length=50)
+    name_en=models.CharField(max_length=50)
     upazilla=models.ForeignKey(Upazilla, on_delete=models.CASCADE,blank=True,null=True)
     link=models.CharField(max_length=50,null=True,blank=True)
 
@@ -61,7 +61,7 @@ class PostOffice(models.Model):
     name_en=models.CharField(max_length=25)
     post_code=models.CharField(max_length=15,null=True,blank=True)
     post_code_en=models.CharField(max_length=15,null=True,blank=True)
-    link=models.CharField(max_length=15,null=True,blank=True)
+    link=models.CharField(max_length=50,null=True,blank=True)
 
     class Meta:
         ordering = ['name_en']
@@ -73,7 +73,7 @@ class Village(models.Model):
     name_en=models.CharField(max_length=25)
     ward=models.ForeignKey(Ward, on_delete=models.SET_NULL,blank=True,null=True)
     post_office=models.ForeignKey(PostOffice, on_delete=models.SET_NULL,blank=True,null=True)
-    link=models.CharField(max_length=15,null=True,blank=True)
+    link=models.CharField(max_length=50,null=True,blank=True)
 
     class Meta:
         ordering = ['name_en']
@@ -92,7 +92,41 @@ class Mouja(models.Model):
         ordering = ['name_en']
     def __str__(self):
         return self.name+'('+self.name_en+')'
+class UnionDetails(models.Model):
+    name=models.CharField(max_length=50)
+    name_en=models.CharField(max_length=50)
+    post_office=models.ForeignKey(PostOffice, on_delete=models.CASCADE,blank=True,null=True)
+    upazilla=models.ForeignKey(Upazilla, on_delete=models.CASCADE,blank=True,null=True)
+    district=models.ForeignKey(District, on_delete=models.CASCADE,blank=True,null=True)
+    logo=models.FileField(upload_to='media/logo',blank=True,null=True,)
+    logo_en=models.FileField(upload_to='media/logo',blank=True,null=True,)
+    logo_opacity=models.FileField(upload_to='media/logo',blank=True,null=True,)
+    logo_opacity_en=models.FileField(upload_to='media/logo',blank=True,null=True,)
+    monogram=models.FileField(upload_to='media/logo',blank=True,null=True)
+    monogram_en=models.FileField(upload_to='media/logo',blank=True,null=True)
+    link=models.URLField(max_length=200, blank=True, null=True)
+    class Meta:
+        ordering = ['name_en']
+        verbose_name="ইউনিয়ন বা পৌরসভা বিবরণ"
+        verbose_name_plural="ইউনিয়ন বা পৌরসভা বিবরণ"
 
+    def __str__(self):
+        return self.name+'('+self.name_en+')'
+
+class ImportantLinks(models.Model):
+    serial=models.IntegerField(default=10)
+    title=models.CharField(max_length=500, blank=True, null=True)
+    title_en=models.CharField(max_length=500, blank=True, null=True)
+    link=models.URLField(max_length=200, blank=True, null=True)
+    class Meta:
+        ordering = ['serial']
+        verbose_name="লিংকসমূহ"
+        verbose_name_plural="লিংকসমূহ"
+    def __str__(self):
+        if self.title:
+            return self.title
+        else:
+            return '1'
 class OthersAdress(models.Model):
     serial=models.IntegerField(default=10)
     holding_no=models.CharField(max_length=100,blank=True,null=True,verbose_name=" হোল্ডিং নং")

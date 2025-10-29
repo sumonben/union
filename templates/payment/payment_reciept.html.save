@@ -1,0 +1,656 @@
+
+
+{% extends 'basepage/basepage_receipt.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+    .main_body{
+        width:100%;
+        height:100%;
+        color:red;
+    }
+    @media(max-width:767px){
+        .main_body{
+            width:100%;
+            height:700px;
+            color:red;
+            background-color:green;
+        }   
+    }
+</style>
+
+
+  <link rel="icon" href="{% static 'images/gmrwc_logo.png'%}" type="image/x-icon">
+
+  
+  
+<style>
+body{
+    font-weight: normal;
+    font-style:normal;
+        
+      
+}
+#first_table{
+    width:80%;
+    height:100%
+}
+    .row{
+        margin-left:15%;
+    }
+  button#print, button#next-btn, button#submit-btn {
+  font-size: 17px;
+  font-weight: bold;
+  position: relative;
+  width: 300px;
+  height: 50px;
+  background: #DC3545;
+  margin-left: 50%;
+  margin-top: 20px;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  transition: color .3s;
+  text-align: center;
+  color: #fff;
+  border: 0;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+button#print:after, button#next-btn:after, button#submit-btn:after {
+  result: absolute;
+  top: 90%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #05812a;
+  content: "";
+  z-index: -2;
+  transition: transform .3s;
+}
+button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover::after {
+  transform: translateY(-80%);
+  transition: transform .3s;
+}
+
+
+
+@media print and (min-width: 300px) {
+  @font-face {
+    font-family: "kalpurush";
+    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff");
+   
+    font-weight: normal;
+    font-style: normal;
+  }
+  #second{
+    margin-top:-50px;
+}
+ #main_table{
+   padding:5em;
+   -webkit-print-color-adjust: exact; 
+
+ }
+ #img1,#img3,#img7,#img9{
+   display:none;
+ }
+   #heading{
+       margin-top:20px;
+       margin-left:10px;
+       
+
+   }
+   #first_table{
+       width:100%;
+   }
+   #column{
+     width:100%;
+   }
+ 
+   .main-left{
+     display:none;
+    }
+    .main-right{
+     display:none;
+    }
+   
+ .main-button {
+   display:none;
+
+ }
+ .main-top{
+   display:none;
+
+ } 
+
+    #first_table{
+        width:100%;
+    }
+    #column{
+      width:100%;
+    }
+  
+   
+    
+    table.result{
+      width:100%;
+    }
+      
+      table th, table td {
+        
+              padding:0.5em;
+              -webkit-print-color-adjust: exact; 
+      
+          }
+
+            #submit-btn {
+              display: none !important;;
+            }
+  }
+    
+    
+
+  @media (max-width:767px){
+    #column{
+      width:100%;
+      margin-left:0%;
+    }
+   
+  }
+  
+  
+  
+              
+table.result th, table.result td {
+                border:1px solid rgb(255, 255, 255);
+                
+                padding:0.6em;
+                -webkit-print-color-adjust: exact; 
+        
+                }
+    
+  
+  
+
+#heading {
+    color: #000080 !important;;
+  }
+
+
+
+
+#column{
+  width:95%;
+  margin-left:2%;
+}
+@media (max-width:767px){
+  #column{
+    width:100%;
+    margin-left:0%;
+  }
+  
+}
+
+
+
+
+goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07Ob *, .VIpgJd-ZVi9od-vH1Gmf *, .VIpgJd-ZVi9od-l9xktf *{
+  display:none;
+}
+</style>
+<div class="box_container" style="width: 100%; margin: 0px;">
+    <div class="" style="margin: auto;width: 100%;">
+        <!-- TITLE 
+        <div class="col-lg-4 offset-lg-1 mx-0 px-0">
+            <div id="title-container">
+                <img class="covid-image" src="./img/covid-check.png">
+                <h2>COVID-19</h2>
+                <h3>Self Checker Form</h3>
+                <p>A clinical assessment multi-step form that will assist individuals on deciding when to seek testing or medical care if they suspect they or someone they know has contracted COVID-19 or has come into close contact with someone who has COVID-19</p>
+            </div>
+        </div>-->
+        <!-- FORMS -->
+        <div >
+                        <div class="step d-block">
+                          {% if tran_purpose.payment_type.id == 1 %}
+
+                          
+                          {% if certificate.language == '2' %}
+                          <div>
+                              
+                            
+                            <h1 style="text-align: center;"><u>Application for {{certificate.certificate_type.name_en}}</u></h1>
+                          
+                          </div>
+
+                  <div id="heading"><h3 style="text-align: center; margin-left:2%">Tracking No.  <b>&nbsp{{certificate.tracking_no}}</b></h3></div>
+
+
+                        <table  width="900"  align="center" valign="middle" cellspacing="0" cellpadding="4">
+
+                          <tbody>
+                          <tr>
+                            <td align="left">
+                              <fieldset>
+                              <table class="result" width="100%"  cellspacing="0" cellpadding="5">
+                                <tbody>
+                                
+
+
+                                    <tr>
+                                      <td width="15%" align="right" valign="middle" class="sprytextfield1"><b>Name:  </b></td>
+                                      <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{certificate.name}}                                        
+                                        </label>
+
+                                    </tr>
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Father's Name: </b></td>
+                                      <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{certificate.father_name}}                                        
+                                        </label>
+
+                                    </tr>
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Mother's Name:</b> </td>
+                                      <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{certificate.mother_name}}                                        
+                                        </label>
+
+                                    </tr>
+                                    
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Village:  </b></td>
+                                      <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{certificate.adress.village.name_en}}                                        
+                                        </label>
+
+                                    </tr>
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Ward: </b>  </td>
+                                      <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{certificate.adress.village.ward.name_en}}                                        
+                                        </label>
+
+                                    </tr>
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Date:</b>  </td>
+                                      <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label id="date">
+                                          {{transaction.tran_date}}                                          
+                                      </label>
+
+                                    </tr>
+
+                                    <tr>
+                                      <td colspan="2" align="center" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                        Union: Tilakpur ,Upazilla: Akkelpur, District: Jaypurhat, Bangladesh.      
+                                                                         </label>
+
+                                    </tr>
+                                   
+  
+                              </tbody></table>
+                            </fieldset>
+                          </td>
+                          
+                        </tr>
+                            
+                        </tbody>
+                      </table>
+                        
+                            
+
+                      </div>
+                    
+                                
+                            
+                          {% else %}
+                            
+                      <div>
+                              
+                            
+                              <h1 style="text-align: center;"><u>{{certificate.certificate_type.name}}-এর জন্য আবেদন</u></h1>
+                            
+                            </div>
+
+                   <div id="heading"><h3 style="text-align: left; margin-left:2%">ট্র্যাকিং নম্বরঃ <b>&nbsp{{certificate.tracking_no}}</b></h3></div>
+
+                          <table  width="900"  align="center" valign="middle" cellspacing="0" cellpadding="4">
+
+                            <tbody>
+                            <tr>
+                              <td align="left">
+                                <fieldset>
+                                <table class="result" width="100%"  cellspacing="0" cellpadding="5">
+                                  <tbody>
+                                  
+
+
+                                      <tr>
+                                        <td width="15%" align="right" valign="middle" class="sprytextfield1"><b>নামঃ </b></td>
+                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{certificate.name}}                                        
+                                          </label>
+
+                                      </tr>
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>পিতার নামঃ </b></td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{certificate.father_name}}                                        
+                                          </label>
+
+                                      </tr>
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>মাতার নামঃ</b> </td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{certificate.mother_name}}                                        
+                                          </label>
+
+                                      </tr>
+                                      
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>গ্রামঃ </b></td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{certificate.adress.village.name}}                                        
+                                          </label>
+
+                                      </tr>
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ওয়ার্ডঃ</b>  </td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{certificate.adress.village.ward.name}}                                        
+                                          </label>
+
+                                      </tr>
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>তারিখঃ </b>  </td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label id="date">
+                                            {{transaction.tran_date|date}}                                          
+                                        </label>
+
+                                      </tr>
+
+                                      <tr>
+                                        <td colspan="2" align="center" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            ইউনিয়নঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট। 
+                                          </label>
+
+                                      </tr>
+                                     
+    
+                                </tbody></table>
+                              </fieldset>
+                            </td>
+                            
+                          </tr>
+                              
+                          </tbody>
+                        </table>
+                          
+                              
+
+                        </div>
+                        {% endif %}
+                       
+                       
+                       
+                       
+                        {% else %}
+
+                        <div>
+                        <h1 style="text-align: center;"><u>{{license.license_type.name}}-এর জন্য আবেদন</u></h1>
+                        </div>
+                        <div id="heading"><h3 style="text-align: left; margin-left:2%">ট্র্যাকিং নম্বরঃ <u>&nbsp{{license.tracking_no}}</u></h3></div>
+
+
+                          <table  width="900"  align="center" valign="middle" cellspacing="0" cellpadding="4">
+
+                            <tbody>
+                            <tr>
+                              <td align="left">
+                                <fieldset>
+                                <table class="result" width="100%"  cellspacing="0" cellpadding="5">
+                                  <tbody>
+                                  
+
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ব্যবসা প্রতিষ্ঠানের নামঃ </b>  </td>
+                                      <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label id="date">
+                                          {{license.licensed_name}}                                          
+                                      </label>
+
+                                    </tr>
+
+                                    <tr>
+                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ব্যবসা প্রতিষ্ঠানের ঠিকানাঃ </b>  </td>
+                                      <td colspan="2" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          মৌজাঃ {{license.adress_of_license.mouja.name}}, গ্রামঃ {{license.adress_of_license.village.name}} <br>
+                                          ইউনিয়নঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট। 
+                                        </label>
+
+                                    </tr>
+                     
+                                      <tr>
+                                        <td width="15%" align="right" valign="middle" class="sprytextfield1"><b>আবেদনকারীর নামঃ </b></td>
+                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{license.license_owner_name}}                                        
+                                          </label>
+
+                                      </tr>
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>পিতার নামঃ </b></td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{license.father_name}}                                        
+                                          </label>
+
+                                      </tr>
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>মাতার নামঃ</b> </td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{license.mother_name}}                                        
+                                          </label>
+
+                                      </tr>
+                                      
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ঠিকানাঃ </b></td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            গ্রামঃ {{license.adress.village}}, ইউনিয়নঃ {{license.adress.union.name}}, <br>উপজেলাঃ {{license.adress.upazilla.name}}, জেলাঃ {{license.adress.district.name}}। 
+                                          </label>
+
+                                      </tr>
+                                     
+                                                    <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>অনলাইন চার্জঃ  </b>  </td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label id="date">
+                                           ১২.২৫ টাকা                                          
+                                        </label>
+
+                                      </tr>
+                                     
+    
+                                </tbody></table>
+                              </fieldset>
+                            </td>
+                            
+                          </tr>
+                              
+                          </tbody>
+                        </table>
+                          
+                              
+
+                        </div>
+                        {% endif %}
+                    
+                </div>
+                    <div id="q-box__buttons" >
+                      
+                      {% if certificate.language == '2' %}
+                      <button id="submit-btn" class="btn-default" onclick="window.print()" >Print or Download</button>
+
+                      {% else %}
+                      <button id="submit-btn" class="btn-default" onclick="window.print()" >প্রিন্ট অথবা ডাউনলোড</button>
+
+                      {% endif %}
+                        
+                    </div>   
+                   
+         
+
+    </div>
+
+
+          
+
+ 
+
+  </div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+          
+             
+              <div class="graph-image graph-7">
+    </div>
+     
+
+
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        window.onload = (event) => {
+
+        var numbers = {
+            0: '০',
+            1: '১',
+            2: '২',
+            3: '৩',
+            4: '৪',
+            5: '৫',
+            6: '৬',
+            7: '৭',
+            8: '৮',
+            9: '৯'
+        };
+        var month = {
+            January: 'জানুযারি',
+            February: 'ফেব্রুয়ারি',
+            March: 'মার্চ',
+            April:'এপ্রিল',
+            May: 'মে',
+            June: 'জুন',
+            July: 'জুলাই',
+            August: 'অগাস্ট',
+            September: 'সেপ্টেম্বর',
+            Octobor: 'অক্টোবর'
+        };
+        var output = '';
+        function replaceNumbers(input) {
+            var output = [];
+            for (var i = 0; i < input.length; ++i) {
+              if (numbers.hasOwnProperty(input[i])) {
+                output.push(numbers[input[i]]);
+              } else {
+                output.push(input[i]);
+              }
+            }
+            return output.join('');
+          }
+function replaceMonth(input) {
+            var output = [];
+            const myArray = input.split(" ");
+            output.push(month[myArray[0]]);
+            output.push(" ");
+            for(var i=1;i<myArray.length;i++)
+                 output.push(myArray[i]);
+            return output.join('');
+          }
+
+          if('{{certificate.language}}' != '2'){
+            input =document.getElementById("date").textContent.toString();
+            document.getElementById('date').textContent = replaceNumbers(input);
+            input =document.getElementById("para1").textContent.toString();
+            document.getElementById('para1').textContent = replaceNumbers(input);
+            input =document.getElementById("para2").textContent.toString();
+            document.getElementById('para2').textContent = replaceNumbers(input);
+            input =document.getElementById("para3").textContent.toString();
+            document.getElementById('para3').textContent = replaceNumbers(input);
+            input =document.getElementById("para4").textContent.toString();
+            document.getElementById('para4').textContent = replaceNumbers(input);
+            input =document.getElementById("para5").textContent.toString();
+            document.getElementById('para5').textContent = replaceNumbers(input);
+            input =document.getElementById("date").textContent.toString();
+            document.getElementById('date').textContent = replaceNumbers(input);
+            }
+        }
+
+        function goToPrint(){
+            document.getElementById("submit-btn").style.display="none";
+            document.getElementById("google_translate_element").style.display="none";
+
+            
+            window.print();
+            document.getElementById("submit-btn").style.display="block";
+
+        }
+    </script>
+    
+    {% endblock  %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

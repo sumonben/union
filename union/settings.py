@@ -15,12 +15,12 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR =os.path.join(BASE_DIR,'templates')
-STATIC_DIR =os.path.join(BASE_DIR,'static')
+#STATIC_DIR =os.path.join(BASE_DIR,'static')
 
 MEDIA_ROOT =  BASE_DIR / 'media' 
 MEDIA_URL = '/media/'
 STATIC_URL = 'static/'
-STATICFILES_DIRS= [STATIC_DIR, ]
+#STATICFILES_DIRS= [STATIC_DIR, ]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -29,12 +29,13 @@ STATICFILES_DIRS= [STATIC_DIR, ]
 SECRET_KEY = 'django-insecure-7$wq_6k@%@d&7=(p-t*)_fc%+cv5)_a+2&s1uc#yct*r*3q#o%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = False
+#DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','209.74.88.131','tilokpursonod.gov.bd','www.tilokpursonod.gov.bd']
-#ALLOWED_HOSTS = ['209.74.88.131','tilokpursonod.gov.bd','www.tilokpursonod.gov.bd']
-
+#ALLOWED_HOSTS = ['127.0.0.1','209.74.88.131','tilokpursonod.gov.bd','www.tilokpursonod.gov.bd']
+ALLOWED_HOSTS = ['uniondemo.ictparkbd.com','www.uniondemo.ictparkbd.com']
+#DATA_UPLOAD_MAX_MEMORY_SIZE = 2 * 1024 * 1024  # 30 MB
+#FILE_UPLOAD_MAX_MEMORY_SIZE = 2 * 1024 * 1024  # 15 MB
 
 # Application definition
 
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
     'import_export',
     'sslcommerz_lib',
     'account',
+    'holdingtax',
     'certificate',
     'license',
     'region',
@@ -80,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'region.context_processors.site_info'
             ],
         },
     },
@@ -141,9 +144,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    'default1': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tilokpur',
+        'NAME': 'uniondemo',
         'USER' : 'postgres',
         'PASSWORD' : 'Sumon@747934',
         'HOST' : 'localhost',
@@ -188,18 +191,18 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-#STATIC_ROOT=os.path.join(BASE_DIR,'static/')
+STATIC_ROOT=os.path.join(BASE_DIR,'static/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-"""CACHES = {
+CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:8000/1',  # Use the appropriate Redis server URL
+        'LOCATION': 'redis://127.0.0.1:6379/1',  # Use the appropriate Redis server URL
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
     }
-}"""
+}

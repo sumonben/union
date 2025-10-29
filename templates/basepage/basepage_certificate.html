@@ -3,21 +3,17 @@
   
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    {% if certificate.language == '2'  %}
-    <title>Union Certificate</title>
+  
+	<title>{{certificate.name}}_{{certificate.tracking_no}}</title>
 
-    {% else %}
-    <title>ইউনিয়ন সনদ</title>
-    {% endif %}
-
-    <link rel="icon" href="{% static 'images/tilokpur_logo.png'%}" type="image/x-icon">
+    <link rel="icon" href="{{ LOGO }}" type="image/x-icon">
     <meta http-equiv="cache-control" content="no-cache">
-    <meta name="publisher" content="4 no. Tilokpur Union Council">
-    <meta name="copyright" content="4 no. Tilokpur Union Council">
-    <meta name="author" content="Design/Developed by: Tarique Sumon :: 4 no. Tilokpur Union Council">
+    <meta name="publisher" content="{{union_details.name_en}}">
+    <meta name="copyright" content="{{union_details.name_en}}">
+    <meta name="author" content="Design/Developed by: Tarique Sumon :: {{union_details.name_en}}">
     <meta name="robots" content="index, follow">
-    <meta name="description" content="4 no. Tilokpur Union Council">
-    <meta name="keywords" content="gmrwc, college, women's, mohila college,Bogura, 4 no. Tilokpur Union Council, Mujibur rahman Women's Collge, Mujibur rahman Collge, Admission, HSC, NU, National University, bcs advertisement, Admit Card, Applicant's Copy">
+    <meta name="description" content="{{union_details.name_en}}">
+    <meta name="keywords" content="{{union_details.name_en}},{{union_details.name}},তিলকপুর ইউনিয়ন, তিলকপুর সনদ, {{union_details.upazilla.name}}, {{union_details.upazilla.name_en}}, sonod, prottoyon">
     <link href="{% static 'css/admission/bootstrap.min.css'%}" rel="stylesheet">
     <link href="{% static 'css/admission/style.css' %}" rel="stylesheet">
 
@@ -140,23 +136,21 @@
         .radial-gradient-footer{
           background: radial-gradient(#C9DAED,#C9DAED,#035a4c)
         }
-        #item {
-          text-shadow: 2px 2px 2px rgb(255, 255, 255); 
+        #item { 
           color:rgb(184, 4, 4); 
          }
-         #item_en {
-          text-shadow: 2px 2px 2px rgb(178, 180, 179); 
+         #item_en { 
           color:rgb(184, 4, 4);       
          }
         @media print {
-          #item {
-            -webkit-filter: drop-shadow(2px 2px 2px rgb(178, 180, 179));
-            text-shadow: 2px 2px 2px rgb(178, 180, 179); 
+         {% comment %} #item {
+            -webkit-filter: drop-shadow(2px 2px 2px rgb(58, 56, 56));
+            text-shadow: 2px 2px 2px rgb(58, 56, 56); 
           }
            #item_en {
-            -webkit-filter: drop-shadow(2px 2px 2px rgb(178, 180, 179));
-            text-shadow: 2px 2px 2px rgb(178, 180, 179); 
-            }
+            -webkit-filter: drop-shadow(2px 2px 2px rgb(58, 56, 56));
+            text-shadow: 2px 2px 2px rgb(58, 56, 56); 
+            }{% endcomment %}
             #certificate_title{
               -webkit-filter: drop-shadow(2px 2px 2px rgb(65, 7, 7));
               text-shadow: 2px 2px 2px rgb(65, 7, 7);
@@ -230,14 +224,14 @@
        }
        #body_div{
         
-        {% if certificate.language == '2' %}
-        background-image:url('/static/images/tilokpur_logo_opacity_en.png'); 
+	 {% if certificate.language == '2' %}
+        background-image:url({{union_details.logo_opacity.url}}); 
 
         {% else %}
        
-        background-image:url('/static/images/tilokpur_logo_opacity.png'); 
+        background-image:url({{union_details.logo_opacity.url}}); 
 
-        {% endif %}
+        {% endif %}  
           
         background-repeat: no-repeat;
         background-position: center;
@@ -267,28 +261,29 @@
                     <tbody>
                     {% if certificate.language == '2'  %}
                     <tr>
-                      <td width="20%" height="95" rowspan="4" align="left" valign="middle" style="text-align:center"><img src="{% static 'images/tilokpur_logo_en.png'%}" width="100" height="100"></td>
+                      <td width="20%" height="95" rowspan="4" align="left" valign="middle" style="text-align:center"><img src="{{union_details.logo_en.url}}" width="100" height="100">
+                      </td>
                     </tr>
                     <tr>
                       <td  width="70%" height="100" align="center" valign="middle" style="text-align:center;margin-left:-50%;">
-                        <span  style="color:#fff;margin-left:-10%;line-height:1;overflow:vissible;margin-top:-15px;display: inline-block;">Allah is Allmighty</span><br>
+                        <span  style="color:#fff;margin-left:-10%;line-height:1;overflow:vissible;margin-top:-15px;display: inline-block;">Allah is Almighty</span><br>
                         <span class="GrayBlue10bold" style="color:rgb(65, 7, 7);margin-left:-10%;font-size:20px;line-height:1.5">People's Republic of Bangladesh</span><br>
-                      <span class="GrayBlue20bold" id="item_en"  style="text-align: center;;line-height:1;margin-left:-10%;">4 NO. TILAKPUR UNION COUNCIL</span><br>
-                      <span style="color:#000;margin-top:0px;font-weight:500;margin-left:-10%;font-size:22px;">Post-Ofice: Tilakpur, Upazilla: Akkelpur, District: Jaypurhat.</span>
+                      <span class="GrayBlue20bold" id="item_en"  style="text-align: center;;line-height:1;margin-left:-10%;">{{union_details.name_en}}</span><br>
+                      <span style="color:#000;margin-top:0px;font-weight:500;margin-left:-10%;font-size:22px;">Post-Office: {{union_details.post_office.name_en}}, Upazilla: {{union_details.upazilla.name_en}}, District: {{union_details.district.name_en}}.</span>
                       </td>
                       <td width="10%" height="95" align="center" valign="middle" style="text-align:center"></td>
                       </tr>
                     {% else %}
-                    <tr>
-                      <td width="20%" height="95" rowspan="4" align="left" valign="middle" style="text-align:center"><img src="{% static 'images/tilokpur_logo.png'%}" width="100" height="100"></td>
+                       <tr>
+			 <td width="20%" height="95" rowspan="4" align="left" valign="middle" style="text-align:center"><img src="{{ union_details.logo.url }}" width="100" height="100"></td>
                     </tr>
                     <tr>
                       <td  width="70%" height="100" align="center" valign="middle" style="text-align:center;margin-left:-50%;">
                         <span  style="color:#fff;margin-left:-10%;line-height:1;overflow:vissible;margin-top:-15px;display: inline-block;">বিসমিল্লাহির রাহমানির রাহিম</span><br>
                         <span class="GrayBlue10bold" style="color:rgb(65, 7, 7);margin-left:-10%;font-size:20px;line-height:1.5">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</span><br>
 
-                      <span class="GrayBlue20bold" id="item"  style="text-align: center;;line-height:1;margin-left:-10%;">৪ নং তিলকপুর ইউনিয়ন পরিষদ কার্যালয়</span><br>
-                      <span style="color:#000;margin-top:0px;font-weight:500;margin-left:-10%;font-size:22px;">ডাকঘরঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
+                      <span class="GrayBlue20bold" id="item"  style="text-align: center;;line-height:1;margin-left:-10%;">{{union_details.name}}</span><br>
+                      <span style="color:#000;margin-top:0px;font-weight:500;margin-left:-10%;font-size:22px;">ডাকঘরঃ {{union_details.post_office.name}}, উপজেলাঃ {{union_details.upazilla.name}}, জেলাঃ {{union_details.district.name}}</span>
                       </td>
                       <td width="10%" height="95" align="center" valign="middle" style="text-align:center"></td>
                       </tr>                    
@@ -338,17 +333,17 @@
         <tbody>
           {% if certificate.language == '2'  %}
           <tr>
-            <td width="85%" align="left" valign="middle">Helpline: Union office (10:00am - 04:00pm)</td>
+            <td width="85%" align="left" valign="middle">Helpline: Municipility/Union office (10:00am - 04:00pm)</td>
           </tr>
           <tr>
-            <td align="left" valign="middle"> Tilakpur Union Council.<br>Check at:  https://tilokpursonod.gov.bd/download_certificate_form </td>
+            <td align="left" valign="middle"> {{ union_details.name_en }}.<br>Check at:  {{union_details.link}}/download_certificate_form </td>
           </tr>
             {% else %}
             <tr>
               <td width="85%" align="left" valign="middle">হেল্পলাইন: অফিস (সকাল ১০:০০ - বিকেল ০৪:০০ )</td>
             </tr>
             <tr>
-              <td align="left" valign="middle"> তিলকপুর ইউনিয়ন পরিষদ.<br> সনদ  ডাউনলোড লিংকঃ  https://tilokpursonod.gov.bd/download_certificate_form/ </td>
+              <td align="left" valign="middle"> {{ union_details.name }}.<br> সনদ  ডাউনলোড লিংকঃ{{union_details.link}}/download_certificate_form/ </td>
             </tr>            
             {% endif %}
           
@@ -377,9 +372,9 @@
     </td>
     {% if certificate.language == '2'  %}
 
-      <td width="10%" height="50" align="center" valign="middle"><img src="{% static 'images/tilokpur_logo_en.png'%}"  height="44" alt=""></td>
+      <td width="10%" height="50" align="center" valign="middle"><img src="{{union_details.logo.url}}"  height="44" alt=""></td>
       {% else %}
-      <td width="10%" height="50" align="center" valign="middle"><img src="{% static 'images/tilokpur_logo.png'%}"  height="44" alt=""></td>
+      <td width="10%" height="50" align="center" valign="middle"><img src="{{union_details.logo.url}}"  height="44" alt=""></td>
       {% endif %}
     </tr>
       

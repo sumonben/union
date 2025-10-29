@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import License,LicenseType
+from region.models import UnionDetails
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import LicenseType,License
@@ -26,18 +26,18 @@ class ApplyForLicense(View):
     template_name = 'forms/license_form.html'
     def get(self, request, id, *args, **kwargs):
         context={}
+        union_details=UnionDetails.objects.last()
+        context['union_details']=union_details
         certificate_type=CertificateType.objects.filter(id=id).first()
         context['certificate_type']=certificate_type
         certificate_types=CertificateType.objects.all().order_by('serial')
         context['certificate_types']=certificate_types
-        
         license_type=LicenseType.objects.filter(id=id).first()
         context['license_type']=license_type
         license_types=LicenseType.objects.all().order_by('serial')
         context['license_types']=license_types
         form=LicenseForm(instance=license_type)
         adress_form=OthersAdressForm()
-        
         if license_type.id == 1:
             formset = SamePersonFormSet(queryset=Person.objects.none()) 
             formset_adress = AdressFormSet(queryset=Adress.objects.none())
@@ -53,6 +53,8 @@ class ApplyForLicense(View):
     
     def post(self, request,id, *args, **kwargs):
         context={}
+        union_details=UnionDetails.objects.last()
+        context['union_details']=union_details
         license_types=LicenseType.objects.all().order_by('serial')
         context['license_types']=license_types
         license_type=LicenseType.objects.filter(id=id).first()
@@ -64,6 +66,8 @@ class LicenseView(View):
     template_name = 'forms/license_form.html'
     def get(self, request, *args, **kwargs):
         context={}
+        union_details=UnionDetails.objects.last()
+        context['union_details']=union_details
         license_types=LicenseType.objects.all().order_by('serial')
         context['license_types']=license_types
         form=LicenseForm()
@@ -76,6 +80,8 @@ class LicenseView(View):
 
     def post(self, request, *args, **kwargs):
         context={}
+        union_details=UnionDetails.objects.last()
+        context['union_details']=union_details
         formset=None
         form = LicenseForm(request.POST, request.FILES)
         adress_form = OthersAdressForm(data=self.request.POST)
@@ -89,9 +95,9 @@ class LicenseView(View):
 
         license_types=LicenseType.objects.all().order_by('serial')
         context['license_types']=license_types
-        license=License.objects.filter(phone=request.POST.get('phone')).first()
+        license=License.objects.filter(phone=request.POST.get('phone'),license_owner_name=request.POST.get('license_owner_name')).last()
         if license:
-            if license.transaction == None:
+            if license.transaction is None:
                 license.delete()
         tracking_no=gernerate_tracking_no()
         # Check if submitted forms are valid
@@ -164,6 +170,8 @@ class DownloadLicenseView(View):
     template_name = 'license/download_license_form.html'
     def get(self, request, *args, **kwargs):
         context={}
+        union_details=UnionDetails.objects.last()
+        context['union_details']=union_details
         license_types=LicenseType.objects.all().order_by('serial')
         context['license_types']=license_types
         form=LicenceDownloadForm()
@@ -171,10 +179,16 @@ class DownloadLicenseView(View):
         return render(request,self.template_name, context)
     def post(self, request, *args, **kwargs):
         context={}
+        union_details=UnionDetails.objects.last()
+        context['union_details']=union_details
+        transaction=None
         license_type=LicenseType.objects.all().order_by('serial')
         context['license_type']=license_type
         license=License.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),license_type=request.POST.get('license_type')).first()
-        transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),id=license.transaction.id).first()
+        if license:
+            if license.transaction:
+                transaction=Transaction.objects.filter(tracking_no=request.POST.get('tracking_no').strip(),id=license.transaction.id).first()
+
         if license:
             if transaction:
                 if license.is_verified==False:

@@ -35,7 +35,7 @@
 
                 <span class="bubbleNew"><img src="{%static 'images/ictpark_monogram.png'%}" class="rounded-circle"  /></span>
 
-                <span class="shape"><img align="center"  src="{% static 'images\ictparkbd_logo.jpg' %}"><img align="center" style="height:60%;margin-top:10%;rotate: -50deg;" src="{% static 'images\tilokpur_logo.png' %}"></span> 
+                <span class="shape"><img align="center"  src="{% static 'images\ictparkbd_logo.jpg' %}"><img align="center" style="height:60%;margin-top:10%;rotate: -50deg;" src="{{ union_details.logo.url}}"></span> 
                 {%if email %}
             
             <div class="alert alert-danger" role="alert">
@@ -161,7 +161,12 @@
                                                 </span></td>
       
                                             </tr>
-                                          
+					    <tr>
+                                              <td colspan="2" width="100%" align="left" valign="middle"><span id="sprytextfield1">                                                <label>
+                                                  Online Fee : 10 BDT                                                </label>
+                                                </span></td>
+      
+                                            </tr>                                          
                                         
           
                                       </tbody></table>
@@ -261,7 +266,14 @@
                                                 </span></td>
       
                                             </tr>
-                                          
+                                          <tr>
+                                              <td colspan="2" width="100%" align="left" valign="middle"><span id="sprytextfield1">
+                                                <label>
+                                                  অনলাইন ফি :  ১০ টাকা
+                                                </label>
+                                                </span></td>
+      
+                                            </tr>
                                         
           
                                       </tbody></table>

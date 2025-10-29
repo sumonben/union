@@ -173,7 +173,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                     {% if certificate.language == '2' %}
                                     <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify"><h4 style="font-weight:500; line-height:2"> This is to certify that , Name:  <span ><b>&nbsp&nbsp{{certificate.name}}&nbsp&nbsp</b></span> Father's Name:  {{certificate.father_name}}, Mother's Name: {{certificate.mother_name}},  Village:  {{certificate.adress.village.name_en}}, Post-Office:  {{certificate.adress.village.post_office.name_en}}, Ward No. -{{certificate.adress.ward.ward_no_en}}, Upazilla: Akkkelpur, District: Jaypurhat.
                                      
-                                     {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is known to me. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is Bangladeshi Citizen by birth. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is permanent inhabitant in this locality. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} character is good as far I know. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is not involved in any offence against the State.
+                                     {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is known to me. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is Bangladeshi Citizen by birth. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is permanent inhabitant in this locality. {% if certificate.gender.id == 1 %}His {% else %}Her {% endif %} character is good as far I know. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} is not involved in any offence against the State.
                                       <br><br><br>
                                       I wish{% if certificate.gender.id == 1 %} him {% else %} her {% endif %} every success in life.
                                     </td>  
@@ -187,21 +187,8 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                   </tr>
 
                                     <tr valign="bottom">
-                        
-                                      {% if certificate.language == '2' %}
-                                      <td  colspan="1" align="center"><br><br><br><br><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{certificate.certificate_type.name_en}}%0DTracking No: {{certificate.tracking_no}}%0DName:{{certificate.name}}&amp;size=200x200" width="200px" height="200px" alt="{{certificate.name}}" title="{{certificate.name}}:{{certificate.certificate_type.name_en}}" width="50" height="50" /></div></td>
 
-                                      <td  colspan="2" align="right"><br><br><br></div></td>
-                                      {% include 'components/chairman_signature.html' %} 
-                      
-                                      {% else %}
-                                        
-                                      <td  colspan="1" align="center"><br><br><br><br><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{certificate.certificate_type.name_en}}%0DTracking No: {{certificate.tracking_no}}%0DName:{{certificate.name}}&amp;size=200x200" width="200px" height="200px" alt="{{certificate.name}}" title="{{certificate.name}}:{{certificate.certificate_type.name_en}}" width="50" height="50" /></div></td>
-
-                                        <td  colspan="2" align="right"><br><br><br></div></td>
-                                        {% include 'components/chairman_signature.html' %} 
-                                      {% endif %}
-                                      
+                                      {% include 'components/chairman_signature.html' %}                                      
                                        
                                    </tr>
                                     <tr>

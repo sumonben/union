@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     
-    <title>ইউনিয়ন সনদ</title>
+    <title>{{union_details.name}}</title>
     <link rel="icon" href="{% static 'images/tilokpur_logo.png'%}" type="image/x-icon">
     <meta http-equiv="cache-control" content="no-cache">
     <meta name="publisher" content="Govt. Mujibur rahman Women's Collge">
@@ -120,18 +120,18 @@
         } 
         
         #item_title {
-          text-shadow: 3px 3px 3px rgb(65, 7, 7);
+          text-shadow: 0px 0px 0px rgb(65, 7, 7);
          }
          #license_title{
           color:#fff;
-          text-shadow: 3px 3px 3px rgb(65, 7, 7);
-        }
+          text-shadow: 2px 2px 2px rgb(65, 7, 7);
+	}
         
         @media print {
          
            #item_title {
-            -webkit-filter: drop-shadow(3px 3px 3px rgb(65, 7, 7));
-            text-shadow: 3px 3px 3px rgb(65, 7, 7);
+            -webkit-filter: drop-shadow(0px 0px 0px rgb(65, 7, 7));
+            text-shadow: 0px 0px 0px rgb(65, 7, 7);
           }
           #license_title{
             -webkit-filter: drop-shadow(2px 2px 2px rgb(65, 7, 7));
@@ -201,7 +201,7 @@
        }
        #first{
         width:100%;
-        background-image:url('/static/images/tilokpur_logo_opacity.png'); 
+        background-image:url("{{ union_details.logo_opacity.url }}"); 
         background-repeat: no-repeat;
         background-position: center;
        }
@@ -238,14 +238,14 @@
                   <td align="center" valign="middle"  >
                     <table width="100%" align="center"  cellspacing="0" cellpadding="0">
                     <tbody><tr>
-                      <td width="20%" height="95" rowspan="4"  valign="middle" style="text-align:center;"><img style="margin-top:20px;" src="{% static 'images/tilokpur_logo.png'%}" width="80" height="80"></td>
+                      <td width="20%" height="95" rowspan="4"  valign="middle" style="text-align:center;"><img style="margin-top:20px;" src="{{ LOGO }}" width="80" height="80"></td>
                     </tr>
                     <tr>
                       <td width="70%" height="100" id="item_title" align="center" valign="middle" style="text-align:center">
                         <span class="GrayBlue10bold" style="color:#000;text-shadow: none;line-height:1.7;margin-left:-30px;">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</span><br>
 
-                      <span class="GrayBlue20bold"  style="text-align: center;color:#922b21;text-shadow: 3px 3px 3px rgb(65, 7, 7);line-height:1.2;font-size:33px;margin-left:-30px;">৪ নং তিলকপুর ইউনিয়ন পরিষদ কার্যালয়</span><br>
-                      <span style="color:#000;margin-top:0px;text-shadow: none;font-size:18px;margin-left:-30px;">ডাকঘরঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
+                      <span class="GrayBlue20bold"  style="text-align: center;color:red;text-shadow:none;line-height:1.2;font-size:33px;margin-left:-30px;">{{ SITE_NAME }}</span><br>
+                      <span style="color:#000;margin-top:0px;text-shadow: none;font-size:18px;margin-left:-30px;">ডাকঘরঃ {{ POST_OFFICE }}, উপজেলাঃ {{ UPAZILLA }} , জেলাঃ {{ DISTRICT }}</span>
                       </td>
                       <td width="10%" height="95" align="center" valign="middle" style="text-align:center"></td>
                       </tr>
@@ -288,7 +288,7 @@
           <td align="right" valign="middle">তত্বাবধানে</td>
         </tr>
       </tbody></table></td>
-      <td width="10%" height="50" align="center" valign="middle"><img src="{% static 'images/tilokpur_logo.png'%}"  height="44" alt=""></td>
+      <td width="10%" height="50" align="center" valign="middle"><img src="{{ LOGO }}"  height="44" alt=""></td>
       </tr>
       
   </tbody></table></td>

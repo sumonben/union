@@ -12,7 +12,7 @@
         color:#035a4c;
         text-shadow: 2px 2px 2px rgb(65, 7, 7);
         font-size:25px;
-        text align:center;
+        text-align:center;
         font-weight:bold;
     }
       .number_of_certificate{
@@ -28,7 +28,6 @@
         left:50%;
         margin-left:-50px;
         top: -40px;
-        background: #green;
       }
       .chairman{
         display:none;
@@ -76,7 +75,7 @@
             color:#035a4c;
             text-shadow: 1px 1px 1px rgb(65, 7, 7);
             font-size:18px;
-            text align:center;
+            text-align:center;
         }
         .circle1 {
             position:absolute;
@@ -84,7 +83,6 @@
             width:80px;
             border-radius:50%;
             left:57%;
-            background: #green;
           }
           .circle1 img{
             height:70px;
@@ -155,10 +153,13 @@
                                            <h1 class="bk-org title">
                                                      </h1>
                                          
-                                         <p style="text-align:center"><img alt="
+                                         <p style="text-align:center">
+                                                        {%if chairman.image %}
+<img alt="
                                             প্রধান প্রশিক্ষক " loading="lazy" src="{{chairman.image.url}}"  style="height:190px; width:150px"></p>
                                        
-                                       <p style="text-align:center" ><strong><span>&nbsp;<span style="font-size:20px">{{chairman.name}}</span></span> </strong></p>
+                                                        {% endif %}                                       
+<p style="text-align:center" ><strong><span>&nbsp;<span style="font-size:20px">{{chairman.name}}</span></span> </strong></p>
                                        <p style="text-align:center"><strong><span >&nbsp;<span style="font-size:15px">{{chairman.phone}}</span></span> </strong></p>
                                        <p style="text-align:center"><strong><span >&nbsp;<span style="font-size:15px">{{chairman.email}}</span></span> </strong></p>
 
@@ -225,7 +226,7 @@
                                                      </h1>
                                          
                                          <p style="text-align:center"><img alt="
-                                            প্রধান প্রশিক্ষক 	" loading="lazy" src="{% static 'images/tilokpur_logo.png'%}" style="height:150px; width:150px"></p>
+                                            প্রধান প্রশিক্ষক 	" loading="lazy" src="{{ union_details.monogram.url }}" style="height:150px; width:150px"></p>
                                        
                                       
                                        <p>
@@ -271,7 +272,7 @@
                                                       <td align="left">
                                                         <fieldset>
                                                         <table width="100%" border="1" cellspacing="0" cellpadding="10">
-                                                          <thead><th class="title" colspan="5" style=" text-align:center; background-color: #035a4c; color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"> অনলাইন সনদ ও লাইসেন্সসমূহ </th></thead>
+                                                          <thead><th class="title" colspan="5" style=" text-align:center; background-color: #035a4c; color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"> অনলাইন সনদ ও লাইসেন্সসমূহ আবেদন করুন </th></thead>
                                                           <tbody>
                                                           
                             
@@ -307,7 +308,7 @@
                         </div>
                         
                        
-                       <div class="services">
+                    <div class="services">
                         {% comment %} <span class="shape1"></span> <span class="shape2"></span> {% endcomment %}
                         <div class="container-wrapper">
                             <div class="service-tab">
@@ -315,9 +316,10 @@
                                       
                                     <div class="filters filter-menu ">
 
-                                        <ul id="myTab" role="tablist" class="nav nav-tabs justify-content-center " style="font-family:kalpurush;">
-                                            <li class="nav-item rounded-50" ><a id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true" class="nav-link active">সনদসমূহ</a></li>
-                                            <li class="nav-item rounded-50"><a id="nonmembers-tab" data-toggle="tab" href="#nonmembers" role="tab" aria-controls="nonmembers" aria-selected="false" class="nav-link">লাইসেন্সসমূহ</a></li>
+                                        <ul id="myTab" role="tablist" class="nav nav-tabs justify-content-center ">
+                                            <li class="nav-item rounded-50" ><a id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true" class="nav-link active" style="font-family:kalpurush;font-weight:bold;">সনদসমূহ</a></li>
+                                            <li class="nav-item rounded-50"><a id="nonmembers-tab" data-toggle="tab" href="#nonmembers" role="tab" aria-controls="nonmembers" aria-selected="false" class="nav-link" style="font-family:kalpurush;font-weight:bold;">লাইসেন্সসমূহ</a></li>
+                                            <li class="nav-item rounded-50"><a id="nonmembers2-tab" data-toggle="tab" href="#nonmembers2" role="tab" aria-controls="nonmembers2" aria-selected="false" class="nav-link" style="font-family:kalpurush;font-weight:bold;">হোল্ডিং টাক্স</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -359,7 +361,7 @@
                                             
                                             
                                             
-                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init aos-animate" style="margin-bottom:25px;">
+                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init aos-animate" style="margin-bottom:25px;" title="আবেদন করতে ক্লিক করেন">
                                                 <a href="{% url 'apply_for_certificate' certificate.id %}" >
 
                                                 <div class="card card-body shadow-sm mb-4" style="overflow:visible;">
@@ -385,7 +387,28 @@
                                         
                                     </div>
                                     
-                                <div id="nonmembers" role="tabpanel" aria-labelledby="nonmembers-tab" class="nonmembers tab-pane fade show">
+                                    <div id="nonmembers2" role="tabpanel" aria-labelledby="nonmembers2-tab" class="nonmembers2 tab-pane fade show">
+                                    <div class="row" style="margin-top: 70px;">
+                                        <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init aos-animate" style="margin-bottom:25px;">
+                                                <a href="{% url 'holding_tax' %}" >
+
+                                                <div class="card card-body shadow-sm mb-4" style="overflow:visible;">
+                                                    <div class="circle1">                                                        <img loading="lazy" src="{% static 'images/certificate/holding_tax.png' %}" alt="Citizenship" height="80">
+                                                    </div>
+                                                    <div >
+                                
+                                                        <div class="card-text">হোল্ডিং ট্যাক্স</div>
+                                                        
+                                                     </div>
+                                                    
+                                                </div>
+                                            </a>
+                                            
+                                            </div>
+                                    </div>
+                                    </div>
+
+                                    <div id="nonmembers" role="tabpanel" aria-labelledby="nonmembers-tab" class="nonmembers tab-pane fade show">
                                         <div class="row" style="margin-top: 70px;">
                                                 
                                             {% for license in license_types  %}
@@ -438,7 +461,7 @@
                         <div data-v-2fe1039c="" class="container-wrapper" >
                             <div data-v-2fe1039c="" class="row justify-content-center">
                                 <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="500" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate" style="text-align:center">
-                                    <a data-v-2fe1039c="" href="https://israbentech.com/home/memberlist" class="text-black">
+                                    <a data-v-2fe1039c="" href="/" class="text-black">
                                         <div data-v-2fe1039c="" class="box" >
                                             <img src="{% static 'images/cert-1.png' %}" loading="lazy" >
                                             
@@ -447,7 +470,7 @@
                                         </div>
                                     </a></div>
                                 <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate">
-                                    <a data-v-2fe1039c="" href="https://israbentech.com/home/memberlist" class="text-black">
+                                    <a data-v-2fe1039c="" href="/" class="text-black">
                                         <div data-v-2fe1039c="" class="box">
                                             <img src="{% static 'images/cert-2.png' %}" loading="lazy" >
                                             
@@ -455,7 +478,7 @@
                                             <h6 data-v-2fe1039c=""><b class="number_of_certificate">অনুমোদিত সনদের সংখ্যা</b></h6>
                                         </div>
                                     </a></div>
-                                <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1500" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate"><a data-v-2fe1039c="" href="/member-list?type=Associate" class="text-black">
+                                <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1500" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate"><a data-v-2fe1039c="" href="/" class="text-black">
                                         <div data-v-2fe1039c="" class="box" >
                                             <img  src="{% static 'images/cert-3.png' %}" loading="lazy" >
 
@@ -463,14 +486,14 @@
                                             <h6 data-v-2fe1039c=""><b class="number_of_certificate">লাইসেন্সের আবেদনের সংখ্যা</b></h6>
                                         </div>
                                     </a></div>
-                                <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1500" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate"><a data-v-2fe1039c="" href="/member-list?type=Affiliate" class="text-black">
+                                <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1500" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate"><a data-v-2fe1039c="" href="/" class="text-black">
                                         <div data-v-2fe1039c="" class="box">
                                             <img src="{% static 'images/cert-4.png' %}" loading="lazy" >
                                             <span data-v-2fe1039c="" data-to="206" data-speed="1500" class="count count-num timer count-title count-number">{{license_count1}}</span>
                                             <h6 data-v-2fe1039c=""><b class="number_of_certificate">অনুমোদিত লাইসেন্সের সংখ্যা</b></h6>
                                         </div>
                                     </a></div>
-                                <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1500" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate"><a data-v-2fe1039c="" href="/member-list?type=International" class="text-black">
+                                <div data-v-2fe1039c="" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1500" class="col-4 col-sm-4 col-lg-2 aos-init aos-animate"><a data-v-2fe1039c="" href="/" class="text-black">
                                         <div data-v-2fe1039c="" class="box">
                                             <img src="{% static 'images/cert-5.png' %}" loading="lazy"  >
                                             <span data-v-2fe1039c="" data-to="12" data-speed="1500" class="count count-num timer count-title count-number">{{count}}</span>
@@ -483,7 +506,7 @@
                                     <div class="container-wrapper">
                                         <div class="content-header text-center">
                                             <div class="row pt-5" id="chairman_heading" >
-                                                <div class="col-lg-12 text-center"><a href="/service/member" class="btn btn-lg btn-primary rounded-50" style="background-color:#035a4c;text-shadow:4px 4px 4px rgb(67, 7 ,7)">
+                                                <div class="col-lg-12 text-center"><a href="/" class="btn btn-lg btn-primary rounded-50" style="background-color:#035a4c;text-shadow:4px 4px 4px rgb(67, 7 ,7)">
                                                     <h2   >{{chairman.post.name}} ও সচিব</h2>
                                                 </a>
                                             </div>
@@ -495,8 +518,9 @@
                                             <div class="chairman">
                                             <div data-aos="fade-left" data-aos-offset="100" data-aos-duration="1500" class="col-lg-6 aos-init aos-init aos-animate">
                                                     <div class="box-body " style="text-align:center" >
+                                                        {%if chairman.image %}
                                                         <img loading="lazy" src="{{chairman.image.url}}"  class="person" >
-            
+                                                         {% endif %}
                                                         <h4>{{chairman.name}}</h4>
                                                         <h4>{{chairman.post.name}}</h4>
 
@@ -530,7 +554,7 @@
                                     <div class="container-wrapper">
                                         <div class="content-header text-center">
                                             <div class="row pt-5">
-                                                <div class="col-lg-12 text-center"><a href="/service/member" class="btn btn-lg btn-primary rounded-50" style="background-color:#035a4c;text-shadow:8px 8px 8px rgb(67, 7 ,7)">
+                                                <div class="col-lg-12 text-center"><a href="/" class="btn btn-lg btn-primary rounded-50" style="background-color:#035a4c;text-shadow:8px 8px 8px rgb(67, 7 ,7)">
                                                     <h2 >ভিশন ও মিশন</h2>
                                                 </a>
                                             </div>
@@ -571,7 +595,7 @@
                 
     <!-------service design finishing line 2 Div below ---->
                </div>
-               </div>
+            </div>
                        
                        
                        

@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('certificate.urls')),
     path('payment/', include('payment.urls')),
     path('license/', include('license.urls')),
+    path('holdingtax/', include('holdingtax.urls')),
     path('region/', include('region.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 

@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse,HttpResponseNotFound
 from .models import Transaction,PaymentPurpose
+from region.models import UnionDetails
 from .sslcommerz import sslcommerz_payment_gateway
 from sslcommerz_lib import SSLCOMMERZ 
 from django.contrib.auth import get_user_model
@@ -18,7 +19,9 @@ from license.models import License,LicenseType
 # Create your views here.
 cradentials = {'store_id': 'israb672a4e32dfea5',
             'store_pass': 'israb672a4e32dfea5@ssl', 'issandbox': True} 
-            
+#cradentials = {'store_id': 'ictparkbd0live ',
+#            'store_pass': '68045F6E0BDD747715', 'issandbox': False}
+
 sslcommez = SSLCOMMERZ(cradentials)
 
 class Index(TemplateView):
@@ -115,7 +118,8 @@ class CheckoutSuccessView(View):
                     license.transaction=transaction
                     license.save()
                 
-               
+        union_details=UnionDetails.objects.last()
+        context['union_details']=union_details
         context['transaction']=transaction
         context['tran_purpose']=tran_purpose
                 
@@ -133,16 +137,28 @@ class CheckoutIPNView(View):
     def post(self, request, *args, **kwargs):
         
         context={}
+        name_of_payee=None
         data = self.request.POST
         post_body={}
-        # print(data)
         tran_purpose=PaymentPurpose.objects.filter(id=data['value_d']).first()
+        if tran_purpose:
+             if tran_purpose.payment_type.id == 1:
+                certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
+                name_of_payee=certificate.name
+             else:
+                certificate=License.objects.filter(tracking_no=data['value_a']).first()
+                name_of_payee=certificate.license_owner_name
+
+        # print(tran_purpose)
         if data['status'] == 'VALID':
+            # print("Yes")
             post_body['val_id'] = data['val_id']
+            # print("Validation prev: ",post_body['val_id'])
             response = sslcommez.validationTransactionOrder(post_body['val_id'])
+            # print("Validation: ",response)
             transaction=Transaction.objects.create(
                 tracking_no=data['value_a'],
-                name = data['value_b'],
+                name =name_of_payee,
                 phone=data['value_c'],
                 email=data['value_d'],
                 tran_id=data['tran_id'],
@@ -272,56 +288,6 @@ class CheckoutCanceledView(View):
         return render(request,self.template_name,context)
     
 
-@method_decorator(csrf_exempt, name='dispatch')
-class CheckoutIPNView(View):
-    template_name = 'payment/search_payment.html'
-    
-    def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
-
-    def post(self, request, *args, **kwargs):
-        
-        context={}
-        data = self.request.POST
-        print("IPN",self.request.POST)
-        id=int(data['value_d'])
-        tran_purpose=PaymentPurpose.objects.filter(id=id).first()
-        transaction=None
-        if transaction:
-                if tran_purpose.payment_type.id == 1:
-                    certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
-                    context['certificate']=certificate
-                    context['certificate_type']=certificate.certificate_type
-                   
-                    certificate.transaction=transaction
-                    certificate.save()
-                else:
-                    license=License.objects.filter(tracking_no=data['value_a']).first()
-                    context['license']=license
-                    context['license_type']=license.license_type
-                    
-                    license.transaction=transaction
-                    license.save()
-                
-               
-                context['transaction']=transaction
-                context['tran_purpose']=tran_purpose
-                
-                return render(request,self.template_name,context)
-            # if tran_purpose.payment_type.id == 2:
-            #     #print("data['value_d']:",tran_purpose.payment_type)
-            #     student=Certificate.objects.filter(class_roll=data['value_a']).first()
-            #     #print(student)
-            #     context['transaction']=transaction
-            #     context['purpose']=tran_purpose
-            #     context['certificate']=certificate
-            #     return render(request,self.template_name,context)
-
-            
-        messages.success(request,'Payment Successful!!')
-            
-    
-        return render(request,self.template_name,context)
 
 def searchPayment(request):
     context={}

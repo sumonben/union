@@ -295,7 +295,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                     <tr>
                                       <td colspan="2" align="center" valign="middle"><span id="sprytextfield1">
                                         <label>
-                                        Union: Tilakpur ,Upazilla: Akkelpur, District: Jaypurhat, Bangladesh.      
+					Post-Ofice: {{union_details.post_office.name_en}}, Upazilla: {{union_details.upazilla.name_en}}, District: {{union_details.district.name_en}}.
                                                                          </label>
 
                                     </tr>
@@ -325,8 +325,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                             
                             </div>
 
-                   <div id="heading"><h3 style="text-align: left; margin-left:2%">ট্র্যাকিং নম্বরঃ <u>&nbsp{{certificate.tracking_no}}</u></h3></div>
-
+                   <div id="heading"><h3 style="text-align: left; margin-left:2%">ট্র্যাকিং নম্বরঃ <b>&nbsp{{certificate.tracking_no}}</b></h3></div>
 
                           <table  width="900"  align="center" valign="middle" cellspacing="0" cellpadding="4">
 
@@ -384,7 +383,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>তারিখঃ </b>  </td>
                                         <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
                                           <label id="date">
-                                            {{transaction.tran_date}}                                          
+                                            {{transaction.tran_date|date:"d-m-Y"}}                                          
                                         </label>
 
                                       </tr>
@@ -392,7 +391,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                       <tr>
                                         <td colspan="2" align="center" valign="middle"><span id="sprytextfield1">
                                           <label>
-                                            ইউনিয়নঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট। 
+					ডাকঘরঃ {{union_details.post_office.name}}, উপজেলাঃ {{union_details.upazilla.name}}, জেলাঃ {{union_details.district.name}}
                                           </label>
 
                                       </tr>
@@ -565,6 +564,18 @@ function googleTranslateElementInit() {
             8: '৮',
             9: '৯'
         };
+        var month = {
+            January: 'জানুযারি',
+            February: 'ফেব্রুয়ারি',
+            March: 'মার্চ',
+            April:'এপ্রিল',
+            May: 'মে',
+            June: 'জুন',
+            July: 'জুলাই',
+            August: 'অগাস্ট',
+            September: 'সেপ্টেম্বর',
+            Octobor: 'অক্টোবর'
+        };
         var output = '';
         function replaceNumbers(input) {
             var output = [];
@@ -577,10 +588,20 @@ function googleTranslateElementInit() {
             }
             return output.join('');
           }
+
+          function replaceMonth(input) {
+            var output = [];
+            const myArray = input.split(" ");
+            output.push(month[myArray[0]]);
+            output.push(" ");
+            for(var i=1;i<myArray.length;i++)
+                 output.push(myArray[i]);
+            return output.join('');
+          }
           if('{{certificate.language}}' != '2'){
             input =document.getElementById("date").textContent.toString();
             document.getElementById('date').textContent = replaceNumbers(input);
-            input =document.getElementById("para1").textContent.toString();
+	    input =document.getElementById("para1").textContent.toString();
             document.getElementById('para1').textContent = replaceNumbers(input);
             input =document.getElementById("para2").textContent.toString();
             document.getElementById('para2').textContent = replaceNumbers(input);

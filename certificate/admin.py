@@ -1,13 +1,13 @@
 from django.contrib import admin
-from .models import Certificate,Adress,Person,CertificateType,Relation,Cause,Gender
+from .models import Certificate,Adress,Person,CertificateType,Relation,Cause,Gender,MaritalStatus
 from import_export.admin import ExportActionMixin,ImportExportMixin
 # Register your models here.
 
 @admin.register(Certificate)
 class CertificateAdmin(ImportExportMixin,admin.ModelAdmin):
-    search_fields=[  'email','phone','tracking_no']
-    list_display=[ 'tracking_no','memorial_no','name','email','phone','certificate_type','transaction_detaills','paid_at','is_verified','created_at']
-    list_display_links = ['tracking_no','memorial_no','name','email','phone',]
+    search_fields=[ 'phone','tracking_no']
+    list_display=[ 'tracking_no','memorial_no','name','phone','certificate_type','transaction_detaills','paid_at','is_verified','created_at',]
+    list_display_links = ['tracking_no','memorial_no','name','phone',]
     list_filter=['is_verified','created_at','certificate_type',]
     filter_horizontal = ['person','others_adress']
 
@@ -15,7 +15,7 @@ class CertificateAdmin(ImportExportMixin,admin.ModelAdmin):
     def change_view(self, request, object_id, extra_context=None):
         certificate=Certificate.objects.filter(id=object_id).first()
         self.exclude=('others_adress',)
-        if certificate.certificate_type.id != 1 and certificate.certificate_type.id != 9 and certificate.certificate_type.id != 7 and certificate.certificate_type.id != 10 and certificate.certificate_type.id != 15 :   
+        if certificate.certificate_type.id != 1 and certificate.certificate_type.id != 9 and certificate.certificate_type.id != 7 and certificate.certificate_type.id != 10 and certificate.certificate_type.id != 15 and certificate.certificate_type.id != 25 and certificate.certificate_type.id != 28:   
             self.exclude = self.exclude=self.exclude+ ('person', )
         if certificate.certificate_type.id != 8 and certificate.certificate_type.id != 21 and certificate.certificate_type.id != 4 and certificate.certificate_type.id != 12 and certificate.certificate_type.id != 16 :   
             self.exclude = self.exclude=self.exclude+ ('description', )
@@ -32,7 +32,9 @@ class CertificateAdmin(ImportExportMixin,admin.ModelAdmin):
 
 @admin.register(Person)
 class WarishAdmin(ExportActionMixin,admin.ModelAdmin):
-    pass
+    search_fields=[  'tracking_no','name']
+    list_display=[ 'tracking_no','name','relation']
+    list_display_links = ['tracking_no','name']
 @admin.register(Cause)
 class CauseAdmin(ExportActionMixin,admin.ModelAdmin):
     pass
@@ -41,6 +43,9 @@ class RelationAdmin(ExportActionMixin,admin.ModelAdmin):
     pass
 @admin.register(Gender)
 class GenderAdmin(ExportActionMixin,admin.ModelAdmin):
+    pass
+@admin.register(MaritalStatus)
+class MaritalStatusAdmin(ExportActionMixin,admin.ModelAdmin):
     pass
 
 @admin.register(Adress)

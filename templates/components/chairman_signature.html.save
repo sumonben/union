@@ -1,0 +1,60 @@
+{% if certificate_type.is_join_sign %}
+    
+    
+<td align="left">
+<br><br><br><br><br><br><br>
+<div style="float:left;text-align:center">
+     {% if certificate_type.is_auto_sign %}
+    
+            <img height="50" src="{% if certificate.member.signature %}{{certificate.member.signature.url}}{% endif %}" alt="member Signature">
+            {% endif %}
+    {% if certificate.language == '2' %}
+    <br>({{certificate.member.name_en}})<br>
+    {{certificate.member.post.name_en}}({{certificate.adress.ward.name_en}})<br>
+
+    {{union_details.name_en}}<br>{{union_details.upazilla.name_en}}, {{union_details.district.name_en}}
+    {% else %} 
+    <br>{{certificate.member.name}}<br>
+    {{certificate.member.post.name}}({{certificate.adress.ward.name}})<br>
+    {{union_details.name}}<br>{{union_details.upazilla.name}}, {{union_details.district.name}}
+    {% endif %}
+
+</div>
+</td>
+  <td   align="center">
+<div style="text-align:center">
+
+{% else %}
+    <td align="left">
+    <div style="float:left;text-align:center">
+
+{% endif %}
+    <br>
+    <img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{certificate.certificate_type.name_en}}%0DTracking No: {{certificate.tracking_no}}%0DName:{{certificate.name}}&amp;size=200x200" width="120px" height="120px" alt="{{certificate.name}}" title="{{certificate.certificate_type.name_en}}:{{certificate.name}}" width="50" height="50" />
+</div>
+</td>
+
+    <td   align="right">
+        <br><br><br><br><br>
+        <div style="float:right;text-align:center">
+    
+        </div>
+        <div style="float:right;text-align:center">
+            {% if certificate_type.is_auto_sign %}
+    
+            <img height="50" src="{% if certificate.chairman.signature %}{{certificate.chairman.signature.url}}{% endif %}" alt="Chairman Signature">
+            {% endif %}
+            
+            {% if certificate.language == '2' %}
+            <br>({{certificate.chairman.name_en}})<br>
+            {{certificate.chairman.post.name_en}}<br>
+    {{union_details.name_en}}<br>{{union_details.upazilla.name_en}}, {{union_details.district.name_en}}
+            {% else %} 
+            <br>{{certificate.chairman.name}}<br>
+            {{certificate.chairman.post.name}}<br>
+    {{union_details.name}}<br>{{union_details.upazilla.name}}, {{union_details.district.name}}
+            {% endif %}
+    
+        </div>
+    </td>
+     

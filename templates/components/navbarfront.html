@@ -15,7 +15,7 @@
         text-shadow: 2px 2px 2px rgb(65, 7, 7);
         font-size:17px;
         font-family:kalpurush;
-
+        font-weight:bold;
 
     }
     #main-heading{
@@ -41,6 +41,7 @@
             font-size: 23px;
             padding:0px;
             text-align:center;
+            font-family:kalpurush;
             font-weight:bold;
         } 
         .sub-heading{
@@ -48,6 +49,7 @@
             margin-left:10px;
             text-shadow: 2px 2px 2px rgb(65, 7, 7);
             font-size:14px;
+            font-family:kalpurush;
 
     
         }
@@ -118,7 +120,7 @@
         </div>
     </div>
     <div class="container-wrapper" >
-        <div class="top-header">
+        <div class="top-header" style="font-family: kalpurush;">
             <ul class="nav align-items-center justify-content-end" style="position: relative;">
                 {% if user.is_authenticated %}
                 <li class="nav-item"><a href="{% url 'admin:index' %}" class="nav-link"> ড্যাশবোর্ড </a></li>
@@ -129,7 +131,8 @@
                 <li class="nav-item"><a href="" class="nav-link">
                         মন্তব্য
                     </a></li>
-                <li class="nav-item"><a href="/digitalshop" class="nav-link"><b>যোগাযোগ</b></a>
+                <li class="nav-item"><a href="{% url 'download_applicants_copy_form' %} " class="nav-link">আবেদনের কপি</a></li>
+                <li class="nav-item"><a href="{% url 'tutorial' %}" class="nav-link"><b>টিউটোরিয়াল</b></a>
                 </li>
             </ul>
         </div>
@@ -138,15 +141,13 @@
         <span class="shape2New"> </span><span class="shape3New"> </span><span class="shape1New"> </span>
     <nav class="navbar navbar-expand-lg p-lg-0" >
         <a  href="/" class="navbar-brand logo" aria-current="page"  > 
-            <span><img src="{% static 'images/tilokpur_logo.png'%}"></span>
-
+            <span><img src="{{ LOGO }}"></span>
         </a>
         <a id="main-heading" href="/" class="navbar-brand logo active router-link-active" aria-current="page" > 
            
                                           
-                  <span class="heading" id="heading">৪ নং তিলকপুর ইউনিয়ন পরিষদ</span><br>
-                  <span id="sub-heading" class="sub-heading"   >উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট</span>
-
+	 <span class="heading" id="heading">{{SITE_NAME}}</span><br>
+                  <span id="sub-heading" class="sub-heading" style="font-family: kalpurush;" >উপজেলাঃ {{UPAZILLA}}, জেলাঃ {{DISTRICT}}</span>
                
              
         </a>
@@ -174,7 +175,7 @@
                                     </li>
                                     {% endfor %} {% endcomment %}
 
-                                    {% for certificate in certificate_types|slice:'0:10'  %}
+                                    {% for certificate in certificate_types|slice:'0:13' %}
                                         
                                         
                                     <li class="subMenu" ><span class="fa fa-hand-o-up"></span>
@@ -207,7 +208,7 @@
                                         তৃতীয় ভাগ
                                     </span></h4>
                                     <ul>
-                                        {% for certificate in certificate_types|slice:'20:30'  %}
+                                        {% for certificate in certificate_types|slice:'20:'  %}
                                             
                                             
                                         <li class="subMenu" ><span class="fa fa-hand-o-up"></span>
@@ -232,6 +233,19 @@
                                         </a>
                                     </li>
                                     {% endfor %}
+                                        </ul>
+                                    <h4 class="menu-head" ><span style="color:rgb(180, 9, 9)">
+                                        <br>
+                                        হোল্ডিং ট্যাক্স 
+                                    </span></h4>
+                                <ul>
+                                        
+                                        
+                                    <li class="subMenu"><span class="fa fa-hand-o-up"></span>
+                                        <a href="" target="_blank" class="">
+                                                হোল্ডিং ট্যাক্স প্রদান করুন                                        
+                                        </a>
+                                    </li>
                                         </ul>
                             </div>
                         </div>
@@ -285,24 +299,21 @@
                 <li class="nav-item nav-item dropdown"><a href="{% url 'download_license_form' %}"   aria-expanded="false" class="{% if request.resolver_match.url_name in 'download_license_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">লাইসেন্স ডাউনলোড</a>
                    
                 </li> 
-                <li class="nav-item nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name in 'media' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">সনদ যাচাই করুন
+                <li class="nav-item nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name in 'check_certificate_form' or  request.resolver_match.url_name in 'check_license_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">সনদ যাচাই করুন
                         </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <div class="row m-0">
                             <div class="col-lg-6 pr-0">
-                                <h4 class="menu-head"><a href="{% url 'download_certificate_form' %}" class="">সনদ যাচাই</a></h4>
+                                <h4 class="menu-head"><a href="{% url 'check_certificate_form' %}" class="">সনদ যাচাই</a></h4>
                                           <ul>
                                              
                                             </ul>
                             </div>
                             <div class="col-lg-6 pr-0">
-                                <h4 class="menu-head"><a href="{% url 'download_license_form' %}" class="">লাইসেন্স যাচাই</a></h4>
+                                <h4 class="menu-head"><a href="{% url 'check_license_form' %}" class="">লাইসেন্স যাচাই</a></h4>
                                         <ul>
-                                            {% comment %} <li class="subMenu"><span class="fa fa-angle-double-right"></span>
-                                            <a href="https://israbentech.com/frontend/about/excutive-council" class="nav-link" onclick="myFunctionNavbar(this.id)">Excutive Council</a></li>
-                                                <li class="fas fa-eye"><a href="https://israbentech.com/frontend/about/previous-excutive-council" class="nav-link">Previous Excutive Council</a></li>
-                                                        <li class="subMenu"><span class="fab fa-think-peaks"> </span><a href="https://israbentech.com/frontend/about/members" class="nav-link">Members</a></li> {% endcomment %}
-                                            </ul>
+                                                                                       
+                                        </ul>
                             </div>
                           
                     </div>

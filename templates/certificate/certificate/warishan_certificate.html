@@ -185,8 +185,8 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                   
 
                                     <tr>
-                                        <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify"><h5> এই মর্মে ওয়ারিশান সনদপত্র প্রদান করিতেছি যে, মৃত &nbsp {{certificate.name}}, &nbsp পিতাঃ {{certificate.father_name}}, গ্রামঃ {{certificate.adress.village.name}}, ডাকঘরঃ {{certificate.adress.village.post_office.name}} উপজেলাঃ আক্কেলপুর,  জেলাঃ জয়পুরহাট।
-                                            তিনি অত্র ০৪ নং তিলকপুর ইউনিয়নের {{certificate.adress.ward.name}} এর একজন বাসিন্দা ছিলেন। তিনি নিম্মলিখিত ওয়ারিশগণ রাখিয়া মৃত্যুবরণ করিয়াছেন । {{certificate.adress.ward.name}} এর ইউপি সদস্য জনাব {{member.name}} এর সুপারিশ মোতাবেক ওয়ারিশান সনদপত্র প্রদান করা হইল। </h5></td>
+                                        <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify"><h5> এই মর্মে ওয়ারিশান সনদপত্র প্রদান করিতেছি যে, &nbsp {{certificate.name}} &nbsp পিতাঃ {{certificate.father_name}}, গ্রামঃ {{certificate.adress.village.name}}, ডাকঘরঃ {{certificate.adress.village.post_office.name}} উপজেলাঃ আক্কেলপুর,  জেলাঃ জয়পুরহাট।
+                                            তিনি অত্র ০৪ নং তিলকপুর ইউনিয়নের {{certificate.adress.ward.name}} এর একজন বাসিন্দা ছিলেন। তিনি নিম্মলিখিত ওয়ারিশগণ রাখিয়া মৃত্যুবরণ করিয়াছেন । {{certificate.adress.ward.name}} এর ইউপি সদস্য জনাব {{certificate.member.name}} এর সুপারিশ মোতাবেক ওয়ারিশান সনদপত্র প্রদান করা হইল। </h5></td>
 
                                     </tr>
                                     <tr>
@@ -196,7 +196,14 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
 
                                     </tr>
                                     <td colspan="4" align="center" cellpadding="0" >
-                                        <table class="result"  >
+                                        
+				{% if certificate.person.all.count < 13 %}
+                                      <table class="result" style="font-size:20px;font-weight:500;" >
+
+                                      {% else %}
+                                      <table class="result"  >
+
+                                      {% endif %}
                                             <tr>
                                                 <td width="10%" align="center" valign="middle" ><b>ক্রমিক</b></td>
                                                 <td width="60%" align="center" valign="middle" ><b>নাম </b></td>
@@ -217,11 +224,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         </table>
                                     </td>
                                     <tr valign="bottom">
-                                      <td  colspan="1" align="center"></div><div style="float:left;text-align:center"><img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{certificate.certificate_type.name_en}}%0DTracking No: {{certificate.tracking_no}}%0DName:{{certificate.name}}&amp;size=200x200" width="120px" height="120px" alt="{{certificate.name}}" title="{{certificate.certificate_type.name_en}}:{{certificate.name}}" width="50" height="50" /></div></td>
-
-                                        <td  colspan="2" align="right"><br><br><br></div></td>
-                                        {% include 'components/chairman_signature.html' %} 
-
+                                      {% include 'components/chairman_signature.html' %}
                                        
                                    </tr>
                                     <tr>

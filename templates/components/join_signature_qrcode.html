@@ -1,0 +1,47 @@
+<td align="left">
+    <br><br><br><br>
+<div style="float:left;text-align:center">
+  
+    {% if certificate.language == '2' %}
+    <br>({{certificate.member.name_en}})<br>
+    {{certificate.member.post.name_en}}
+    ({{certificate.adress.ward.name_en}})<br>
+
+    4 No. Tilakpur Union Council<br>Akkelpur, Jaypurhat.
+    {% else %} 
+    <br>{{certificate.member.name}}<br>
+    {{certificate.member.post.name}}({{certificate.adress.ward.name}})<br>
+    ৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট
+    {% endif %}
+
+</div>
+</td>
+
+  <td   align="center">
+    <div style="text-align:center">
+    <img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{certificate.certificate_type.name_en}}%0DTracking No: {{certificate.tracking_no}}%0DName:{{certificate.name}}&amp;size=200x200" width="120px" height="120px" alt="{{certificate.name}}" title="{{certificate.certificate_type.name_en}}:{{certificate.name}}" width="50" height="50" /></div></td>
+
+    <td   align="right">
+        <br><br><br><br>
+        <div style="float:right;text-align:center">
+    
+        </div>
+        <div style="float:right;text-align:center">
+            {% if certificate_type.id == 2 or certificate_type.id == 3 or certificate_type.id == 23 or certificate_type.id == 24 %}
+    
+            <img height="50" src="{% if certificate.chairman.signature %}{{certificate.chairman.signature.url}}{% endif %}" alt="Chairman Signature">
+            {% endif %}
+            
+            {% if certificate.language == '2' %}
+            <br>({{certificate.chairman.name_en}})<br>
+            {{certificate.chairman.post.name_en}}<br>
+            4 No. Tilakpur Union Council<br>Akkelpur, Jaypurhat.
+            {% else %} 
+            <br>{{certificate.chairman.name}}<br>
+            {{certificate.chairman.post.name}}<br>
+            ৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট
+            {% endif %}
+    
+        </div>
+    </td>
+     
