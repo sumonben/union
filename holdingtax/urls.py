@@ -10,4 +10,5 @@ from django import views as django_views
 urlpatterns = [
     path('',views.HoldingTaxSearch.as_view(), name='holding_tax'),
     path('pay_holdingtax/',views.PayHoldingTax.as_view(), name='pay_holdingtax'),
+    path('download_holdingtax/',views.HoldingTaxDownload.as_view(), name='download_holdingtax'),
 ]

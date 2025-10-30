@@ -274,7 +274,28 @@
                         </div>
                     </div> {% endcomment %}
                 </li>
-                <li class="nav-item nav-item dropdown"><a href="{% url 'download_certificate_form' %}" class="{% if request.resolver_match.url_name in 'download_certificate_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}" aria-expanded="false" aria-current="page">সনদ ডাউনলোড</a>
+                <li class="nav-item dropdown" ><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name in 'download_certificate_form' or request.resolver_match.url_name in 'download_license_form' or request.resolver_match.url_name in 'download_holdingtax' %} nav-link nav-link dropdown-toggle parent-active {%else%}nav-link dropdown-toggle {%endif%}">ডাউনলোডসমূহ</a>
+                    <div aria-labelledby="navbarDropdown" class="dropDown dropdown-menu megamenu megamenu-lg">
+                        <div class="row m-0">
+                            <div class="col-lg-4 pr-0">
+                                <h4 class="menu-head"><a href="{% url 'download_certificate_form' %}" class="nav-link">সনদ ডাউনলোড</a></h4>
+                                     
+                                
+                            </div>
+                            <div class="col-lg-4 pr-0">
+                                <h4 class="menu-head"><a href="{% url 'download_license_form' %}" class="nav-link">লাইসেন্স ডাউনলোড </a></h4>
+                                
+                            </div>
+                            <div class="col-lg-4 pr-0">
+                                <h4 class="menu-head"  >
+                                    <a href="{% url 'download_holdingtax' %}" class="nav-link">হোল্ডিং ট্যাক্স ডাউনলোড</a>
+                                    </h4>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- <li class="nav-item nav-item dropdown"><a href="{% url 'download_certificate_form' %}" class="{% if request.resolver_match.url_name in 'download_certificate_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}" aria-expanded="false" aria-current="page">সনদ ডাউনলোড</a> -->
                     {% comment %} <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <div class="row m-0">
                             <div class="col-lg-6">
@@ -296,7 +317,7 @@
                     </div> {% endcomment %}
                 </li>
 
-                <li class="nav-item nav-item dropdown"><a href="{% url 'download_license_form' %}"   aria-expanded="false" class="{% if request.resolver_match.url_name in 'download_license_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">লাইসেন্স ডাউনলোড</a>
+                <!-- <li class="nav-item nav-item dropdown"><a href="{% url 'download_license_form' %}"   aria-expanded="false" class="{% if request.resolver_match.url_name in 'download_license_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">লাইসেন্স ডাউনলোড</a> -->
                    
                 </li> 
                 <li class="nav-item nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="{% if request.resolver_match.url_name in 'check_certificate_form' or  request.resolver_match.url_name in 'check_license_form' %}nav-link nav-link dropdown-toggle parent-active{%else%}nav-link dropdown-toggle {%endif%}">সনদ যাচাই করুন

@@ -19,7 +19,7 @@ class FiscalYear(models.Model):
     class Meta:
         ordering = ['serial']
     def __str__(self):
-        return self.title_en
+        return self.title+'('+ self.title_en +')'
 
 class HoldingType(models.Model):
     serial=models.IntegerField(default=10,verbose_name="ক্রম")

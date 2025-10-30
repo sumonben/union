@@ -44,7 +44,13 @@
             <div class="col-sm-12 form-group" >
 
             <table width="100%" border="1" cellspacing="0" cellpadding="10">
-              <thead><th colspan="5" style="height: 30px; background-color: #035a4c; color: #fff;text-shadow: 10px 10px 10px rgb(73, 25, 11);padding: 15px;font-size:23px;text-align:center;">   হোল্ডিং ট্যাক্স প্রদানের তথ্য ফর্ম                                  
+              <thead><th colspan="5" style="height: 30px; background-color: #035a4c; color: #fff;text-shadow: 10px 10px 10px rgb(73, 25, 11);padding: 15px;font-size:23px;text-align:center;"> 
+              {% if type %}
+                                 হোল্ডিং ট্যাক্স ডাউলোডের তথ্য ফর্ম                                  
+
+                {% else %}
+                   হোল্ডিং ট্যাক্স প্রদানের তথ্য ফর্ম                                  
+              {% endif %}
                 
                 {% if form.language %}
                &nbsp<h5>(সনদটি ইংরেজিতে চাইলে নাম, বাবার নাম ও মায়ের নাম ইংরেজিতে পুরণ করুন ও ভাষা ইংরেজি সিলেক্ট করুন)  </h5>                                
@@ -100,7 +106,8 @@
             
             {% endif %}
             
-            <form  id="form" class="form-row px-3" method="post" action="{% url 'holding_tax' %}" enctype="multipart/form-data">
+            <form  id="form" class="form-row px-3" method="post" action="
+            {% if type == 'download' %}{% url 'download_holdingtax' %} {% else %} {% url 'holding_tax' %}{% endif %}" enctype="multipart/form-data">
               {% csrf_token %}
               {{form.media}}
               {% if form.language %}

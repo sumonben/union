@@ -2,7 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     
-    <title>{{certificate.name}}_{{certificate.tracking_no}}</title>
+    <title>
+    {% if holding_tax %}
+        Holding_No:{{holding_tax.holding_no}}_{{holding_tax.fiscal_year}}
+    {% else %}
+        {{certificate.name}}_{{certificate.tracking_no}}
+    {% endif %}
+    </title>
 
     <link rel="icon" href="{{union_details.logo.url}}" type="image/x-icon">
     <meta http-equiv="cache-control" content="no-cache">
@@ -260,7 +266,9 @@
                       <td width="25%" height="95" align="left" valign="middle"><span class="OffWhite12b" style="color:#fff">
                       {% if certificate.language == '2' %}
                       APPLICANT'S COPY
-                        {% else %}
+                      {% elif holding_tax %}
+                         হোল্ডিং ট্যাক্স এর কপি
+                      {% else %}
                         নিবেদকের কপি
                       {% endif %}
                         <sup></sup> <br></span><br>
