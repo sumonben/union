@@ -217,18 +217,17 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
         <!-- FORMS -->
         <div >
                         <div class="step d-block">
-                          {% if tran_purpose.payment_type.id == 1 %}
 
                           
                           {% if certificate.language == '2' %}
                           <div>
                               
                             
-                            <h1 style="text-align: center;"><u>Application for {{certificate.certificate_type.name_en}}</u></h1>
+                            <h1 style="text-align: center;"><u>Application for {{ holding_type.name_en}}</u></h1>
                           
                           </div>
 
-                  <div id="heading"><h3 style="text-align: center; margin-left:2%">Tracking No.  <b>&nbsp{{certificate.tracking_no}}</b></h3></div>
+                  <div id="heading"><h3 style="text-align: center; margin-left:2%">Holding No.  <b>&nbsp{{holding_tax.holding_no}}</b></h3></div>
 
 
                         <table  width="900"  align="center" valign="middle" cellspacing="0" cellpadding="4">
@@ -246,7 +245,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                       <td width="15%" align="right" valign="middle" class="sprytextfield1"><b>Name:  </b></td>
                                       <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                         <label>
-                                          {{certificate.name}}                                        
+                                          {{holding_tax.name}}                                        
                                         </label>
 
                                     </tr>
@@ -254,7 +253,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                       <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Father's Name: </b></td>
                                       <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
                                         <label>
-                                          {{certificate.father_name}}                                        
+                                          {{holding_tax.father_name}}                                        
                                         </label>
 
                                     </tr>
@@ -262,7 +261,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                       <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Mother's Name:</b> </td>
                                       <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
                                         <label>
-                                          {{certificate.mother_name}}                                        
+                                          {{holding_tax.mother_name}}                                        
                                         </label>
 
                                     </tr>
@@ -271,7 +270,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                       <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Village:  </b></td>
                                       <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
                                         <label>
-                                          {{certificate.adress.village.name_en}}                                        
+                                          {{holding_tax.adress.village.name_en}}                                        
                                         </label>
 
                                     </tr>
@@ -279,7 +278,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                       <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>Ward: </b>  </td>
                                       <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
                                         <label>
-                                          {{certificate.adress.village.ward.name_en}}                                        
+                                          {{holding_taxward.name_en}}                                        
                                         </label>
 
                                     </tr>
@@ -321,11 +320,11 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                       <div>
                               
                             
-                              <h1 style="text-align: center;"><u>{{certificate.certificate_type.name}}-এর জন্য আবেদন</u></h1>
+                              <h1 style="text-align: center;"><u>{{holding_type.name}}-এর  হোল্ডিং ট্যাক্স প্রদান</u></h1>
                             
                             </div>
 
-                   <div id="heading"><h3 style="text-align: left; margin-left:2%">ট্র্যাকিং নম্বরঃ <b>&nbsp{{certificate.tracking_no}}</b></h3></div>
+                   <div id="heading"><h3 style="text-align: left; margin-left:2%">হোল্ডিং নম্বরঃ <b>&nbsp{{holding_tax.holding_no}}</b></h3></div>
 
                           <table  width="900"  align="center" valign="middle" cellspacing="0" cellpadding="4">
 
@@ -342,7 +341,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         <td width="15%" align="right" valign="middle" class="sprytextfield1"><b>নামঃ </b></td>
                                         <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                           <label>
-                                            {{certificate.name}}                                        
+                                            {{holding_tax.name}}                                        
                                           </label>
 
                                       </tr>
@@ -350,7 +349,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>পিতার নামঃ </b></td>
                                         <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
                                           <label>
-                                            {{certificate.father_name}}                                        
+                                            {{holding_tax.father_name}}                                        
                                           </label>
 
                                       </tr>
@@ -358,7 +357,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>মাতার নামঃ</b> </td>
                                         <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
                                           <label>
-                                            {{certificate.mother_name}}                                        
+                                            {{holding_tax.mother_name}}                                        
                                           </label>
 
                                       </tr>
@@ -367,7 +366,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>গ্রামঃ </b></td>
                                         <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
                                           <label>
-                                            {{certificate.adress.village.name}}                                        
+                                            {{holding_tax.village.name}}                                        
                                           </label>
 
                                       </tr>
@@ -375,7 +374,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ওয়ার্ডঃ</b>  </td>
                                         <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
                                           <label>
-                                            {{certificate.adress.village.ward.name}}                                        
+                                            {{holding_tax.ward.name}}                                        
                                           </label>
 
                                       </tr>
@@ -395,7 +394,14 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                           </label>
 
                                       </tr>
-                                     
+                                      <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ট্যাক্সের পরিমান ও চার্জঃ</b>  </td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{holding_tax.amount}} + 2.5% ( অনলাইন চার্জ)                                       
+                                          </label>
+
+                                      </tr>
     
                                 </tbody></table>
                               </fieldset>
@@ -412,104 +418,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                         {% endif %}
                        
                        
-                       {% elif tran_purpose.payment_type.id == 1 %}
-
-                       {{ tran_purpose.payment_type.name }}
                        
-                        {% else %}
-
-                        <div>
-                        <h1 style="text-align: center;"><u>{{license.license_type.name}}-এর জন্য আবেদন</u></h1>
-                        </div>
-                        <div id="heading"><h3 style="text-align: left; margin-left:2%">ট্র্যাকিং নম্বরঃ <u>&nbsp{{license.tracking_no}}</u></h3></div>
-
-
-                          <table  width="900"  align="center" valign="middle" cellspacing="0" cellpadding="4">
-
-                            <tbody>
-                            <tr>
-                              <td align="left">
-                                <fieldset>
-                                <table class="result" width="100%"  cellspacing="0" cellpadding="5">
-                                  <tbody>
-                                  
-
-                                    <tr>
-                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ব্যবসা প্রতিষ্ঠানের নামঃ </b>  </td>
-                                      <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
-                                        <label id="date">
-                                          {{license.licensed_name}}                                          
-                                      </label>
-
-                                    </tr>
-
-                                    <tr>
-                                      <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ব্যবসা প্রতিষ্ঠানের ঠিকানাঃ </b>  </td>
-                                      <td colspan="2" align="left" valign="middle"><span id="sprytextfield1">
-                                        <label>
-                                          মৌজাঃ {{license.adress_of_license.mouja.name}}, গ্রামঃ {{license.adress_of_license.village.name}} <br>
-                                          ইউনিয়নঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট। 
-                                        </label>
-
-                                    </tr>
-                     
-                                      <tr>
-                                        <td width="15%" align="right" valign="middle" class="sprytextfield1"><b>আবেদনকারীর নামঃ </b></td>
-                                        <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            {{license.license_owner_name}}                                        
-                                          </label>
-
-                                      </tr>
-                                      <tr>
-                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>পিতার নামঃ </b></td>
-                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            {{license.father_name}}                                        
-                                          </label>
-
-                                      </tr>
-                                      <tr>
-                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>মাতার নামঃ</b> </td>
-                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            {{license.mother_name}}                                        
-                                          </label>
-
-                                      </tr>
-                                      
-                                      <tr>
-                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>ঠিকানাঃ </b></td>
-                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            গ্রামঃ {{license.adress.village}}, ইউনিয়নঃ {{license.adress.union.name}}, <br>উপজেলাঃ {{license.adress.upazilla.name}}, জেলাঃ {{license.adress.district.name}}। 
-                                          </label>
-
-                                      </tr>
-                                     
-                                                    <tr>
-                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>অনলাইন চার্জঃ  </b>  </td>
-                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label id="date">
-                                           ১২.২৫ টাকা                                          
-                                        </label>
-
-                                      </tr>
-                                     
-    
-                                </tbody></table>
-                              </fieldset>
-                            </td>
-                            
-                          </tr>
-                              
-                          </tbody>
-                        </table>
-                          
-                              
-
-                        </div>
-                        {% endif %}
                     
                 </div>
                     <div id="q-box__buttons" >
@@ -522,7 +431,32 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
 
                       {% endif %}
                         
-                    </div>   
+                    </div> 
+            <table   width="95%" align="center" >
+                <tr>
+                    <td align="left">
+                        <div style="float:left;text-align:center">
+
+                        <br>
+                            <img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{certificate.certificate_type.name_en}}%0DTracking No: {{certificate.tracking_no}}%0DName:{{certificate.name}}&amp;size=200x200" width="120px" height="120px" alt="{{certificate.name}}" title="{{certificate.certificate_type.name_en}}:{{certificate.name}}" width="50" height="50" />
+                        </div>
+                    </td>
+
+                    <td  align="right">
+                               
+                                <div style="float:right;text-align:center">
+                            
+                                    <img height="50" src="{% if chairman.signature %}{{chairman.signature.url}}{% endif %}" alt="Chairman Signature">
+                                    
+                                   
+                                    <br>{{chairman.name}}<br>
+                                    {{chairman.post.name}}<br>
+                            {{union_details.name}}<br>{{union_details.upazilla.name}}, {{union_details.district.name}}
+                            
+                                </div>
+                    </td>
+                </tr>
+            </table>  
                    
          
 

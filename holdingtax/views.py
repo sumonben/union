@@ -6,6 +6,7 @@ from certificate.forms import  AdressForm
 from django.views.generic import View
 from django.contrib import messages
 from payment.sslcommerz import sslcommerz_payment_gateway_holdingtax
+from payment.models import Transaction,PaymentPurpose,PaymentType
 
 # Create your views here.
 class HoldingTaxSearch(View):
@@ -44,4 +45,16 @@ class PayHoldingTax(View):
     def post(self, request, *args, **kwargs):
         context={}
         holding_tax=HoldingTax.objects.filter(holding_no=request.POST.get('holding_no').strip(),fiscal_year=request.POST.get('fiscal_year')).first()
-        return redirect(sslcommerz_payment_gateway_holdingtax(request, holding_tax, holding_tax.holding_type,'holdingtax'))
+        payment_purpose=PaymentPurpose.objects.filter(certificate_type_id=holding_tax.holding_type.id,payment_type_id=3).first()
+        if payment_purpose:
+            return redirect(sslcommerz_payment_gateway_holdingtax(request, holding_tax, holding_tax.holding_type, payment_purpose))
+        
+        payment_purpose=PaymentPurpose.objects.create(
+                serial=0,
+                certificate_type_id=holding_tax.holding_type.id,
+                title =holding_tax.holding_type.name,
+                payment_type_id=3,
+                
+
+            )
+        return redirect(sslcommerz_payment_gateway_holdingtax(request, holding_tax, holding_tax.holding_type, payment_purpose))

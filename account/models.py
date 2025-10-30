@@ -28,6 +28,7 @@ class Chairman(models.Model):
     district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="জেলা")
     image=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="ছবি")
     signature=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="স্বাক্ষর")
+    is_active=models.BooleanField(default=False)
 
 
 
@@ -49,6 +50,7 @@ class Secretary(models.Model):
     district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="জেলা")
     image=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="ছবি")
     signature=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="স্বাক্ষর")
+    is_active=models.BooleanField(default=False)
 
 
 
@@ -72,6 +74,7 @@ class Member(models.Model):
     district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL,verbose_name="জেলা")
     image=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="ছবি")
     signature=models.ImageField(upload_to='media/',blank=True,null=True,verbose_name="স্বাক্ষর")
+    is_active=models.BooleanField(default=False)
 
     class Meta:
         ordering = ['serial']

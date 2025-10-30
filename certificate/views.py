@@ -338,8 +338,12 @@ class submitFormView(View):
         certificate=Certificate.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
         if certificate is not None:
             certificate_type=certificate.certificate_type
+            payment_purpose={}
+            payment_purpose=PaymentPurpose.objects.filter(certificate_type_id=certificate_type.id,payment_type_id=1).first()
+            if payment_purpose:
+                return redirect(sslcommerz_payment_gateway(request, certificate, certificate_type,payment_purpose))
             payment_purpose=PaymentPurpose.objects.create(
-                    serial=certificate.id,
+                    serial=0,
                     certificate_type_id=certificate_type.id,
                     title =certificate_type.name,
                     payment_type_id=1,
@@ -347,6 +351,7 @@ class submitFormView(View):
 
                 )
             return redirect(sslcommerz_payment_gateway(request, certificate, certificate_type,payment_purpose))
+
         return render(request, 'payment/alert.html')
 
 

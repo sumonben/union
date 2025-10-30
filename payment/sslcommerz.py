@@ -95,10 +95,10 @@ def sslcommerz_payment_gateway_holdingtax(request, holding_tax,holding_type, pay
     body['product_name'] = "Test"
     body['product_category'] = "Test Category"
     body['product_profile'] = "general"
-    body['value_a'] = holding_tax
-    body['value_b'] =holding_tax.fiscal_year 
+    body['value_a'] = holding_tax.holding_no
+    body['value_b'] =holding_tax.fiscal_year.id 
     body['value_c'] = holding_tax.phone
-    body['value_d'] = payment_purpose
+    body['value_d'] = payment_purpose.id
     
     
 

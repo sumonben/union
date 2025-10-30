@@ -155,8 +155,11 @@ class submitLicenseFormView(View):
         license=License.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
         license_type=license.license_type
         payment_type=PaymentType.objects.filter(id=1).first()
+        payment_purpose=PaymentPurpose.objects.filter(certificate_type_id=license_type.id, payment_type_id=2).first()
+        if payment_purpose:
+            return redirect(sslcommerz_payment_gateway(request, license, license_type,payment_purpose))
         payment_purpose=PaymentPurpose.objects.create(
-                serial=license.id,
+                serial=0,
                 certificate_type_id=license_type.id,
                 title =license_type.name,
                 payment_type_id=2,

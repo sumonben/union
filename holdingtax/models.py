@@ -25,7 +25,12 @@ class HoldingType(models.Model):
     serial=models.IntegerField(default=10,verbose_name="ক্রম")
     name=models.CharField(max_length=500,verbose_name=" নাম(বাংলায়)")
     name_en=models.CharField(max_length=500,verbose_name=" নাম(ইংরেজিতে)")
+    amount=models.IntegerField(default=10)
+    template=models.CharField(max_length=250,blank=True,null=True)
+    image=models.ImageField(upload_to='media/',blank=True,null=True,)
     is_active=models.BooleanField(default=False,verbose_name="সক্রিয় কিনা?")
+    is_auto_sign=models.BooleanField(default=False)
+    is_join_sign=models.BooleanField(default=False)
     class Meta:
         ordering = ['serial']
         verbose_name="হোল্ডিং টেক্সের ধরণ"

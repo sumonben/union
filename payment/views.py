@@ -9,8 +9,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse,HttpResponseNotFound
 from .models import Transaction,PaymentPurpose
+from account.models import Chairman
 from region.models import UnionDetails
 from .sslcommerz import sslcommerz_payment_gateway
+from holdingtax.models import HoldingTax, HoldingType, FiscalYear
 from sslcommerz_lib import SSLCOMMERZ 
 from django.contrib.auth import get_user_model
 from certificate.models import Certificate,CertificateType 
@@ -103,6 +105,14 @@ class CheckoutSuccessView(View):
                    
                     certificate.transaction=transaction
                     certificate.save()
+        elif tran_purpose.payment_type.id == 3:
+            fiscal_year=FiscalYear.objects.filter(id=data['value_b']).first()
+            holding_tax=HoldingTax.objects.filter(holding_no=data['value_a'],fiscal_year=fiscal_year).first()
+            chairman=Chairman.objects.filter(is_active=True).last()
+            context['holding_tax']=holding_tax
+            context['holding_type']=holding_tax.holding_type
+            context['chairman']= chairman
+
         else:
                     license=License.objects.filter(tracking_no=data['value_a']).first()
                     if license.memorial_no is None:
@@ -122,8 +132,10 @@ class CheckoutSuccessView(View):
         context['union_details']=union_details
         context['transaction']=transaction
         context['tran_purpose']=tran_purpose
-                
-        return render(request,self.template_name,context)
+        if tran_purpose.payment_type.id == 3:
+            return render(request,'payment/payment_receipt_holdingtax.html',context)
+        else:
+            return render(request,self.template_name,context)
         
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -137,21 +149,29 @@ class CheckoutIPNView(View):
     def post(self, request, *args, **kwargs):
         
         context={}
+        transaction=None
         name_of_payee=None
         data = self.request.POST
         post_body={}
         tran_purpose=PaymentPurpose.objects.filter(id=data['value_d']).first()
-        if tran_purpose:
-             if tran_purpose.payment_type.id == 1:
-                certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
-                name_of_payee=certificate.name
-             else:
-                certificate=License.objects.filter(tracking_no=data['value_a']).first()
-                name_of_payee=certificate.license_owner_name
+        
 
         # print(tran_purpose)
         if data['status'] == 'VALID':
-            # print("Yes")
+
+            if tran_purpose:
+                if tran_purpose.payment_type.id == 1:
+                    certificate=Certificate.objects.filter(tracking_no=data['value_a']).first()
+                    name_of_payee=certificate.name
+                elif tran_purpose.payment_type.id == 3:
+                    fiscal_year=FiscalYear.objects.filter(id = data['value_b']).first()
+                    holding_tax=HoldingTax.objects.filter(holding_no=data['value_a'],fiscal_year=fiscal_year).first()
+                    holding_tax.is_paid=True
+                    holding_tax.save()
+                    name_of_payee=holding_tax.name
+                else:
+                    certificate=License.objects.filter(tracking_no=data['value_a']).first()
+                    name_of_payee=certificate.license_owner_name
             post_body['val_id'] = data['val_id']
             # print("Validation prev: ",post_body['val_id'])
             response = sslcommez.validationTransactionOrder(post_body['val_id'])
@@ -183,6 +203,10 @@ class CheckoutIPNView(View):
                 risk_level=data['risk_level'],
 
             )
+            fiscal_year=FiscalYear.objects.filter(id = data['value_b']).first()
+            holding_tax=HoldingTax.objects.filter(holding_no=data['value_a'],fiscal_year=fiscal_year).first()
+            holding_tax.transaction=transaction
+            holding_tax.save()
             
         else:
             transaction=Transaction.objects.create(
@@ -212,7 +236,7 @@ class CheckoutIPNView(View):
                             risk_level='0',
             
                         )            
-        
+                    
         messages.success(request,'Something Went Wrong')
         context['messages']=messages
         return redirect('/')
