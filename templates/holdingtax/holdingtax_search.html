@@ -75,36 +75,6 @@
 
             <span class="shape"><img align="center" loading="lazy" src="{% static 'images\ictparkbd_logo.jpg' %}"><img align="center" loading="lazy" style="height:60%;margin-top:10%;rotate: -50deg;" src="{{ union_details.logo.url}}"></span> 
 
-             {%if email %}
-            
-            <div class="alert alert-danger" role="alert">
-              <strong>{{email}}</strong> 
-            </div>
-            
-            {% endif %}
-            {%if phone %}
-            
-            <div class="alert alert-danger" role="alert">
-              <strong>{{phone}}</strong> 
-            </div>
-            
-            {% endif %} 
-            
-            {%if password %}
-            
-            <div class="alert alert-danger" role="alert">
-              <strong>{{password}}</strong> 
-            </div>
-            
-            {% endif %}
-            
-            {%if success %}
-            
-            <div class="alert alert-success" role="alert">
-              <strong>{{success}}</strong> 
-            </div>
-            
-            {% endif %}
             
             <form  id="form" class="form-row px-3" method="post" action="
             {% if type == 'download' %}{% url 'download_holdingtax' %} {% else %} {% url 'holding_tax' %}{% endif %}" enctype="multipart/form-data">
@@ -195,9 +165,7 @@
                   </div>
                 </div>
               </div> 
-              {% comment %} <div class="col-sm-4 form-group mb-0">
-                <button type="submit" class="btn btn-danger text-white"><span>সাবমিট</span></button>
-              </div>  {% endcomment %}
+             
               <div class="col-sm-9 form-group">
                 <p class="text-right">
                   <button type="submit" class="rounded-50 ml-2" style="height: 40px; background-color: #035a4c; color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);font-size:20px;padding-left:8px;padding-right:8px;">সাবমিট করুন</button>
