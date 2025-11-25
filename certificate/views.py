@@ -208,9 +208,9 @@ class CertificateView(View):
             certificate.tracking_no=tracking_no
             chairman=Chairman.objects.filter(is_active=True).first()
             member=None
-            member=Member.objects.filter(ward__in=certificate.adress.village.ward, is_active=True,is_preserved=False).last()
+            member=Member.objects.filter(ward__name_en=certificate.adress.village.ward.name_en, is_active=True,is_preserved=False).last()
             if member is None:
-                member=Member.objects.filter(ward__in=certificate.adress.village.ward, is_active=True).last()
+                member=Member.objects.filter(ward__name_en=certificate.adress.village.ward.name_en, is_active=True).last()
             certificate.chairman=chairman
             certificate.member=member
             cause=Cause.objects.filter(id=request.POST.get('cause')).first()
@@ -296,7 +296,7 @@ class submitFormView(View):
         certificate=Certificate.objects.filter(tracking_no=request.POST.get('tracking_no')).first()
         if certificate is not None:
             certificate_type=certificate.certificate_type
-            payment_purpose={}
+            payment_purpose=None
             payment_purpose=PaymentPurpose.objects.filter(certificate_type_id=certificate_type.id,payment_type_id=1).first()
             if payment_purpose:
                 return redirect(sslcommerz_payment_gateway(request, certificate, certificate_type,payment_purpose))

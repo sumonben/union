@@ -5,8 +5,10 @@
 <br><br><br><br><br><br><br><br>
 <div style="float:left;text-align:center">
      {% if certificate_type.is_auto_sign %}
-    
-            <img height="50" src="{% if certificate.member.signature %}{{certificate.member.signature.url}}{% endif %}" alt="member Signature">
+     
+             {% if certificate.member.signature %}
+            <img height="50" src="{{certificate.member.signature.url}}" alt="member Signature">
+            {% endif %}
             {% endif %}
     {% if certificate.language == '2' %}
     <br>({{certificate.member.name_en}})<br>
@@ -41,8 +43,9 @@
         </div>
         <div style="float:right;text-align:center">
             {% if certificate_type.is_auto_sign %}
-    
-            <img height="50" src="{% if certificate.chairman.signature %}{{certificate.chairman.signature.url}}{% endif %}" alt="Chairman Signature">
+            {% if certificate.chairman.signature %}
+            <img height="50" src="{{certificate.chairman.signature.url}}" alt="Chairman Signature">
+            {% endif %}
             {% endif %}
             
             {% if certificate.language == '2' %}

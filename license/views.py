@@ -128,9 +128,9 @@ class LicenseView(View):
             secretary=Secretary.objects.all().order_by('-id').first()
             print(license.adress_of_license)
             member=None
-            member=Member.objects.filter(ward__in=certificate.adress.village.ward, is_active=True,is_preserved=False).last()
+            member=Member.objects.filter(ward__name_en=certificate.adress.village.ward.name_en, is_active=True,is_preserved=False).last()
             if member is None:
-                member=Member.objects.filter(ward__in=certificate.adress.village.ward, is_active=True).last()
+                member=Member.objects.filter(ward__name_en=certificate.adress.village.ward.name_en, is_active=True).last()
             license.chairman=chairman
             license.secretary=secretary
             license.member=member

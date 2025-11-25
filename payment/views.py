@@ -18,6 +18,7 @@ from django.contrib.auth import get_user_model
 from certificate.models import Certificate,CertificateType 
 from license.models import License,LicenseType
 
+union_details=UnionDetails.objects.filter(is_active=True).first()
 gateway = PaymentGateway.objects.filter(is_active=True).first()
 cradentials = {'store_id': gateway.store_id,
             'store_pass': gateway.store_pass, 'issandbox': gateway.is_sandbox}
@@ -97,7 +98,7 @@ class CheckoutSuccessView(View):
                         year=transaction.created_at.year
                         if certificate.memorial_no is None:
                             count=Transaction.objects.filter(tran_purpose__certificate_type_id=tran_purpose.certificate_type_id,tran_purpose__payment_type=tran_purpose.payment_type).filter(created_at__year=year).count()
-                            memorial_no='3813.04.'+str(tran_purpose.payment_type.id).zfill(2)+str(tran_purpose.certificate_type_id).zfill(2)+'/'+str(year)+'('+str(count)+')'
+                            memorial_no=union_details.union_code+str(tran_purpose.payment_type.id).zfill(2)+str(tran_purpose.certificate_type_id).zfill(2)+'/'+str(year)+'('+str(count)+')'
                             certificate.memorial_no=memorial_no
                         context['certificate']=certificate
                         context['certificate_type']=certificate.certificate_type
@@ -117,7 +118,7 @@ class CheckoutSuccessView(View):
                         if license.memorial_no is None:
                             year=transaction.created_at.year
                             count=Transaction.objects.filter(tran_purpose__certificate_type_id=tran_purpose.certificate_type_id,tran_purpose__payment_type=tran_purpose.payment_type).filter(created_at__year=year).count()
-                            memorial_no='3813.04.'+str(tran_purpose.payment_type.id).zfill(2)+str(tran_purpose.certificate_type_id).zfill(2)+'/'+str(year)+'('+str(count)+')'
+                            memorial_no=union_details.union_code+str(tran_purpose.payment_type.id).zfill(2)+str(tran_purpose.certificate_type_id).zfill(2)+'/'+str(year)+'('+str(count)+')'
                             license_no=str(tran_purpose.payment_type.id).zfill(2)+'-'+str(tran_purpose.certificate_type_id).zfill(2)+'-'+str(year).zfill(2)+'-'+str(count)
                             license.license_no=license_no
                             license.memorial_no=memorial_no
@@ -127,7 +128,6 @@ class CheckoutSuccessView(View):
                         license.transaction=transaction
                         license.save()
                     
-            union_details=UnionDetails.objects.last()
             context['union_details']=union_details
             context['transaction']=transaction
             context['tran_purpose']=tran_purpose

@@ -21,6 +21,7 @@ class UnionDetails(models.Model):
     upazilla=models.ForeignKey(Upazilla, on_delete=models.SET_NULL,blank=True,null=True)
     district=models.ForeignKey(District, on_delete=models.SET_NULL,blank=True,null=True)
     union_type=models.ForeignKey(UnionType, on_delete=models.SET_NULL,blank=True,null=True)
+    union_code=models.CharField(max_length=50,blank=True,null=True)
     logo=models.FileField(upload_to='media/logo',blank=True,null=True,)
     logo_en=models.FileField(upload_to='media/logo',blank=True,null=True,)
     logo_opacity=models.FileField(upload_to='media/logo',blank=True,null=True,)
