@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from .models import HoldingType, HoldingTax, FiscalYear
 from account.models import Chairman
-from region.models import UnionDetails
+from union.models import UnionDetails
 from .forms import  HoldingTaxForm, HoldingTaxSearchForm
 from certificate.forms import  AdressForm
 from django.views.generic import View
@@ -76,15 +76,18 @@ class HoldingTaxDownload(View):
         return render(request,self.template_name,context)
     def post(self, request, *args, **kwargs):
         context={}
-        holding_tax=HoldingTax.objects.filter(holding_no=request.POST.get('holding_no').strip(),fiscal_year=request.POST.get('fiscal_year')).first()
-        union_details=UnionDetails.objects.last()
-        transaction=Transaction.objects.filter(tracking_no=request.POST.get('holding_no').strip()).first()
-        chairman=Chairman.objects.filter(is_active=True).last()
-        context['holding_tax']=holding_tax
-        context['holding_type']=holding_tax.holding_type
-        context['union_details']=union_details
-        context['transaction']=transaction
-        context['chairman']=chairman
-        context['tran_purpose']=transaction.tran_purpose
-        return render(request,'payment/payment_receipt_holdingtax.html',context)
+        holding_tax=HoldingTax.objects.filter(holding_no=request.POST.get('holding_no').strip(),fiscal_year=request.POST.get('fiscal_year'),is_paid=True, transaction__isnull=False).first()
+        transaction=None
+        if holding_tax:
+            transaction=Transaction.objects.filter(tracking_no=request.POST.get('holding_no').strip(),id=holding_tax.transaction.id).first()
+        if holding_tax and transaction:
+            chairman=Chairman.objects.filter(is_active=True).last()
+            context['holding_tax']=holding_tax
+            context['holding_type']=holding_tax.holding_type
+            context['transaction']=transaction
+            context['chairman']=chairman
+            context['tran_purpose']=transaction.tran_purpose
+            return render(request,'payment/payment_receipt_holdingtax.html',context)
+        messages.error(request, 'আপনার হোল্ডিং ট্যাক্সটি প্রদান করা হয়নি, দয়া করে প্রদান করুন')
+        return redirect('holding_tax')
 

@@ -322,7 +322,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                       <div>
                               
                             
-                              <h1 style="text-align: center;"><u>{{holding_type.name}}- প্রদান</u></h1>
+                              <h1 style="text-align: center;"><u>{{holding_type.name}}-{{ holding_tax.fiscal_year }} প্রদান</u></h1>
                             
                             </div>
                             <br><br><br><br><br><br>
@@ -378,6 +378,14 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                           <label>
                                             {{holding_tax.ward.name}}                                        
                                           </label>
+
+                                      </tr>
+                                        <tr>
+                                        <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>অর্থবছরঃ </b>  </td>
+                                        <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label id="date">
+                                            {{ holding_tax.fiscal_year.title }}                                          
+                                        </label>
 
                                       </tr>
                                       <tr>

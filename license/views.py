@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from region.models import UnionDetails
+from union.models import UnionDetails
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import LicenseType,License
@@ -127,7 +127,10 @@ class LicenseView(View):
             chairman=Chairman.objects.all().order_by('-id').first()
             secretary=Secretary.objects.all().order_by('-id').first()
             print(license.adress_of_license)
-            member=Member.objects.filter(ward=license.adress_of_license.village.ward).last()
+            member=None
+            member=Member.objects.filter(ward__in=certificate.adress.village.ward, is_active=True,is_preserved=False).last()
+            if member is None:
+                member=Member.objects.filter(ward__in=certificate.adress.village.ward, is_active=True).last()
             license.chairman=chairman
             license.secretary=secretary
             license.member=member

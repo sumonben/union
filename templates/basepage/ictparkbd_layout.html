@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{union_details.name }}</title>
     
-    <link rel="shortcut icon" href="{%  static 'images/tilokpur_logo.png'%}">
+    <link rel="icon" href="{{ LOGO }}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/ictparkbd/twitterstyle.css' %}" />
    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
@@ -30,6 +30,21 @@
     
     
     <style>
+      :root{
+      --weather: {{ color.weather }};
+      --body: {{ color.body }};
+      --weather: {{ color.weather }};
+      --service:{{ color.service }};
+      --card:{{ color.card }};
+      --heading:{{ color.heading }};
+      --sub_heading:{{ color.sub_heading }};
+      --navitem:{{ color.navitem}};
+      --navbar_collaps:{{ color.navbar_collaps}};
+      --member_registration:{{ color.navbar_collaps}};
+      --internal:{{ color.internal}};
+      --other_text:{{ color.other_text}};
+      }
+
       @font-face {
         font-family: "kalpurush";
         src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff"),
@@ -50,7 +65,45 @@
             }
     
     }
-      
+      :root{
+      --weather: {{ color.weather }};
+      --body: {{ color.body }};
+      --weather: {{ color.weather }};
+      --service:{{ color.service }};
+      --card:{{ color.card }};
+      --heading:{{ color.heading }};
+      --sub_heading:{{ color.sub_heading }};
+      --navitem:{{ color.navitem}};
+      --navbar_collaps:{{ color.navbar_collaps}};
+      --member_registration:{{ color.member_registration}};
+      --internal:{{ color.internal}};
+      --other_text:{{ color.other_text}};
+      }
+
+      body,html{
+        background:var(--body);
+      }
+      .header{
+        background-color: var(--weather);
+      }
+      .services{
+        background: var(--service);
+      }
+      .card {
+        background: var(--card);
+      }
+      .services .nav-tabs .nav-item .nav-link
+      {
+       color: var(--weather);
+      }
+      .services .nav-tabs .nav-item .nav-link.active
+      {
+        background: var(--weather);
+      }
+      .card-text {
+
+        color: var(--weather)
+      }
       .pagebody{
         margin-top: 118px;
       }
@@ -60,18 +113,18 @@
         position: relative;
         background-color: transparent;
       }
+      .footer-bottom {
+      background: var(--weather);
+      }
       .client{
         width:60px;
-        height:60px;
 
       }
       .developer{
         width:150px;
-        height:40px;
       }
       .provider{
         width:150px;
-        height:40px;
       }
       @media (max-width: 768px) {
         #service_body{
@@ -98,16 +151,31 @@
           height:30px;
         }
       }
+      @madia (min-width:768){
+        .dropdown .dropdown-menu{
+          background: var(--navbar_collaps);
+         }
+      }
+      @media (max-width:989px) {
+        .header .navbar-collapse {
+            background: var(--navbar_collaps);
+        }
+      }
+      .dropdown .dropdown-menu{
+          background: var(--navbar_collaps);
+         }
     </style>
+
+    
   </head>
 
-  <body data-aos-easing="ease-out-quad" data-aos-duration="1200" data-aos-delay="0" >
+  <body data-aos-easing="ease-out-quad" data-aos-duration="1200" data-aos-delay="0"  >
     <div id="app">
         <div id="allpage">
-            <div data-v-6f04a53f="" id="app"> 
+            <div data-v-6f04a53f="" id="app" style="display: flex;flex-direction: column;min-height: 100vh;"> 
                
       
- <main data-v-6f04a53f="" class="main">
+ <main data-v-6f04a53f="" class="main" style="flex-grow: 1;">
   <!---->
   <div data-v-6f04a53f="" class="home" > 
     {% include 'components/navbarfront.html'%}           
@@ -120,14 +188,7 @@
  </div>
 
  </main>
-
-    <a href="#" class="scroll-top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#" class="scroll-top active"><i class="fa fa-arrow-up"></i></a>
-  </div>
-</div>
-
-</div>
- <footer data-v-6f04a53f="" style="width:100%">
+<footer data-v-6f04a53f="" style="width:100%">
                    
                    <div class="footer-bottom">
 
@@ -197,6 +258,13 @@
 
                </footer> <!---->       
           
+ 
+    <a href="#" class="scroll-top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#" class="scroll-top active"><i class="fa fa-arrow-up"></i></a>
+  </div>
+</div>
+
+</div>
             <!-- #endregion --> 
             <script>
               
@@ -217,7 +285,7 @@
              function MaritalStatusChanged( id ) {
                marital_status=document.getElementById(id).value;
                gender=document.getElementById('id_gender').value;
-               if (marital_status == 1 && gender == 2){
+               if ((marital_status == 2 || marital_status == 4)  && gender == 2){
                other_name=document.getElementById('other_name_id').style="display:block;";
 
                }

@@ -9,14 +9,19 @@
     }
     .card-text{
         margin-top:30px;
-        color:#035a4c;
+        color:var(--weather);
         text-shadow: 2px 2px 2px rgb(65, 7, 7);
         font-size:25px;
         text-align:center;
         font-weight:bold;
     }
+    .card-text:hover{
+        
+        color:#cf0101;
+
+    }
       .number_of_certificate{
-        color:#035a4c;
+        color:var(--weather);
         font-size:18px;
         font-weight:bold;
       }
@@ -72,7 +77,7 @@
           }
           .card-text{
             margin-top:35px;
-            color:#035a4c;
+            color:var(--weather);
             text-shadow: 1px 1px 1px rgb(65, 7, 7);
             font-size:18px;
             text-align:center;
@@ -149,7 +154,7 @@
  
  
                                     <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-animate">
-                                           <p style="text-align:center;width:100%;background-color:#035a4c;color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px" >{{chairman.post.name}}</span></span> </strong></p>
+                                           <p style="text-align:center;width:100%;background-color:var(--weather);color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px" >{{chairman.post.name}}</span></span> </strong></p>
                                            <h1 class="bk-org title">
                                                      </h1>
                                          
@@ -164,63 +169,33 @@
                                        <p style="text-align:center"><strong><span >&nbsp;<span style="font-size:15px">{{chairman.email}}</span></span> </strong></p>
 
                                        <p>
-                                               {% comment %} <a href="https://moedu.portal.gov.bd/site/page/5521b4ae-db5f-4410-b24e-3e34f460a926" class="btn" style="display:block;text-align:center;width:100%;" title="বিস্তারিত">বিস্তারিত</a> {% endcomment %}
+                                               {% comment %} <a href="#" class="btn" style="display:block;text-align:center;width:100%;" title="বিস্তারিত">বিস্তারিত</a> {% endcomment %}
                                              </p>
                                        </div>
+                                       
+                                       {% for officer in secretary %}
+                                        
+                                        
                                        <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-animate">
-                                        <p style="text-align:center;width:100%;background-color:#035a4c;color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;" ><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px">{{secretary.post.name}}</span></span> </strong></p>
+                                        <p style="text-align:center;width:100%;background-color:var(--weather);color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;" ><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px">{{officer.post.name}}</span></span> </strong></p>
                                         <h1 class="bk-org title">
                                                   </h1>
                                       
-                                      <p style="text-align:center"><img alt="প্রধান প্রশিক্ষক " loading="lazy" src="{{secretary.image.url}}" style="height:190px; width:150px"></p>
+                                      <p style="text-align:center"><img alt="প্রধান প্রশিক্ষক " loading="lazy" src="{{officer.image.url}}" style="height:190px; width:150px"></p>
                                     
-                                    <p style="text-align:center"><strong><span>&nbsp;<span style="font-size:20px">{{secretary.name}}</span></span> </strong></p>
-                                    <p style="text-align:center"><strong><span >&nbsp;<span style="font-size:15px">{{secretary.phone}}</span></span> </strong></p>
-                                    <p style="text-align:center"><strong><span >&nbsp;<span style="font-size:15px">{{secretary.email}}</span></span> </strong></p>
+                                    <p style="text-align:center"><strong><span>&nbsp;<span style="font-size:20px">{{officer.name}}</span></span> </strong></p>
+                                    <p style="text-align:center"><strong><span >&nbsp;<span style="font-size:15px">{{officer.phone}}</span></span> </strong></p>
+                                    <p style="text-align:center"><strong><span >&nbsp;<span style="font-size:15px">{{officer.email}}</span></span> </strong></p>
 
                                     <p>
-                                            {% comment %} <a href="https://moedu.portal.gov.bd/site/page/5521b4ae-db5f-4410-b24e-3e34f460a926" class="btn" style="display:block;text-align:center;width:100%;" title="বিস্তারিত">বিস্তারিত</a> {% endcomment %}
+                                            {% comment %} <a href="#" class="btn" style="display:block;text-align:center;width:100%;" title="বিস্তারিত">বিস্তারিত</a> {% endcomment %}
                                           </p>
                                     </div>
-                                           
+                                    {% endfor %}
+    
  
- 
-                                       {% comment %} <ul>
-                                        <li><a href="https://www.gmrwc.edu.bd/" class="btn btn-primary">সরকারি মুজিবুর রহমান মহিলা কলেজ</a></li>
-                                        <li><a href="http://nbr.gov.bd/nbr-enlisted/eng"
-                                                target="_blank" class="btn btn-primary">সরকারি আজিজুল হক কলেজ</a></li>
-                                        <li><a href="https://tilokpurupegovhub.info"
-                                                target="_blank" class="btn btn-primary">সরকারি শাহ-সুলতান কলেজ</a></li>
-                                        <li><span ><a href="https://tilokpurupegovhub.info"
-                                            target="_blank" class="btn btn-primary">আইসিটি বিষয়ক ট্রেনিং</a></span></li>
-                                        <li><span><a href="https://tilokpurupegovhub.info"
-                                            target="_blank" class="btn btn-primary">নেকটার এর প্রশিক্ষণসমুহ</a></span></li>
-                                        <li><a href="https://tilokpurup.org.bd/public/files/publication/5e125f5ee61760449abd28a25178d046facfec994d97e.pdf"
-                                                target="_blank" class="btn btn-primary">মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর </a></li>
-                                                <li><a href="/market-details/1" class="btn btn-primary">জাতীয় বিশ্ববিদ্যালয়
-                                    </a></li>
-                                            <li><a href="http://nbr.gov.bd/nbr-enlisted/eng"
-                                                    target="_blank" class="btn btn-primary">তথ্য ও যোগাযোগ প্রযুক্তি অধিদপ্তর</a></li>
-                                            <li><a href="https://tilokpurupegovhub.info"
-                                                    target="_blank" class="btn btn-primary">মাধ্যমিক ও উচ্চশিক্ষা বিভাগ</a></li>
-                                            
-                                            <li><a href="https://tilokpurup.org.bd/public/files/publication/5e125f5ee61760449abd28a25178d046facfec994d97e.pdf"
-                                                    target="_blank" class="btn btn-primary">বাংলাদেশ সরকারি কর্ম কমিশন</a></li>
-                                                    <li><a href="/market-details/1" class="btn btn-primary">তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ
-                                                        </a></li>
-                                                <li><a href="http://nbr.gov.bd/nbr-enlisted/eng"
-                                                        target="_blank" class="btn btn-primary">বাংলাদেশ সরকারি কর্ম কমিশন</a></li>
-                                                <li><a href="https://tilokpurupegovhub.info"
-                                                        target="_blank"class="btn btn-primary">বেসরকারি শিক্ষক নিবন্ধন</a></li>
-                                                
-                                                <li><a href="https://tilokpurup.org.bd/public/files/publication/5e125f5ee61760449abd28a25178d046facfec994d97e.pdf"
-                                                        target="_blank" class="btn btn-primary">প্রাথমিক শিক্ষা অধিদপ্তর</a></li>
-                                                        <li><a href="/market-details/1" class="">
-                                                            </a></li>
-                                        
-                                       </ul>  {% endcomment %}
                                          <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-animate">
-                                            <p style="text-align:center;width:100%;background-color:#035a4c;color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px" >মনোগ্রাম</span></span> </strong></p>
+                                            <p style="text-align:center;width:100%;background-color:var(--weather);color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px" >মনোগ্রাম</span></span> </strong></p>
 
                                            <h1 class="bk-org title">
                                                      </h1>
@@ -230,16 +205,23 @@
                                        
                                       
                                        <p>
-                                               <a href="https://moedu.portal.gov.bd/site/page/5521b4ae-db5f-4410-b24e-3e34f460a926" class="btn" style="display:block;text-align:center;width:100%;" title="বিস্তারিত"></a>
+                                               <a href="#" class="btn" style="display:block;text-align:center;width:100%;" title="বিস্তারিত"></a>
                                              </p>
                                        </div>
                                        <ul>
-                                        <a href="https://tilakpurup.joypurhat.gov.bd/" class="btn btn-primary" style="width:100%;margin-bottm:50px;text-shadow: 4px 4px 4px rgb(73, 25, 11);">তিলকপুর ইউনিয়ন</a>
+                                        
+                                        {% for link in important_links %}
+                                            <a href="{{ link.link }}"
+                                                target="_blank" class="btn btn-primary" style="width:100%;margin-bottm:50px;text-shadow: 4px 4px 4px rgb(73, 25, 11);">{{ link.title }} </a>
+                              
+                                        {% endfor %}
+                                            
+                                        <!-- <a href="https://tilakpurup.joypurhat.gov.bd/" class="btn btn-primary" style="width:100%;margin-bottm:50px;text-shadow: 4px 4px 4px rgb(73, 25, 11);">তিলকপুর ইউনিয়ন</a>
                                         <a href="https://akkelpur.joypurhat.gov.bd/"
                                                 target="_blank" class="btn btn-primary" style="width:100%;margin-bottm:50px;text-shadow: 4px 4px 4px rgb(73, 25, 11);">আক্কেলপুর উপজেলা </a>
                                         <a href="https://www.joypurhat.gov.bd/"
                                                 target="_blank" class="btn btn-primary" style="width:100%;text-shadow: 4px 4px 4px rgb(73, 25, 11);">জয়পুরহাট জেলা </a>
-                                        </ul>
+                                        </ul> -->
                                    </div>
                                </div>
                            </div> 
@@ -272,7 +254,7 @@
                                                       <td align="left">
                                                         <fieldset>
                                                         <table width="100%" border="1" cellspacing="0" cellpadding="10">
-                                                          <thead><th class="title" colspan="5" style=" text-align:center; background-color: #035a4c; color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"> অনলাইন প্রত্যয়ন, সনদ, লাইসেন্স ও হোল্ডিংট্যাক্স প্রদানের জন্য আবেদন করুন </th></thead>
+                                                          <thead><th class="title" colspan="5" style=" text-align:center; background-color: var(--weather); color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"> অনলাইন প্রত্যয়ন, সনদ, লাইসেন্স ও হোল্ডিংট্যাক্স প্রদানের জন্য আবেদন করুন </th></thead>
                                                           <tbody>
                                                           
                             
@@ -319,7 +301,7 @@
                                         <ul id="myTab" role="tablist" class="nav nav-tabs justify-content-center ">
                                             <li class="nav-item rounded-50" ><a id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true" class="nav-link active" style="font-family:kalpurush;font-weight:bold;">সনদসমূহ</a></li>
                                             <li class="nav-item rounded-50"><a id="nonmembers-tab" data-toggle="tab" href="#nonmembers" role="tab" aria-controls="nonmembers" aria-selected="false" class="nav-link" style="font-family:kalpurush;font-weight:bold;">লাইসেন্সসমূহ</a></li>
-                                            <li class="nav-item rounded-50"><a id="nonmembers2-tab" data-toggle="tab" href="#nonmembers2" role="tab" aria-controls="nonmembers2" aria-selected="false" class="nav-link" style="font-family:kalpurush;font-weight:bold;">হোল্ডিং টাক্স</a></li>
+                                            <li class="nav-item rounded-50"><a id="nonmembers2-tab" data-toggle="tab" href="#nonmembers2" role="tab" aria-controls="nonmembers2" aria-selected="false" class="nav-link" style="font-family:kalpurush;font-weight:bold;">হোল্ডিংট্যাক্স</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -506,9 +488,10 @@
                                     <div class="container-wrapper">
                                         <div class="content-header text-center">
                                             <div class="row pt-5" id="chairman_heading" >
-                                                <div class="col-lg-12 text-center"><a href="/" class="btn btn-lg btn-primary rounded-50" style="background-color:#035a4c;text-shadow:4px 4px 4px rgb(67, 7 ,7)">
+                                                <div class="col-lg-12 text-center">
+                                                    <a href="/" class="btn btn-lg btn-primary rounded-50" style="background-color:var(--weather);text-shadow:4px 4px 4px rgb(67, 7 ,7)">
                                                     <h2   >{{chairman.post.name}} ও সচিব</h2>
-                                                </a>
+                                                    </a>
                                             </div>
                                         </div>
                                     </div>
@@ -526,7 +509,7 @@
 
                                                         <h5>{{chairman.phone}}</h5>
                                                         <h5>{{chairman.email}}</h5>
-                                                        <p>ইউনিয়নঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট। </p>
+                                                    <p>{{ union_details.union_type.name }}ঃ {{ union_details.name_short }}, উপজেলাঃ {{ UPAZILLA }}, জেলাঃ {{  DISTRICT}}। </p>
             
                                                         
                                                 </div>
@@ -540,7 +523,7 @@
                                                         <h4>{{secretary.post.name}}</h4>
                                                         <h5>{{secretary.phone}}</h5>
                                                         <h5>{{secretary.email}}</h5>
-                                                        <p>ইউনিয়নঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট। </p>
+                                                        <p>{{ union_details.union_type.name }}ঃ {{ union_details.name_short }}, উপজেলাঃ {{ UPAZILLA }}, জেলাঃ {{  DISTRICT}}। </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -554,7 +537,7 @@
                                     <div class="container-wrapper">
                                         <div class="content-header text-center">
                                             <div class="row pt-5">
-                                                <div class="col-lg-12 text-center"><a href="/" class="btn btn-lg btn-primary rounded-50" style="background-color:#035a4c;text-shadow:8px 8px 8px rgb(67, 7 ,7)">
+                                                <div class="col-lg-12 text-center"><a href="/" class="btn btn-lg btn-primary rounded-50" style="background-color:var(--weather);text-shadow:8px 8px 8px rgb(67, 7 ,7)">
                                                     <h2 >ভিশন ও মিশন</h2>
                                                 </a>
                                             </div>
@@ -569,7 +552,7 @@
                                                     <div class="box-body " style="text-align:center" >
                                                         <h3 class="title">মিশন</h3>
 
-                                                        <p>জনগনের দোরগোড়ায় ইউনিয়ন কতৃক প্রদত্তসেবা পৌছানো</p><p>সনদ জালিয়াতি রোধ ও সনদ যাচাই সহজীকরণ</p>
+                                                        <p>জনগনের দোরগোড়ায় {{ union_details.union_type.name }} কতৃক প্রদত্তসেবা পৌছানো</p><p>সনদ জালিয়াতি রোধ ও সনদ যাচাই সহজীকরণ</p>
             
                                                         
                                                 </div>
@@ -614,7 +597,7 @@
         <div class="container-wrapper">
             <div class="content-header mb-5">
                 <div class="row pt-5">
-                    <div class="col-lg-12 text-center"><a href="/" class="btn btn-lg btn-primary rounded-50" style="background-color:#035a4c;text-shadow:8px 8px 8px rgb(67, 7 ,7)">
+                    <div class="col-lg-12 text-center"><a href="/" class="btn btn-lg btn-primary rounded-50" style="background-color:var(--weather);text-shadow:8px 8px 8px rgb(67, 7 ,7)">
                 <h2 >নির্দেশনাসমূহ</h2>
                     </a></div>
                 </div>
@@ -629,13 +612,13 @@
                 <div id="local" data-aos="fade-right" data-aos-offset="100" data-aos-duration="1000" class="col-lg-4 tab-pane active aos-init aos-animate">
                     <div class="card border border-dark">
                         <div class="card-body" style="font-family:kalpurush;">
-                            <h4>সনদ ও প্রত্যয়ন</h4><img alt="ICT Private Programme" data-src="https://tilokpurup.org.bd/public/images/international-market.svg" loading="lazy" src="{%static 'images/cert-6.png' %}" lazy="loading">
+                            <h4>সনদ ও প্রত্যয়ন</h4><img alt="ICT Private Programme" data-src="" loading="lazy" src="{%static 'images/cert-6.png' %}" lazy="loading">
                             <ul>
                                 <li><a class="">সঠিক ভাবে ফর্মপূরণ করুন
                                         </a></li>
                                 <li><a href="" target="_blank">প্রয়োজনীয় কাগজপত্র সাথে রাখুন</a></li>
                                 <li><a href="" target="_blank">জাতীয় পরিচয়পত্র বা জন্ম-নিবন্ধন সফট কপি আপলোড করুন</a></li>
-                                <li><a>মেম্বারের সাক্ষরসহ অনুমোদনপত্র আপলোড করুন</a></li>
+                                <li><a>কতৃপক্ষের সাক্ষরসহ অনুমোদনপত্র আপলোড করুন</a></li>
                                 <li><a>সম্পূর্ণ প্রক্রিয়া শেষ করে নিবেদকের কপি সংগ্রহে রাখুন</a></li>
                                 <li><a>নিবেদকের কপিতে উল্লেখিত ট্র্যাকিং নম্বরটি সংগ্রহে রাখুন </a></li>
                                 <li><a>ফর্মপূরণের পর কর্তৃপক্ষ অনুমোদন করলে ট্র্যাকিং নম্বর দিয়ে নির্ধারিত ফর্মে সনদটি ডাউনলোড করা যাবে বা যাচাই করা যাবে</a></li>
@@ -648,14 +631,14 @@
                 <div id="inter" data-aos="fade-up" data-aos-offset="100" data-aos-duration="1500" class="col-lg-4 tab-pane aos-init aos-animate">
                     <div class="card border border-dark">
                         <div class="card-body" style="font-family:kalpurush;">
-                            <h4>লাইসেন্সসমূহ</h4> <img alt="international_Marketimage" data-src="https://tilokpurup.org.bd/public/images/international-market.svg" loading="lazy" src="{% static 'images/license.jpeg' %}" lazy="loading">
+                            <h4>লাইসেন্সসমূহ</h4> <img alt="international_Marketimage" data-src="" loading="lazy" src="{% static 'images/license.jpeg' %}" lazy="loading">
                             <ul>
                                 <li><a  class="">সঠিক ভাবে ফর্মপূরণ করুন
                                         </a></li>
                                 <li><a  target="_blank">প্রয়োজনীয় কাগজপত্র সাথে রাখুন</a></li>
                                 <li><a  target="_blank">জাতীয় পরিচয়পত্র বা জন্ম-নিবন্ধন সফট কপি আপলোড করুন</a></li>
                                 <li><a>সম্পূর্ণ প্রক্রিয়া শেষ করে নিবেদকের কপি সংগ্রহে রাখুন</a></li>
-                                <li><a>চেয়ারম্যান অফিসে যোগাযোগ করে ফি প্রদান করুন</a></li>
+                                <li><a>কতৃপক্ষের অফিসে যোগাযোগ করে ফি প্রদান করুন</a></li>
                                 <li><a>নিবেদকের কপিতে উল্লেখিত ট্র্যাকিং নম্বরটি সংগ্রহে রাখুন </a></li>
                                 <li><a>ফর্মপূরণের পর কর্তৃপক্ষ অনুমোদন করলে ট্র্যাকিং নম্বর দিয়ে নির্ধারিত ফর্মে লাইসেন্সটি ডাউনলোড করা যাবে বা যাচাই করা যাবে</a></li>
                                 
@@ -666,16 +649,16 @@
                 <div id="policy" data-aos="fade-left" data-aos-offset="100" data-aos-duration="2000" class="col-lg-4 tab-pane aos-init aos-animate">
                     <div class="card border border-dark">
                         <div class="card-body" style="font-family:kalpurush;">
-                            <h4>অন্যান্য</h4> <img alt="policyimage" loading="lazy" data-src="https://tilokpurup.org.bd/public/images/policy.svg" src="{%static 'images/cert-7.png' %}" lazy="loading">
+                            <h4>হোল্ডিংট্যাক্স</h4> <img alt="policyimage" loading="lazy" data-src=" " src="{%static 'images/cert-7.png' %}" lazy="loading">
                             <ul>
                                 <li><a  class="">সঠিক ভাবে ফর্মপূরণ করুন
                                         </a></li>
-                                <li><a  target="_blank">প্রয়োজনীয় কাগজপত্র সাথে রাখুনস</a></li>
+                                <li><a  target="_blank">প্রয়োজনীয় কাগজপত্র সাথে রাখুন</a></li>
                                 <li><a  target="_blank">জাতীয় পরিচয়পত্র বা জন্ম-নিবন্ধন সফট কপি আপলোড করুন</a></li>
                                 <li><a>সম্পূর্ণ প্রক্রিয়া শেষ করে নিবেদকের কপি সংগ্রহে রাখুন</a></li>
-                                <li><a>চেয়ারম্যান অফিসে যোগাযোগ করে ফি প্রদান করুন</a></li>
-                                <li><a>নিবেদকের কপিতে উল্লেখিত ট্র্যাকিং নম্বরটি সংগ্রহে রাখুন </a></li>
-                                <li><a>ফর্মপূরণের পর কর্তৃপক্ষ অনুমোদন করলে ট্র্যাকিং নম্বর দিয়ে নির্ধারিত ফর্মে লাইসেন্সটি ডাউনলোড করা যাবে বা যাচাই করা যাবে</a></li>
+                                <li><a>প্রয়োজনে কতৃপক্ষের অফিসে যোগাযোগ করুন</a></li>
+                                <li><a>নিবেদকের কপিতে উল্লেখিত হোল্ডিং নম্বরটি সংগ্রহে রাখুন </a></li>
+                                <li><a>ফর্মপূরণের পর কর্তৃপক্ষ অনুমোদন করলে হোল্ডিং নম্বর দিয়ে নির্ধারিত ফর্মে হোল্ডিং ট্যাক্স প্রদানের পত্রটি ডাইনলোড করা যাবে বা যাচাই করা যাবে</a></li>
                                 
                             </ul>
                         </div>
@@ -687,7 +670,139 @@
 
 </div>
 </div>
+                
+                                    
+                                       <!---->
+                    <div class="services" id="service_body">
+                        
+                       
+                       <div class="container-wrapper">
 
+
+                        
+               
+                           
+                        <div class="box_container" style="width: 100%; margin: 0px;">
+                            <div class="" style="margin: auto;width: 100%;">
+                                
+                                <div >
+                                    <div id="qbox-container">
+                                            <div id="steps-container">
+                                                <div class="step d-block">
+                        
+                                                  <table class="content-header mb-5" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
+                        
+                                                    <tbody>
+                                                    <tr>
+                                                      <td align="left">
+                                                        <fieldset>
+                                                        <table width="100%" border="1" cellspacing="0" cellpadding="10">
+                                                          <thead><th class="title" colspan="5" style=" text-align:center; background-color: var(--weather); color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"> 
+                                                          {% if union_details.union_type.name_en == 'Municipality' %}
+                                                            কাউন্সিলর/ কমিশনার
+                                                            {% elif union_details.union_type.name_en == 'City Corporation'  %}
+                                                            {% else %}
+                                                            মেম্বর/সদস্যগণ
+                                                          {% endif %}
+                                                            </th></thead>
+                                                          <tbody>
+                                                          
+                            
+                                                        </tbody></table>
+                                                      </fieldset>
+                                                    </td>
+                                                    
+                                                  </tr>
+                                                      
+                                                  </tbody>
+                                                </table>
+                                                
+                                                  
+                        
+                                                  
+                        
+                                                </div>
+                                               
+                                                
+                                               
+                                            
+                                            
+                                        </div>
+                                              
+                                    </div>
+                                    
+                                  </form>
+                        
+                                  
+                        
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                            <div class="services">
+                        {% comment %} <span class="shape1"></span> <span class="shape2"></span> {% endcomment %}
+                        <div class="container-wrapper">
+                            <div class="service-tab">
+                                
+                                               
+                                <div id="myTabContent" class="service-item tab-content">
+                                    
+                                    <div id="members" role="tabpanel" aria-labelledby="members-tab" class="members tab-pane fade show active">
+                                        <div  class="row" style="margin-top: 70px;">
+
+
+                                        
+                                        
+                                       {% for officer in members %}
+                                            
+                                            
+                                            
+                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init aos-animate" style="margin-bottom:25px;" title="আবেদন করতে ক্লিক করেন">
+                                                <a href="" >
+
+                                                <div class="card card-body shadow-sm mb-4" style="overflow:visible;">
+                                                    <div class="circle1">                                                        
+                                                        <img class="rounded-50" loading="lazy" src="{{officer.image.url}}" alt="Citizenship" height="80">
+                                                    </div>
+                                                    <div>
+                                                        <br>
+                                                        <h3 style="margin-top: 3px;" >{{officer.name}}</h3>
+                                                        <h5 >{{officer.phone}}</h5>
+                                                        <h6 >
+                                                        {% for ward in  officer.ward.all %}
+                                                            {{ward.name}}
+                                                        {% endfor %}
+                                                            </h6>
+                                                        
+                                                     </div>
+                                                    
+                                                </div>
+                                            </a>
+                                            
+                                            </div>
+
+                                            {% endfor %}
+
+                                            
+                                             
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="scroll-top active"><i class="fa fa-arrow-up"></i></a>
+               
+               
+ 
+ 
+              
+                </div>
+            </div>
  {% comment %} <div class="gallery-tab">
      <div class="container-wrapper">
          <div class="title-container">

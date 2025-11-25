@@ -29,7 +29,9 @@
 <div class="services">
   <div><h2 style="text-align: center;color: #035a4c ;text-shadow: 2px 2px 2px rgb(65, 7, 7);"><u>              
     {% if  request.resolver_match.url_name in 'check_certificate_form' %}
-    আপনার সনদটি যাচাই করুন    
+    আপনার সনদটি যাচাই করুন  \
+     {% elif  request.resolver_match.url_name in 'download_applicants_copy_form' %}
+              আবেদনের কপি ডাউনলোড করুন 
     {% else %}
     আপনার সনদটি ডাউনলোড করুন
     {% endif %}
@@ -44,7 +46,9 @@
               <thead><th colspan="5" style="height: 40px; background-color: #035a4c; color: #fff;padding: 15px;font-size:20px;text-align:center;"> 
               {% if  request.resolver_match.url_name in 'check_certificate_form' %}
                 সনদ যাচাই ফর্ম
-              {% else %}
+              {% elif  request.resolver_match.url_name in 'download_applicants_copy_form' %}
+              আবেদনের কপি ফর্ম
+              {% else  %}
                  সনদ ডাউনলোড ফর্ম 
               {% endif %}
               </th></thead>
@@ -94,7 +98,7 @@
             
             {% endif %}
             
-            <form autocomplete="off" id="form" class="form-row px-3" method="post" action="">
+            <form autocomplete="off" id="form" class="form-row px-3" method="post" action="" target="_blank">
                {% csrf_token %}
                             <div class="col-sm-8 form-group" style="margin:auto;">
                               <div class="row">

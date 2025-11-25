@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-7$wq_6k@%@d&7=(p-t*)_fc%+cv5)_a+2&s1uc#yct*r*3q#o%
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
-DEBUG = False
+DEBUG = True
 
 #ALLOWED_HOSTS = ['127.0.0.1','209.74.88.131','tilokpursonod.gov.bd','www.tilokpursonod.gov.bd']
 ALLOWED_HOSTS = ['uniondemo.ictparkbd.com','www.uniondemo.ictparkbd.com']
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'license',
     'region',
     'payment',
+    'union',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'region.context_processors.site_info'
+                'union.context_processors.site_info'
             ],
         },
     },
@@ -144,7 +145,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    'default': {
+    'default1': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'uniondemo',
         'USER' : 'postgres',

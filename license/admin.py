@@ -30,5 +30,5 @@ class LicenseAdmin(ImportExportMixin,admin.ModelAdmin):
 
 
 @admin.register(LicenseType)
-class LicenseTypeAdmin(ExportActionMixin,admin.ModelAdmin):
+class LicenseTypeAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display=['id','serial','name','template']

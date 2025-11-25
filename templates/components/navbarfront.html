@@ -1,7 +1,7 @@
 {% load static %}
 <style>
     .heading{
-        color:#fff;
+        color:var(--heading);
         text-shadow: 8px 8px 8px rgb(65, 7, 7);
         font-size: 40px;
         text-align:center;
@@ -11,7 +11,7 @@
 
     }
     .sub-heading{
-        color:#fff;
+        color:var(--sub_heading);
         text-shadow: 2px 2px 2px rgb(65, 7, 7);
         font-size:17px;
         font-family:kalpurush;
@@ -36,7 +36,6 @@
     @media(max-width:767px){
         
         .heading{
-            color:#fff;
             text-shadow: 4px 4px 4px rgb(65, 7, 7);
             font-size: 23px;
             padding:0px;
@@ -45,7 +44,6 @@
             font-weight:bold;
         } 
         .sub-heading{
-            color:#fff;
             margin-left:10px;
             text-shadow: 2px 2px 2px rgb(65, 7, 7);
             font-size:14px;
@@ -70,14 +68,13 @@
     }
     @media(min-width:768px) and (max-width:989px){
         #navbarSupportedContent{
-            background-color:#035a4c;
+            background-color:var(--weather);
         }
         .navbar-toggler{
             margin-top:-20px;
 
         }
         .heading{
-            color:#fff;
             text-shadow: 1px 1px 1px rgb(65, 7, 7);
             font-size: 40px;
             margin-left:-150px;
@@ -86,7 +83,6 @@
             text-align:center;
         } 
         .header .sub-heading{
-            color:#fff;
             font-size:15px;
             margin-left:-150px;
     
@@ -242,7 +238,7 @@
                                         
                                         
                                     <li class="subMenu"><span class="fa fa-hand-o-up"></span>
-                                        <a href="" target="_blank" class="">
+                                        <a href="{% url 'pay_holdingtax'  %}" target="_blank" class="">
                                                 হোল্ডিং ট্যাক্স প্রদান করুন                                        
                                         </a>
                                     </li>
@@ -359,7 +355,7 @@
                 </div>
                 <strong><a  style="float:right;width:80px;height:80px" href="https://bangladesh.gov.bd/" target="_blank"><img style="float:right;width:80px;height:80px"  alt="Tarique Sumon" data-src="/images/sumon.jpg" src="{% static 'images/logo.png'%}" lazy="loaded"> 
                 </a></strong>
-                <strong><a  style="float:left;width:80px" href="https://bangladesh.gov.bd/" target="_blank"><img  alt="Tarique Sumon" data-src="/images/sumon.jpg" src="{% static 'images/tilokpur_logo.png'%}" lazy="loaded"> 
+                <strong><a  style="float:left;width:80px" href="{{ union_details.link }}" target="_blank"><img  alt="Tarique Sumon" data-src="/images/sumon.jpg" src="{{ LOGO }}" lazy="loaded"> 
                 </a></strong> 
             </div>
 

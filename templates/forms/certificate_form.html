@@ -45,7 +45,7 @@
             <div class="col-sm-12 form-group" >
 
             <table width="100%" border="1" cellspacing="0" cellpadding="10">
-              <thead><th colspan="5" style="height: 30px; background-color: #035a4c; color: #fff;text-shadow: 10px 10px 10px rgb(73, 25, 11);padding: 15px;font-size:23px;text-align:center;"> {% if certificate_type.id == 7 %}অভিভাবকের  তথ্য {% else %}  ব্যক্তিগত তথ্য  {% endif %}                                  
+              <thead><th colspan="5" style="height: 30px; background-color: var(--weather); color: #fff;text-shadow: 10px 10px 10px rgb(73, 25, 11);padding: 15px;font-size:23px;text-align:center;"> {% if certificate_type.id == 7 %}অভিভাবকের  তথ্য {% else %}  ব্যক্তিগত তথ্য  {% endif %}                                  
                 
                 {% if form.language %}
                &nbsp<h5>(সনদটি ইংরেজিতে চাইলে নাম, বাবার নাম ও মায়ের নাম ইংরেজিতে পুরণ করুন ও ভাষা ইংরেজি সিলেক্ট করুন)  </h5>                                
@@ -354,7 +354,7 @@
 
 
               <table width="100%" border="1" cellspacing="0" cellpadding="10">
-                <thead><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 5px 5px 5px rgb(73, 25, 11);padding: 15px;font-size:20px;text-align:center;">  ঠিকানা                                 
+                <thead><th colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;text-shadow: 5px 5px 5px rgb(73, 25, 11);padding: 15px;font-size:20px;text-align:center;">  ঠিকানা                                 
                   </th></thead>
                 <tbody>
                 </tbody>
@@ -393,7 +393,7 @@
                 
                 
               <table width="100%" border="1" cellspacing="0" cellpadding="10">
-                <thead><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 5px 5px 5px rgb(73, 25, 11);padding: 15px;font-size:20px;text-align:center;"> স্বত্তাধিকারীর ঠিকানা                                 
+                <thead><th colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;text-shadow: 5px 5px 5px rgb(73, 25, 11);padding: 15px;font-size:20px;text-align:center;"> স্বত্তাধিকারীর ঠিকানা                                 
                   </th></thead>
                 <tbody>
                 </tbody>
@@ -456,23 +456,23 @@
               {% if formset %}
               <fieldset class="formset">
               <table width="100%" border="1" cellspacing="0" cellpadding="3">
-                <tr style="height: 25px; background-color: #035a4c; color: #fff;">
+                <tr style="height: 25px; background-color: var(--weather); color: #fff;">
                   {% if certificate_type.id == 9 %}
-                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">অন্য নামসমূহ</td>
+                  <td colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">অন্য নামসমূহ</td>
                   {% elif certificate_type.id == 10 %}
-                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">ভুল নাম/নামসমুহ</td>
+                  <td colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">ভুল নাম/নামসমুহ</td>
                   {% elif certificate_type.id == 7 %}
-                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">সন্তান বা নির্ভরশীল ব্যক্তির নাম ও সম্পর্ক</td>
+                  <td colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">সন্তান বা নির্ভরশীল ব্যক্তির নাম ও সম্পর্ক</td>
                   {% elif certificate_type.id == 15 %}
-                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">স্বামীর নাম</td>
+                  <td colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">স্বামীর নাম</td>
                   {% elif certificate_type.id == 25 or certificate_type.id == 26 %}
-                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">স্বামী/স্ত্রীর নাম</td>
+                  <td colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">স্বামী/স্ত্রীর নাম</td>
 		  {% elif certificate_type.id == 29 %}
-                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">পরিবারের সদস্যগণ</td>
+                  <td colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">পরিবারের সদস্যগণ</td>
                   {% elif certificate_type.id == 28 %}
-                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">উত্তরাধিকারগণ</td>
+                  <td colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">উত্তরাধিকারগণ</td>
                   {% else %}
-                  <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">ওয়ারিশগণ</td>
+                  <td colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">ওয়ারিশগণ</td>
                   {% endif %}
                 </tr>
                 <tbody>
@@ -579,7 +579,7 @@
                         {% endfor %}
 
                         {% if certificate_type.id == 1 or certificate_type.id == 9 or certificate_type.id == 10 or certificate_type.id == 28 or certificate_type.id == 29 %}
-                                                <button id="add-form" style="font-size:18px;background-color: #035a4c; color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);"  type="button">আরও যুক্ত করুন<i class="fa fa-plus" ></i></button>
+                                                <button id="add-form" style="font-size:18px;background-color: var(--weather); color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);"  type="button">আরও যুক্ত করুন<i class="fa fa-plus" ></i></button>
                         {% endif %}
 
                       </div>
@@ -592,11 +592,11 @@
 
           
                 {% comment %} <table width="100%" border="1" cellspacing="0" cellpadding="3">
-                  <tr style="height: 25px; background-color: #035a4c; color: #fff;">
+                  <tr style="height: 25px; background-color: var(--weather); color: #fff;">
                     {% if certificate_type.id == 9 %}
-                    <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">অন্য নামসমূহ</td>
+                    <td colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">অন্য নামসমূহ</td>
                     {% else %}
-                    <td colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">ওয়ারিশগণ</td>
+                    <td colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;text-shadow: 7px 7px 7px rgb(73, 25, 11);font-size:23px;padding: 15px;">ওয়ারিশগণ</td>
                     {% endif %}
                   </tr>
                   <tbody>
@@ -631,7 +631,7 @@
                         </div>
                         
                           {% endfor %}
-                          <button id="add-form" style="font-size:18px;background-color: #035a4c; color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);"  type="button">আরও যুক্ত করুন<i class="fa fa-plus" ></i></button>
+                          <button id="add-form" style="font-size:18px;background-color: var(--weather); color: #fff;text-shadow: 3px 3px 3px rgb(73, 25, 11);"  type="button">আরও যুক্ত করুন<i class="fa fa-plus" ></i></button>
 
 
                         </div>
@@ -644,7 +644,7 @@
 
               <fieldset style="margin:auto;">
                 <table width="100%" border="1" cellspacing="" cellpadding="5" style="margin-right:10%;">
-                  <tr><td colspan="4" style="height: 25px; background-color: #035a4c; color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);font-size:20px;padding: 15px;">মেম্বর সুপারিশ ফাইল ও এনআইডি</td></tr>
+                  <tr><td colspan="4" style="height: 25px; background-color: var(--weather); color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);font-size:20px;padding: 15px;">মেম্বর সুপারিশ ফাইল ও এনআইডি</td></tr>
                   <tbody>
                     <tr>
                         <td width="10%" align="left" valign="middle">&nbsp;</td>
@@ -690,7 +690,7 @@
               </div>  {% endcomment %}
               <div class="col-sm-9 form-group">
                 <p class="text-right">
-                  <button type="submit" class="rounded-50 ml-2" style="height: 40px; background-color: #035a4c; color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);font-size:20px;padding-left:8px;padding-right:8px;">সাবমিট করুন</button>
+                  <button type="submit" class="rounded-50 ml-2" style="height: 40px; background-color: var(--weather); color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);font-size:20px;padding-left:8px;padding-right:8px;">সাবমিট করুন</button>
                 </p>
               </div>
               

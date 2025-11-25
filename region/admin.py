@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Division,District,Union,Upazilla,Ward,Village,PostOffice,Mouja,OthersAdress,UnionDetails,ImportantLinks
+from .models import Division,District,Union,Upazilla,Ward,Village,PostOffice,Mouja,OthersAdress
 from import_export.admin import ExportActionMixin,ImportExportMixin
 from admin_auto_filters.filters import AutocompleteFilter
 
@@ -58,12 +58,15 @@ class MoujaAdmin(ImportExportMixin,admin.ModelAdmin):
     search_fields = ['name','name_en','ward']
     # autocomplete_fields = ['ward','village',]
 
-@admin.register(UnionDetails)
-class UnionDetailsAdmin(ExportActionMixin,admin.ModelAdmin):
-    pass
-@admin.register(ImportantLinks)
-class ImportantLinksAdmin(ExportActionMixin,admin.ModelAdmin):
-    pass
-@admin.register(OthersAdress)
-class AdressAdmin(ExportActionMixin,admin.ModelAdmin):
-    pass
+# @admin.register(UnionType)
+# class UnionTypeAdmin(ImportExportMixin,admin.ModelAdmin):
+#     pass
+# @admin.register(UnionDetails)
+# class UnionDetailsAdmin(ImportExportMixin,admin.ModelAdmin):
+#     pass
+# @admin.register(ImportantLinks)
+# class ImportantLinksAdmin(ImportExportMixin,admin.ModelAdmin):
+#     pass
+# @admin.register(OthersAdress)
+# class AdressAdmin(ImportExportMixin,admin.ModelAdmin):
+#     pass

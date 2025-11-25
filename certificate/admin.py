@@ -31,27 +31,28 @@ class CertificateAdmin(ImportExportMixin,admin.ModelAdmin):
 #     list_filter=['is_verified']
 
 @admin.register(Person)
-class WarishAdmin(ExportActionMixin,admin.ModelAdmin):
+class WarishAdmin(ImportExportMixin,admin.ModelAdmin):
     search_fields=[  'tracking_no','name']
     list_display=[ 'tracking_no','name','relation']
     list_display_links = ['tracking_no','name']
 @admin.register(Cause)
-class CauseAdmin(ExportActionMixin,admin.ModelAdmin):
+class CauseAdmin(ImportExportMixin,admin.ModelAdmin):
     pass
 @admin.register(Relation)
-class RelationAdmin(ExportActionMixin,admin.ModelAdmin):
-    pass
+class RelationAdmin(ImportExportMixin,admin.ModelAdmin):
+    list_display=[ 'id','name','name_en']
 @admin.register(Gender)
-class GenderAdmin(ExportActionMixin,admin.ModelAdmin):
+class GenderAdmin(ImportExportMixin,admin.ModelAdmin):
+    list_display=[ 'id','name','name_en']
     pass
 @admin.register(MaritalStatus)
-class MaritalStatusAdmin(ExportActionMixin,admin.ModelAdmin):
-    pass
+class MaritalStatusAdmin(ImportExportMixin,admin.ModelAdmin):
+    list_display=[ 'id','name','name_en']
 
 @admin.register(Adress)
-class AdressAdmin(ExportActionMixin,admin.ModelAdmin):
+class AdressAdmin(ImportExportMixin,admin.ModelAdmin):
     pass
 @admin.register(CertificateType)
-class CertificateTypeAdmin(ExportActionMixin,admin.ModelAdmin):
+class CertificateTypeAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display=['id','serial','name','template']
     list_display_links=['id','serial','name','template']

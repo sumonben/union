@@ -4,6 +4,10 @@ from django.conf import settings
 from sslcommerz_lib import SSLCOMMERZ
 from .models import PaymentGateway,PaymentPurpose,PaymentType
 
+gateway = PaymentGateway.objects.filter(is_active=True).first()
+cradentials = {'store_id': gateway.store_id,
+            'store_pass': gateway.store_pass, 'issandbox': gateway.is_sandbox}
+
 def generator_trangection_id( size=10, chars=string.ascii_uppercase + string.digits):
     return "".join(random.choice(chars) for _ in range(size))
 
@@ -11,13 +15,7 @@ def generator_trangection_id( size=10, chars=string.ascii_uppercase + string.dig
     
 
 def sslcommerz_payment_gateway(request, certificate,certificate_type, payment_purpose):
-    
-    gateway = PaymentGateway.objects.all().first()
-    cradentials = {'store_id': 'israb672a4e32dfea5',
-            'store_pass': 'israb672a4e32dfea5@ssl', 'issandbox': True} 
-    
-    #cradentials = {'store_id': 'ictparkbd0live',
-    #       'store_pass': '68045F6E0BDD747715', 'issandbox': False}
+      
     sslcommez = SSLCOMMERZ(cradentials)
     body = {}
     body['certificate'] = certificate
@@ -66,9 +64,6 @@ def sslcommerz_payment_gateway(request, certificate,certificate_type, payment_pu
 
 def sslcommerz_payment_gateway_holdingtax(request, holding_tax,holding_type, payment_purpose):
     
-    gateway = PaymentGateway.objects.all().first()
-    cradentials = {'store_id': 'israb672a4e32dfea5',
-            'store_pass': 'israb672a4e32dfea5@ssl', 'issandbox': True} 
     
     #cradentials = {'store_id': 'ictparkbd0live',
     #       'store_pass': '68045F6E0BDD747715', 'issandbox': False}

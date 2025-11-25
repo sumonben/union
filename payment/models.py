@@ -79,10 +79,11 @@ class PaymentURL(models.Model):
         return self.url
         
 class PaymentGateway(models.Model):
-
+    gateway_name = models.CharField(max_length=500, blank=True, null=True)
     store_id = models.CharField(max_length=500, blank=True, null=True)
     store_pass = models.CharField(max_length=500, blank=True, null=True)
-    
+    is_sandbox = models.BooleanField( default=False)
+    is_active=models.BooleanField(default=False)
     class Meta:
         verbose_name = "Payment Gateway"
         verbose_name_plural = "Payment Gateway"

@@ -123,7 +123,7 @@ class CertificateForm(forms.ModelForm):
         self.fields['mother_name']=forms.CharField(label='মায়ের নাম', widget=forms.TextInput( attrs={'class':'form-control form-control-sm',}))
         self.fields['gender']=forms.ModelChoiceField(label='লিঙ্গ',queryset=Gender.objects.all(), widget=forms.Select( attrs={'class':'form-control form-control-sm','onchange':'GenderChanged(this.id)'}))
         self.fields['marital_status']=forms.ModelChoiceField(label='বৈবাহিক অবস্থা',queryset=MaritalStatus.objects.all(), widget=forms.Select( attrs={'class':'form-control form-control-sm','onchange':'MaritalStatusChanged(this.id)'}))
-        self.fields['other_name']=forms.CharField(label='স্বামীর নাম', widget=forms.TextInput( attrs={'class':'form-control form-control-sm',}))        
+        self.fields['other_name']=forms.CharField(required=False,label='স্বামীর নাম', widget=forms.TextInput( attrs={'class':'form-control form-control-sm',}))        
         self.fields['nid_file']=forms.FileField(required=True,label='জাতীয় পরিচয়/জন্ম নিবন্ধন', widget=forms.FileInput( attrs={'placeholder':'না থাকলে প্রয়োজন নেই'}))
         
         
