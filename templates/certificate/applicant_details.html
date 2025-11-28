@@ -27,7 +27,7 @@
         <div class="col col-lg-10">
           <div class="card login-body shadow-lg rounded-10 py-5">
             <table width="100%" border="1" cellspacing="0" cellpadding="10">
-              <thead><th colspan="5" style="height: 40px; background-color: #035a4c; color: #fff;padding: 15px;font-size:20px;text-align:center;">( {{certificate.certificate_type.name}} এর আবেদনের তথ্য )  </th></thead>
+              <thead><th colspan="5" style="height: 40px; background: var(--internal); color: #fff;padding: 15px;font-size:20px;text-align:center;">( {{certificate.certificate_type.name}} এর আবেদনের তথ্য )  </th></thead>
               <tbody>
               </tbody>
             </table>
@@ -85,7 +85,7 @@
                                     <td align="left">
                                       <fieldset>
                                       <table width="100%" border="1" cellspacing="0" cellpadding="2">
-                                        <thead style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;"> Certificate Informations</th></thead>
+                                        <thead style="height: 25px; background-color: var(--weather); color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;padding: 15px;"> Certificate Informations</th></thead>
                                         <tbody>
                                         
       
@@ -156,14 +156,14 @@
                                               <td width="25%" align="left" valign="middle" class="sprytextfield1"> </td>
                                               <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                                 <label>
-                                                  Upazilla: Akkelpur, District: Jaypurhat, Bangladesh                                          
+                                                  Upazilla: {{ union_details.upazilla.name_en }}, District: {{ union_details.district.name_en }}, Bangladesh                                          
                                                 </label>
                                                 </span></td>
       
                                             </tr>
 					    <tr>
                                               <td colspan="2" width="100%" align="left" valign="middle"><span id="sprytextfield1">                                                <label>
-                                                  Online Fee : 10 BDT                                                </label>
+                                                  Online Fee : {{ certificate_type.amount }}+(Online Charge) BDT                                                </label>
                                                 </span></td>
       
                                             </tr>                                          
@@ -190,7 +190,7 @@
                                     <td align="left">
                                       <fieldset>
                                       <table width="100%" border="1" cellspacing="0" cellpadding="2">
-                                        <thead style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;"> ব্যক্তিগত তথ্য</th></thead>
+                                        <thead style="height: 25px; background-color: var(--weather); color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: var(--weather); color: #fff;padding: 15px;"> ব্যক্তিগত তথ্য</th></thead>
                                         <tbody>
                                         
       
@@ -261,7 +261,7 @@
                                               <td width="25%" align="left" valign="middle" class="sprytextfield1"> </td>
                                               <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                                 <label>
-                                                  উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট                                          
+                                                  উপজেলাঃ {{union_details.upazilla.name}}, জেলাঃ {{union_details.district.name}}                                          
                                                 </label>
                                                 </span></td>
       
@@ -269,7 +269,7 @@
                                           <tr>
                                               <td colspan="2" width="100%" align="left" valign="middle"><span id="sprytextfield1">
                                                 <label>
-                                                  অনলাইন ফি :  ১০ টাকা
+                                                  অনলাইন ফি :  ১৫ টাকা
                                                 </label>
                                                 </span></td>
       

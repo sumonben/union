@@ -54,5 +54,7 @@ class AdressAdmin(ImportExportMixin,admin.ModelAdmin):
     pass
 @admin.register(CertificateType)
 class CertificateTypeAdmin(ImportExportMixin,admin.ModelAdmin):
-    list_display=['id','serial','name','template']
+    list_display=['id','serial','name','template','main_body_bg','header_bg','title_bg','body_bg','heading_color','subheading_color','title_color']
     list_display_links=['id','serial','name','template']
+    list_editable=['main_body_bg','header_bg','title_bg','body_bg','heading_color','subheading_color','title_color']
+

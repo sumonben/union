@@ -9,11 +9,25 @@
     }
     .card-text{
         margin-top:30px;
-        color:var(--weather);
-        text-shadow: 2px 2px 2px rgb(65, 7, 7);
         font-size:25px;
-        text-align:center;
-        font-weight:bold;
+        font-weight: bolder;
+        background: var(--internal);
+        -webkit-background-clip: text; 
+        background-clip: text; 
+        -webkit-text-fill-color: transparent; 
+        text-fill-color: transparent; 
+
+    }
+    .card-text:hover{
+            background: #cf0101;
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            text-fill-color: transparent; 
+
+    }
+    .name_box{
+        margin-top: 3px;
     }
     .card-text:hover{
         
@@ -50,7 +64,9 @@
       }
       
       @media(max-width:767px){
-       
+       .name_box{
+        margin-top: 8px;
+        }
         .base{
             height:100px;
             width:150px;
@@ -77,11 +93,22 @@
           }
           .card-text{
             margin-top:35px;
-            color:var(--weather);
-            text-shadow: 1px 1px 1px rgb(65, 7, 7);
             font-size:18px;
-            text-align:center;
+            font-weight: bolder;
+            background: var(--internal);
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            text-fill-color: transparent; 
         }
+        .card-text:hover{
+            background: #cf0101;
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            text-fill-color: transparent; 
+
+    }
         .circle1 {
             position:absolute;
             height:80px;
@@ -146,7 +173,7 @@
                                          ----->
                                    <div class="card-body">
                                        
-                                    <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" style="background-color: transparent" class="column block aos-init aos-animate">
+                                    <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" style="background: transparent" class="column block aos-init aos-animate">
                                            
                                     </div>
                                     <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-animate">
@@ -154,7 +181,7 @@
  
  
                                     <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-animate">
-                                           <p style="text-align:center;width:100%;background-color:var(--weather);color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px" >{{chairman.post.name}}</span></span> </strong></p>
+                                           <p style="text-align:center;width:100%;background:var(--internal);color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px" >{{chairman.post.name}}</span></span> </strong></p>
                                            <h1 class="bk-org title">
                                                      </h1>
                                          
@@ -177,7 +204,7 @@
                                         
                                         
                                        <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-animate">
-                                        <p style="text-align:center;width:100%;background-color:var(--weather);color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;" ><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px">{{officer.post.name}}</span></span> </strong></p>
+                                        <p style="text-align:center;width:100%;background:var(--weather);color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;" ><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px">{{officer.post.name}}</span></span> </strong></p>
                                         <h1 class="bk-org title">
                                                   </h1>
                                       
@@ -195,7 +222,7 @@
     
  
                                          <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="column block aos-init aos-animate">
-                                            <p style="text-align:center;width:100%;background-color:var(--weather);color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px" >মনোগ্রাম</span></span> </strong></p>
+                                            <p style="text-align:center;width:100%;background:var(--weather);color:white;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"><strong><span style="font-size:14px">&nbsp;<span style="font-size:20px" >মনোগ্রাম</span></span> </strong></p>
 
                                            <h1 class="bk-org title">
                                                      </h1>
@@ -254,7 +281,7 @@
                                                       <td align="left">
                                                         <fieldset>
                                                         <table width="100%" border="1" cellspacing="0" cellpadding="10">
-                                                          <thead><th class="title" colspan="5" style=" text-align:center; background-color: var(--weather); color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"> অনলাইন প্রত্যয়ন, সনদ, লাইসেন্স ও হোল্ডিংট্যাক্স প্রদানের জন্য আবেদন করুন </th></thead>
+                                                          <thead><th class="title" colspan="5" style=" text-align:center; background: var(--weather); color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"> অনলাইন প্রত্যয়ন, সনদ, লাইসেন্স ও হোল্ডিংট্যাক্স প্রদানের জন্য আবেদন করুন </th></thead>
                                                           <tbody>
                                                           
                             
@@ -313,30 +340,7 @@
 
                                             
                                             
-                                            {% comment %} {% for certificate_first in certificate_types_first  %}
                                             
-                                            
-                                            
-                                            <div data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" class="col-6 col-lg-4 aos-init aos-animate" style="margin-bottom:25px;">
-                                                <a href="{% url 'apply_for_certificate' certificate_first.id %}" >
-
-                                                <div class="card card-body shadow-sm mb-4" style="overflow:visible;">
-                                                    <div class="circle1">                                                        
-                                                        <img loading="lazy" src="{{certificate_first.image.url}}" alt="Citizenship" height="80">
-                                                    </div>
-                                                    <div >
-                                
-                                                        <div class="card-text">{{certificate_first.name}}</div>
-                                                        
-                                                     </div>
-                                                    
-                                                </div>
-                                            </a>
-                                            
-                                            </div>
-
-                                            {% endfor %} {% endcomment %}
-
                                         
                                         
                                         {% for certificate in certificate_types  %}
@@ -489,7 +493,7 @@
                                         <div class="content-header text-center">
                                             <div class="row pt-5" id="chairman_heading" >
                                                 <div class="col-lg-12 text-center">
-                                                    <a href="/" class="btn btn-lg btn-primary rounded-50" style="background-color:var(--weather);text-shadow:4px 4px 4px rgb(67, 7 ,7)">
+                                                    <a href="/" class="btn btn-lg btn-primary rounded-50" style="background:var(--weather);text-shadow:4px 4px 4px rgb(67, 7 ,7)">
                                                     <h2   >{{chairman.post.name}} ও সচিব</h2>
                                                     </a>
                                             </div>
@@ -514,18 +518,24 @@
                                                         
                                                 </div>
                                             </div>
+                                        {% for officer in  secretary %}
                                             <div data-aos="fade-right" data-aos-offset="100" data-aos-duration="1500" class="col-lg-6 aos-init aos-animate">
             
-            
+                                                  
+                                                    
+                                                    
                                                     <div class="box-body" style="text-align:center">
-                                                        <img loading="lazy" src="{{secretary.image.url}}"  class="person" >
-                                                        <h4>{{secretary.name}}</h4>
-                                                        <h4>{{secretary.post.name}}</h4>
-                                                        <h5>{{secretary.phone}}</h5>
-                                                        <h5>{{secretary.email}}</h5>
+                                                        {% if officer.image %}
+                                                        <img loading="lazy" src=" {{officer.image.url}} "  class="person" >
+                                                        {% endif %}
+                                                        <h4>{{officer.name}}</h4>
+                                                        <h4>{{officer.post.name}}</h4>
+                                                        <h5>{{officer.phone}}</h5>
+                                                        <h5>{{officer.email}}</h5>
                                                         <p>{{ union_details.union_type.name }}ঃ {{ union_details.name_short }}, উপজেলাঃ {{ UPAZILLA }}, জেলাঃ {{  DISTRICT}}। </p>
                                                     </div>
                                                 </div>
+                                                {% endfor %}
                                             </div>
                                                 
                                             
@@ -537,7 +547,7 @@
                                     <div class="container-wrapper">
                                         <div class="content-header text-center">
                                             <div class="row pt-5">
-                                                <div class="col-lg-12 text-center"><a href="/" class="btn btn-lg btn-primary rounded-50" style="background-color:var(--weather);text-shadow:8px 8px 8px rgb(67, 7 ,7)">
+                                                <div class="col-lg-12 text-center"><a href="/" class="btn btn-lg btn-primary rounded-50" style="background:var(--weather);text-shadow:8px 8px 8px rgb(67, 7 ,7)">
                                                     <h2 >ভিশন ও মিশন</h2>
                                                 </a>
                                             </div>
@@ -597,7 +607,7 @@
         <div class="container-wrapper">
             <div class="content-header mb-5">
                 <div class="row pt-5">
-                    <div class="col-lg-12 text-center"><a href="/" class="btn btn-lg btn-primary rounded-50" style="background-color:var(--weather);text-shadow:8px 8px 8px rgb(67, 7 ,7)">
+                    <div class="col-lg-12 text-center"><a href="/" class="btn btn-lg btn-primary rounded-50" style="background:var(--weather);text-shadow:8px 8px 8px rgb(67, 7 ,7)">
                 <h2 >নির্দেশনাসমূহ</h2>
                     </a></div>
                 </div>
@@ -697,7 +707,7 @@
                                                       <td align="left">
                                                         <fieldset>
                                                         <table width="100%" border="1" cellspacing="0" cellpadding="10">
-                                                          <thead><th class="title" colspan="5" style=" text-align:center; background-color: var(--weather); color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"> 
+                                                          <thead><th class="title" colspan="5" style=" text-align:center; background: var(--weather); color: #fff;text-shadow: 4px 4px 4px rgb(73, 25, 11);border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"> 
                                                           {% if union_details.union_type.name_en == 'Municipality' %}
                                                             কাউন্সিলর/ কমিশনার
                                                             {% elif union_details.union_type.name_en == 'City Corporation'  %}
@@ -763,12 +773,15 @@
                                                 <a href="" >
 
                                                 <div class="card card-body shadow-sm mb-4" style="overflow:visible;">
-                                                    <div class="circle1">                                                        
+                                                    <div class="circle1">  
+                                                    {% if officer.image %}
                                                         <img class="rounded-50" loading="lazy" src="{{officer.image.url}}" alt="Citizenship" height="80">
+                                                    {% endif %}
+
                                                     </div>
                                                     <div>
                                                         <br>
-                                                        <h3 style="margin-top: 3px;" >{{officer.name}}</h3>
+                                                        <h3 class="name_box" >{{officer.name}}</h3>
                                                         <h5 >{{officer.phone}}</h5>
                                                         <h6 >
                                                         {% for ward in  officer.ward.all %}

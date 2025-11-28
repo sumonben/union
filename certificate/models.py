@@ -83,6 +83,14 @@ class CertificateType(models.Model):
     is_active=models.BooleanField(default=False)
     is_auto_sign=models.BooleanField(default=False)
     is_join_sign=models.BooleanField(default=False)
+    main_body_bg=models.CharField(max_length=250,blank=True,null=True)
+    header_bg=models.CharField(max_length=250,blank=True,null=True)
+    title_bg=models.CharField(max_length=250,blank=True,null=True)
+    body_bg=models.CharField(max_length=250,blank=True,null=True)
+    heading_color=models.CharField(max_length=250,blank=True,null=True)
+    subheading_color=models.CharField(max_length=250,blank=True,null=True)
+    title_color=models.CharField(max_length=250,blank=True,null=True)
+
     class Meta:
         ordering = ['name']
         verbose_name=" সনদের ধরণ"

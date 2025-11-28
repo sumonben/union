@@ -13,7 +13,7 @@
             width:100%;
             height:700px;
             color:red;
-            background-color:green;
+            background:green;
         }   
     }
 </style>
@@ -27,7 +27,7 @@
         <div class="col col-lg-10">
           <div class="card login-body shadow-lg rounded-10 py-5">
             <table width="100%" border="1" cellspacing="0" cellpadding="10">
-              <thead><th colspan="5" style="height: 40px; background-color: #035a4c; color: #fff;padding: 15px;font-size:20px;text-align:center;">( {{license.license_type.name}} এর আবেদনের তথ্য )  </th></thead>
+              <thead><th colspan="5" style="height: 40px; background: var(--internal); color: #fff;padding: 15px;font-size:20px;text-align:center;">( {{license.license_type.name}} এর আবেদনের তথ্য )  </th></thead>
               <tbody>
               </tbody>
             </table>
@@ -83,7 +83,7 @@
                                     <td align="left">
                                       <fieldset>
                                       <table width="100%" border="1" cellspacing="0" cellpadding="2">
-                                        <thead style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #035a4c; color: #fff;padding: 15px;text-shadow: 3px 3px 3px rgb(73, 25, 11);"> আবেদনের তথ্য</th></thead>
+                                        <thead style="height: 25px; background: var(--internal); color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background: var(--internal); color: #fff;padding: 15px;text-shadow: 3px 3px 3px rgb(73, 25, 11);"> আবেদনের তথ্য</th></thead>
                                         <tbody>
                                         
       
@@ -111,7 +111,7 @@
                                                 <td colspan="2" align="center" valign="middle"><span id="sprytextfield1">
                                                   <label>
                                                      মৌজাঃ {{license.adress_of_license.mouja.name}}, গ্রামঃ {{license.adress_of_license.village.name}}<br>
-                                                    ইউনিয়নঃ তিলকপুর, উপজেলাঃ আক্কেলপুর, জেলাঃ জয়পুরহাট। 
+                                                    ইউনিয়নঃ {{ union_details.name_short }}, উপজেলাঃ {{union_details.upazilla.name }}, জেলাঃ {{union_details.district.name}}। 
                                                   </label>
         
                                               </tr>
@@ -159,7 +159,7 @@
                                               <td width="20%" align="right" valign="middle" class="sprytextfield1"><b>অনলাইন চার্জঃ  </b>  </td>
                                               <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
                                                 <label id="date">
-                                                 ১২.২৫ টাকা                                          
+                                                 {{ certificate_type.amout }}+ (অনলাইন চার্জ) টাকা                                          
                                               </label>
       
                                             </tr>

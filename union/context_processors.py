@@ -6,7 +6,7 @@ def site_info(request):
         union_details=UnionDetails.objects.filter(is_active=True).last()
         certificate_types=CertificateType.objects.all().order_by('serial')
         license_types=LicenseType.objects.all().order_by('serial')
-        color=ColorRoot.objects.filter(union_details=union_details).first()
+        color=ColorRoot.objects.filter(is_active=True).first()
         if union_details:
             return {
                 'SITE_NAME': union_details.name,

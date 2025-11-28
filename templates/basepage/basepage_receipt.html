@@ -54,6 +54,29 @@
     </style>
     
     <style>
+      :root{
+      --weather: {{ color.weather }};
+      --body: {{ color.body }};
+      --weather: {{ color.weather }};
+      --service:{{ color.service }};
+      --card:{{ color.card }};
+      --heading:{{ color.heading }};
+      --sub_heading:{{ color.sub_heading }};
+      --navitem:{{ color.navitem}};
+      --navbar_collaps:{{ color.navbar_collaps}};
+      --member_registration:{{ color.member_registration}};
+      --internal:{{ color.internal}};
+      --other_text:{{ color.other_text}};
+      --main_body_bg: {{ certificate_type.main_body_bg }};
+      --header_bg: {{ certificate_type.header_bg }};
+      --title_bg: {{ certificate_type.title_bg }};
+      --body_bg:{{ certificate_type.body_bg }};
+      --heading_color:{{ certificate_type.heading_color }};
+      --subheading_color:{{ certificate_type.subheading_color }};
+      --title_color:{{ certificate_type.title_color}};
+      
+      }
+
         body {
             font-family: kalpurush;
             font-size:20px;
@@ -225,6 +248,7 @@
           
         background-repeat: no-repeat;
         background-position: center;
+        background-size: 400px 400px;
        }
     </style>
     </head>
@@ -245,7 +269,7 @@
                 <table width="961" height="1000"  border="0" cellpadding="0" cellspacing="0" class="gap01">
                 <tbody>
                 <tr>
-                  <td align="center" valign="middle" bgcolor="#035a4c" class="bdr-body">
+                  <td align="center" valign="middle" style="background: {% if certificate_type.main_body_bg %} var(--main_body_bg) {% else %} #035a4c {% endif %}" class="bdr-body" border="0">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tbody><tr>
                       <td width="10%" height="95" align="center" valign="middle"><img src="{{ LOGO }}" width="90"></td>
@@ -293,7 +317,7 @@
                   <td align="left" valign="top">&nbsp;</td>
                 </tr>
                 <tr>
-                  <td id="first"  bgcolor="#C9DAED" class="bdr-body" valign="top" >
+                  <td id="first"   class="bdr-body"  valign="top" >
                     
     <!-- CONTAINER -->
     {% block content %}

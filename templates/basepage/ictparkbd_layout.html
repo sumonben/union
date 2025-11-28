@@ -30,20 +30,7 @@
     
     
     <style>
-      :root{
-      --weather: {{ color.weather }};
-      --body: {{ color.body }};
-      --weather: {{ color.weather }};
-      --service:{{ color.service }};
-      --card:{{ color.card }};
-      --heading:{{ color.heading }};
-      --sub_heading:{{ color.sub_heading }};
-      --navitem:{{ color.navitem}};
-      --navbar_collaps:{{ color.navbar_collaps}};
-      --member_registration:{{ color.navbar_collaps}};
-      --internal:{{ color.internal}};
-      --other_text:{{ color.other_text}};
-      }
+      
 
       @font-face {
         font-family: "kalpurush";
@@ -84,13 +71,14 @@
         background:var(--body);
       }
       .header{
-        background-color: var(--weather);
+        background: var(--weather);
       }
       .services{
         background: var(--service);
       }
       .card {
         background: var(--card);
+
       }
       .services .nav-tabs .nav-item .nav-link
       {
@@ -100,12 +88,28 @@
       {
         background: var(--weather);
       }
+      .num-counter {
+                background: var(--service)
+
+      }
       .card-text {
 
-        color: var(--weather)
+        font-weight: bolder;
+        background: var(--internal);
+        -webkit-background-clip: text; 
+        background-clip: text; 
+        -webkit-text-fill-color: transparent; 
+        text-fill-color: transparent;      
       }
       .pagebody{
         margin-top: 118px;
+      }
+      .memberRegistration .card .shape {
+        background: var(--member_registration);
+      }
+      a.btn.btn-whatsnew {
+        background: var(--internal);
+        color: var(--heading);
       }
       #rightpan {
         width: 250px;
@@ -150,6 +154,19 @@
           width:100px;
           height:30px;
         }
+        .header .navbar {
+          background: var(--weather);
+        }
+        .header .top-header{
+          background: var(--internal);
+        }
+        .num-counter {
+                background: var(--service)
+
+      }
+      .memberRegistration .card .shape {
+        background-color: var(--member_registration);
+      }
       }
       @madia (min-width:768){
         .dropdown .dropdown-menu{
@@ -160,10 +177,17 @@
         .header .navbar-collapse {
             background: var(--navbar_collaps);
         }
+        .num-counter {
+                background: var(--service)
+
+      }
       }
       .dropdown .dropdown-menu{
           background: var(--navbar_collaps);
          }
+         .memberRegistration .card .shape {
+        background-color: var(--member_registration);
+      }
     </style>
 
     
@@ -259,8 +283,8 @@
                </footer> <!---->       
           
  
-    <a href="#" class="scroll-top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#" class="scroll-top active"><i class="fa fa-arrow-up"></i></a>
+    <a href="#" class="scroll-top" style="background: var(--internal);"><i class="fa fa-arrow-up"></i></a>
+    <a href="#" class="scroll-top active" style="background:var(--internal);"><i class="fa fa-arrow-up"></i></a>
   </div>
 </div>
 

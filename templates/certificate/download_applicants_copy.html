@@ -9,12 +9,12 @@
         color:red;
     }
     option{
-      color:#035a4c;
+      color:var(--weather);
       font-weight:bold;
       font-size:17px;
     }
     option:hover:after{
-      background-color:#035a4c;
+      background-color:var(--weather);
       font-weight:bold;
     }
     @media(max-width:767px){
@@ -27,7 +27,7 @@
     }
 </style>
 <div class="services">
-  <div><h2 style="text-align: center;color: #035a4c ;text-shadow: 2px 2px 2px rgb(65, 7, 7);"><u>              
+  <div><h2 style="text-align: center;color: var(--weather) ;text-shadow: 2px 2px 2px rgb(65, 7, 7);"><u>              
     {% if  request.resolver_match.url_name in 'check_certificate_form' %}
     আপনার সনদটি যাচাই করুন  \
      {% elif  request.resolver_match.url_name in 'download_applicants_copy_form' %}
@@ -43,7 +43,7 @@
         <div class="col col-lg-10">
           <div class="card login-body shadow-lg rounded-10 py-5">
             <table width="100%" border="1" cellspacing="0" cellpadding="10">
-              <thead><th colspan="5" style="height: 40px; background-color: #035a4c; color: #fff;padding: 15px;font-size:20px;text-align:center;"> 
+              <thead><th colspan="5" style="height: 40px; background: var(--internal); color: #fff;padding: 15px;font-size:20px;text-align:center;"> 
               {% if  request.resolver_match.url_name in 'check_certificate_form' %}
                 সনদ যাচাই ফর্ম
               {% elif  request.resolver_match.url_name in 'download_applicants_copy_form' %}

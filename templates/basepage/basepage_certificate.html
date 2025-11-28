@@ -57,6 +57,30 @@
             }
     
     }
+    :root{
+      --weather: {{ color.weather }};
+      --body: {{ color.body }};
+      --weather: {{ color.weather }};
+      --service:{{ color.service }};
+      --card:{{ color.card }};
+      --heading:{{ color.heading }};
+      --sub_heading:{{ color.sub_heading }};
+      --navitem:{{ color.navitem}};
+      --navbar_collaps:{{ color.navbar_collaps}};
+      --member_registration:{{ color.member_registration}};
+      --internal:{{ color.internal}};
+      --other_text:{{ color.other_text}};
+      --main_body_bg: {{ certificate_type.main_body_bg }};
+      --header_bg: {{ certificate_type.header_bg }};
+      --title_bg: {{ certificate_type.title_bg }};
+      --body_bg:{{ certificate_type.body_bg }};
+      --heading_color:{{ certificate_type.heading_color }};
+      --subheading_color:{{ certificate_type.subheading_color }};
+      --title_color:{{ certificate_type.title_color}};
+      
+      }
+
+
         body {
             font-family:  kalpurush;
             font-size:20px;
@@ -131,10 +155,10 @@
           background: radial-gradient(#C9DAED,#C9DAED,#003300)
         }
         .radial-gradient-body{
-          background: radial-gradient(#fff,#fff,#C9DAED)
+          background: {% if certificate_type.main_body_bg %} var(--main_body_bg) {% else %} radial-gradient(#fff,#fff,#C9DAED) {% endif %}
         }
         .radial-gradient-footer{
-          background: radial-gradient(#C9DAED,#C9DAED,#035a4c)
+          background: {% if certificate_type.header_bg %} var(--header_bg) {% else %} #65c791 {% endif %}
         }
         #item { 
           color:rgb(184, 4, 4); 
@@ -143,6 +167,16 @@
           color:rgb(184, 4, 4);       
          }
         @media print {
+          html, body {
+            height: 297mm;
+            width: 210mm;
+            margin-top: 0px;
+        }
+        #first{
+        height: 1080px; 
+        width: 100%;
+
+       }
          {% comment %} #item {
             -webkit-filter: drop-shadow(2px 2px 2px rgb(58, 56, 56));
             text-shadow: 2px 2px 2px rgb(58, 56, 56); 
@@ -157,8 +191,8 @@
             }
         }
         #certificate_title{
-          background: radial-gradient(#fff,#fff,#035a4c);
-          color:rgb(134, 17, 2);
+          background: {% if certificate_type.title_bg %} var(--title_bg) {% else %} radial-gradient(#C9DAED,#C9DAED,#003300) {% endif %};
+          color:{% if certificate_type.title_color %} var(--title_color) {% else %} rgb(134, 17, 2) {% endif %};
           text-shadow: 2px 2px 2px rgb(65, 7, 7);
           font-weight: 500;
         }
@@ -235,6 +269,7 @@
           
         background-repeat: no-repeat;
         background-position: center;
+        background-size: 400px 400px;
        }
        
     </style>
@@ -252,11 +287,11 @@
             </tr>
             <tr>
               <td class="main-left">&nbsp;</td>
-              <td style="padding:1em;" bgcolor="#035a4c" align="center">
+              <td style="padding:1em;background: {% if certificate_type.main_body_bg %} var(--main_body_bg) {% else %} #035a4c {% endif %}"   align="center">
                 <table width="961" height="1000"  border="0" cellpadding="0" cellspacing="0" class="gap01">
                 <tbody>
                 <tr>
-                  <td align="center" valign="middle" bgcolor="#65c791" class="bdr-body">
+                  <td align="center" valign="middle" style="background: {% if certificate_type.header_bg %} var(--header_bg) {% else %} #65c791 {% endif %}" class="bdr-body">
                     <table  width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
                     <tbody>
                     {% if certificate.language == '2'  %}
@@ -266,10 +301,10 @@
                     </tr>
                     <tr>
                       <td  width="70%" height="100" align="center" valign="middle" style="text-align:center;margin-left:-50%;">
-                        <span  style="color:#fff;margin-left:-10%;line-height:1;overflow:vissible;margin-top:-15px;display: inline-block;">Allah is Almighty</span><br>
-                        <span class="GrayBlue10bold" style="color:rgb(65, 7, 7);margin-left:-10%;font-size:20px;line-height:1.5">People's Republic of Bangladesh</span><br>
-                      <span class="GrayBlue20bold" id="item_en"  style="text-align: center;;line-height:1;margin-left:-10%;">{{union_details.name_en}}</span><br>
-                      <span style="color:#000;margin-top:0px;font-weight:500;margin-left:-10%;font-size:22px;">Post-Office: {{union_details.post_office.name_en}}, Upazilla: {{union_details.upazilla.name_en}}, District: {{union_details.district.name_en}}.</span>
+                        <span  style="color:{% if certificate_type.subheading_color %} var(--subheading_color) {% else %} #fff {% endif %};margin-left:-10%;line-height:1;overflow:vissible;margin-top:-15px;display: inline-block;">Allah is Almighty</span><br>
+                        <span class="GrayBlue10bold" style="color:{% if certificate_type.subheading_color %} var(--subheading_color) {% else %} #000 {% endif %};margin-left:-10%;font-size:20px;line-height:1.5">People's Republic of Bangladesh</span><br>
+                      <span class="GrayBlue20bold" id="item_en"  style="color:{% if certificate_type.heading_color %} var(--heading_color) {% else %} brown {% endif %};text-align: center;;line-height:1;margin-left:-10%;">{{union_details.name_en}}</span><br>
+                      <span style="color:{% if certificate_type.subheading_color %} var(--subheading_color) {% else %} #000 {% endif %};margin-top:0px;font-weight:500;margin-left:-10%;font-size:22px;">Post-Office: {{union_details.post_office.name_en}}, Upazilla: {{union_details.upazilla.name_en}}, District: {{union_details.district.name_en}}.</span>
                       </td>
                       <td width="10%" height="95" align="center" valign="middle" style="text-align:center"></td>
                       </tr>
@@ -280,10 +315,10 @@
                     <tr>
                       <td  width="70%" height="100" align="center" valign="middle" style="text-align:center;margin-left:-50%;">
                         <span  style="color:#fff;margin-left:-10%;line-height:1;overflow:vissible;margin-top:-15px;display: inline-block;">বিসমিল্লাহির রাহমানির রাহিম</span><br>
-                        <span class="GrayBlue10bold" style="color:rgb(65, 7, 7);margin-left:-10%;font-size:20px;line-height:1.5">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</span><br>
+                        <span class="GrayBlue10bold" style="color:{% if certificate_type.subheading_color %} var(--subheading_color) {% else %} rgb(65, 7, 7) {% endif %};margin-left:-10%;font-size:20px;line-height:1.5">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</span><br>
 
-                      <span class="GrayBlue20bold" id="item"  style="text-align: center;;line-height:1;margin-left:-10%;">{{union_details.name}}</span><br>
-                      <span style="color:#000;margin-top:0px;font-weight:500;margin-left:-10%;font-size:22px;">ডাকঘরঃ {{union_details.post_office.name}}, উপজেলাঃ {{union_details.upazilla.name}}, জেলাঃ {{union_details.district.name}}</span>
+                      <span class="GrayBlue20bold" id="item"  style="color: {% if certificate_type.heading_color %} var(--heading_color) {% else %} brown {% endif %};text-align: center;;line-height:1;margin-left:-10%;">{{union_details.name}}</span><br>
+                      <span style="color:{% if certificate_type.subheading_color %} var(--subheading_color) {% else %} #000 {% endif %};margin-top:0px;font-weight:500;margin-left:-10%;font-size:22px;">ডাকঘরঃ {{union_details.post_office.name}}, উপজেলাঃ {{union_details.upazilla.name}}, জেলাঃ {{union_details.district.name}}</span>
                       </td>
                       <td width="10%" height="95" align="center" valign="middle" style="text-align:center"></td>
                       </tr>                    
@@ -329,7 +364,7 @@
       <tr>
        <td width="0%" height="50" align="center" valign="middle" class="black10">&nbsp;</td>
       <td width="49%" height="50" align="left"  valign="middle">
-      <table width="100%" border="0" cellpadding="5" cellspacing="0" class="black10">
+      <table width="100%" border="0" cellpadding="5" cellspacing="0" class="black10" style="color:{% if certificate_type.subheading_color %} var(--subheading_color) {% else %} #000 {% endif %}">
         <tbody>
           {% if certificate.language == '2'  %}
           <tr>
