@@ -36,12 +36,12 @@
             {% if certificate.language == '2' %}
             <br>({{certificate.chairman.name_en}})<br>
             {{certificate.chairman.post.name_en}}<br>
-            4 No. Tilakpur Union Council<br>Akkelpur, Jaypurhat.
-            {% else %} 
+{{union_details.name_en}}                                          
+<br>   {{union_details.upazilla.name_en}}, {{union_details.district.name_en}}            {% else %} 
             <br>{{certificate.chairman.name}}<br>
             {{certificate.chairman.post.name}}<br>
-            ৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট
-            {% endif %}
+{{union_details.name}}                                          
+<br>   {{union_details.upazilla.name}}, {{union_details.district.name}}            {% endif %}
     
         </div>
     </td>

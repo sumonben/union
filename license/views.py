@@ -128,9 +128,9 @@ class LicenseView(View):
             secretary=Secretary.objects.all().order_by('-id').first()
             print(license.adress_of_license)
             member=None
-            member=Member.objects.filter(ward__name_en=certificate.adress.village.ward.name_en, is_active=True,is_preserved=False).last()
-            if member is None:
-                member=Member.objects.filter(ward__name_en=certificate.adress.village.ward.name_en, is_active=True).last()
+            # member=Member.objects.filter(ward__name_en=license.adress.adress_of_license.ward.name_en, is_active=True,is_preserved=False).last()
+            # if member is None:
+            #     member=Member.objects.filter(ward__name_en=license.adress_of_license.village.ward.name_en, is_active=True).last()
             license.chairman=chairman
             license.secretary=secretary
             license.member=member
@@ -176,8 +176,6 @@ class DownloadLicenseView(View):
     template_name = 'license/download_license_form.html'
     def get(self, request, *args, **kwargs):
         context={}
-        union_details=UnionDetails.objects.last()
-        context['union_details']=union_details
         license_types=LicenseType.objects.all().order_by('serial')
         context['license_types']=license_types
         form=LicenceDownloadForm()
@@ -185,8 +183,6 @@ class DownloadLicenseView(View):
         return render(request,self.template_name, context)
     def post(self, request, *args, **kwargs):
         context={}
-        union_details=UnionDetails.objects.last()
-        context['union_details']=union_details
         transaction=None
         license_type=LicenseType.objects.all().order_by('serial')
         context['license_type']=license_type

@@ -71,29 +71,29 @@ WarishFormSet = modelformset_factory(
     Person, fields=("name","nid","dob", "relation","phone","comment"), extra=1,
     widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
-            'nid': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
+            'nid': forms.TextInput(attrs={'class': 'form-control form-control-sm','label':'জাতীয় পরিচয়/জন্ম নিবন্ধন'}),
             'dob': forms.DateInput(attrs={'class': 'form-control form-control-sm','type': 'date'}),
             'relation': forms.Select(attrs={'class': 'form-control form-control-sm',}),            
             'phone': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
-            'comment': forms.Select(choices=COMMENT_CHOICE,attrs={'class': 'form-control form-control-sm',}),            
+            'comment': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),            
         }
 )
 PersonFormSet = modelformset_factory(
     Person, fields=("name","nid","dob","relation","phone","comment"), extra=1,
     widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
-            'nid': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
+            'nid': forms.TextInput(attrs={'class': 'form-control form-control-sm','label':'জাতীয় পরিচয়/জন্ম নিবন্ধন'}),
             'dob': forms.DateInput(attrs={'class': 'form-control form-control-sm','type': 'date'}),
             'relation': forms.Select(attrs={'class': 'form-control form-control-sm',}),            
             'phone': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
-            'comment': forms.Select(choices=COMMENT_CHOICE,attrs={'class': 'form-control form-control-sm',}),            
+            'comment': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),            
         }
 )
 SamePersonFormSet = modelformset_factory(
     Person, fields=("name","nid"), extra=1,
     widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
-            'nid': forms.TextInput(attrs={'class': 'form-control form-control-sm',}),
+            'nid': forms.TextInput(attrs={'class': 'form-control form-control-sm','label':'জাতীয় পরিচয়/জন্ম নিবন্ধন'}),
 }
 )
 
@@ -129,7 +129,8 @@ class CertificateForm(forms.ModelForm):
         
         if self.certificate_type:
             self.fields['certificate_type']=forms.ModelChoiceField(label='সনদের ধরণ',queryset=CertificateType.objects.filter(id__in=[self.certificate_type.id,]),initial=CertificateType.objects.filter(id__in=[ self.certificate_type.id,]), widget=forms.Select( attrs={'class':'form-control form-control-sm',}))
-            if self.certificate_type.id==2 or self.certificate_type.id == 4 or self.certificate_type.id==24 or self.certificate_type.id==27 or self.certificate_type.id == 28 or self.certificate_type.id == 29:
+            # if self.certificate_type.id==2 or self.certificate_type.id == 4 or self.certificate_type.id==24 or self.certificate_type.id==27 or self.certificate_type.id == 28 or self.certificate_type.id == 29:
+            if self.certificate_type.is_english:
                 self.fields['language']=forms.ChoiceField(label='ভাষা', choices=LANGUAGE_CHOICE, widget=forms.Select( attrs={}))
             if self.certificate_type.id==3:
                 self.fields['cause']=forms.ModelChoiceField(label='কারণ',queryset=Cause.objects.all(),initial=Cause.objects.filter(serial__in=[ 1,]), widget=forms.Select( attrs={'class':'form-control form-control-sm',}))
@@ -150,8 +151,9 @@ class CertificateForm(forms.ModelForm):
                 self.fields['language']=forms.ChoiceField(label='ভাষা', choices=LANGUAGE_CHOICE, widget=forms.Select( attrs={}))
                 self.fields['dob']=forms.DateField(label='জন্ম তারিখ',widget=forms.DateInput(attrs=dict(type='date')))
                 self.fields['date']=forms.DateField(label='মৃত্যু তারিখ',widget=forms.DateInput(attrs=dict(type='date')))
-                self.fields['description']=forms.CharField( label='মৃত্যুর কারণ',widget=CKEditorWidget(config_name='default'))
-                self.fields['passport']=forms.CharField( label='পাসপোর্ট নং (যদি থাকে)',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'প্রযোজ্য ক্ষেত্রে(বিদেশ বিষয়ে কোন সংশ্লিষ্টতা থাকলে)'}))
+                self.fields['name_en']=forms.CharField( label='আবেদনকারীর নাম',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'আবেদনকারীর নাম)'}))
+                self.fields['description']=forms.CharField( label='',widget=CKEditorWidget(config_name='default'))
+                self.fields['passport']=forms.CharField(required=False, label='পাসপোর্ট নং (যদি থাকে)',widget=forms.TextInput( attrs={'class':'form-control form-control-sm','placeholder':'প্রযোজ্য ক্ষেত্রে(বিদেশ বিষয়ে কোন সংশ্লিষ্টতা থাকলে)'}))
             if self.certificate_type.id== 15:
                 self.fields['date']=forms.DateField(label='স্বামীর মৃত্যু তারিখ',widget=forms.DateInput(attrs=dict(type='date')))
             if self.certificate_type.id== 16:

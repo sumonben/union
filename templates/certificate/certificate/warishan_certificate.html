@@ -4,6 +4,8 @@
 
 {% block content %}
 {% load static %}
+{% load union_custom_tags %}
+
 <style>
     .main_body{
         width:100%;
@@ -213,7 +215,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         {% for warish in certificate.person.all %}
                                             <tr>
                                                 
-                                                <td  width="10%" align="center" valign="middle" >{{forloop.counter}} </td>
+                                                <td  width="10%" align="center" valign="middle" >{{forloop.counter|stringformat:"02d"|eng_to_bengali_digits}} </td>
                                                 <td width="60%" align="center" valign="middle">
                                                   {{warish.name}}                                       
                                                 <td width="15%" align="center" valign="middle" >{{warish.relation.name}} </td>

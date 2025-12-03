@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UnionDetails,ImportantLinks, UnionType, ColorRoot
+from .models import UnionDetails,ImportantLinks, UnionType, ColorRoot, DeveloperDetails
 from import_export.admin import ExportActionMixin,ImportExportMixin
 from admin_auto_filters.filters import AutocompleteFilter
 
@@ -12,6 +12,10 @@ class UnionDetailsAdmin(ImportExportMixin,admin.ModelAdmin):
 @admin.register(ImportantLinks)
 class ImportantLinksAdmin(ImportExportMixin,admin.ModelAdmin):
     pass
+@admin.register(DeveloperDetails)
+class DeveloperDetailsAdmin(ImportExportMixin,admin.ModelAdmin):
+    list_display=[   'serial','title','title_en']
+
 @admin.register(ColorRoot)
 class ColorRootAdmin(ImportExportMixin, admin.ModelAdmin):
     list_display=[   'serial','title','title_en','body',

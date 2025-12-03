@@ -32,9 +32,14 @@
       <div class="row justify-content-md-center">
         <div class="col col-lg-10">
           <div class="card login-body shadow-lg rounded-10 py-5">
+            <div class="card-body">
+            <span class="shape"><img align="center" loading="lazy" src="{% if developer_details %}{{ developer_details.logo.url }}{% endif %}"><img align="center" loading="lazy" style="height:60%;margin-top:10%;rotate: -50deg;" src="{{ union_details.logo.url}}"></span> 
+
             <h1 style="text-align: center;">
                 Server error 404!
+                <br>
             </h1>
+          </div>
 <!-- CONTAINER -->
              </div>
         </div>

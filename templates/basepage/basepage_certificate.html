@@ -1,6 +1,6 @@
 {% load static  %}
-
-  
+{% load i18n %}
+{% load union_custom_tags %}
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   
@@ -259,11 +259,11 @@
        #body_div{
         
 	 {% if certificate.language == '2' %}
-        background-image:url({{union_details.logo_opacity.url}}); 
+        background-image:url({{ union_details.logo_opacity.url }}); 
 
         {% else %}
        
-        background-image:url({{union_details.logo_opacity.url}}); 
+        background-image:url({{ union_details.logo_opacity.url }}); 
 
         {% endif %}  
           
@@ -303,7 +303,7 @@
                       <td  width="70%" height="100" align="center" valign="middle" style="text-align:center;margin-left:-50%;">
                         <span  style="color:{% if certificate_type.subheading_color %} var(--subheading_color) {% else %} #fff {% endif %};margin-left:-10%;line-height:1;overflow:vissible;margin-top:-15px;display: inline-block;">Allah is Almighty</span><br>
                         <span class="GrayBlue10bold" style="color:{% if certificate_type.subheading_color %} var(--subheading_color) {% else %} #000 {% endif %};margin-left:-10%;font-size:20px;line-height:1.5">People's Republic of Bangladesh</span><br>
-                      <span class="GrayBlue20bold" id="item_en"  style="color:{% if certificate_type.heading_color %} var(--heading_color) {% else %} brown {% endif %};text-align: center;;line-height:1;margin-left:-10%;">{{union_details.name_en}}</span><br>
+                      <span class="GrayBlue20bold" id="item_en"  style="color:{% if certificate_type.heading_color %} var(--heading_color) {% else %} brown {% endif %};text-align: center;;line-height:1;margin-left:-10%;">{{union_details.name_en|upper}}</span><br>
                       <span style="color:{% if certificate_type.subheading_color %} var(--subheading_color) {% else %} #000 {% endif %};margin-top:0px;font-weight:500;margin-left:-10%;font-size:22px;">Post-Office: {{union_details.post_office.name_en}}, Upazilla: {{union_details.upazilla.name_en}}, District: {{union_details.district.name_en}}.</span>
                       </td>
                       <td width="10%" height="95" align="center" valign="middle" style="text-align:center"></td>
@@ -314,7 +314,7 @@
                     </tr>
                     <tr>
                       <td  width="70%" height="100" align="center" valign="middle" style="text-align:center;margin-left:-50%;">
-                        <span  style="color:#fff;margin-left:-10%;line-height:1;overflow:vissible;margin-top:-15px;display: inline-block;">বিসমিল্লাহির রাহমানির রাহিম</span><br>
+                        <span  style="color:#fff;margin-left:-10%;line-height:1;overflow:vissible;margin-top:-15px;display: inline-block;"></span><br>
                         <span class="GrayBlue10bold" style="color:{% if certificate_type.subheading_color %} var(--subheading_color) {% else %} rgb(65, 7, 7) {% endif %};margin-left:-10%;font-size:20px;line-height:1.5">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</span><br>
 
                       <span class="GrayBlue20bold" id="item"  style="color: {% if certificate_type.heading_color %} var(--heading_color) {% else %} brown {% endif %};text-align: center;;line-height:1;margin-left:-10%;">{{union_details.name}}</span><br>

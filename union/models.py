@@ -80,5 +80,21 @@ class ColorRoot(models.Model):
             return self.title+'('+self.title_en+')'
         else:
             return str(id)+':'
+class DeveloperDetails(models.Model):
+    serial=models.IntegerField(default=10)
+    title=models.CharField(max_length=100,blank=True,null=True)
+    title_en=models.CharField(max_length=100,blank=True,null=True)
+    developer_name=models.CharField(max_length=250,blank=True,null=True)
+    developer_name_en=models.CharField(max_length=250,blank=True,null=True)
+    logo=models.FileField(upload_to='media/developer',blank=True,null=True,)
+    monogram=models.FileField(upload_to='media/developer',blank=True,null=True)
+    link=models.URLField(max_length=200, blank=True, null=True)
+    is_active=models.BooleanField(default=False)
+    class Meta:
+        ordering = ['serial']
+    def __str__(self):
+        if self.title and self.title_en:
+            return self.title+'('+self.title_en+')'
+        else:
+            return str(id)+':'
 
- 

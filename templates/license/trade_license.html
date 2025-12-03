@@ -4,6 +4,8 @@
 
 {% block content %}
 {% load static %}
+{% load union_custom_tags %}
+
 <style>
     .main_body{
         width:100%;
@@ -152,11 +154,334 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
 <div class="box_container" style="width: 100%; margin: 0px;">
     <div  style="margin: auto;width: 100%;">
         
+        {% if license.language == '2' %}
+                  
                   <div >
                         <div class="step d-block" >
                           <div >
                             <h3 style="text-align: center;">                            
-                              <button class="rounded-50 ml-2" id="license_title" style=" background:var(--internal); padding-left:5px;padding-right:10px"> 
+                              <button class="rounded-50 ml-2" id="license_title" style=" background:var(--internal); padding-left:5px;padding-right:10px;color:brown"> 
+                                {{license_type.name_en}}
+                              </button>
+                          </h3>
+                          </div>
+                            <table align="center" width="90%">
+                              <tr style="padding:0px;">
+                              <td>
+                                <div  align="left"><h5 style="text-align: left; margin-left:6%">
+                                  License No.: &nbsp<div style="display:inline;" >{{license.license_no}}</div></h5>
+                              </div>
+                              </td>
+                              <td>                            
+                                <div   align="right"><h5 style="text-align: right;">
+                                  Issue Date: &nbsp<div style="display:inline">{{license.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp&nbsp</h5>
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+
+
+                         
+                          <table  width="690"  align="center" valign="top" cellspacing="0" cellpadding="0">
+
+                            <tbody>
+                            <tr>
+                              <td  align="center">
+                                <table   width="80%" align="center" style="font-size:15px;"  cellspacing="0" cellpadding="0">
+                                  <tbody>
+                                    <tr>
+                                      <td colspan="6"  align="left"  >
+                                       
+                                          <b><div style="display:inline-block;line-height:1;">
+                                            
+                                                  Name of Business Organization: 
+                                          </div>
+                                          <div style="display:inline-block;margin-left: 20px;">
+                                             
+                                              {{license.licensed_name}} 
+                                      </div></b>
+                                      
+                                      </td> 
+                                   
+                                  </tr>
+                                    <tr>
+                                        <td colspan="6"  align="left"  >
+                                         
+                                            <div style="display:inline-block;line-height:1;">
+                                              
+                                                    Name of License Holder: 
+                                            </div>
+                                            <div style="display:inline-block;margin-left: 20px;">
+                                               
+                                                {{license.license_owner_name}} 
+                                        </div>
+                                        
+                                        </td> 
+                                     
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6"  align="left"  >
+                                            <div style="display:inline-block;">
+                                              
+                                                NID/Birth Registration: 
+                                            </div>
+                                            <div style="display:inline-block; margin-left: 20px;">
+                                               
+                                                <u>{{license.nid}} </u>
+                                        </div>
+                                        </td> 
+                                     
+                                      
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6"  align="left"  >
+                                            <div style="display:inline-block;">
+                                                
+                                                  Father's Name: 
+                                            </div>
+                                          
+                                        
+                                      
+                                           
+                                            <div style="display:inline-block; margin-left: 20px;">
+                                                
+                                                    <u>{{license.father_name}} </u>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                          <tr>
+                                            <td colspan="6"  align="left"  >
+
+                                            <div style="display:inline-block;">
+                                                
+                                                Mother's Name: 
+                                        </div>
+                                        <div style="display:inline-block; margin-left: 20px;">
+                                                
+                                            <u>{{license.mother_name}} </u>
+                                     </div>
+
+                                        </td> 
+                    
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="1" align="left" valign="middle" >
+                                            <div style="display:inline-block;">
+                                              
+                                                Address:
+                                            </div>
+                                          </td>
+                                    </tr>
+                                    <tr>
+                  
+                                          <td  colspan="5" align="left" valign="middle" >
+                                            <div style="display:inline-block;">
+                                            
+                                              Village: {{license.adress.village}}, Union: {{license.adress.union.name_en}}
+                                            </div>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                       
+                                        <td  colspan="5" align="left" valign="middle" >
+                                            <div style="display:inline-block;">
+                                            
+                                              Upazilla: {{license.adress.upazilla.name_en}}, District: {{license.adress.district.name_en}}।
+                                            </div>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left" valign="middle" >
+                                            <div style="display:inline-block;">
+                                              
+                                                Address Of Business Organization: 
+                                            </div>
+                                          </td>
+                                    </tr>  
+                                          <tr>
+                                            <td colspan="5" align="left" valign="middle">
+                                            <div style="display:inline-block;">
+                                            
+                                            Place:  {{license.place_of_license}} ,  Vilage: {{license.adress_of_license.village.name_en}} <br>  
+                                              
+                                            </div>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                      <td  colspan="5" align="left" valign="middle" >
+                                         
+                                          <div style="display:inline-block;">
+                                        
+                                                    Union: {{ union_details.name_short_en }}, Upazilla: {{union_details.upazilla.name_en }}, District: {{union_details.district.name_an}}.
+                                          </div>
+                                      </td> 
+                                  </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left" valign="middle" >
+                                            <div style="display:inline-block;">
+                                              
+                                                Business Type 
+                                            </div>
+                                            <div style="display:inline-block;margin-left: 20px;">
+                                              {% if license.profession %}
+                                                {{license.profession}} 
+                                                {% else %}
+                                                ---------
+                                                {% endif %}
+                                            </div>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left" valign="middle" >
+                                            <!-- <div style="display:inline-block;">
+                                              
+                                                পরিশোধিত মূলধনের পরিমাণঃ
+                                            </div> -->
+                                            <!-- <div style="display:inline-block;margin-left: 20px;">
+                                                
+                                                {% if license.capital %}
+                                                {{license.capital}}
+                                                {% else %}
+                                                ----------
+                                                {% endif %}
+                                                  
+                                                
+                                            </div> -->
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left" valign="middle" >
+                                            <div style="display:inline-block;">
+                                              
+                                                Validation Time:                                      
+                                            </div>
+                                            <div style="display:inline-block;margin-left: 20px;">
+                                             June 30, <div style="display:inline;" id="to_year">{% if license.duration_to %} {{license.duration_to|date:"Y"}} {% elif license.created_at|date:"n" < 6 %} {{ license.created_at|date:"Y" }} {% else %} {{ license.created_at|date:"Y"|add:'1' }} {% endif %} </div>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left"  cellpadding="2" valign="middle" >
+                                            <div style="display:inline-block;">
+                                              
+                                               <b> Fee or Tax amount: </b>                                         
+                                            </div>
+                                           
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6"  valign="middle" >
+                                            <table class="table_bottom" width="100%"  align="center">
+                                                <tr >
+                                                    <td>Tax on Business</td>
+                                                    <td>Fee on business</td>
+                                                    <td>Vat and others</td>
+                                                    <td>Total</td>
+                                                </tr>
+                                                <tr id="payment">
+                                                    <td>
+                                                      {% if license.tax %}
+                                                      {{license.tax}}
+                                                      {% else %}
+                                                      ------
+                                                      {% endif %}
+                                                     
+                                                    </td>
+                                                    <td>
+                                                      {% if license.fee %}
+                                                      {{license.fee}}
+                                                      {% else %}
+                                                      ------
+                                                      {% endif %}
+                                                      
+                                                    </td>
+                                                    <td>
+                                                      {% if license.vat_n_others %}
+                                                      {{license.vat_n_others}}
+                                                      {% else %}
+                                                      ------
+                                                      {% endif %}
+                                                      
+                                                    </td>
+                                                    <td>
+                                                      {% if license.total_payment %}
+                                                      {{license.total_payment}}
+                                                      {% else %}
+                                                      ------
+                                                      {% endif %}
+                                                     
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                  <td colspan="3">In Words: 
+                                                    {% if license.total_payment_in_word %}
+                                                      {{license.total_payment_in_word}}
+                                                      {% else %}
+                                                      ------
+                                                      {% endif %}
+                                                   
+                                                    <td>
+                                                     
+                                                </tr>
+                                               
+                                            </table>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" align="left" valign="middle" >
+                                            <div style="display:inline-block;text-align:justify">
+After getting all fee, TAX and VAT  we approve the license to run business within the arena of {{ union_details.name_short_en }}                                                                               
+                                            </div>
+                                           
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td  colspan="6" width="690" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify">     </td>
+
+                                    </tr>
+                                  
+                                  
+                                    <tr valign="top">
+                                      <td  colspan="2" align="center"></div><div style="float:left;text-align:center"><img id='barcode' loading="lazy" src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{license.license_type.name_en}}%0DTracking No: {{license.tracking_no}}%0DName:{{license.name}}&amp;size=200x200" width="120px" height="120px" alt="{{license.name}}" title="{{license.license_type.name_en}}:{{license.name}}" width="50" height="50" /></div></td>
+
+                                        <td  colspan="2" align="right"><br></div></td>
+                                        <td  colspan="2" align="right"><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if license.chairman.signature %}{{license.chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{ license.chairman.name_en }}<br>{{ license.chairman.post.name_en }}<br>{{ union_details.name_en }}<br>{{union_details.upazilla.name_en}}, {{union_details.district.name_en}}</div></td>
+
+                                       
+                                   </tr>
+                                    <tr>
+                                        
+           
+                                       
+                                   </tr>
+                                  
+                                      
+                                      
+                                     
+                                </tbody></table>
+                            </td>
+                            
+                          </tr>
+                              
+                          </tbody>
+                        </table>
+                          
+                              
+
+                        </div>
+                       
+                        
+                       
+                    
+                
+                </div>
+
+          
+                  {% else %}
+                  <div >
+                        <div class="step d-block" >
+                          <div >
+                            <h3 style="text-align: center;">                            
+                              <button class="rounded-50 ml-2" id="license_title" style=" background:var(--internal); padding-left:5px;padding-right:10px;color:brown"> 
                                 {{license_type.name}}
                               </button>
                           </h3>
@@ -170,10 +495,11 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                               </td>
                               <td>                            
                                 <div   align="right"><h5 style="text-align: right;">
-                                  তারিখঃ &nbsp<div id="date" style="display:inline">{{license.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp&nbsp</h5>
+                                  ইস্যু তারিখঃ &nbsp<div id="date" style="display:inline">{{license.transaction.tran_date|date:"d-m-Y"}}</div>&nbsp&nbsp</h5>
                                 </div>
                               </td>
-                            </tr></table>
+                            </tr>
+                          </table>
 
 
                          
@@ -222,7 +548,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                             </div>
                                             <div style="display:inline-block; margin-left: 20px;">
                                                
-                                                <u>{{license.nid}} </u>
+                                                <u>{{license.nid|eng_to_bengali_digits}} </u>
                                         </div>
                                         </td> 
                                      
@@ -297,7 +623,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                             <td colspan="5" align="left" valign="middle">
                                             <div style="display:inline-block;">
                                             
-                                               মৌজাঃ {{license.adress_of_license.mouja.name}}, গ্রামঃ {{license.adress_of_license.village.name}} <br>  
+                                            স্থানঃ  {{license.place_of_license}} ,  মহল্লা/গ্রামঃ {{license.adress_of_license.village.name}} <br>  
                                               
                                             </div>
                                         </td> 
@@ -315,7 +641,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         <td  colspan="6" align="left" valign="middle" >
                                             <div style="display:inline-block;">
                                               
-                                                ব্যবসা /পেশার ধরণঃ 
+                                                ব্যবসার ধরণঃ 
                                             </div>
                                             <div style="display:inline-block;margin-left: 20px;">
                                               {% if license.profession %}
@@ -328,11 +654,11 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                     </tr>
                                     <tr>
                                         <td  colspan="6" align="left" valign="middle" >
-                                            <div style="display:inline-block;">
+                                            <!-- <div style="display:inline-block;">
                                               
                                                 পরিশোধিত মূলধনের পরিমাণঃ
-                                            </div>
-                                            <div style="display:inline-block;margin-left: 20px;">
+                                            </div> -->
+                                            <!-- <div style="display:inline-block;margin-left: 20px;">
                                                 
                                                 {% if license.capital %}
                                                 {{license.capital}}
@@ -341,22 +667,17 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                                 {% endif %}
                                                   
                                                 
-                                            </div>
+                                            </div> -->
                                         </td> 
                                     </tr>
                                     <tr>
                                         <td  colspan="6" align="left" valign="middle" >
                                             <div style="display:inline-block;">
                                               
-                                                বৈধতার মেয়াদঃ                                       
+                                                লাইসেন্সের মেয়াদঃ                                       
                                             </div>
                                             <div style="display:inline-block;margin-left: 20px;">
-                                              {% if license.duration_to %}
-                                              ১ জুলাই, <div style="display:inline;" id="from_year">{{license.duration_form|date:"Y"}}</div>  হতে ৩০ জুন, <div style="display:inline;" id="to_year"> {{license.duration_to|date:"Y"}}</div>
-                                              {% else %}
-                                              ----------
-                                              {% endif %}
-                                            </>
+                                             ৩০ জুন, <div style="display:inline;" id="to_year">{% if license.duration_to %} {{license.duration_to|date:"Y"|eng_to_bengali_digits}} {% elif license.created_at|date:"n" < 6 %} {{ license.created_at|date:"Y"|eng_to_bengali_digits }} {% else %} {{ license.created_at|date:"Y"|add:'1'|eng_to_bengali_digits }} {% endif %} </div>
                                         </td> 
                                     </tr>
                                     <tr>
@@ -372,15 +693,15 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                         <td  colspan="6"  valign="middle" >
                                             <table class="table_bottom" width="100%"  align="center">
                                                 <tr >
-                                                    <td>পেশা ব্যবসা ও বৃত্তির উপর কর</td>
-                                                    <td>পেশা ব্যবসা ও বৃত্তির লাইসেন্স ফি</td>
+                                                    <td>ব্যবসা বৃত্তির উপর কর</td>
+                                                    <td>ব্যবসা বৃত্তির লাইসেন্স ফি</td>
                                                     <td>ভ্যাট ও অন্যান্য</td>
                                                     <td>মোট</td>
                                                 </tr>
                                                 <tr id="payment">
                                                     <td>
                                                       {% if license.tax %}
-                                                      {{license.tax}}
+                                                      {{license.tax|eng_to_bengali_digits}}
                                                       {% else %}
                                                       ------
                                                       {% endif %}
@@ -388,7 +709,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                                     </td>
                                                     <td>
                                                       {% if license.fee %}
-                                                      {{license.fee}}
+                                                      {{license.fee|eng_to_bengali_digits}}
                                                       {% else %}
                                                       ------
                                                       {% endif %}
@@ -396,7 +717,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                                     </td>
                                                     <td>
                                                       {% if license.vat_n_others %}
-                                                      {{license.vat_n_others}}
+                                                      {{license.vat_n_others|eng_to_bengali_digits}}
                                                       {% else %}
                                                       ------
                                                       {% endif %}
@@ -404,7 +725,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                                     </td>
                                                     <td>
                                                       {% if license.total_payment %}
-                                                      {{license.total_payment}}
+                                                      {{license.total_payment|eng_to_bengali_digits}}
                                                       {% else %}
                                                       ------
                                                       {% endif %}
@@ -429,7 +750,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                     <tr>
                                         <td  colspan="6" align="left" valign="middle" >
                                             <div style="display:inline-block;text-align:justify">
-                                              উপর্যুক্ত ফি ও কর প্রাপ্ত হয়ে ৪ নং তিলকপুর ইউনিয়ন পরিষদের সীমানায় তাহার ব্যবসা/বৃত্তি/পেশা চালিয়ে যাবার জন্য এই লাইসেন্স প্রদান করা হলো।
+                                              উপর্যুক্ত ফি ও কর প্রাপ্ত হয়ে {{ union_details.name_short }}-এর সীমানায় তাহার ব্যবসা/বৃত্তি/পেশা চালিয়ে যাবার জন্য এই লাইসেন্স প্রদান করা হলো।
                                                                                  
                                             </div>
                                            
@@ -442,10 +763,13 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                                   
                                   
                                     <tr valign="top">
-                                      <td  colspan="2" align="center"></div><div style="float:left;text-align:center"><img id='barcode' loading="lazy" src="https://api.qrserver.com/v1/create-qr-code/?data=Certificate:{{license.license_type.name_en}}%0DTracking No: {{license.tracking_no}}%0DName:{{license.name}}&amp;size=200x200" width="120px" height="120px" alt="{{license.name}}" title="{{license.license_type.name_en}}:{{license.name}}" width="50" height="50" /></div></td>
+                                      <td  colspan="2" align="center"></div><div style="float:left;text-align:center"><img id='barcode' loading="lazy" src="https://api.qrserver.com/v1/create-qr-code/?data=License:{{license.license_type.name_en}}%0DTracking No: {{license.tracking_no}}%0DName:{{license.name}}&amp;size=200x200" width="120px" height="120px" alt="{{license.name}}" title="{{license.license_type.name_en}}:{{license.name}}" width="50" height="50" /></div></td>
 
                                         <td  colspan="2" align="right"><br></div></td>
-                                        <td  colspan="2" align="right"><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if license.chairman.signature %}{{license.chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{license.chairman.name}}<br>{{license.chairman.post.name}}<br>৪ নং তিলকপুর ইউনিয়ন পরিষদ<br>আক্কেলপুর,জয়পুরহাট</div></td>
+                                        
+                                         
+                                       <td  colspan="2" align="right"><div style="float:right;text-align:center"></div><div style="float:right;text-align:center"><img height="50" src="{% if license.chairman.signature %}{{license.chairman.signature.url}}{% endif %}" alt="Chairman Signature"><br>{{license.chairman.name}}<br>{{license.chairman.post.name}}<br>{{union_details.name}}<br>{{union_details.upazilla.name}}, {{union_details.district.name}}</div></td>
+                                          
 
                                        
                                    </tr>
@@ -478,7 +802,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
                 </div>
 
                      
-                   
+          {% endif %}         
          
 
     </div>
@@ -487,9 +811,7 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
           
 
  
-    {% comment %} <img id="graph-image" height="500px" src="{% static 'images/gmrwc_logo.png' %}" alt="" > {% endcomment %}
-    {% comment %} <div style="float:right;margin:2%"><img  height="80px" src="{% static 'images/principal_signature.png' %}" alt="" ><br>Principal</div> {% endcomment %}
-
+  
   </div>
 
 <script type="text/javascript">
@@ -570,8 +892,7 @@ function googleTranslateElementInit() {
         }
         $( document ).ready(function() {
           const d = new Date();
-          var nric = 'Tracking No: {{license.tracking_no}}';
-          alert(nric)
+          var nric = 'Business Name:{{license.licensed_name}} ,Tracking No: {{license.tracking_no}}';
           var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + nric + '&amp;size=200x200';
           $('#barcode').attr('src', url);
         });

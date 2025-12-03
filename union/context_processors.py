@@ -1,5 +1,5 @@
 from django.conf import settings
-from .models import UnionDetails, ColorRoot
+from .models import UnionDetails, ColorRoot, DeveloperDetails
 from certificate.models import CertificateType
 from license.models import LicenseType
 def site_info(request):
@@ -7,6 +7,7 @@ def site_info(request):
         certificate_types=CertificateType.objects.all().order_by('serial')
         license_types=LicenseType.objects.all().order_by('serial')
         color=ColorRoot.objects.filter(is_active=True).first()
+        developer_details=DeveloperDetails.objects.filter(is_active=True).first()
         if union_details:
             return {
                 'SITE_NAME': union_details.name,
@@ -17,6 +18,7 @@ def site_info(request):
                 'certificate_types': certificate_types,
                 'license_types': license_types,
                 'union_details': union_details,
+                'developer_details': developer_details,
                 'color':color,
             }
         return {}

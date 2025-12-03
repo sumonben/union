@@ -4,6 +4,8 @@
 
 {% block content %}
 {% load static %}
+{% load union_custom_tags %}
+
 <style>
     .main_body{
         width:100%;
@@ -115,7 +117,9 @@ table.result th, table.result td {
                 }
     
   
-  
+p{
+  display: inline;
+}
 
 #heading {
     color: #000080 !important;;
@@ -173,16 +177,16 @@ goog-te-combo, .VIpgJd-ZVi9od-ORHb *, .VIpgJd-ZVi9od-SmfZ *, .VIpgJd-ZVi9od-xl07
 
                                     <tr>
                                       {% if certificate.language == '2' %}
-                                    <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify"><h5 style="font-weight:500; line-height:2"> This is to certify that , Late   <span ><b>&nbsp&nbsp{{certificate.name}}&nbsp&nbsp </b></span>  {% if certificate.passport %} Passport No. {{certificate.passport }} ,{% endif %}
+                                    <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify"><h5 style="font-weight:500; line-height:2;display: inline;"> This is to certify that , Late   <span ><b>&nbsp&nbsp{{certificate.name}}&nbsp&nbsp </b></span>  {% if certificate.passport %} Passport No. {{certificate.passport }} ,{% endif %}
                                       Father's Name:  {{certificate.father_name}}, Mother's Name: {{certificate.mother_name}},  Village:  {{certificate.adress.village.name_en}}, Post-Office:  {{certificate.adress.village.post_office.name_en}}, Ward No. -{{certificate.adress.ward.ward_no_en}}, Upazilla: Akkkelpur, District: Jaypurhat, Bangladesh.
                                       {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} was known to me. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} was Bangladeshi by birth. {% if certificate.gender.id == 1 %}He {% else %}She {% endif %} died on {{certificate.date}}.
                                       <br><br><br>
                                       I wish the best for {% if certificate.gender.id == 1 %}his {% else %}her {% endif %} departed soul .
                                     </td>  
                                     {% else %}
-                                        <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify"><h5 style="font-weight:500; line-height:2"> এই মর্মে প্রত্যয়ন করিতেছি যে, নামঃ <span ><b>&nbsp&nbsp{{certificate.name}}&nbsp&nbsp</b></span> {% if certificate.passport %} পাসপোর্ট নং- {{certificate.passport }},{% endif %}{% if certificate.other_name %} স্বামীঃ {{certificate.other_name}}, {% endif %}  পিতাঃ {{certificate.father_name}}, মাতাঃ {{certificate.mother_name}},  গ্রামঃ {{certificate.adress.village.name}}, ডাকঘরঃ {{certificate.adress.village.post_office.name}}, ওয়ার্ড নং-{{certificate.adress.ward.ward_no}}, উপজেলাঃ {{union_details.upazilla.name}}, জেলাঃ {{union_details.district.name}}।
+                                        <td  colspan="4" width="15%" align="left" valign="middle" class="sprytextfield1" style="font-weight:500;text-align:justify"><h5 style="font-weight:500; line-height:2;display: inline;"> এই মর্মে প্রত্যয়ন করিতেছি যে, নামঃ <span ><b>&nbsp&nbsp{{certificate.name}}&nbsp&nbsp</b></span> {% if certificate.passport %} পাসপোর্ট নং- {{certificate.passport }},{% endif %}{% if certificate.other_name %} স্বামীঃ {{certificate.other_name}}, {% endif %}  পিতাঃ {{certificate.father_name}}, মাতাঃ {{certificate.mother_name}},  গ্রামঃ {{certificate.adress.village.name}}, ডাকঘরঃ {{certificate.adress.village.post_office.name}}, ওয়ার্ড নং-{{certificate.adress.ward.ward_no}}, উপজেলাঃ {{union_details.upazilla.name}}, জেলাঃ {{union_details.district.name}}।
                                             তিনি আমার পরিচিত। আমার জানামতে তিনি অত্র {{ union_details.name_short }}-এর {{certificate.adress.ward.name}} এর একজন স্থায়ী বাসিন্দা ও জন্মসুত্রে বাংলাদেশের নাগরিক ছিলো। 
-                                    বিগত <div id="para1" style="display:inline">{{certificate.date}} </div> ইং তারিখে তার <div id="para2" style="display:inline;" >{{certificate.description|safe}} মৃত্যু হয়েছে মর্মে মৃত্যসনদ প্রদান করা হলো। </div>                          
+                                    বিগত <div  style="display:inline">{{certificate.date|custom_date_format_bn}} </div> ইং তারিখে তার <div id="para2" style="display: inline;" >{{certificate.description|safe}} মৃত্যু হয়েছে মর্মে মৃত্যসনদ প্রদান করা হলো। </div>                          
                                        {% endif %} 
 
                                     </tr>

@@ -33,9 +33,9 @@
             </table>
                 <div class="card-body">
 
-                <span class="bubbleNew"><img src="{%static 'images/ictpark_monogram.png'%}" class="rounded-circle"  /></span>
+                <span class="bubbleNew"><img src="{% if developer_details %}{{ developer_details.monogram.url }}{% endif %}" class="rounded-circle"  /></span>
 
-                <span class="shape"><img align="center"  src="{% static 'images\ictparkbd_logo.jpg' %}"><img align="center" style="height:60%;margin-top:10%;rotate: -50deg;" src="{{ union_details.logo.url}}"></span> 
+                <span class="shape"><img align="center"  src="{% if developer_details %}{{ developer_details.logo.url }}{% endif %}"><img align="center" style="height:60%;margin-top:10%;rotate: -50deg;" src="{{ union_details.logo.url}}"></span> 
                 {%if email %}
             
             <div class="alert alert-danger" role="alert">
@@ -69,7 +69,7 @@
             
             <form  action="{% url 'submit_form' %}" method="post" enctype="multipart/form-data" target="_blank">
               {% csrf_token %}
-                  <div id="qbox-container">
+                  <div id="qbox-container" style="height: 1080px; width: 100%;">
                           <div id="steps-container">
                               <div class="step d-block" >
                                 
@@ -93,7 +93,7 @@
                                               <td width="25%" align="right" valign="middle" class="sprytextfield1">Certificate Tracking No: </td>
                                               <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                                 <label>
-                                                  <input value="{{certificate.tracking_no}}" name="tracking_no" type="text" class="form-control form-control-sm">                                       
+                                                  <input value="{{certificate.tracking_no}}" name="tracking_no" type="text" class="form-control form-control-sm"  readonly>                                       
                                                 </label>
                                               </span></td>
       
@@ -198,7 +198,7 @@
                                               <td width="25%" align="right" valign="middle" class="sprytextfield1">সনদের ট্র্যাকিং নম্বরঃ </td>
                                               <td width="75%" align="left" valign="middle"><span id="sprytextfield1">
                                                 <label>
-                                                  <input value="{{certificate.tracking_no}}" name="tracking_no" type="text" class="form-control form-control-sm">                                       
+                                                  <input value="{{certificate.tracking_no}}" name="tracking_no" type="text" class="form-control form-control-sm" readonly>                                       
                                                 </label>
                                               </span></td>
       

@@ -60,9 +60,9 @@
             </table>
                 <div class="card-body">
 
-                <span class="bubbleNew"><img src="{%static 'images/ictpark_monogram.png'%}" class="rounded-circle" style="width: 200px;height: 200px;" /></span>
+                <span class="bubbleNew"><img src="{% if developer_details %}{{ developer_details.monogram.url }}{% endif %}" class="rounded-circle" style="width: 200px;height: 200px;" /></span>
 
-                <span class="shape"><img align="center" src="{% static 'images\ictparkbd_logo.jpg' %}"><img align="center" style="height:60%;margin-top:10%;rotate: -50deg;" src="{{ union_details.logo.url}}"></span> 
+                <span class="shape"><img align="center" src="{% if developer_details %}{{ developer_details.logo.url }}{% endif %}"><img align="center" style="height:60%;margin-top:10%;rotate: -50deg;" src="{{ union_details.logo.url}}"></span> 
                 {%if email %}
             
             <div class="alert alert-danger" role="alert">

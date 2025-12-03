@@ -85,6 +85,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'union.context_processors.site_info'
             ],
+            'libraries': {
+                'union_custom_tags': 'union.templatetags.custom_filters',
+            },
         },
     },
 ]
@@ -178,15 +181,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Dhaka'
 
-USE_I18N = True
-
-USE_TZ = True
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/

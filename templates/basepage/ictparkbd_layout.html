@@ -244,37 +244,13 @@
                             <div  style="margin:auto;">
                               <p >
                                 <a  style="display:inline-block;" href="/" target="_blank">
-                                Developed By:<img class="developer" alt="Tarique Sumon" src="{% static 'images/ictparkbd_logo.jpg'%}" loading="lazy">
+                                Developed By:<img class="developer" alt="Tarique Sumon" src="{% if developer_details %}{{ developer_details.logo.url }}{% endif %}" loading="lazy">
                                 </a>
                             </p>                            
                           </div>
                             
-                               {% comment %} <div class="col-lg-3" >
-                                   <p style="margin:auto">©Copyright 2024</p>
-                               </div>
-                               <div class="col-lg-5 text-center" style="float:right;">
-                                   <div class="d-flex align-items-center justify-content-start">
-                                       <p>We Accept</p>
-                                       <ul class="nav">
-                                              <img alt="img3" width="250"  data-src="{% static 'images/ictparkbd_logo.jpg'%}" src="{% static 'images/ssl_logo.png'%}">
-                                       </ul>
-                                   </div>
-                               </div>
-                               <div class="col-lg-4" >
-                                   <p style="float:left;">
-                                       Contributed by :
-                                       <strong><a href="http://israbentech.com/" target="_blank"><img alt="Tarique Sumon" data-src="/images/sumon.jpg" src="{% static 'images/logo.png'%}" lazy="loaded"> |
-                                       </a></strong>
-                                       <strong><a href="{{union_details.link}}" target="_blank"><img alt="Tarique Sumon" data-src="/images/sumon.jpg" src="{{ union_details.logo.url }}" lazy="loaded"> 
-                                       </a></strong>
-                                      </p>
-                                      <p style="float:right;">
-                                       Developed By:<img width="100" alt="Tarique Sumon" src="{% static 'images/ictparkbd_logo.jpg'%}" lazy="loaded">
-                                       <a style="display:inline-block;" href="https://ictparkbd.com/" target="_blank"><img  alt="Tarique Sumon" src="{% static 'images/ictpark_monogram.png'%}" lazy="loaded">
-                                       </a>
-                                   </p>
-                               </div>  {% endcomment %}
-                               <span class="bubbleNew"><img src="{%static 'images/ictpark_monogram.png'%}" class="rounded-circle"  /></span>
+                               
+                               <span class="bubbleNew"><img src="{% if developer_details %}{{ developer_details.monogram.url }}{% endif %}" class="rounded-circle"  /></span>
 
                            </div>
                        </div>

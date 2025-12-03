@@ -200,16 +200,24 @@
 
        }
        #first{
-        width:100%;
-        background-image:url("{{ union_details.logo_opacity.url }}"); 
+        {% if license.language == '2' %}
+        background-image:url({{ union_details.logo_opacity_en.url }}); 
+
+        {% else %}
+       
+        background-image:url({{ union_details.logo_opacity.url }}); 
+
+        {% endif %}  
+          
         background-repeat: no-repeat;
         background-position: center;
+        background-size: 400px 400px;
        }
        #second{
         width:100%;
         background:  url('/static/images/trade_license2.png');
         background-repeat: no-repeat;
-        background-size:contain,cover;        
+                background-size: 794px 100%;        
         overflow:visible;
     }
     </style>
@@ -237,10 +245,28 @@
                 <tr>
                   <td align="center" valign="middle"  >
                     <table width="100%" align="center"  cellspacing="0" cellpadding="0">
-                    <tbody><tr>
+                    <tbody>
+                      {% if license.language == '2'  %}
+                       <tr>
+                      <td width="20%" height="95" rowspan="4"  valign="middle" style="text-align:center;"><img style="margin-top:20px;" src="{{union_details.logo_en.url}}" width="80"></td>
+                    </tr>
+                   
+                    <tr>
+                      <td width="70%" height="100" id="item_title" align="center" valign="middle" style="text-align:center">
+                        <span class="GrayBlue10bold" style="color:#000;text-shadow: none;line-height:1.7;margin-left:-30px;">Government People's Republic of Bangladesh</span><br>
+
+                      <span class="GrayBlue20bold"  style="text-align: center;color:red;text-shadow:none;line-height:1.2;font-size:33px;margin-left:-30px;">{{ union_details.name_en|upper }}</span><br>
+                      <span style="color:#000;margin-top:0px;text-shadow: none;font-size:18px;margin-left:-30px;">Post-office: {{ union_details.post_office.name_en}}, Upazilla: {{ union_details.upazilla.name_en }} , District: {{ union_details.district.name_en }}</span>
+                      </td>
+                      <td width="10%" height="95" align="center" valign="middle" style="text-align:center"></td>
+                     </tr>
+                    {% else %}
+                    
+                      <tr>
                       <td width="20%" height="95" rowspan="4"  valign="middle" style="text-align:center;"><img style="margin-top:20px;" src="{{ LOGO }}" width="80"></td>
                     </tr>
                     <tr>
+                      
                       <td width="70%" height="100" id="item_title" align="center" valign="middle" style="text-align:center">
                         <span class="GrayBlue10bold" style="color:#000;text-shadow: none;line-height:1.7;margin-left:-30px;">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</span><br>
 
@@ -249,6 +275,7 @@
                       </td>
                       <td width="10%" height="95" align="center" valign="middle" style="text-align:center"></td>
                       </tr>
+                      {% endif %}
                   </tbody></table>
                 </td>
                 </tr>
@@ -277,7 +304,7 @@
       <table width="100%" border="0" cellpadding="5" cellspacing="0" class="black10">
         <tbody>
         <tr>
-          <td align="center" valign="middle"> Developed by Ictpark Bangladesh </td>
+          <td align="center" valign="middle"> Developed by{%if developer_details %} {{ developer_details.title_en }} {% endif %}</td>
         </tr>
       </tbody></table></td>
       <td width="40%" height="50" align="left" valign="middle"><table width="100%" border="0" cellpadding="5" cellspacing="0" class="black10">
@@ -285,10 +312,22 @@
           <td width="85%" align="right" valign="middle">&nbsp;</td>
         </tr>
         <tr>
-          <td align="right" valign="middle">তত্বাবধানে</td>
+          
+          {% if license.language == '2' %}
+                      <td align="right" valign="middle"> Maitained By</td>
+          {% else %}
+                    <td align="right" valign="middle">তত্বাবধানে</td>
+
+          {% endif %}
+            
         </tr>
       </tbody></table></td>
+      {% if license.language == '2' %}
+      <td width="10%" height="50" align="center" valign="middle"><img src="{{ union_details.logo_en.url }}"  height="44" alt=""></td>
+          {% else %}
       <td width="10%" height="50" align="center" valign="middle"><img src="{{ LOGO }}"  height="44" alt=""></td>
+
+          {% endif %}
       </tr>
       
   </tbody></table></td>
